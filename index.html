@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal VetExtensão — El Niño e Medicina Veterinária</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portal VetExtensão — El Niño e Saúde Animal</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
     tailwind.config = {
       theme: {
         extend: {
@@ -27,587 +28,529 @@
   </script>
 </head>
 <body class="bg-slate-100 text-slate-800 font-sans flex flex-col min-h-screen">
-
-  <!-- TOP BAR COM ACESSIBILIDADE DE VOZ -->
-  <header class="bg-brand-navy text-slate-300 text-xs py-2 border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
-      <div class="flex items-center space-x-4">
-        <span id="current-date"><i class="far fa-calendar-alt text-brand-mint mr-1"></i> Carregando...</span>
-        <span class="hidden sm:inline">|</span>
-        <span class="hidden sm:inline"><i class="fas fa-shield-alt text-brand-mint mr-1"></i> Repositório Científico & Extensão Universitária em Saúde Única</span>
-      </div>
-      <div class="flex items-center space-x-3">
-        <button onclick="readPageText()" class="bg-brand-dark border border-brand-emerald text-brand-accent hover:bg-brand-emerald hover:text-white px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1 transition">
-          <i class="fas fa-volume-up"></i> Ouvir Página (Acessibilidade)
+<!-- TOP BAR COM ACESSIBILIDADE DE VOZ -->
+<header class="bg-brand-navy text-slate-300 text-xs py-2 border-b border-slate-800">
+<div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
+<div class="flex items-center space-x-4">
+<span id="current-date"><i class="far fa-calendar-alt text-brand-mint mr-1"></i> Carregando...</span>
+<span class="hidden sm:inline">|</span>
+<span class="hidden sm:inline"><i class="fas fa-shield-alt text-brand-mint mr-1"></i> Repositório Científico &amp; Extensão Universitária em Saúde Única</span>
+</div>
+<div class="flex items-center space-x-3">
+<button class="bg-brand-dark border border-brand-emerald text-brand-accent hover:bg-brand-emerald hover:text-white px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1 transition" onclick="readPageText()">
+<i class="fas fa-volume-up"></i> Ouvir Página (Acessibilidade)
         </button>
-        <button onclick="stopSpeech()" class="text-slate-400 hover:text-red-400 text-xs" title="Parar Leitura">
-          <i class="fas fa-stop-circle"></i>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- MAIN HEADER -->
-  <div class="bg-gradient-to-r from-brand-navy to-brand-dark text-white py-6 border-b-4 border-brand-emerald shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-      <div class="text-center md:text-left">
-        <div class="flex items-center justify-center md:justify-start gap-3">
-          <div class="bg-brand-emerald text-white p-3 rounded-xl shadow">
-            <i class="fas fa-microscope text-3xl"></i>
-          </div>
-          <div>
-            <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">ECO<span class="text-brand-accent">VET</span></h1>
-            <p class="text-xs md:text-sm text-slate-300 mt-0.5">Influência do Fenômeno El Niño na Epidemiologia e Saúde Animal</p>
-          </div>
-        </div>
-      </div>
-      <div class="w-full md:w-80">
-        <div class="relative">
-          <input type="text" id="search-input" placeholder="Buscar por patógeno, espécie, vetor..." class="w-full bg-slate-900/80 text-white placeholder-slate-400 text-sm rounded-full pl-10 pr-4 py-2.5 border border-slate-700 focus:outline-none focus:border-brand-mint">
-          <i class="fas fa-search absolute left-3.5 top-3 text-slate-400"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- NAVIGATION MENU -->
-  <nav class="bg-white shadow sticky top-0 z-30 border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="flex items-center justify-between h-14">
-        <div class="flex items-center space-x-2 overflow-x-auto py-2 no-scrollbar">
-          <button onclick="switchView('home')" id="nav-home" class="nav-btn bg-brand-emerald text-white text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full transition whitespace-nowrap">
-            Início & Artigos
+<button class="text-slate-400 hover:text-red-400 text-xs" onclick="stopSpeech()" title="Parar Leitura">
+<i class="fas fa-stop-circle"></i>
+</button>
+</div>
+</div>
+</header>
+<!-- MAIN HEADER -->
+<div class="bg-gradient-to-r from-brand-navy to-brand-dark text-white py-6 border-b-4 border-brand-emerald shadow-lg">
+<div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="text-center md:text-left">
+<div class="flex items-center justify-center md:justify-start gap-3">
+<div class="bg-brand-emerald text-white p-3 rounded-xl shadow">
+<i class="fas fa-microscope text-3xl"></i>
+</div>
+<div>
+<h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight leading-tight">Portal <span class="text-brand-accent">VetExtensão</span></h1>
+<p class="text-xs md:text-sm text-slate-300 mt-0.5">Influência do Fenômeno El Niño na Epidemiologia e Saúde Animal</p>
+</div>
+</div>
+</div>
+<div class="w-full md:w-80">
+<div class="relative">
+<input class="w-full bg-slate-900/80 text-white placeholder-slate-400 text-sm rounded-full pl-10 pr-4 py-2.5 border border-slate-700 focus:outline-none focus:border-brand-mint" id="search-input" placeholder="Buscar por patógeno, espécie, vetor..." type="text"/>
+<i class="fas fa-search absolute left-3.5 top-3 text-slate-400"></i>
+</div>
+</div>
+</div>
+</div>
+<!-- NAVIGATION MENU -->
+<nav class="bg-white shadow sticky top-0 z-30 border-b border-slate-200">
+<div class="max-w-7xl mx-auto px-4">
+<div class="flex items-center justify-between h-14">
+<div class="flex items-center space-x-2 overflow-x-auto py-2 no-scrollbar">
+<button class="nav-btn bg-brand-emerald text-white text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full transition whitespace-nowrap" id="nav-home" onclick="switchView('home')">
+            Início &amp; Artigos
           </button>
-          <button onclick="switchView('projeto')" id="nav-projeto" class="nav-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full transition whitespace-nowrap">
-            <i class="fas fa-bullhorn mr-1 text-brand-emerald"></i> O Projeto & Infográfico
+<button class="nav-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full transition whitespace-nowrap" id="nav-projeto" onclick="switchView('projeto')">
+<i class="fas fa-bullhorn mr-1 text-brand-emerald"></i> O Projeto &amp; Infográfico
           </button>
-          <button onclick="switchView('calculadora')" id="nav-calculadora" class="nav-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full transition whitespace-nowrap">
-            <i class="fas fa-calculator mr-1 text-brand-emerald"></i> Simulador de Risco Epidemiológico
+<button class="nav-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full transition whitespace-nowrap" id="nav-calculadora" onclick="switchView('calculadora')">
+<i class="fas fa-calculator mr-1 text-brand-emerald"></i> Simulador de Risco Epidemiológico
           </button>
-          <button onclick="switchView('artigos')" id="nav-artigos" class="nav-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full transition whitespace-nowrap">
-            <i class="fas fa-book-medical mr-1 text-brand-emerald"></i> Referências e Fontes
+<button class="nav-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full transition whitespace-nowrap" id="nav-artigos" onclick="switchView('artigos')">
+<i class="fas fa-book-medical mr-1 text-brand-emerald"></i> Referências e Fontes
           </button>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- CONTENT VIEWS CONTAINER -->
-  <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full" id="main-content">
-
-    <!-- VIEW 1: HOME -->
-    <div id="view-home" class="space-y-8">
-      <div class="bg-gradient-to-r from-teal-900 to-slate-900 text-white p-6 rounded-xl shadow-md border-l-4 border-brand-emerald flex items-start gap-4">
-        <i class="fas fa-dna text-brand-accent text-3xl mt-1"></i>
-        <div>
-          <h3 class="font-bold text-base text-brand-accent">Portal de Epidemiologia e Medicina Veterinária Preventiva</h3>
-          <p class="text-xs sm:text-sm text-slate-300 mt-1">
-            Análises aprofundadas sobre os impactos do El Niño na Clínica Médica de Pequenos e Grandes Animais, Zoonoses, Biologia de Vetores e Sanidade Avícola, Suína e Silvestre.
-          </p>
-        </div>
-      </div>
-
-      <!-- BARRA DE FILTROS POR ÁREA VETERINÁRIA -->
-      <div class="flex items-center gap-2 overflow-x-auto pb-2 border-b border-slate-200">
-        <span class="text-xs font-bold text-slate-500 whitespace-nowrap">Especialidade:</span>
-        <button onclick="filterCategory('todos')" class="filter-btn bg-brand-navy text-white text-xs font-bold px-3 py-1 rounded-full">Todas as Áreas</button>
-        <button onclick="filterCategory('Pequenos Animais')" class="filter-btn bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-medium px-3 py-1 rounded-full">Pequenos Animais</button>
-        <button onclick="filterCategory('Bovinocultura')" class="filter-btn bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-medium px-3 py-1 rounded-full">Bovinocultura</button>
-        <button onclick="filterCategory('Equinocultura')" class="filter-btn bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-medium px-3 py-1 rounded-full">Equinocultura</button>
-        <button onclick="filterCategory('Avicultura e Suinocultura')" class="filter-btn bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-medium px-3 py-1 rounded-full">Avicultura & Suinocultura</button>
-        <button onclick="filterCategory('Fauna Silvestre')" class="filter-btn bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-medium px-3 py-1 rounded-full">Fauna Silvestre & Zoonoses</button>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div class="lg:col-span-2 space-y-6">
-          <h2 class="text-xl font-bold text-slate-900 border-b-2 border-brand-emerald pb-2 flex items-center justify-between">
-            <span><i class="fas fa-journal-whills text-brand-emerald mr-2"></i>Artigos Técnicos e Monografias Epidemiológicas</span>
-            <span class="text-xs text-slate-500 font-normal" id="article-count">Carregando...</span>
-          </h2>
-
-          <div id="news-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <!-- Injetado via JS -->
-          </div>
-        </div>
-
-        <!-- SIDEBAR -->
-        <aside class="space-y-6">
-          <div class="bg-white p-5 rounded-xl shadow border border-slate-200">
-            <h4 class="font-bold text-slate-900 border-b pb-2 mb-3 text-sm"><i class="fas fa-notes-medical text-brand-emerald mr-1"></i> Indicadores de Monitoramento</h4>
-            <ul class="space-y-2 text-xs text-slate-600">
-              <li class="flex items-start gap-2"><i class="fas fa-angle-right text-brand-emerald mt-0.5"></i> <strong>Pequenos Animais:</strong> Monitoramento do ITU em pets urbanos e sorologia para *Ehrlichia* e *Leishmania*.</li>
-              <li class="flex items-start gap-2"><i class="fas fa-angle-right text-brand-emerald mt-0.5"></i> <strong>Ruminantes:</strong> Biocarrapaticidograma para *R. microplus* e suplementação com fósforo solúvel.</li>
-              <li class="flex items-start gap-2"><i class="fas fa-angle-right text-brand-emerald mt-0.5"></i> <strong>Equídeos:</strong> Vacinação contra Alphavirus e drenagem peri-estábulo.</li>
-              <li class="flex items-start gap-2"><i class="fas fa-angle-right text-brand-emerald mt-0.5"></i> <strong>Avicultura:</strong> Equilíbrio ácido-base em matrizes e ventilação em galpões industriais.</li>
-            </ul>
-          </div>
-
-          <div class="bg-gradient-to-br from-brand-navy to-brand-dark text-white p-6 rounded-xl shadow">
-            <h4 class="font-bold text-sm mb-2"><i class="fas fa-flask text-brand-mint mr-1"></i> Caderno de Pesquisa</h4>
-            <p class="text-xs text-slate-300 leading-relaxed">
+</div>
+</div>
+</div>
+</nav>
+<!-- CONTENT VIEWS CONTAINER -->
+<main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full" id="main-content">
+<!-- VIEW 1: HOME -->
+<div class="space-y-8" id="view-home">
+<div class="bg-gradient-to-r from-teal-900 to-slate-900 text-white p-6 rounded-xl shadow-md border-l-4 border-brand-emerald flex items-start gap-4">
+<i class="fas fa-dna text-brand-accent text-3xl mt-1"></i>
+<div>
+<h3 class="font-bold text-base text-brand-accent">Portal de Epidemiologia e Medicina Veterinária Preventiva</h3>
+<p class="text-xs sm:text-sm text-slate-300 mt-1">Conteúdo de divulgação científica sobre El Niño, saúde animal e prevenção, com atenção especial aos cães e gatos e materiais complementares sobre animais de produção, fauna silvestre e Saúde Única.</p>
+</div>
+</div>
+<!-- BARRA DE FILTROS POR ÁREA VETERINÁRIA -->
+<div class="flex items-center gap-2 overflow-x-auto pb-2 border-b border-slate-200">
+<span class="text-xs font-bold text-slate-500 whitespace-nowrap">Especialidade:</span>
+<button class="filter-btn bg-brand-navy text-white text-xs font-bold px-3 py-1 rounded-full" onclick="filterCategory('todos')">Todas as Áreas</button>
+<button class="filter-btn bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-medium px-3 py-1 rounded-full" onclick="filterCategory('Pequenos Animais')">Pequenos Animais</button>
+<button class="filter-btn bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-medium px-3 py-1 rounded-full" onclick="filterCategory('Bovinocultura')">Bovinocultura</button>
+<button class="filter-btn bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-medium px-3 py-1 rounded-full" onclick="filterCategory('Equinocultura')">Equinocultura</button>
+<button class="filter-btn bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-medium px-3 py-1 rounded-full" onclick="filterCategory('Avicultura e Suinocultura')">Avicultura &amp; Suinocultura</button>
+<button class="filter-btn bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-medium px-3 py-1 rounded-full" onclick="filterCategory('Fauna Silvestre')">Fauna Silvestre &amp; Zoonoses</button>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 space-y-6">
+<h2 class="text-xl font-bold text-slate-900 border-b-2 border-brand-emerald pb-2 flex items-center justify-between">
+<span><i class="fas fa-journal-whills text-brand-emerald mr-2"></i>Artigos Técnicos e Monografias Epidemiológicas</span>
+<span class="text-xs text-slate-500 font-normal" id="article-count">Carregando...</span>
+</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6" id="news-grid">
+<!-- Injetado via JS -->
+</div>
+</div>
+<!-- SIDEBAR -->
+<aside class="space-y-6">
+<div class="bg-white p-5 rounded-xl shadow border border-slate-200">
+<h4 class="font-bold text-slate-900 border-b pb-2 mb-3 text-sm"><i class="fas fa-notes-medical text-brand-emerald mr-1"></i> Indicadores de Monitoramento</h4>
+<ul class="space-y-2 text-xs text-slate-600">
+<li class="flex items-start gap-2"><i class="fas fa-angle-right text-brand-emerald mt-0.5"></i> <strong>Pequenos Animais:</strong> Monitoramento do ITU em pets urbanos e sorologia para *Ehrlichia* e *Leishmania*.</li>
+<li class="flex items-start gap-2"><i class="fas fa-angle-right text-brand-emerald mt-0.5"></i> <strong>Ruminantes:</strong> Biocarrapaticidograma para *R. microplus* e suplementação com fósforo solúvel.</li>
+<li class="flex items-start gap-2"><i class="fas fa-angle-right text-brand-emerald mt-0.5"></i> <strong>Equídeos:</strong> Vacinação contra Alphavirus e drenagem peri-estábulo.</li>
+<li class="flex items-start gap-2"><i class="fas fa-angle-right text-brand-emerald mt-0.5"></i> <strong>Avicultura:</strong> Equilíbrio ácido-base em matrizes e ventilação em galpões industriais.</li>
+</ul>
+</div>
+<div class="bg-gradient-to-br from-brand-navy to-brand-dark text-white p-6 rounded-xl shadow">
+<h4 class="font-bold text-sm mb-2"><i class="fas fa-flask text-brand-mint mr-1"></i> Caderno de Pesquisa</h4>
+<p class="text-xs text-slate-300 leading-relaxed">
               Os dados deste repositório sintetizam artigos e normativas de vigilância sanitária e saúde única publicados por órgãos como Embrapa, Fiocruz, WOAH e Ministério da Saúde.
             </p>
-          </div>
-        </aside>
-      </div>
+</div>
+</aside>
+</div>
+<!-- NOTÍCIAS ESPECIAIS: EL NIÑO E MEDICINA VETERINÁRIA -->
+<section class="space-y-5" id="elnino-vet-news">
+<div class="bg-gradient-to-r from-amber-50 via-white to-teal-50 rounded-2xl border border-amber-200 p-6 md:p-8">
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+<div>
+<span class="inline-flex items-center gap-2 text-[11px] uppercase tracking-wider font-extrabold text-amber-800"><i class="fas fa-cloud-sun"></i> Especial Portal VetExtensão</span>
+<h2 class="text-2xl md:text-3xl font-black text-slate-900 mt-2">El Niño em foco: clima, saúde animal e prevenção</h2>
+<p class="text-sm text-slate-600 mt-2 max-w-3xl leading-relaxed">Notícias explicativas sobre como mudanças nos padrões de chuva e temperatura podem modificar os riscos veterinários. Os efeitos variam por região: associação climática não significa que o El Niño cause diretamente uma doença ou um surto.</p>
+</div>
+<a class="shrink-0 inline-flex items-center gap-2 bg-brand-navy text-white text-xs font-bold px-4 py-3 rounded-lg hover:bg-brand-emerald transition" href="https://www.woah.org/en/article/the-wide-ranging-impacts-of-el-nino-on-wildlife-and-animal-health/" rel="noopener noreferrer" target="_blank">Fonte internacional <i class="fas fa-arrow-up-right-from-square"></i></a>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+<article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+<img alt="Bovinos em pastagem" class="h-44 w-full object-cover" loading="lazy" src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&amp;fit=crop&amp;w=900&amp;q=80"/>
+<div class="p-5 flex-1 flex flex-col">
+<span class="text-[10px] uppercase tracking-wide font-bold text-emerald-700">Grandes animais · Produção</span>
+<h3 class="font-extrabold text-slate-900 mt-2">El Niño e pecuária: atenção à água, à pastagem e ao estresse térmico</h3>
+<p class="text-sm text-slate-600 mt-2 leading-relaxed">Em regiões sujeitas à redução das chuvas, a menor oferta de forragem e água pode favorecer perda de condição corporal e queda de desempenho. Em períodos quentes, sombra, ventilação, água limpa e manejo nos horários mais amenos ajudam a reduzir a carga térmica. O planejamento deve considerar as previsões e as condições locais da propriedade.</p>
+<a class="mt-4 text-sm font-bold text-sky-700 underline" href="https://www.woah.org/en/article/the-wide-ranging-impacts-of-el-nino-on-wildlife-and-animal-health/" rel="noopener noreferrer" target="_blank">Ler referência da WOAH</a>
+</div>
+</article>
+<article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+<img alt="Cão em ambiente externo" class="h-44 w-full object-cover" loading="lazy" src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&amp;fit=crop&amp;w=900&amp;q=80"/>
+<div class="p-5 flex-1 flex flex-col">
+<span class="text-[10px] uppercase tracking-wide font-bold text-emerald-700">Pequenos animais · Bem-estar</span>
+<h3 class="font-extrabold text-slate-900 mt-2">Ondas de calor: como proteger cães e gatos</h3>
+<p class="text-sm text-slate-600 mt-2 leading-relaxed">Temperaturas elevadas podem aumentar o risco de hipertermia, especialmente em animais braquicefálicos, idosos, obesos ou com doenças preexistentes. Ofereça água fresca, sombra e ventilação; evite exercícios nos horários mais quentes e nunca deixe o animal em veículo fechado. Ofegação intensa, fraqueza, desorientação ou colapso exigem atendimento veterinário urgente.</p>
+<a class="mt-4 text-sm font-bold text-sky-700 underline" href="https://www.crmvrj.org.br/por-que-o-el-nino-tambem-e-uma-preocupacao-da-medicina-veterinaria/" rel="noopener noreferrer" target="_blank">Ler matéria do CRMV-RJ</a>
+</div>
+</article>
+<article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+<img alt="Área rural com água e vegetação" class="h-44 w-full object-cover" loading="lazy" src="https://images.unsplash.com/photo-1530268729831-4b0b9e170218?auto=format&amp;fit=crop&amp;w=900&amp;q=80"/>
+<div class="p-5 flex-1 flex flex-col">
+<span class="text-[10px] uppercase tracking-wide font-bold text-emerald-700">Zoonoses · Uma Só Saúde</span>
+<h3 class="font-extrabold text-slate-900 mt-2">Chuvas, alagamentos e água contaminada: atenção à leptospirose</h3>
+<p class="text-sm text-slate-600 mt-2 leading-relaxed">Enchentes podem espalhar urina de animais infectados e contaminar água e lama. Evite que animais de companhia ou de produção tenham contato com áreas alagadas suspeitas; após exposição, procure orientação veterinária. A ocorrência da doença depende de fatores ambientais e epidemiológicos locais, não apenas do fenômeno climático.</p>
+<a class="mt-4 text-sm font-bold text-sky-700 underline" href="https://www.vet.cornell.edu/departments-centers-and-institutes/riney-canine-health-center/canine-health-topics/canine-leptospirosis" rel="noopener noreferrer" target="_blank">Consultar Cornell Veterinary Medicine</a>
+</div>
+</article>
+<article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+<img alt="Cabras em criação rural" class="h-44 w-full object-cover" loading="lazy" src="https://images.unsplash.com/photo-1524024973431-2ad916746881?auto=format&amp;fit=crop&amp;w=900&amp;q=80"/>
+<div class="p-5 flex-1 flex flex-col">
+<span class="text-[10px] uppercase tracking-wide font-bold text-emerald-700">Caprinocultura e ovinocultura</span>
+<h3 class="font-extrabold text-slate-900 mt-2">Seca no semiárido: prevenção nutricional para caprinos e ovinos</h3>
+<p class="text-sm text-slate-600 mt-2 leading-relaxed">Quando a estiagem reduz a disponibilidade de forragem, é essencial planejar reservas alimentares, monitorar escore corporal e garantir água de qualidade. Ajustes de dieta devem considerar categoria, fase produtiva e condição dos animais, com apoio técnico para evitar deficiências nutricionais e gastos desnecessários.</p>
+<a class="mt-4 text-sm font-bold text-sky-700 underline" href="https://www.embrapa.br/caprinos-e-ovinos" rel="noopener noreferrer" target="_blank">Consultar Embrapa Caprinos e Ovinos</a>
+</div>
+</article>
+<article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+<img alt="Carrapato em ambiente de pesquisa" class="h-44 w-full object-cover" loading="lazy" src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?auto=format&amp;fit=crop&amp;w=900&amp;q=80"/>
+<div class="p-5 flex-1 flex flex-col">
+<span class="text-[10px] uppercase tracking-wide font-bold text-emerald-700">Parasitologia · Vigilância</span>
+<h3 class="font-extrabold text-slate-900 mt-2">Clima e vetores: por que o monitoramento precisa ser regional</h3>
+<p class="text-sm text-slate-600 mt-2 leading-relaxed">Temperatura, umidade e precipitação podem influenciar a sobrevivência e a atividade de carrapatos e insetos vetores, mas cada espécie responde de forma diferente. Para doenças como erliquiose, babesiose e leishmaniose, a prevenção deve combinar controle de vetores adequado à espécie, avaliação veterinária e vigilância epidemiológica — sem presumir que todo evento de El Niño aumentará os casos.</p>
+<a class="mt-4 text-sm font-bold text-sky-700 underline" href="https://doi.org/10.1016/j.pt.2024.04.009" rel="noopener noreferrer" target="_blank">Consultar revisão em Trends in Parasitology (2024)</a>
+</div>
+</article>
+<article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+<img alt="Paisagem natural sob mudanças climáticas" class="h-44 w-full object-cover" loading="lazy" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&amp;fit=crop&amp;w=900&amp;q=80"/>
+<div class="p-5 flex-1 flex flex-col">
+<span class="text-[10px] uppercase tracking-wide font-bold text-emerald-700">Pesquisa · Saúde Única</span>
+<h3 class="font-extrabold text-slate-900 mt-2">El Niño pode afetar animais silvestres e ecossistemas</h3>
+<p class="text-sm text-slate-600 mt-2 leading-relaxed">Mudanças na disponibilidade de água e alimento, eventos extremos e alterações nos habitats podem afetar a fauna silvestre e aproximar animais de áreas habitadas. A vigilância integrada entre saúde animal, humana e ambiental contribui para identificar riscos e orientar respostas locais.</p>
+<a class="mt-4 text-sm font-bold text-sky-700 underline" href="https://www.woah.org/en/article/the-wide-ranging-impacts-of-el-nino-on-wildlife-and-animal-health/" rel="noopener noreferrer" target="_blank">Ler análise da WOAH</a>
+</div>
+</article>
+</div>
+<div class="bg-slate-50 border border-slate-200 rounded-xl p-5 text-xs text-slate-600 leading-relaxed">
+<h3 class="font-extrabold text-slate-800 text-sm mb-2"><i class="fas fa-book-open text-brand-emerald mr-2"></i>Fontes para acompanhar e verificar as notícias</h3>
+<p class="mb-2">As matérias acima são conteúdos editoriais de divulgação científica do Portal VetExtensão, baseados nas referências indicadas. Elas não devem ser interpretadas como notícias de ocorrência confirmada nem como evidência de que um surto esteja acontecendo agora.</p>
+<div class="flex flex-wrap gap-x-4 gap-y-2">
+<a class="text-sky-700 underline font-semibold" href="https://www.cemaden.gov.br/" rel="noopener noreferrer" target="_blank">Cemaden — monitoramento</a>
+<a class="text-sky-700 underline font-semibold" href="https://portal.inmet.gov.br/" rel="noopener noreferrer" target="_blank">INMET — clima</a>
+<a class="text-sky-700 underline font-semibold" href="https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/saude-animal" rel="noopener noreferrer" target="_blank">MAPA — saúde animal</a>
+<a class="text-sky-700 underline font-semibold" href="https://www.woah.org/" rel="noopener noreferrer" target="_blank">WOAH — saúde animal</a>
+<a class="text-sky-700 underline font-semibold" href="https://www.embrapa.br/" rel="noopener noreferrer" target="_blank">Embrapa — pesquisa agropecuária</a>
+</div>
+</div>
+</section>
+<!-- COMO FUNCIONA O ACERVO DE NOTÍCIAS -->
 
-      <!-- NOTÍCIAS ESPECIAIS: EL NIÑO E MEDICINA VETERINÁRIA -->
-      <section id="elnino-vet-news" class="space-y-5">
-        <div class="bg-gradient-to-r from-amber-50 via-white to-teal-50 rounded-2xl border border-amber-200 p-6 md:p-8">
-          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-            <div>
-              <span class="inline-flex items-center gap-2 text-[11px] uppercase tracking-wider font-extrabold text-amber-800"><i class="fas fa-cloud-sun"></i> Especial Portal VetExtensão</span>
-              <h2 class="text-2xl md:text-3xl font-black text-slate-900 mt-2">El Niño em foco: clima, saúde animal e prevenção</h2>
-              <p class="text-sm text-slate-600 mt-2 max-w-3xl leading-relaxed">Notícias explicativas sobre como mudanças nos padrões de chuva e temperatura podem modificar os riscos veterinários. Os efeitos variam por região: associação climática não significa que o El Niño cause diretamente uma doença ou um surto.</p>
-            </div>
-            <a href="https://www.woah.org/en/article/the-wide-ranging-impacts-of-el-nino-on-wildlife-and-animal-health/" target="_blank" rel="noopener noreferrer" class="shrink-0 inline-flex items-center gap-2 bg-brand-navy text-white text-xs font-bold px-4 py-3 rounded-lg hover:bg-brand-emerald transition">Fonte internacional <i class="fas fa-arrow-up-right-from-square"></i></a>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-          <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
-            <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=900&q=80" alt="Bovinos em pastagem" class="h-44 w-full object-cover" loading="lazy">
-            <div class="p-5 flex-1 flex flex-col">
-              <span class="text-[10px] uppercase tracking-wide font-bold text-emerald-700">Grandes animais · Produção</span>
-              <h3 class="font-extrabold text-slate-900 mt-2">El Niño e pecuária: atenção à água, à pastagem e ao estresse térmico</h3>
-              <p class="text-sm text-slate-600 mt-2 leading-relaxed">Em regiões sujeitas à redução das chuvas, a menor oferta de forragem e água pode favorecer perda de condição corporal e queda de desempenho. Em períodos quentes, sombra, ventilação, água limpa e manejo nos horários mais amenos ajudam a reduzir a carga térmica. O planejamento deve considerar as previsões e as condições locais da propriedade.</p>
-              <a class="mt-4 text-sm font-bold text-sky-700 underline" href="https://www.woah.org/en/article/the-wide-ranging-impacts-of-el-nino-on-wildlife-and-animal-health/" target="_blank" rel="noopener noreferrer">Ler referência da WOAH</a>
-            </div>
-          </article>
-
-          <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
-            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=900&q=80" alt="Cão em ambiente externo" class="h-44 w-full object-cover" loading="lazy">
-            <div class="p-5 flex-1 flex flex-col">
-              <span class="text-[10px] uppercase tracking-wide font-bold text-emerald-700">Pequenos animais · Bem-estar</span>
-              <h3 class="font-extrabold text-slate-900 mt-2">Ondas de calor: como proteger cães e gatos</h3>
-              <p class="text-sm text-slate-600 mt-2 leading-relaxed">Temperaturas elevadas podem aumentar o risco de hipertermia, especialmente em animais braquicefálicos, idosos, obesos ou com doenças preexistentes. Ofereça água fresca, sombra e ventilação; evite exercícios nos horários mais quentes e nunca deixe o animal em veículo fechado. Ofegação intensa, fraqueza, desorientação ou colapso exigem atendimento veterinário urgente.</p>
-              <a class="mt-4 text-sm font-bold text-sky-700 underline" href="https://www.crmvrj.org.br/por-que-o-el-nino-tambem-e-uma-preocupacao-da-medicina-veterinaria/" target="_blank" rel="noopener noreferrer">Ler matéria do CRMV-RJ</a>
-            </div>
-          </article>
-
-          <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
-            <img src="https://images.unsplash.com/photo-1530268729831-4b0b9e170218?auto=format&fit=crop&w=900&q=80" alt="Área rural com água e vegetação" class="h-44 w-full object-cover" loading="lazy">
-            <div class="p-5 flex-1 flex flex-col">
-              <span class="text-[10px] uppercase tracking-wide font-bold text-emerald-700">Zoonoses · Uma Só Saúde</span>
-              <h3 class="font-extrabold text-slate-900 mt-2">Chuvas, alagamentos e água contaminada: atenção à leptospirose</h3>
-              <p class="text-sm text-slate-600 mt-2 leading-relaxed">Enchentes podem espalhar urina de animais infectados e contaminar água e lama. Evite que animais de companhia ou de produção tenham contato com áreas alagadas suspeitas; após exposição, procure orientação veterinária. A ocorrência da doença depende de fatores ambientais e epidemiológicos locais, não apenas do fenômeno climático.</p>
-              <a class="mt-4 text-sm font-bold text-sky-700 underline" href="https://www.vet.cornell.edu/departments-centers-and-institutes/riney-canine-health-center/canine-health-topics/canine-leptospirosis" target="_blank" rel="noopener noreferrer">Consultar Cornell Veterinary Medicine</a>
-            </div>
-          </article>
-
-          <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
-            <img src="https://images.unsplash.com/photo-1524024973431-2ad916746881?auto=format&fit=crop&w=900&q=80" alt="Cabras em criação rural" class="h-44 w-full object-cover" loading="lazy">
-            <div class="p-5 flex-1 flex flex-col">
-              <span class="text-[10px] uppercase tracking-wide font-bold text-emerald-700">Caprinocultura e ovinocultura</span>
-              <h3 class="font-extrabold text-slate-900 mt-2">Seca no semiárido: prevenção nutricional para caprinos e ovinos</h3>
-              <p class="text-sm text-slate-600 mt-2 leading-relaxed">Quando a estiagem reduz a disponibilidade de forragem, é essencial planejar reservas alimentares, monitorar escore corporal e garantir água de qualidade. Ajustes de dieta devem considerar categoria, fase produtiva e condição dos animais, com apoio técnico para evitar deficiências nutricionais e gastos desnecessários.</p>
-              <a class="mt-4 text-sm font-bold text-sky-700 underline" href="https://www.embrapa.br/caprinos-e-ovinos" target="_blank" rel="noopener noreferrer">Consultar Embrapa Caprinos e Ovinos</a>
-            </div>
-          </article>
-
-          <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
-            <img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?auto=format&fit=crop&w=900&q=80" alt="Carrapato em ambiente de pesquisa" class="h-44 w-full object-cover" loading="lazy">
-            <div class="p-5 flex-1 flex flex-col">
-              <span class="text-[10px] uppercase tracking-wide font-bold text-emerald-700">Parasitologia · Vigilância</span>
-              <h3 class="font-extrabold text-slate-900 mt-2">Clima e vetores: por que o monitoramento precisa ser regional</h3>
-              <p class="text-sm text-slate-600 mt-2 leading-relaxed">Temperatura, umidade e precipitação podem influenciar a sobrevivência e a atividade de carrapatos e insetos vetores, mas cada espécie responde de forma diferente. Para doenças como erliquiose, babesiose e leishmaniose, a prevenção deve combinar controle de vetores adequado à espécie, avaliação veterinária e vigilância epidemiológica — sem presumir que todo evento de El Niño aumentará os casos.</p>
-              <a class="mt-4 text-sm font-bold text-sky-700 underline" href="https://doi.org/10.1016/j.pt.2024.04.009" target="_blank" rel="noopener noreferrer">Consultar revisão em Trends in Parasitology (2024)</a>
-            </div>
-          </article>
-
-          <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
-            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Paisagem natural sob mudanças climáticas" class="h-44 w-full object-cover" loading="lazy">
-            <div class="p-5 flex-1 flex flex-col">
-              <span class="text-[10px] uppercase tracking-wide font-bold text-emerald-700">Pesquisa · Saúde Única</span>
-              <h3 class="font-extrabold text-slate-900 mt-2">El Niño pode afetar animais silvestres e ecossistemas</h3>
-              <p class="text-sm text-slate-600 mt-2 leading-relaxed">Mudanças na disponibilidade de água e alimento, eventos extremos e alterações nos habitats podem afetar a fauna silvestre e aproximar animais de áreas habitadas. A vigilância integrada entre saúde animal, humana e ambiental contribui para identificar riscos e orientar respostas locais.</p>
-              <a class="mt-4 text-sm font-bold text-sky-700 underline" href="https://www.woah.org/en/article/the-wide-ranging-impacts-of-el-nino-on-wildlife-and-animal-health/" target="_blank" rel="noopener noreferrer">Ler análise da WOAH</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 text-xs text-slate-600 leading-relaxed">
-          <h3 class="font-extrabold text-slate-800 text-sm mb-2"><i class="fas fa-book-open text-brand-emerald mr-2"></i>Fontes para acompanhar e verificar as notícias</h3>
-          <p class="mb-2">As matérias acima são conteúdos editoriais de divulgação científica do Portal VetExtensão, baseados nas referências indicadas. Elas não devem ser interpretadas como notícias de ocorrência confirmada nem como evidência de que um surto esteja acontecendo agora.</p>
-          <div class="flex flex-wrap gap-x-4 gap-y-2">
-            <a class="text-sky-700 underline font-semibold" href="https://www.cemaden.gov.br/" target="_blank" rel="noopener noreferrer">Cemaden — monitoramento</a>
-            <a class="text-sky-700 underline font-semibold" href="https://portal.inmet.gov.br/" target="_blank" rel="noopener noreferrer">INMET — clima</a>
-            <a class="text-sky-700 underline font-semibold" href="https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/saude-animal" target="_blank" rel="noopener noreferrer">MAPA — saúde animal</a>
-            <a class="text-sky-700 underline font-semibold" href="https://www.woah.org/" target="_blank" rel="noopener noreferrer">WOAH — saúde animal</a>
-            <a class="text-sky-700 underline font-semibold" href="https://www.embrapa.br/" target="_blank" rel="noopener noreferrer">Embrapa — pesquisa agropecuária</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- FEED DE NOTÍCIAS ATUALIZADAS -->
-      <section id="live-news-section" class="bg-white rounded-xl shadow border border-slate-200 p-5 md:p-6 space-y-4">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-slate-200 pb-3">
-          <div>
-            <h2 class="text-xl font-bold text-slate-900"><i class="fas fa-satellite-dish text-brand-emerald mr-2"></i>Últimas notícias veterinárias</h2>
-            <p class="text-xs text-slate-500 mt-1">Atualização automática de notícias publicadas na web; confira a matéria original na fonte.</p>
-          </div>
-          <button id="refresh-live-news" onclick="loadLiveNews(true)" class="self-start sm:self-auto bg-brand-navy hover:bg-brand-emerald text-white text-xs font-bold px-4 py-2 rounded-lg transition">
-            <i class="fas fa-rotate mr-1"></i> Atualizar agora
+<!-- FEED DE NOTÍCIAS ATUALIZADAS -->
+<section class="bg-white rounded-xl shadow border border-slate-200 p-5 md:p-6 space-y-4" id="live-news-section">
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-slate-200 pb-3">
+<div>
+<h2 class="text-xl font-bold text-slate-900"><i class="fas fa-satellite-dish text-brand-emerald mr-2"></i>Últimas notícias veterinárias</h2>
+<p class="text-xs text-slate-500 mt-1">Atualização automática de notícias publicadas na web; confira a matéria original na fonte.</p>
+</div>
+<button class="self-start sm:self-auto bg-brand-navy hover:bg-brand-emerald text-white text-xs font-bold px-4 py-2 rounded-lg transition" id="refresh-live-news" onclick="loadLiveNews(true)">
+<i class="fas fa-rotate mr-1"></i> Atualizar agora
           </button>
+</div>
+<div class="flex flex-wrap items-center gap-2 text-[11px] text-slate-500">
+<span class="bg-emerald-50 text-emerald-800 px-2 py-1 rounded-full font-semibold"><i class="fas fa-circle text-[7px] mr-1"></i>Feed externo</span>
+<span id="live-news-updated">Buscando notícias recentes…</span>
+</div>
+<div aria-live="polite" class="text-sm text-slate-600" id="live-news-status" role="status">Conectando às fontes de notícias…</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4" id="live-news-grid"></div>
+<div class="border-t border-slate-100 pt-3 text-[11px] text-slate-500 leading-relaxed">
+<strong>Nota:</strong> as manchetes são fornecidas por um agregador de notícias e podem incluir conteúdos jornalísticos. Para decisões sanitárias, confirme informações em fontes oficiais, como o <a class="text-sky-700 underline" href="https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/saude-animal" rel="noopener noreferrer" target="_blank">MAPA</a> e o <a class="text-sky-700 underline" href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z" rel="noopener noreferrer" target="_blank">Ministério da Saúde</a>.
         </div>
-        <div class="flex flex-wrap items-center gap-2 text-[11px] text-slate-500">
-          <span class="bg-emerald-50 text-emerald-800 px-2 py-1 rounded-full font-semibold"><i class="fas fa-circle text-[7px] mr-1"></i>Feed externo</span>
-          <span id="live-news-updated">Buscando notícias recentes…</span>
-        </div>
-        <div id="live-news-status" role="status" aria-live="polite" class="text-sm text-slate-600">Conectando às fontes de notícias…</div>
-        <div id="live-news-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
-        <div class="border-t border-slate-100 pt-3 text-[11px] text-slate-500 leading-relaxed">
-          <strong>Nota:</strong> as manchetes são fornecidas por um agregador de notícias e podem incluir conteúdos jornalísticos. Para decisões sanitárias, confirme informações em fontes oficiais, como o <a class="text-sky-700 underline" href="https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/saude-animal" target="_blank" rel="noopener noreferrer">MAPA</a> e o <a class="text-sky-700 underline" href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z" target="_blank" rel="noopener noreferrer">Ministério da Saúde</a>.
-        </div>
-      </section>
-    </div>
-
-    <!-- VIEW 2: O PROJETO & INFOGRÁFICO -->
-    <div id="view-projeto" class="hidden space-y-8">
-      <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
-        <div class="bg-gradient-to-r from-teal-700 to-brand-navy text-white p-8 text-center">
-          <span class="bg-brand-accent text-slate-900 text-xs font-extrabold uppercase px-3 py-1 rounded-full">Campanha de Extensão Universitária</span>
-          <h2 class="text-3xl md:text-4xl font-black mt-3">EL NIÑO E A MEDICINA VETERINÁRIA</h2>
-          <p class="text-teal-100 text-sm md:text-base mt-2">Saúde Única, Biologia de Vetores e Impactos Clínico-Epidemiológicos</p>
-        </div>
-
-        <div class="p-6 md:p-10 space-y-10">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-slate-50 p-6 rounded-xl border border-slate-200">
-            <div>
-              <h3 class="text-xl font-extrabold text-slate-900 mb-3 flex items-center gap-2">
-                <i class="fas fa-globe-americas text-brand-emerald"></i> O Fenômeno El Niño
+</section>
+</div>
+<!-- VIEW 2: O PROJETO & INFOGRÁFICO -->
+<div class="hidden space-y-8" id="view-projeto">
+<div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+<div class="bg-gradient-to-r from-teal-700 to-brand-navy text-white p-8 text-center">
+<span class="bg-brand-accent text-slate-900 text-xs font-extrabold uppercase px-3 py-1 rounded-full">Campanha de Extensão Universitária</span>
+<h2 class="text-3xl md:text-4xl font-black mt-3">EL NIÑO E A MEDICINA VETERINÁRIA</h2>
+<p class="text-teal-100 text-sm md:text-base mt-2">Saúde Única, Biologia de Vetores e Impactos Clínico-Epidemiológicos</p>
+</div>
+<div class="p-6 md:p-10 space-y-10">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-slate-50 p-6 rounded-xl border border-slate-200">
+<div>
+<h3 class="text-xl font-extrabold text-slate-900 mb-3 flex items-center gap-2">
+<i class="fas fa-globe-americas text-brand-emerald"></i> O Fenômeno El Niño
               </h3>
-              <p class="text-sm text-slate-700 leading-relaxed">
-                O fenômeno El Niño-Oscilação do Sul (ENOS) resulta do aquecimento anormal das águas superficiais do Oceano Pacífico Equatorial. Suas perturbações alteram a circulação atmosférica global, gerando estiagens severas em certas regiões e precipitações pluviométricas extremas em outras. Essas variações desestabilizam nichos ecológicos, aceleram o desenvolvimento de ectoparasitas e vetores e favorecem o surgimento de zoonoses e hemoparasitoses.
-              </p>
-            </div>
-            <div class="bg-slate-900 rounded-lg overflow-hidden shadow-inner p-2 text-center">
-              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Planeta Terra Clima" class="rounded h-48 w-full object-cover opacity-90">
-            </div>
-          </div>
-
-          <div>
-            <h3 class="text-2xl font-extrabold text-slate-900 mb-6 text-center">Eixos de Impacto na Sanidade Animal</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div class="bg-white p-5 rounded-xl shadow border-t-4 border-blue-500">
-                <i class="fas fa-water text-2xl text-blue-500 mb-3"></i>
-                <h4 class="font-bold text-sm text-slate-900 mb-1">Precipitações e Inundações</h4>
-                <p class="text-xs text-slate-600">Lixiviação bacteriana, alagamento de pastagens e disseminação de *Leptospira interrogans* e *Fasciola hepatica*.</p>
-              </div>
-              <div class="bg-white p-5 rounded-xl shadow border-t-4 border-red-500">
-                <i class="fas fa-temperature-high text-2xl text-red-500 mb-3"></i>
-                <h4 class="font-bold text-sm text-slate-900 mb-1">Estresse Térmico</h4>
-                <p class="text-xs text-slate-600">Comprometimento da termorregulação, alcalose respiratória, queda da imunidade humoral e choque térmico.</p>
-              </div>
-              <div class="bg-white p-5 rounded-xl shadow border-t-4 border-brand-emerald">
-                <i class="fas fa-bug text-2xl text-brand-emerald mb-3"></i>
-                <h4 class="font-bold text-sm text-slate-900 mb-1">Vetorização e Parasitismo</h4>
-                <p class="text-xs text-slate-600">Aceleração do ciclo metabólico de carrapatos, culicídeos e flebotomíneos transmissores de zoonoses.</p>
-              </div>
-              <div class="bg-white p-5 rounded-xl shadow border-t-4 border-amber-500">
-                <i class="fas fa-tint-slash text-2xl text-amber-500 mb-3"></i>
-                <h4 class="font-bold text-sm text-slate-900 mb-1">Estiagens Prolongadas</h4>
-                <p class="text-xs text-slate-600">Deficiência nutricional e mineral, osteofagia em bovinos e eclosão de intoxicações e botulismo.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- SOBRE O PROJETO: CONTEXTO, OBJETIVOS E PÚBLICO -->
-          <section class="space-y-6">
-            <div class="max-w-4xl mx-auto text-center">
-              <span class="text-xs font-bold uppercase tracking-widest text-brand-emerald">Conheça a iniciativa</span>
-              <h3 class="text-2xl md:text-3xl font-black text-slate-900 mt-2">Por que este projeto é importante?</h3>
-              <p class="text-sm md:text-base text-slate-600 leading-relaxed mt-4">O Portal VetExtensão é uma ação de extensão universitária que aproxima o conhecimento científico da comunidade. Nosso foco é explicar, de forma acessível e responsável, como as alterações climáticas associadas ao El Niño podem modificar as condições ambientais e influenciar riscos à saúde dos animais, das pessoas e do ambiente.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <article class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-                <div class="w-11 h-11 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3"><i class="fas fa-book-medical text-lg"></i></div>
-                <h4 class="font-extrabold text-slate-900 mb-2">Informar com base científica</h4>
-                <p class="text-sm text-slate-600 leading-relaxed">Reunimos informações de artigos científicos, livros e órgãos oficiais para transformar evidências em conteúdos claros, úteis e compreensíveis para diferentes públicos.</p>
-              </article>
-              <article class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-                <div class="w-11 h-11 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center mb-3"><i class="fas fa-shield-heart text-lg"></i></div>
-                <h4 class="font-extrabold text-slate-900 mb-2">Promover prevenção</h4>
-                <p class="text-sm text-slate-600 leading-relaxed">Apresentamos medidas de cuidado, observação e manejo que ajudam a reduzir vulnerabilidades, sempre reforçando a importância da orientação de médicos-veterinários e dos serviços de saúde.</p>
-              </article>
-              <article class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-                <div class="w-11 h-11 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center mb-3"><i class="fas fa-people-arrows text-lg"></i></div>
-                <h4 class="font-extrabold text-slate-900 mb-2">Conectar saúde e ambiente</h4>
-                <p class="text-sm text-slate-600 leading-relaxed">Valorizamos a Saúde Única, abordagem que reconhece que a saúde humana, a saúde animal e o equilíbrio ambiental estão interligados e precisam ser considerados em conjunto.</p>
-              </article>
-            </div>
-          </section>
-
-          <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-6">
-              <h3 class="text-xl font-extrabold text-slate-900 mb-4"><i class="fas fa-bullseye text-brand-emerald mr-2"></i>Objetivos do Portal VetExtensão</h3>
-              <ul class="space-y-3 text-sm text-slate-700 leading-relaxed">
-                <li class="flex gap-3"><i class="fas fa-check-circle text-emerald-700 mt-1"></i><span>Explicar o que é o El Niño e por que seus efeitos variam conforme a região e o período.</span></li>
-                <li class="flex gap-3"><i class="fas fa-check-circle text-emerald-700 mt-1"></i><span>Divulgar possíveis repercussões de secas, ondas de calor, chuvas intensas e enchentes sobre o bem-estar e a sanidade animal.</span></li>
-                <li class="flex gap-3"><i class="fas fa-check-circle text-emerald-700 mt-1"></i><span>Orientar sobre prevenção, manejo ambiental, água segura, alimentação, controle de vetores e procura por atendimento profissional.</span></li>
-                <li class="flex gap-3"><i class="fas fa-check-circle text-emerald-700 mt-1"></i><span>Estimular o pensamento crítico e o acesso a fontes confiáveis, combatendo desinformação sobre clima e doenças.</span></li>
-                <li class="flex gap-3"><i class="fas fa-check-circle text-emerald-700 mt-1"></i><span>Adaptar a comunicação para públicos adultos e infantis, buscando linguagem inclusiva e recursos acessíveis.</span></li>
-              </ul>
-            </div>
-            <div class="bg-sky-50 border border-sky-100 rounded-xl p-6">
-              <h3 class="text-xl font-extrabold text-slate-900 mb-4"><i class="fas fa-users text-sky-700 mr-2"></i>Para quem é este conteúdo?</h3>
-              <div class="space-y-4 text-sm text-slate-700 leading-relaxed">
-                <div><h4 class="font-bold text-slate-900">Tutores de cães e gatos</h4><p>Cuidados em períodos de calor, acesso à água, prevenção de acidentes, atenção a mudanças de comportamento e busca de avaliação veterinária quando necessário.</p></div>
-                <div><h4 class="font-bold text-slate-900">Produtores e trabalhadores rurais</h4><p>Informações gerais sobre manejo, conforto térmico, qualidade da água, alimentação, vigilância de sinais de doença e prevenção de perdas.</p></div>
-                <div><h4 class="font-bold text-slate-900">Crianças, estudantes e educadores</h4><p>Materiais educativos e exemplos do cotidiano para compreender a relação entre clima, animais, ambiente e saúde.</p></div>
-                <div><h4 class="font-bold text-slate-900">Comunidade em geral</h4><p>Conteúdo de divulgação científica para reconhecer riscos ambientais e saber onde procurar informações e ajuda confiáveis.</p></div>
-              </div>
-            </div>
-          </section>
-
-          <section class="bg-slate-900 text-white rounded-2xl p-6 md:p-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-              <div class="md:col-span-2">
-                <span class="text-xs font-bold uppercase tracking-widest text-emerald-300">Como o projeto atua</span>
-                <h3 class="text-2xl font-black mt-2 mb-3">Ciência que chega à comunidade</h3>
-                <p class="text-sm text-slate-200 leading-relaxed">O projeto utiliza este portal como espaço de educação em saúde e divulgação científica. As notícias e os materiais informativos ajudam a contextualizar pesquisas, apresentar medidas preventivas e indicar fontes confiáveis. A proposta também incentiva o diálogo entre universidade e comunidade, valorizando dúvidas reais e diferentes formas de aprender.</p>
-              </div>
-              <div class="bg-white/10 rounded-xl p-5">
-                <h4 class="font-bold mb-3"><i class="fas fa-layer-group text-emerald-300 mr-2"></i>Recursos do portal</h4>
-                <ul class="text-sm text-slate-200 space-y-2">
-                  <li>• Notícias e sínteses de evidências</li>
-                  <li>• Conteúdo sobre riscos ambientais</li>
-                  <li>• Infográfico educativo</li>
-                  <li>• Simulador educativo de vulnerabilidade</li>
-                  <li>• Links para fontes e órgãos oficiais</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="rounded-xl border border-slate-200 p-6">
-              <h3 class="text-lg font-extrabold text-slate-900 mb-3"><i class="fas fa-lightbulb text-amber-500 mr-2"></i>O que a população pode fazer?</h3>
-              <ul class="list-disc pl-5 space-y-2 text-sm text-slate-600 leading-relaxed">
-                <li>Garantir água limpa e abrigo adequado aos animais, com atenção especial a períodos de calor intenso.</li>
-                <li>Evitar que animais tenham contato com água possivelmente contaminada por enchentes, lama ou urina de roedores.</li>
-                <li>Manter vacinação, controle de parasitas e acompanhamento veterinário de acordo com a orientação profissional.</li>
-                <li>Em propriedades rurais, planejar reservas de alimento e água e observar alterações no consumo, comportamento e produção.</li>
-                <li>Procurar os serviços competentes diante de suspeita de doença transmissível e não medicar os animais por conta própria.</li>
-              </ul>
-            </div>
-            <div class="rounded-xl border border-amber-200 bg-amber-50 p-6">
-              <h3 class="text-lg font-extrabold text-slate-900 mb-3"><i class="fas fa-circle-info text-amber-600 mr-2"></i>Uma observação importante</h3>
-              <p class="text-sm text-slate-700 leading-relaxed">O El Niño não provoca diretamente uma doença específica, nem significa que haverá aumento de todos os agravos em todas as regiões. Ele pode alterar temperatura, chuvas, disponibilidade de água e ecossistemas; essas mudanças podem modificar a exposição a determinados agentes infecciosos e vetores. O resultado depende da região, da época, das condições sanitárias e de fatores sociais e ambientais. Por isso, recomendações e alertas devem ser confirmados em fontes oficiais e adaptados à realidade local.</p>
-            </div>
-          </section>
-
-          <section class="text-center border-t border-slate-200 pt-7">
-            <h3 class="text-xl font-extrabold text-slate-900 mb-2">Nosso compromisso</h3>
-            <p class="max-w-3xl mx-auto text-sm text-slate-600 leading-relaxed">Promover uma comunicação responsável, acessível e baseada em evidências, fortalecendo a prevenção e a compreensão de que cuidar dos animais, das pessoas e do ambiente faz parte de um mesmo compromisso com a saúde coletiva.</p>
-            <p class="text-xs text-slate-500 mt-4">Material educativo de extensão universitária. Não substitui consulta veterinária, diagnóstico clínico ou orientações das autoridades sanitárias.</p>
-          </section>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- VIEW 3: SIMULADOR DE RISCO EPIDEMIOLÓGICO -->
-    <div id="view-calculadora" class="hidden space-y-6">
-      <div class="bg-white p-6 md:p-8 rounded-xl shadow border border-slate-200">
-        <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-3">
-          <i class="fas fa-calculator text-brand-emerald"></i> Algoritmo de Avaliação de Risco Epidemiológico
-        </h2>
-        <p class="text-xs sm:text-sm text-slate-600 mb-6">
-          Selecione as variáveis ambientais e operacionais para gerar uma estimativa do nível de vulnerabilidade sanitária da sua propriedade ou sistema clínico durante o El Niño:
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-6 rounded-xl border border-slate-200">
-          <div class="space-y-4">
-            <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">Espécie / Sistema de Criação:</label>
-              <select id="calc-especie" class="w-full text-xs p-2.5 rounded border border-slate-300">
-                <option value="bovinos">Bovinos de Corte / Leite</option>
-                <option value="pets">Cães e Gatos (Pequenos Animais)</option>
-                <option value="equinos">Equídeos (Trabalho / Esporte)</option>
-                <option value="aves">Aves de Postura / Corte (Comercial)</option>
-              </select>
-            </div>
-
-            <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">Anomalia Climática Predominante:</label>
-              <select id="calc-clima" class="w-full text-xs p-2.5 rounded border border-slate-300">
-                <option value="calor_extremo">Ondas de Calor Extremo e Seca</option>
-                <option value="chuvas_intensas">Inundações e Chuvas Torrenciais</option>
-                <option value="umidade_alta">Alta Umidade Relativa e Temperatura Elevação</option>
-              </select>
-            </div>
-
-            <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">Profilaxia Sanitária e Imunológica:</label>
-              <select id="calc-vacina" class="w-full text-xs p-2.5 rounded border border-slate-300">
-                <option value="baixo">Desatualizada / Sem Manejo de Vetores</option>
-                <option value="medio">Parcial (Esquema vacinal em dia, sem controle ambiental)</option>
-                <option value="alto">Rigorosa (Vacinação + Controle Ambiental de Vetores)</option>
-              </select>
-            </div>
-
-            <button onclick="calcularRisco()" class="w-full bg-brand-emerald hover:bg-brand-navy text-white font-bold py-3 rounded text-xs transition">
-              Processar Diagnóstico Epidemiológico
-            </button>
-          </div>
-
-          <div class="bg-white p-6 rounded-xl border border-slate-200 flex flex-col justify-between" id="calc-resultado">
-            <div>
-              <h3 class="text-sm font-bold text-slate-800 border-b pb-2 mb-3">Parecer Técnico Estimado</h3>
-              <div class="text-center py-6">
-                <i class="fas fa-shield-virus text-4xl text-slate-300 mb-2"></i>
-                <p class="text-xs text-slate-500">Insira os parâmetros climáticos para avaliar o risco sanitário.</p>
-              </div>
-            </div>
-            <div class="text-[10px] text-slate-400 text-center">
+<p class="text-sm text-slate-700 leading-relaxed">O El Niño é uma fase do fenômeno El Niño–Oscilação Sul (ENOS), associada ao aquecimento anormal das águas superficiais do Pacífico equatorial e a mudanças na circulação atmosférica. Seus efeitos sobre chuva e temperatura variam entre regiões e períodos. Essas alterações podem modificar a disponibilidade de água e alimento, o conforto térmico e as condições ecológicas de vetores; porém, não provocam automaticamente uma doença nem determinam, por si só, um surto.</p>
+</div>
+<div class="bg-slate-900 rounded-lg overflow-hidden shadow-inner p-2 text-center">
+<img alt="Planeta Terra Clima" class="rounded h-48 w-full object-cover opacity-90" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=800&amp;q=80"/>
+</div>
+</div>
+<div>
+<h3 class="text-2xl font-extrabold text-slate-900 mb-6 text-center">Eixos de Impacto na Sanidade Animal</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white p-5 rounded-xl shadow border-t-4 border-blue-500">
+<i class="fas fa-water text-2xl text-blue-500 mb-3"></i>
+<h4 class="font-bold text-sm text-slate-900 mb-1">Precipitações e Inundações</h4>
+<p class="text-xs text-slate-600">Alagamentos podem contaminar água e solo; o risco depende da presença do agente, da exposição e das condições sanitárias locais.</p>
+</div>
+<div class="bg-white p-5 rounded-xl shadow border-t-4 border-red-500">
+<i class="fas fa-temperature-high text-2xl text-red-500 mb-3"></i>
+<h4 class="font-bold text-sm text-slate-900 mb-1">Estresse Térmico</h4>
+<p class="text-xs text-slate-600">Calor intenso pode dificultar a termorregulação, especialmente sem sombra, água e ventilação adequadas.</p>
+</div>
+<div class="bg-white p-5 rounded-xl shadow border-t-4 border-brand-emerald">
+<i class="fas fa-bug text-2xl text-brand-emerald mb-3"></i>
+<h4 class="font-bold text-sm text-slate-900 mb-1">Vetorização e Parasitismo</h4>
+<p class="text-xs text-slate-600">Temperatura e umidade podem alterar a sobrevivência e a atividade de vetores, com respostas diferentes entre espécies e regiões.</p>
+</div>
+<div class="bg-white p-5 rounded-xl shadow border-t-4 border-amber-500">
+<i class="fas fa-tint-slash text-2xl text-amber-500 mb-3"></i>
+<h4 class="font-bold text-sm text-slate-900 mb-1">Estiagens Prolongadas</h4>
+<p class="text-xs text-slate-600">A escassez de água e forragem pode comprometer a nutrição; alterações de manejo exigem avaliação técnica para reduzir riscos sanitários.</p>
+</div>
+</div>
+</div>
+<!-- SOBRE O PROJETO: CONTEXTO, OBJETIVOS E PÚBLICO -->
+<section class="space-y-6">
+<div class="max-w-4xl mx-auto text-center">
+<span class="text-xs font-bold uppercase tracking-widest text-brand-emerald">Conheça a iniciativa</span>
+<h3 class="text-2xl md:text-3xl font-black text-slate-900 mt-2">Por que este projeto é importante?</h3>
+<p class="text-sm md:text-base text-slate-600 leading-relaxed mt-4">O Portal VetExtensão é uma ação de extensão universitária que aproxima o conhecimento científico da comunidade. Nosso foco é explicar, de forma acessível e responsável, como as alterações climáticas associadas ao El Niño podem modificar as condições ambientais e influenciar riscos à saúde dos animais, das pessoas e do ambiente.</p>
+</div><div class="mt-6 rounded-xl border border-sky-200 bg-sky-50 p-5"><h3 class="font-extrabold text-slate-900 mb-2">Foco do projeto: pequenos animais e prevenção</h3><p class="text-sm text-slate-700 leading-relaxed">O portal dá destaque aos cuidados com cães e gatos, incluindo estresse térmico, água segura, prevenção de zoonoses e atenção a alterações de comportamento. Conteúdos sobre animais de produção e fauna silvestre complementam a abordagem, mostrando que os efeitos ambientais variam conforme espécie, território e manejo.</p></div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<article class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+<div class="w-11 h-11 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3"><i class="fas fa-book-medical text-lg"></i></div>
+<h4 class="font-extrabold text-slate-900 mb-2">Informar com base científica</h4>
+<p class="text-sm text-slate-600 leading-relaxed">Reunimos informações de artigos científicos, livros e órgãos oficiais para transformar evidências em conteúdos claros, úteis e compreensíveis para diferentes públicos.</p>
+</article>
+<article class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+<div class="w-11 h-11 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center mb-3"><i class="fas fa-shield-heart text-lg"></i></div>
+<h4 class="font-extrabold text-slate-900 mb-2">Promover prevenção</h4>
+<p class="text-sm text-slate-600 leading-relaxed">Apresentamos medidas de cuidado, observação e manejo que ajudam a reduzir vulnerabilidades, sempre reforçando a importância da orientação de médicos-veterinários e dos serviços de saúde.</p>
+</article>
+<article class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+<div class="w-11 h-11 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center mb-3"><i class="fas fa-people-arrows text-lg"></i></div>
+<h4 class="font-extrabold text-slate-900 mb-2">Conectar saúde e ambiente</h4>
+<p class="text-sm text-slate-600 leading-relaxed">Valorizamos a Saúde Única, abordagem que reconhece que a saúde humana, a saúde animal e o equilíbrio ambiental estão interligados e precisam ser considerados em conjunto.</p>
+</article>
+</div>
+</section>
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="bg-emerald-50 border border-emerald-100 rounded-xl p-6">
+<h3 class="text-xl font-extrabold text-slate-900 mb-4"><i class="fas fa-bullseye text-brand-emerald mr-2"></i>Objetivos do Portal VetExtensão</h3>
+<ul class="space-y-3 text-sm text-slate-700 leading-relaxed">
+<li class="flex gap-3"><i class="fas fa-check-circle text-emerald-700 mt-1"></i><span>Explicar o que é o El Niño e por que seus efeitos variam conforme a região e o período.</span></li>
+<li class="flex gap-3"><i class="fas fa-check-circle text-emerald-700 mt-1"></i><span>Divulgar possíveis repercussões de secas, ondas de calor, chuvas intensas e enchentes sobre o bem-estar e a sanidade animal.</span></li>
+<li class="flex gap-3"><i class="fas fa-check-circle text-emerald-700 mt-1"></i><span>Orientar sobre prevenção, manejo ambiental, água segura, alimentação, controle de vetores e procura por atendimento profissional.</span></li>
+<li class="flex gap-3"><i class="fas fa-check-circle text-emerald-700 mt-1"></i><span>Estimular o pensamento crítico e o acesso a fontes confiáveis, combatendo desinformação sobre clima e doenças.</span></li>
+<li class="flex gap-3"><i class="fas fa-check-circle text-emerald-700 mt-1"></i><span>Adaptar a comunicação para públicos adultos e infantis, buscando linguagem inclusiva e recursos acessíveis.</span></li>
+</ul>
+</div>
+<div class="bg-sky-50 border border-sky-100 rounded-xl p-6">
+<h3 class="text-xl font-extrabold text-slate-900 mb-4"><i class="fas fa-users text-sky-700 mr-2"></i>Para quem é este conteúdo?</h3>
+<div class="space-y-4 text-sm text-slate-700 leading-relaxed">
+<div><h4 class="font-bold text-slate-900">Tutores de cães e gatos</h4><p>Cuidados em períodos de calor, acesso à água, prevenção de acidentes, atenção a mudanças de comportamento e busca de avaliação veterinária quando necessário.</p></div>
+<div><h4 class="font-bold text-slate-900">Produtores e trabalhadores rurais</h4><p>Informações gerais sobre manejo, conforto térmico, qualidade da água, alimentação, vigilância de sinais de doença e prevenção de perdas.</p></div>
+<div><h4 class="font-bold text-slate-900">Crianças, estudantes e educadores</h4><p>Materiais educativos e exemplos do cotidiano para compreender a relação entre clima, animais, ambiente e saúde.</p></div>
+<div><h4 class="font-bold text-slate-900">Comunidade em geral</h4><p>Conteúdo de divulgação científica para reconhecer riscos ambientais e saber onde procurar informações e ajuda confiáveis.</p></div>
+</div>
+</div>
+</section>
+<section class="bg-slate-900 text-white rounded-2xl p-6 md:p-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+<div class="md:col-span-2">
+<span class="text-xs font-bold uppercase tracking-widest text-emerald-300">Como o projeto atua</span>
+<h3 class="text-2xl font-black mt-2 mb-3">Ciência que chega à comunidade</h3>
+<p class="text-sm text-slate-200 leading-relaxed">O projeto utiliza este portal como espaço de educação em saúde e divulgação científica. As notícias e os materiais informativos ajudam a contextualizar pesquisas, apresentar medidas preventivas e indicar fontes confiáveis. A proposta também incentiva o diálogo entre universidade e comunidade, valorizando dúvidas reais e diferentes formas de aprender.</p>
+</div>
+<div class="bg-white/10 rounded-xl p-5">
+<h4 class="font-bold mb-3"><i class="fas fa-layer-group text-emerald-300 mr-2"></i>Recursos do portal</h4>
+<ul class="text-sm text-slate-200 space-y-2">
+<li>• Notícias e sínteses de evidências</li>
+<li>• Conteúdo sobre riscos ambientais</li>
+<li>• Infográfico educativo</li>
+<li>• Simulador educativo de vulnerabilidade</li>
+<li>• Links para fontes e órgãos oficiais</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="rounded-xl border border-slate-200 p-6">
+<h3 class="text-lg font-extrabold text-slate-900 mb-3"><i class="fas fa-lightbulb text-amber-500 mr-2"></i>O que a população pode fazer?</h3>
+<ul class="list-disc pl-5 space-y-2 text-sm text-slate-600 leading-relaxed">
+<li>Garantir água limpa e abrigo adequado aos animais, com atenção especial a períodos de calor intenso.</li>
+<li>Evitar que animais tenham contato com água possivelmente contaminada por enchentes, lama ou urina de roedores.</li>
+<li>Manter vacinação, controle de parasitas e acompanhamento veterinário de acordo com a orientação profissional.</li>
+<li>Em propriedades rurais, planejar reservas de alimento e água e observar alterações no consumo, comportamento e produção.</li>
+<li>Procurar os serviços competentes diante de suspeita de doença transmissível e não medicar os animais por conta própria.</li>
+</ul>
+</div>
+<div class="rounded-xl border border-amber-200 bg-amber-50 p-6">
+<h3 class="text-lg font-extrabold text-slate-900 mb-3"><i class="fas fa-circle-info text-amber-600 mr-2"></i>Uma observação importante</h3>
+<p class="text-sm text-slate-700 leading-relaxed">O El Niño não provoca diretamente uma doença específica, nem significa que haverá aumento de todos os agravos em todas as regiões. Ele pode alterar temperatura, chuvas, disponibilidade de água e ecossistemas; essas mudanças podem modificar a exposição a determinados agentes infecciosos e vetores. O resultado depende da região, da época, das condições sanitárias e de fatores sociais e ambientais. Por isso, recomendações e alertas devem ser confirmados em fontes oficiais e adaptados à realidade local.</p>
+</div>
+</section>
+<section class="text-center border-t border-slate-200 pt-7">
+<h3 class="text-xl font-extrabold text-slate-900 mb-2">Nosso compromisso</h3>
+<p class="max-w-3xl mx-auto text-sm text-slate-600 leading-relaxed">Promover uma comunicação responsável, acessível e baseada em evidências, fortalecendo a prevenção e a compreensão de que cuidar dos animais, das pessoas e do ambiente faz parte de um mesmo compromisso com a saúde coletiva.</p>
+<p class="text-xs text-slate-500 mt-4">Material educativo de extensão universitária. Não substitui consulta veterinária, diagnóstico clínico ou orientações das autoridades sanitárias.</p>
+</section>
+</div>
+</div>
+</div>
+<!-- VIEW 3: SIMULADOR DE RISCO EPIDEMIOLÓGICO -->
+<div class="hidden space-y-6" id="view-calculadora">
+<div class="bg-white p-6 md:p-8 rounded-xl shadow border border-slate-200">
+<h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-3"><i class="fas fa-calculator text-brand-emerald"></i> Simulador Educativo de Vulnerabilidade Sanitária</h2>
+<p class="text-xs sm:text-sm text-slate-600 mb-6">Selecione as condições gerais para receber sugestões educativas de prevenção. O resultado é uma triagem simplificada baseada nas opções escolhidas; não calcula probabilidade real de doença nem substitui avaliação veterinária ou vigilância epidemiológica.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-6 rounded-xl border border-slate-200">
+<div class="space-y-4">
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1">Espécie / Sistema de Criação:</label>
+<select class="w-full text-xs p-2.5 rounded border border-slate-300" id="calc-especie">
+<option value="bovinos">Bovinos de Corte / Leite</option>
+<option value="pets">Cães e Gatos (Pequenos Animais)</option>
+<option value="equinos">Equídeos (Trabalho / Esporte)</option>
+<option value="aves">Aves de Postura / Corte (Comercial)</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1">Condição ambiental predominante:</label>
+<select class="w-full text-xs p-2.5 rounded border border-slate-300" id="calc-clima">
+<option value="calor_extremo">Ondas de Calor Extremo e Seca</option>
+<option value="chuvas_intensas">Inundações e Chuvas Torrenciais</option>
+<option value="umidade_alta">Alta Umidade Relativa e Temperatura Elevação</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1">Profilaxia Sanitária e Imunológica:</label>
+<select class="w-full text-xs p-2.5 rounded border border-slate-300" id="calc-vacina">
+<option value="baixo">Desatualizada / Sem Manejo de Vetores</option>
+<option value="medio">Parcial (Esquema vacinal em dia, sem controle ambiental)</option>
+<option value="alto">Rigorosa (Vacinação + Controle Ambiental de Vetores)</option>
+</select>
+</div>
+<button class="w-full bg-brand-emerald hover:bg-brand-navy text-white font-bold py-3 rounded text-xs transition" onclick="calcularRisco()">Gerar orientações educativas</button>
+</div>
+<div class="bg-white p-6 rounded-xl border border-slate-200 flex flex-col justify-between" id="calc-resultado">
+<div>
+<h3 class="text-sm font-bold text-slate-800 border-b pb-2 mb-3">Orientações educativas</h3>
+<div class="text-center py-6">
+<i class="fas fa-shield-virus text-4xl text-slate-300 mb-2"></i>
+<p class="text-xs text-slate-500">Insira os parâmetros climáticos para avaliar o risco sanitário.</p>
+</div>
+</div>
+<div class="text-[10px] text-slate-400 text-center">
               Algoritmo de inferência baseado em diretrizes da OMSA, Embrapa e Ministério da Saúde.
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- VIEW 4: ARTIGOS CIENTÍFICOS & REFERÊNCIAS -->
-    <div id="view-artigos" class="hidden space-y-6">
-      <div class="bg-white p-6 md:p-8 rounded-xl shadow border border-slate-200">
-        <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-3">
-          <i class="fas fa-graduation-cap text-brand-emerald"></i> Referências, Fontes e Acervo Científico
+</div>
+</div>
+</div>
+</div>
+<!-- VIEW 4: ARTIGOS CIENTÍFICOS & REFERÊNCIAS -->
+<div class="hidden space-y-6" id="view-artigos">
+<div class="bg-white p-6 md:p-8 rounded-xl shadow border border-slate-200">
+<h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-3">
+<i class="fas fa-graduation-cap text-brand-emerald"></i> Referências, Fontes e Acervo Científico
         </h2>
-        <p class="text-xs sm:text-sm text-slate-600 mb-6">
-          Fontes científicas, publicações e páginas institucionais ligadas às matérias e aos recursos deste portal:
-        </p>
-
-        <div class="space-y-6">
-          <section id="como-funciona-acervo" class="bg-sky-50 border border-sky-200 rounded-xl p-5 md:p-6 space-y-4">
-        <div class="flex items-start gap-3">
-          <div class="w-11 h-11 shrink-0 rounded-full bg-sky-100 text-sky-800 flex items-center justify-center"><i class="fas fa-newspaper text-lg"></i></div>
-          <div>
-            <h2 class="text-xl font-extrabold text-slate-900">Como funciona o acervo de notícias?</h2>
-            <p class="text-sm text-slate-700 leading-relaxed mt-2">O Portal VetExtensão organiza conteúdos em duas modalidades complementares: matérias educativas preparadas para explicar a relação entre clima e saúde animal, e um feed de manchetes recentes obtidas por um serviço externo. Essa separação ajuda o visitante a entender o que é material explicativo do projeto e o que é uma notícia publicada por outra organização.</p>
+<p class="text-xs sm:text-sm text-slate-600 mb-6">Referências científicas, fontes institucionais e recursos digitais que fundamentam as matérias e as ferramentas educativas do Portal VetExtensão.</p>
+<div class="space-y-6">
+<div class="p-5 rounded-xl border border-slate-200 bg-white"><h3 class="font-extrabold text-slate-900 mb-3">Fontes institucionais de referência</h3><p class="text-sm text-slate-700 mb-3">Estas páginas ajudam a acompanhar o fenômeno climático, a vigilância de zoonoses e a saúde animal. Consulte a publicação original e a data de atualização antes de compartilhar uma informação.</p><ul class="space-y-2 text-sm"><li><a class="text-sky-700 underline hover:text-sky-900" href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/e/el-nino" rel="noopener noreferrer" target="_blank">Ministério da Saúde — El Niño: impactos, monitoramento e preparação</a></li><li><a class="text-sky-700 underline hover:text-sky-900" href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/z/zoonoses" rel="noopener noreferrer" target="_blank">Ministério da Saúde — vigilância, prevenção e controle de zoonoses</a></li><li><a class="text-sky-700 underline hover:text-sky-900" href="https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/julho/ministerio-da-saude-alerta-estados-e-municipios-sobre-possivel-aumento-de-arboviroses-no-pais-devido-ao-el-nino" rel="noopener noreferrer" target="_blank">Ministério da Saúde — alerta sobre possível aumento de arboviroses associado ao El Niño (2026)</a></li><li><a class="text-sky-700 underline hover:text-sky-900" href="https://www.woah.org/en/article/vector-borne-diseases-surveillance-a-global-health-imperative/" rel="noopener noreferrer" target="_blank">WOAH — vigilância de doenças transmitidas por vetores</a></li><li><a class="text-sky-700 underline hover:text-sky-900" href="https://portal.inmet.gov.br/" rel="noopener noreferrer" target="_blank">INMET — monitoramento meteorológico</a></li><li><a class="text-sky-700 underline hover:text-sky-900" href="https://www.cemaden.gov.br/" rel="noopener noreferrer" target="_blank">Cemaden — monitoramento e alertas de desastres</a></li><li><a class="text-sky-700 underline hover:text-sky-900" href="https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/saude-animal" rel="noopener noreferrer" target="_blank">MAPA — saúde animal</a></li><li><a class="text-sky-700 underline hover:text-sky-900" href="https://www.embrapa.br/" rel="noopener noreferrer" target="_blank">Embrapa — pesquisa e orientações agropecuárias</a></li><li><a class="text-sky-700 underline hover:text-sky-900" href="https://www.vet.cornell.edu/departments-centers-and-institutes/riney-canine-health-center/canine-health-information/canine-leptospirosis" rel="noopener noreferrer" target="_blank">Cornell University — Canine leptospirosis</a></li></ul></div><div class="p-5 rounded-xl border border-slate-200 bg-slate-50"><h3 class="font-extrabold text-slate-900 mb-2">Fontes citadas nas matérias do portal</h3><p class="text-sm text-slate-600 mb-4">A lista abaixo reúne os links de referência associados às oito matérias do acervo editorial. Os links direcionam para artigos, registros bibliográficos ou páginas institucionais relacionados ao tema de cada texto.</p><div class="mb-4 last:mb-0"><h4 class="font-bold text-sm text-slate-800 mb-1">Ondas de calor aumentam o risco de hipertermia em cães braquicefálicos</h4><ul class="list-disc pl-5 space-y-1 text-sm"><li><a class="text-sky-700 underline break-words" href="https://www.frontiersin.org/journals/animal-science/articles/10.3389/fanim.2025.1679377/full" rel="noopener noreferrer" target="_blank">Heat stress in domestic dogs: morphological and environmental risk factors for dog welfare in a warming world. Frontiers in Animal Science, 2025.</a></li><li><a class="text-sky-700 underline break-words" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13011106/" rel="noopener noreferrer" target="_blank">Clark et al. Heatstroke and brachycephalic dogs – is there an increased risk? Veterinary Evidence, 2022.</a></li></ul></div><div class="mb-4 last:mb-0"><h4 class="font-bold text-sm text-slate-800 mb-1">Clima e manejo influenciam a dinâmica dos carrapatos e o risco de tristeza parasitária bovina</h4><ul class="list-disc pl-5 space-y-1 text-sm"><li><a class="text-sky-700 underline break-words" href="https://doi.org/10.1590/S1984-29612023007" rel="noopener noreferrer" target="_blank">Puentes, J. D.; Riet-Correa, F. Epidemiological aspects of cattle tick fever in Brazil. Revista Brasileira de Parasitologia Veterinária, 2023.</a></li><li><a class="text-sky-700 underline break-words" href="https://doi.org/10.1017/S0031182004005967" rel="noopener noreferrer" target="_blank">Jongejan, F.; Uilenberg, G. The global importance of ticks. Parasitology, 2004.</a></li></ul></div><div class="mb-4 last:mb-0"><h4 class="font-bold text-sm text-slate-800 mb-1">Encefalomielites equinas reforçam a importância da vigilância de mosquitos vetores</h4><ul class="list-disc pl-5 space-y-1 text-sm"><li><a class="text-sky-700 underline break-words" href="https://doi.org/10.1016/j.cveq.2022.11.007" rel="noopener noreferrer" target="_blank">Luethy, D. Eastern, Western, and Venezuelan Equine Encephalitis and West Nile Viruses: Clinical and Public Health Considerations. Veterinary Clinics of North America: Equine Practice, 2023.</a></li><li><a class="text-sky-700 underline break-words" href="https://www.woah.org/en/what-we-do/animal-health-and-welfare/animal-diseases/" rel="noopener noreferrer" target="_blank">World Organisation for Animal Health (WOAH). Animal diseases.</a></li></ul></div><div class="mb-4 last:mb-0"><h4 class="font-bold text-sm text-slate-800 mb-1">Estresse térmico pode reduzir a postura e comprometer a qualidade da casca dos ovos</h4><ul class="list-disc pl-5 space-y-1 text-sm"><li><a class="text-sky-700 underline break-words" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11011014/" rel="noopener noreferrer" target="_blank">Effects of Heat Stress on the Laying Performance, Egg Quality, and Physiological Response of Laying Hens, 2024.</a></li><li><a class="text-sky-700 underline break-words" href="https://www.sciencedirect.com/science/article/pii/S0306456521003351" rel="noopener noreferrer" target="_blank">Impact of relative humidity on laying performance, egg quality, and physiological stress responses of laying hens exposed to high ambient temperature.</a></li></ul></div><div class="mb-4 last:mb-0"><h4 class="font-bold text-sm text-slate-800 mb-1">Seca e falhas nutricionais podem elevar o risco de botulismo em bovinos</h4><ul class="list-disc pl-5 space-y-1 text-sm"><li><a class="text-sky-700 underline break-words" href="https://www.scielo.br/j/pvb/a/QFs3ZzpdTGt3kBgjVqVWKxf/?lang=en" rel="noopener noreferrer" target="_blank">Botulism in cattle in Mato Grosso do Sul: History, current situation, and perspectives. Pesquisa Veterinária Brasileira, 2024.</a></li><li><a class="text-sky-700 underline break-words" href="https://www.gov.br/agricultura/pt-br" rel="noopener noreferrer" target="_blank">Ministério da Agricultura e Pecuária (MAPA).</a></li></ul></div><div class="mb-4 last:mb-0"><h4 class="font-bold text-sm text-slate-800 mb-1">Mudanças ambientais reforçam a vigilância de zoonoses na fauna silvestre</h4><ul class="list-disc pl-5 space-y-1 text-sm"><li><a class="text-sky-700 underline break-words" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13040231/" rel="noopener noreferrer" target="_blank">Mechanistic yellow fever modelling under climate change in Brazil and beyond: Information gaps and future steps. Wellcome Open Research, 2026.</a></li><li><a class="text-sky-700 underline break-words" href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/r/raiva/raiva-animal" rel="noopener noreferrer" target="_blank">Ministério da Saúde. Raiva animal.</a></li></ul></div><div class="mb-4 last:mb-0"><h4 class="font-bold text-sm text-slate-800 mb-1">Enchentes aumentam a preocupação com leptospirose em cães e pessoas</h4><ul class="list-disc pl-5 space-y-1 text-sm"><li><a class="text-sky-700 underline break-words" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12193477/" rel="noopener noreferrer" target="_blank">Canine Leptospirosis in Flood-Affected Areas of Southern Brazil: Molecular Assessment and Public Health Implications, 2025.</a></li><li><a class="text-sky-700 underline break-words" href="https://www.who.int/health-topics/leptospirosis" rel="noopener noreferrer" target="_blank">World Health Organization. Leptospirosis.</a></li></ul></div><div class="mb-4 last:mb-0"><h4 class="font-bold text-sm text-slate-800 mb-1">Vigilância de flebotomíneos é essencial para prevenir a leishmaniose visceral canina</h4><ul class="list-disc pl-5 space-y-1 text-sm"><li><a class="text-sky-700 underline break-words" href="https://pubmed.ncbi.nlm.nih.gov/41779509/" rel="noopener noreferrer" target="_blank">Visceral Leishmaniasis in Southern Brazil: an overview of current epidemiology. PubMed, 2026.</a></li><li><a class="text-sky-700 underline break-words" href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/l/leishmaniose-visceral" rel="noopener noreferrer" target="_blank">Ministério da Saúde. Leishmaniose visceral.</a></li></ul></div></div><div class="rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+<h3 class="font-extrabold text-slate-900 mb-2">Como o acervo foi organizado</h3>
+<p class="text-sm text-slate-700 leading-relaxed">Esta área reúne fontes consultadas ou indicadas no portal para apoiar a divulgação científica sobre El Niño, clima, saúde animal, zoonoses, bem-estar e Saúde Única. Os links levam aos documentos ou páginas institucionais originais sempre que disponíveis. As matérias editoriais do portal sintetizam temas para fins educativos; não substituem a leitura integral dos estudos, protocolos oficiais ou avaliação de um médico-veterinário.</p>
+<p class="text-sm text-slate-700 leading-relaxed mt-2"><strong>Transparência:</strong> algumas páginas institucionais são portais de consulta geral, e não artigos científicos específicos. Por isso, elas são identificadas como fontes de monitoramento ou orientação. A disponibilidade e o conteúdo dos links podem mudar com o tempo.</p>
+</div>
+<div class="p-5 bg-slate-50 rounded-xl border-l-4 border-brand-emerald space-y-2">
+<span class="text-[10px] font-bold bg-brand-emerald text-white px-2 py-0.5 rounded">El Niño, fauna e saúde animal</span>
+<h3 class="font-bold text-slate-900">The wide-ranging impacts of El Niño on wildlife and animal health</h3>
+<p class="text-sm text-slate-600">WORLD ORGANISATION FOR ANIMAL HEALTH (WOAH). Artigo institucional sobre possíveis efeitos do El Niño na fauna e na saúde animal.</p>
+<a class="text-sm text-sky-700 underline font-semibold break-all" href="https://www.woah.org/en/article/the-wide-ranging-impacts-of-el-nino-on-wildlife-and-animal-health/" rel="noopener noreferrer" target="_blank">Consultar a publicação original da WOAH</a>
+</div>
+<div class="p-5 bg-slate-50 rounded-xl border-l-4 border-blue-600 space-y-2">
+<span class="text-[10px] font-bold bg-blue-600 text-white px-2 py-0.5 rounded">Clima e Medicina Veterinária</span>
+<h3 class="font-bold text-slate-900">Por que o El Niño também é uma preocupação da Medicina Veterinária?</h3>
+<p class="text-sm text-slate-600">CONSELHO REGIONAL DE MEDICINA VETERINÁRIA DO RIO DE JANEIRO (CRMV-RJ). Material de divulgação sobre a relevância do fenômeno climático para a área veterinária.</p>
+<a class="text-sm text-sky-700 underline font-semibold break-all" href="https://www.crmvrj.org.br/por-que-o-el-nino-tambem-e-uma-preocupacao-da-medicina-veterinaria/" rel="noopener noreferrer" target="_blank">Ler o material do CRMV-RJ</a>
+</div>
+<div class="p-5 bg-slate-50 rounded-xl border-l-4 border-amber-600 space-y-2">
+<span class="text-[10px] font-bold bg-amber-600 text-white px-2 py-0.5 rounded">Zoonoses e leptospirose</span>
+<h3 class="font-bold text-slate-900">Canine leptospirosis</h3>
+<p class="text-sm text-slate-600">CORNELL UNIVERSITY, Riney Canine Health Center. Conteúdo veterinário de referência sobre leptospirose canina, transmissão, sinais e prevenção.</p>
+<a class="text-sm text-sky-700 underline font-semibold break-all" href="https://www.vet.cornell.edu/departments-centers-and-institutes/riney-canine-health-center/canine-health-topics/canine-leptospirosis" rel="noopener noreferrer" target="_blank">Consultar Cornell University</a>
+</div>
+<div class="p-5 bg-slate-50 rounded-xl border-l-4 border-purple-600 space-y-2">
+<span class="text-[10px] font-bold bg-purple-600 text-white px-2 py-0.5 rounded">Parasitologia e doenças vetoriais</span>
+<h3 class="font-bold text-slate-900">Artigo científico indexado por DOI</h3>
+<p class="text-sm text-slate-600">Artigo científico associado ao DOI abaixo, utilizado como referência complementar no material do portal. Consulte o registro para confirmar título, autoria, periódico e texto integral.</p>
+<a class="text-sm text-sky-700 underline font-semibold break-all" href="https://doi.org/10.1016/j.pt.2024.04.009" rel="noopener noreferrer" target="_blank">https://doi.org/10.1016/j.pt.2024.04.009</a>
+</div>
+<div class="p-5 bg-slate-50 rounded-xl border-l-4 border-sky-600 space-y-3">
+<span class="text-[10px] font-bold bg-sky-600 text-white px-2 py-0.5 rounded">Fontes oficiais de monitoramento e orientação</span>
+<h3 class="font-bold text-slate-900">Instituições para consulta contínua</h3>
+<ul class="space-y-3 text-sm text-slate-700">
+<li><strong>Instituto Nacional de Meteorologia (INMET).</strong> Boletins e informações meteorológicas. <a class="text-sky-700 underline break-all" href="https://portal.inmet.gov.br/" rel="noopener noreferrer" target="_blank">https://portal.inmet.gov.br/</a></li>
+<li><strong>Centro Nacional de Monitoramento e Alertas de Desastres Naturais (Cemaden).</strong> Monitoramento de riscos e alertas de desastres. <a class="text-sky-700 underline break-all" href="https://www.cemaden.gov.br/" rel="noopener noreferrer" target="_blank">https://www.cemaden.gov.br/</a></li>
+<li><strong>Ministério da Agricultura e Pecuária (MAPA).</strong> Saúde animal e sanidade agropecuária. <a class="text-sky-700 underline break-all" href="https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/saude-animal" rel="noopener noreferrer" target="_blank">Página de Saúde Animal</a></li>
+<li><strong>Ministério da Saúde.</strong> Informações de saúde pública e doenças. <a class="text-sky-700 underline break-all" href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z" rel="noopener noreferrer" target="_blank">Saúde de A a Z</a> e <a class="text-sky-700 underline" href="https://www.gov.br/saude/pt-br/assuntos/noticias-ms" rel="noopener noreferrer" target="_blank">Notícias do Ministério da Saúde</a>.</li>
+<li><strong>Conselho Federal de Medicina Veterinária (CFMV).</strong> Notícias e comunicados profissionais. <a class="text-sky-700 underline break-all" href="https://www.cfmv.gov.br/categoria/comunicacao/" rel="noopener noreferrer" target="_blank">Comunicação do CFMV</a>.</li>
+<li><strong>Organização Mundial de Saúde Animal (WOAH).</strong> Normas, informações e atualizações internacionais de saúde animal. <a class="text-sky-700 underline break-all" href="https://www.woah.org/" rel="noopener noreferrer" target="_blank">https://www.woah.org/</a></li>
+<li><strong>Empresa Brasileira de Pesquisa Agropecuária (Embrapa).</strong> Pesquisa agropecuária e orientações técnicas. <a class="text-sky-700 underline break-all" href="https://www.embrapa.br/" rel="noopener noreferrer" target="_blank">Portal Embrapa</a> e <a class="text-sky-700 underline" href="https://www.embrapa.br/caprinos-e-ovinos" rel="noopener noreferrer" target="_blank">Caprinos e Ovinos</a>.</li>
+<li><strong>Google News RSS.</strong> Fonte de manchetes para o feed externo, consultada por uma API intermediária de conversão RSS. O conteúdo e a disponibilidade dependem do serviço externo. <a class="text-sky-700 underline break-all" href="https://news.google.com/" rel="noopener noreferrer" target="_blank">Google News</a> e <a class="text-sky-700 underline break-all" href="https://rss2json.com/" rel="noopener noreferrer" target="_blank">RSS2JSON</a>.</li>
+</ul>
+</div>
+<div class="p-5 bg-slate-50 rounded-xl border-l-4 border-indigo-600 space-y-3">
+<span class="text-[10px] font-bold bg-indigo-600 text-white px-2 py-0.5 rounded">Referências vinculadas às matérias do acervo</span>
+<p class="text-sm text-slate-600">Os links abaixo também aparecem nas referências internas das matérias e servem para que o leitor consulte as publicações originais. A autoria, os títulos e os dados bibliográficos completos devem ser confirmados na página de cada publicação antes de serem transcritos em trabalhos acadêmicos.</p>
+<ul class="space-y-3 text-sm text-slate-700">
+<li><strong>Estresse térmico e bem-estar de cães:</strong> <a class="text-sky-700 underline break-all" href="https://www.frontiersin.org/journals/animal-science/articles/10.3389/fanim.2025.1679377/full" rel="noopener noreferrer" target="_blank">Frontiers in Animal Science — Heat stress in domestic dogs</a>; <a class="text-sky-700 underline break-all" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13011106/" rel="noopener noreferrer" target="_blank">registro em PubMed Central</a>.</li>
+<li><strong>Carrapatos e tristeza parasitária bovina:</strong> <a class="text-sky-700 underline break-all" href="https://doi.org/10.1590/S1984-29612023007" rel="noopener noreferrer" target="_blank">DOI: 10.1590/S1984-29612023007</a>; <a class="text-sky-700 underline break-all" href="https://doi.org/10.1017/S0031182004005967" rel="noopener noreferrer" target="_blank">Jongejan e Uilenberg — The global importance of ticks (2004)</a>.</li>
+<li><strong>Encefalites equinas e arboviroses:</strong> <a class="text-sky-700 underline break-all" href="https://doi.org/10.1016/j.cveq.2022.11.007" rel="noopener noreferrer" target="_blank">DOI: 10.1016/j.cveq.2022.11.007</a>; <a class="text-sky-700 underline break-all" href="https://www.woah.org/en/what-we-do/animal-health-and-welfare/animal-diseases/" rel="noopener noreferrer" target="_blank">WOAH — doenças animais</a>.</li>
+<li><strong>Estresse térmico em galinhas poedeiras:</strong> <a class="text-sky-700 underline break-all" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11011014/" rel="noopener noreferrer" target="_blank">artigo disponível em PubMed Central</a>; <a class="text-sky-700 underline break-all" href="https://www.sciencedirect.com/science/article/pii/S0306456521003351" rel="noopener noreferrer" target="_blank">artigo na ScienceDirect sobre temperatura, umidade e desempenho de poedeiras</a>.</li>
+<li><strong>Botulismo em bovinos:</strong> <a class="text-sky-700 underline break-all" href="https://www.scielo.br/j/pvb/a/QFs3ZzpdTGt3kBgjVqVWKxf/?lang=en" rel="noopener noreferrer" target="_blank">Pesquisa Veterinária Brasileira — artigo sobre botulismo em bovinos</a>; <a class="text-sky-700 underline break-all" href="https://www.gov.br/agricultura/pt-br" rel="noopener noreferrer" target="_blank">Ministério da Agricultura e Pecuária</a>.</li>
+<li><strong>Febre amarela e clima:</strong> <a class="text-sky-700 underline break-all" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13040231/" rel="noopener noreferrer" target="_blank">artigo disponível em PubMed Central</a>; <a class="text-sky-700 underline break-all" href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/f/febre-amarela" rel="noopener noreferrer" target="_blank">Ministério da Saúde — febre amarela</a>.</li>
+<li><strong>Leptospirose e áreas afetadas por enchentes:</strong> <a class="text-sky-700 underline break-all" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12193477/" rel="noopener noreferrer" target="_blank">artigo disponível em PubMed Central</a>; <a class="text-sky-700 underline break-all" href="https://www.who.int/health-topics/leptospirosis" rel="noopener noreferrer" target="_blank">Organização Mundial da Saúde — leptospirose</a>.</li>
+<li><strong>Leishmaniose visceral:</strong> <a class="text-sky-700 underline break-all" href="https://pubmed.ncbi.nlm.nih.gov/41779509/" rel="noopener noreferrer" target="_blank">registro no PubMed</a>; <a class="text-sky-700 underline break-all" href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/l/leishmaniose-visceral" rel="noopener noreferrer" target="_blank">Ministério da Saúde — leishmaniose visceral</a>.</li>
+</ul>
+</div>
+<div class="p-5 bg-slate-50 rounded-xl border-l-4 border-slate-500 space-y-2">
+<span class="text-[10px] font-bold bg-slate-600 text-white px-2 py-0.5 rounded">Recursos digitais usados no portal</span>
+<p class="text-sm text-slate-700">A interface utiliza Tailwind CSS para a apresentação visual, Font Awesome 6.4.0 para os ícones e VLibras para apoiar o acesso em Libras. Fotografias ilustrativas de algumas matérias são carregadas do Unsplash. Esses recursos servem à apresentação e acessibilidade; não são fontes de evidência científica.</p>
+<ul class="text-sm space-y-1">
+<li><a class="text-sky-700 underline" href="https://cdn.tailwindcss.com" rel="noopener noreferrer" target="_blank">Tailwind CSS (estilização)</a></li>
+<li><a class="text-sky-700 underline" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="noopener noreferrer" target="_blank">Font Awesome 6.4.0 (ícones)</a></li>
+<li><a class="text-sky-700 underline" href="https://vlibras.gov.br/" rel="noopener noreferrer" target="_blank">VLibras (acessibilidade em Libras)</a></li>
+<li><a class="text-sky-700 underline" href="https://unsplash.com/" rel="noopener noreferrer" target="_blank">Unsplash (imagens ilustrativas)</a></li>
+</ul>
+</div>
+<div class="rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm text-slate-700 leading-relaxed">
+<strong></strong> esta lista reúne as fontes identificadas nos links e conteúdos presentes nesta versão do código. Antes de entregar o projeto como trabalho acadêmico, recomenda-se conferir cada publicação, registrar autoria, ano, título e data de acesso, e completar as referências em formato ABNT após verificar os metadados no documento original. Páginas gerais de instituições não devem ser citadas como se fossem artigos científicos específicos.
           </div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <article class="bg-white rounded-lg border border-sky-100 p-4"><h3 class="font-bold text-slate-900 mb-2"><i class="fas fa-book-open text-sky-700 mr-2"></i>1. Matérias educativas</h3><p class="text-sm text-slate-600 leading-relaxed">São textos editoriais que contextualizam temas, resumem conceitos e apresentam orientações gerais a partir de referências e fontes institucionais. Não são relatos de surtos em tempo real e não devem ser confundidos com artigos científicos originais.</p></article>
-          <article class="bg-white rounded-lg border border-sky-100 p-4"><h3 class="font-bold text-slate-900 mb-2"><i class="fas fa-rss text-sky-700 mr-2"></i>2. Feed externo</h3><p class="text-sm text-slate-600 leading-relaxed">A área “Últimas notícias veterinárias” tenta carregar manchetes recentes por meio de um agregador externo e oferece a opção “Atualizar agora”. A lista depende da conexão, da disponibilidade do serviço e das fontes indexadas; por isso, pode falhar ou não representar todas as notícias existentes.</p></article>
-          <article class="bg-white rounded-lg border border-sky-100 p-4"><h3 class="font-bold text-slate-900 mb-2"><i class="fas fa-check-double text-sky-700 mr-2"></i>3. Como verificar</h3><p class="text-sm text-slate-600 leading-relaxed">Abra a publicação original, confira data, autoria e contexto, e procure confirmação em órgãos oficiais ou na literatura científica. Uma manchete isolada não confirma a ocorrência de uma doença nem prova que o El Niño tenha causado determinado evento.</p></article>
-        </div>
-        <p class="text-xs text-slate-600 leading-relaxed"><strong>Importante:</strong> o portal é uma ferramenta educativa de extensão universitária. Não substitui vigilância epidemiológica, comunicados oficiais, diagnóstico clínico ou orientação profissional. As relações entre clima e doença são complexas e variam de acordo com a região, a espécie, o agente infeccioso e as condições de manejo.</p>
-          </section>
-
-          <div class="rounded-xl border border-emerald-200 bg-emerald-50 p-5">
-            <h3 class="font-extrabold text-slate-900 mb-2">Como o acervo foi organizado</h3>
-            <p class="text-sm text-slate-700 leading-relaxed">Esta área reúne fontes consultadas ou indicadas no portal para apoiar a divulgação científica sobre El Niño, clima, saúde animal, zoonoses, bem-estar e Saúde Única. Os links levam aos documentos ou páginas institucionais originais sempre que disponíveis. As matérias editoriais do portal sintetizam temas para fins educativos; não substituem a leitura integral dos estudos, protocolos oficiais ou avaliação de um médico-veterinário.</p>
-            <p class="text-sm text-slate-700 leading-relaxed mt-2"><strong>Transparência:</strong> algumas páginas institucionais são portais de consulta geral, e não artigos científicos específicos. Por isso, elas são identificadas como fontes de monitoramento ou orientação. A disponibilidade e o conteúdo dos links podem mudar com o tempo.</p>
-          </div>
-
-          <div class="p-5 bg-slate-50 rounded-xl border-l-4 border-brand-emerald space-y-2">
-            <span class="text-[10px] font-bold bg-brand-emerald text-white px-2 py-0.5 rounded">El Niño, fauna e saúde animal</span>
-            <h3 class="font-bold text-slate-900">The wide-ranging impacts of El Niño on wildlife and animal health</h3>
-            <p class="text-sm text-slate-600">WORLD ORGANISATION FOR ANIMAL HEALTH (WOAH). Artigo institucional sobre possíveis efeitos do El Niño na fauna e na saúde animal.</p>
-            <a class="text-sm text-sky-700 underline font-semibold break-all" href="https://www.woah.org/en/article/the-wide-ranging-impacts-of-el-nino-on-wildlife-and-animal-health/" target="_blank" rel="noopener noreferrer">Consultar a publicação original da WOAH</a>
-          </div>
-
-          <div class="p-5 bg-slate-50 rounded-xl border-l-4 border-blue-600 space-y-2">
-            <span class="text-[10px] font-bold bg-blue-600 text-white px-2 py-0.5 rounded">Clima e Medicina Veterinária</span>
-            <h3 class="font-bold text-slate-900">Por que o El Niño também é uma preocupação da Medicina Veterinária?</h3>
-            <p class="text-sm text-slate-600">CONSELHO REGIONAL DE MEDICINA VETERINÁRIA DO RIO DE JANEIRO (CRMV-RJ). Material de divulgação sobre a relevância do fenômeno climático para a área veterinária.</p>
-            <a class="text-sm text-sky-700 underline font-semibold break-all" href="https://www.crmvrj.org.br/por-que-o-el-nino-tambem-e-uma-preocupacao-da-medicina-veterinaria/" target="_blank" rel="noopener noreferrer">Ler o material do CRMV-RJ</a>
-          </div>
-
-          <div class="p-5 bg-slate-50 rounded-xl border-l-4 border-amber-600 space-y-2">
-            <span class="text-[10px] font-bold bg-amber-600 text-white px-2 py-0.5 rounded">Zoonoses e leptospirose</span>
-            <h3 class="font-bold text-slate-900">Canine leptospirosis</h3>
-            <p class="text-sm text-slate-600">CORNELL UNIVERSITY, Riney Canine Health Center. Conteúdo veterinário de referência sobre leptospirose canina, transmissão, sinais e prevenção.</p>
-            <a class="text-sm text-sky-700 underline font-semibold break-all" href="https://www.vet.cornell.edu/departments-centers-and-institutes/riney-canine-health-center/canine-health-topics/canine-leptospirosis" target="_blank" rel="noopener noreferrer">Consultar Cornell University</a>
-          </div>
-
-          <div class="p-5 bg-slate-50 rounded-xl border-l-4 border-purple-600 space-y-2">
-            <span class="text-[10px] font-bold bg-purple-600 text-white px-2 py-0.5 rounded">Parasitologia e doenças vetoriais</span>
-            <h3 class="font-bold text-slate-900">Artigo científico indexado por DOI</h3>
-            <p class="text-sm text-slate-600">Artigo científico associado ao DOI abaixo, utilizado como referência complementar no material do portal. Consulte o registro para confirmar título, autoria, periódico e texto integral.</p>
-            <a class="text-sm text-sky-700 underline font-semibold break-all" href="https://doi.org/10.1016/j.pt.2024.04.009" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/j.pt.2024.04.009</a>
-          </div>
-
-          <div class="p-5 bg-slate-50 rounded-xl border-l-4 border-sky-600 space-y-3">
-            <span class="text-[10px] font-bold bg-sky-600 text-white px-2 py-0.5 rounded">Fontes oficiais de monitoramento e orientação</span>
-            <h3 class="font-bold text-slate-900">Instituições para consulta contínua</h3>
-            <ul class="space-y-3 text-sm text-slate-700">
-              <li><strong>Instituto Nacional de Meteorologia (INMET).</strong> Boletins e informações meteorológicas. <a class="text-sky-700 underline break-all" href="https://portal.inmet.gov.br/" target="_blank" rel="noopener noreferrer">https://portal.inmet.gov.br/</a></li>
-              <li><strong>Centro Nacional de Monitoramento e Alertas de Desastres Naturais (Cemaden).</strong> Monitoramento de riscos e alertas de desastres. <a class="text-sky-700 underline break-all" href="https://www.cemaden.gov.br/" target="_blank" rel="noopener noreferrer">https://www.cemaden.gov.br/</a></li>
-              <li><strong>Ministério da Agricultura e Pecuária (MAPA).</strong> Saúde animal e sanidade agropecuária. <a class="text-sky-700 underline break-all" href="https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/saude-animal" target="_blank" rel="noopener noreferrer">Página de Saúde Animal</a></li>
-              <li><strong>Ministério da Saúde.</strong> Informações de saúde pública e doenças. <a class="text-sky-700 underline break-all" href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z" target="_blank" rel="noopener noreferrer">Saúde de A a Z</a> e <a class="text-sky-700 underline" href="https://www.gov.br/saude/pt-br/assuntos/noticias-ms" target="_blank" rel="noopener noreferrer">Notícias do Ministério da Saúde</a>.</li>
-              <li><strong>Conselho Federal de Medicina Veterinária (CFMV).</strong> Notícias e comunicados profissionais. <a class="text-sky-700 underline break-all" href="https://www.cfmv.gov.br/categoria/comunicacao/" target="_blank" rel="noopener noreferrer">Comunicação do CFMV</a>.</li>
-              <li><strong>Organização Mundial de Saúde Animal (WOAH).</strong> Normas, informações e atualizações internacionais de saúde animal. <a class="text-sky-700 underline break-all" href="https://www.woah.org/" target="_blank" rel="noopener noreferrer">https://www.woah.org/</a></li>
-              <li><strong>Empresa Brasileira de Pesquisa Agropecuária (Embrapa).</strong> Pesquisa agropecuária e orientações técnicas. <a class="text-sky-700 underline break-all" href="https://www.embrapa.br/" target="_blank" rel="noopener noreferrer">Portal Embrapa</a> e <a class="text-sky-700 underline" href="https://www.embrapa.br/caprinos-e-ovinos" target="_blank" rel="noopener noreferrer">Caprinos e Ovinos</a>.</li>
-              <li><strong>Google News RSS.</strong> Fonte de manchetes para o feed externo, consultada por uma API intermediária de conversão RSS. O conteúdo e a disponibilidade dependem do serviço externo. <a class="text-sky-700 underline break-all" href="https://news.google.com/" target="_blank" rel="noopener noreferrer">Google News</a> e <a class="text-sky-700 underline break-all" href="https://rss2json.com/" target="_blank" rel="noopener noreferrer">RSS2JSON</a>.</li>
-            </ul>
-          </div>
-
-          <div class="p-5 bg-slate-50 rounded-xl border-l-4 border-indigo-600 space-y-3">
-            <span class="text-[10px] font-bold bg-indigo-600 text-white px-2 py-0.5 rounded">Referências vinculadas às matérias do acervo</span>
-            <p class="text-sm text-slate-600">Os links abaixo também aparecem nas referências internas das matérias e servem para que o leitor consulte as publicações originais. A autoria, os títulos e os dados bibliográficos completos devem ser confirmados na página de cada publicação antes de serem transcritos em trabalhos acadêmicos.</p>
-            <ul class="space-y-3 text-sm text-slate-700">
-              <li><strong>Estresse térmico e bem-estar de cães:</strong> <a class="text-sky-700 underline break-all" href="https://www.frontiersin.org/journals/animal-science/articles/10.3389/fanim.2025.1679377/full" target="_blank" rel="noopener noreferrer">Frontiers in Animal Science — Heat stress in domestic dogs</a>; <a class="text-sky-700 underline break-all" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13011106/" target="_blank" rel="noopener noreferrer">registro em PubMed Central</a>.</li>
-              <li><strong>Carrapatos e tristeza parasitária bovina:</strong> <a class="text-sky-700 underline break-all" href="https://doi.org/10.1590/S1984-29612023007" target="_blank" rel="noopener noreferrer">DOI: 10.1590/S1984-29612023007</a>; <a class="text-sky-700 underline break-all" href="https://doi.org/10.1017/S0031182004005967" target="_blank" rel="noopener noreferrer">Jongejan e Uilenberg — The global importance of ticks (2004)</a>.</li>
-              <li><strong>Encefalites equinas e arboviroses:</strong> <a class="text-sky-700 underline break-all" href="https://doi.org/10.1016/j.cveq.2022.11.007" target="_blank" rel="noopener noreferrer">DOI: 10.1016/j.cveq.2022.11.007</a>; <a class="text-sky-700 underline break-all" href="https://www.woah.org/en/what-we-do/animal-health-and-welfare/animal-diseases/" target="_blank" rel="noopener noreferrer">WOAH — doenças animais</a>.</li>
-              <li><strong>Estresse térmico em galinhas poedeiras:</strong> <a class="text-sky-700 underline break-all" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11011014/" target="_blank" rel="noopener noreferrer">artigo disponível em PubMed Central</a>; <a class="text-sky-700 underline break-all" href="https://www.sciencedirect.com/science/article/pii/S0306456521003351" target="_blank" rel="noopener noreferrer">artigo na ScienceDirect sobre temperatura, umidade e desempenho de poedeiras</a>.</li>
-              <li><strong>Botulismo em bovinos:</strong> <a class="text-sky-700 underline break-all" href="https://www.scielo.br/j/pvb/a/QFs3ZzpdTGt3kBgjVqVWKxf/?lang=en" target="_blank" rel="noopener noreferrer">Pesquisa Veterinária Brasileira — artigo sobre botulismo em bovinos</a>; <a class="text-sky-700 underline break-all" href="https://www.gov.br/agricultura/pt-br" target="_blank" rel="noopener noreferrer">Ministério da Agricultura e Pecuária</a>.</li>
-              <li><strong>Febre amarela e clima:</strong> <a class="text-sky-700 underline break-all" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13040231/" target="_blank" rel="noopener noreferrer">artigo disponível em PubMed Central</a>; <a class="text-sky-700 underline break-all" href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/r/raiva/raiva-animal" target="_blank" rel="noopener noreferrer">Ministério da Saúde — página de raiva animal citada no conteúdo relacionado</a>.</li>
-              <li><strong>Leptospirose e áreas afetadas por enchentes:</strong> <a class="text-sky-700 underline break-all" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12193477/" target="_blank" rel="noopener noreferrer">artigo disponível em PubMed Central</a>; <a class="text-sky-700 underline break-all" href="https://www.who.int/health-topics/leptospirosis" target="_blank" rel="noopener noreferrer">Organização Mundial da Saúde — leptospirose</a>.</li>
-              <li><strong>Leishmaniose visceral:</strong> <a class="text-sky-700 underline break-all" href="https://pubmed.ncbi.nlm.nih.gov/41779509/" target="_blank" rel="noopener noreferrer">registro no PubMed</a>; <a class="text-sky-700 underline break-all" href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/l/leishmaniose-visceral" target="_blank" rel="noopener noreferrer">Ministério da Saúde — leishmaniose visceral</a>.</li>
-            </ul>
-          </div>
-
-          <div class="p-5 bg-slate-50 rounded-xl border-l-4 border-slate-500 space-y-2">
-            <span class="text-[10px] font-bold bg-slate-600 text-white px-2 py-0.5 rounded">Recursos digitais usados no portal</span>
-            <p class="text-sm text-slate-700">A interface utiliza Tailwind CSS para a apresentação visual, Font Awesome 6.4.0 para os ícones e VLibras para apoiar o acesso em Libras. Fotografias ilustrativas de algumas matérias são carregadas do Unsplash. Esses recursos servem à apresentação e acessibilidade; não são fontes de evidência científica.</p>
-            <ul class="text-sm space-y-1">
-              <li><a class="text-sky-700 underline" href="https://cdn.tailwindcss.com" target="_blank" rel="noopener noreferrer">Tailwind CSS (estilização)</a></li>
-              <li><a class="text-sky-700 underline" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" target="_blank" rel="noopener noreferrer">Font Awesome 6.4.0 (ícones)</a></li>
-              <li><a class="text-sky-700 underline" href="https://vlibras.gov.br/" target="_blank" rel="noopener noreferrer">VLibras (acessibilidade em Libras)</a></li>
-              <li><a class="text-sky-700 underline" href="https://unsplash.com/" target="_blank" rel="noopener noreferrer">Unsplash (imagens ilustrativas)</a></li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-  </main>
-
-  <!-- MODAL LEITOR INTERNO EXPANDIDO -->
-  <div id="article-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative">
-      <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-800 text-2xl font-bold">
-        &times;
+</div>
+</div><section class="bg-sky-50 border border-sky-200 rounded-xl p-5 md:p-6 space-y-4" id="como-funciona-acervo">
+<div class="flex items-start gap-3">
+<div class="w-11 h-11 shrink-0 rounded-full bg-sky-100 text-sky-800 flex items-center justify-center"><i class="fas fa-newspaper text-lg"></i></div>
+<div>
+<h2 class="text-xl font-extrabold text-slate-900">Como funciona o acervo de notícias?</h2>
+<p class="text-sm text-slate-700 leading-relaxed mt-2">O acervo reúne duas modalidades de conteúdo: matérias educativas elaboradas para explicar temas de saúde animal e manchetes externas obtidas por um agregador. O portal prioriza a saúde de cães e gatos, sem deixar de abordar animais de produção, fauna silvestre e a relação entre saúde animal, humana e ambiental.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<article class="bg-white rounded-lg border border-sky-100 p-4"><h3 class="font-bold text-slate-900 mb-2"><i class="fas fa-book-open text-sky-700 mr-2"></i>1. Matérias educativas</h3><p class="text-sm text-slate-600 leading-relaxed">São textos editoriais que contextualizam temas, resumem conceitos e apresentam orientações gerais a partir de referências e fontes institucionais. Não são relatos de surtos em tempo real e não devem ser confundidos com artigos científicos originais.</p></article>
+<article class="bg-white rounded-lg border border-sky-100 p-4"><h3 class="font-bold text-slate-900 mb-2"><i class="fas fa-rss text-sky-700 mr-2"></i>2. Feed externo</h3><p class="text-sm text-slate-600 leading-relaxed">A área “Últimas notícias veterinárias” consulta um serviço externo para tentar carregar manchetes recentes e oferece a opção “Atualizar agora”. O feed depende de conexão, disponibilidade do agregador e fontes indexadas; pode falhar, atrasar ou apresentar resultados incompletos. A presença de uma manchete não significa que o portal verificou independentemente todos os fatos nela descritos.</p></article>
+<article class="bg-white rounded-lg border border-sky-100 p-4"><h3 class="font-bold text-slate-900 mb-2"><i class="fas fa-check-double text-sky-700 mr-2"></i>3. Como verificar</h3><p class="text-sm text-slate-600 leading-relaxed">Abra a publicação original, confira data, autoria, local e contexto, e procure confirmação em órgãos oficiais ou em estudos científicos. Diferencie notícia jornalística, comunicado oficial, artigo científico e texto educativo. Uma manchete isolada não confirma um surto nem demonstra que o El Niño causou determinado evento.</p></article>
+</div>
+<p class="text-xs text-slate-600 leading-relaxed"><strong>Importante:</strong> o portal é uma ferramenta educativa de extensão universitária. Não substitui vigilância epidemiológica, comunicados oficiais, diagnóstico clínico ou orientação profissional. As relações entre clima e doença são complexas e variam de acordo com a região, a espécie, o agente infeccioso e as condições de manejo.</p>
+</section>
+</div>
+</main>
+<!-- MODAL LEITOR INTERNO EXPANDIDO -->
+<div class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4" id="article-modal">
+<div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative">
+<button class="absolute top-4 right-4 text-slate-400 hover:text-slate-800 text-2xl font-bold" onclick="closeModal()">
+        ×
       </button>
-      <div id="modal-content">
-        <!-- Preenchido via JS com Artigo Científico Completo -->
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer class="bg-brand-navy text-slate-400 py-8 border-t border-slate-800 mt-12 text-xs text-center space-y-2">
-    <p class="font-semibold text-slate-300">Portal VetExtensão — El Niño e Medicina Veterinária Preventiva</p>
-    <p>Projeto Acadêmico de Extensão Universitária e Saúde Única.</p>
-  </footer>
-
-  <!-- VLIBRAS WIDGET -->
-  <div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
-    </div>
-  </div>
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
+<div id="modal-content">
+<!-- Preenchido via JS com Artigo Científico Completo -->
+</div>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="bg-brand-navy text-slate-400 py-8 border-t border-slate-800 mt-12 text-xs text-center space-y-2">
+<p class="font-semibold text-slate-300">Portal VetExtensão — El Niño e Medicina Veterinária Preventiva</p>
+<p>Projeto Acadêmico de Extensão Universitária e Saúde Única.</p>
+</footer>
+<!-- VLIBRAS WIDGET -->
+<div class="enabled" vw="">
+<div class="active" vw-access-button=""></div>
+<div vw-plugin-wrapper="">
+<div class="vw-plugin-top-wrapper"></div>
+</div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
     new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
-
-  <!-- JAVASCRIPT LOGIC (BASE CIENTÍFICA Densa + SIMULADOR + FILTROS) -->
-  <script>
+<!-- JAVASCRIPT LOGIC (BASE CIENTÍFICA Densa + SIMULADOR + FILTROS) -->
+<script>
     const articlesData = [
       {
             "id": 1,
@@ -804,38 +747,40 @@
       const especie = document.getElementById('calc-especie').value;
       const clima = document.getElementById('calc-clima').value;
       const vacina = document.getElementById('calc-vacina').value;
-
-      let nivel = "RISCO MODERADO";
-      let cor = "text-amber-600";
-      let bg = "bg-amber-50";
-      let parecer = "";
-
-      if (vacina === "baixo" || (clima === "calor_extremo" && especie === "pets") || (clima === "chuvas_intensas" && especie === "equinos")) {
-        nivel = "VULNERABILIDADE CRÍTICA (ALTO RISCO)";
-        cor = "text-red-600";
-        bg = "bg-red-50";
-        parecer = "O sistema apresenta alto risco de quebra de barreira sanitária. Indicada a instituição imediata de protocolos profiláticos direcionados ao vetor e reforço do calendário vacinal.";
-      } else if (vacina === "alto") {
-        nivel = "BAIXA VULNERABILIDADE EPIDEMIOLÓGICA";
-        cor = "text-emerald-600";
-        bg = "bg-emerald-50";
-        parecer = "As barreiras de biosegurança e profilaxia vacinal oferecem proteção adequada. Manter monitoramento microbiológico e sorológico contínuo.";
+      let titulo = 'MANTER A PREVENÇÃO';
+      let cor = 'text-emerald-700';
+      let bg = 'bg-emerald-50';
+      let recomendacoes = [];
+      if (vacina === 'baixo') {
+        titulo = 'REVISAR AS MEDIDAS PREVENTIVAS'; cor = 'text-red-700'; bg = 'bg-red-50';
+        recomendacoes.push('Revise o calendário preventivo, o controle de vetores e a biosseguridade com um médico-veterinário. Não aplique medicamentos ou vacinas sem orientação profissional.');
+      } else if (vacina === 'medio') {
+        titulo = 'IDENTIFICAR LACUNAS DE PREVENÇÃO'; cor = 'text-amber-700'; bg = 'bg-amber-50';
+        recomendacoes.push('Verifique quais medidas de manejo, vacinação e controle ambiental são indicadas para a espécie e para a região.');
       } else {
-        nivel = "RISCO EPIDEMIOLÓGICO MODERADO";
-        cor = "text-amber-600";
-        bg = "bg-amber-50";
-        parecer = "Atenção ao aumento do ITU e possíveis picos de população de ectoparasitas. Recomenda-se reforçar a higienização ambiental.";
+        recomendacoes.push('Mantenha as medidas preventivas e os registros sanitários; mesmo um manejo cuidadoso não elimina todos os riscos.');
       }
-
+      if (clima === 'calor_extremo') {
+        recomendacoes.push('Priorize sombra, ventilação e água limpa; evite atividade nos horários mais quentes e observe sinais de estresse térmico.');
+      } else if (clima === 'chuvas_intensas') {
+        recomendacoes.push('Reduza o contato dos animais com água de enchente ou lama possivelmente contaminada; proteja alimento e água e procure orientação se houver exposição.');
+      } else {
+        recomendacoes.push('Monitore conforto térmico, ventilação, umidade da instalação e condição da cama ou do ambiente, conforme a espécie.');
+      }
+      if (especie === 'pets') recomendacoes.push('Para cães e gatos, mantenha água acessível e abrigo; procure atendimento veterinário diante de fraqueza, dificuldade respiratória, vômitos persistentes ou alteração súbita de comportamento.');
+      else if (especie === 'bovinos') recomendacoes.push('Para bovinos, acompanhe consumo de água e alimento, condição corporal, sinais clínicos e infestação por carrapatos; adapte o manejo à propriedade.');
+      else if (especie === 'equinos') recomendacoes.push('Para equídeos, garanta água e sombra, controle a exposição a mosquitos quando pertinente e acompanhe alterações neurológicas ou febre com orientação veterinária.');
+      else recomendacoes.push('Para aves, acompanhe temperatura, ventilação, consumo de água e alimento, mortalidade e alterações na produção; procure assistência técnica diante de mudanças incomuns.');
       document.getElementById('calc-resultado').innerHTML = `
         <div class="space-y-3">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Diagnóstico Epidemiológico Estimado</span>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Resultado educativo — não diagnóstico</span>
           <div class="p-4 rounded-lg ${bg} border border-slate-200">
-            <h4 class="text-sm font-black ${cor}">${nivel}</h4>
-            <p class="text-xs text-slate-700 mt-2 leading-relaxed"><strong>Parecer Clínico:</strong> ${parecer}</p>
+            <h4 class="text-sm font-black ${cor}">${titulo}</h4>
+            <ul class="list-disc pl-5 text-xs text-slate-700 mt-2 space-y-2">${recomendacoes.map(item => `<li>${item}</li>`).join('')}</ul>
           </div>
+          <p class="text-[11px] leading-relaxed text-slate-600">Esta ferramenta não foi validada como modelo preditivo e não estima a probabilidade de uma doença. O resultado depende apenas das opções selecionadas e não substitui avaliação clínica, diagnóstico laboratorial, vigilância oficial ou análise local de risco.</p>
         </div>
-        <button onclick="calcularRisco()" class="mt-4 text-xs font-bold text-brand-emerald hover:underline">Refazer Simulação</button>
+        <button onclick="calcularRisco()" class="mt-4 text-xs font-bold text-brand-emerald hover:underline">Refazer orientações</button>
       `;
     }
 
