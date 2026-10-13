@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal EcoVet - El Niño e Medicina Veterinária Integral</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0a192f',
+              dark: '#112240',
+              primary: '#0284c7',
+              emerald: '#059669',
+              mint: '#10b981',
+              accent: '#34d399',
+              light: '#f8fafc',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans flex flex-col min-h-screen">
+
+  <!-- TOP BAR COM ACESSIBILIDADE DE VOZ -->
+  <header class="bg-brand-navy text-slate-300 text-xs py-2 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
+      <div class="flex items-center space-x-4">
+        <span id="current-date"><i class="far fa-calendar-alt text-brand-mint mr-1"></i> Carregando...</span>
+        <span class="hidden sm:inline">|</span>
+        <span class="hidden sm:inline"><i class="fas fa-shield-alt text-brand-mint mr-1"></i> Repositório Científico & Extensão Universitária em Saúde Única</span>
+      </div>
+      <div class="flex items-center space-x-3">
+        <button onclick="readPageText()" class="bg-brand-dark border border-brand-emerald text-brand-accent hover:bg-brand-emerald hover:text-white px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1 transition">
+          <i class="fas fa-volume-up"></i> Ouvir Página (Acessibilidade)
+        </button>
+        <button onclick="stopSpeech()" class="text-slate-400 hover:text-red-400 text-xs" title="Parar Leitura">
+          <i class="fas fa-stop-circle"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN HEADER -->
+  <div class="bg-gradient-to-r from-brand-navy to-brand-dark text-white py-6 border-b-4 border-brand-emerald shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="text-center md:text-left">
+        <div class="flex items-center justify-center md:justify-start gap-3">
+          <div class="bg-brand-emerald text-white p-3 rounded-xl shadow">
+            <i class="fas fa-microscope text-3xl"></i>
+          </div>
+          <div>
+            <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">ECO<span class="text-brand-accent">VET</span></h1>
+            <p class="text-xs md:text-sm text-slate-300 mt-0.5">Influência do Fenômeno El Niño na Epidemiologia e Saúde Animal</p>
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-80">
+        <div class="relative">
+          <input type="text" id="search-input" placeholder="Buscar por patógeno, espécie, vetor..." class="w-full bg-slate-900/80 text-white placeholder-slate-400 text-sm rounded-full pl-10 pr-4 py-2.5 border border-slate-700 focus:outline-none focus:border-brand-mint">
+          <i class="fas fa-search absolute left-3.5 top-3 text-slate-400"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION MENU -->
+  <nav class="bg-white shadow sticky top-0 z-30 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between h-14">
+        <div class="flex items-center space-x-2 overflow-x-auto py-2 no-scrollbar">
+          <button onclick="switchView('home')" id="nav-home" class="nav-btn bg-brand-emerald text-white text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full transition whitespace-nowrap">
+            Início & Artigos
+          </button>
+          <button onclick="switchView('projeto')" id="nav-projeto" class="nav-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full transition whitespace-nowrap">
+            <i class="fas fa-bullhorn mr-1 text-brand-emerald"></i> O Projeto & Infográfico
+          </button>
+          <button onclick="switchView('calculadora')" id="nav-calculadora" class="nav-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full transition whitespace-nowrap">
+            <i class="fas fa-calculator mr-1 text-brand-emerald"></i> Simulador de Risco Epidemiológico
+          </button>
+          <button onclick="switchView('artigos')" id="nav-artigos" class="nav-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full transition whitespace-nowrap">
+            <i class="fas fa-book-medical mr-1 text-brand-emerald"></i> Acervo Bibliográfico
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENT VIEWS CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full" id="main-content">
+
+    <!-- VIEW 1: HOME -->
+    <div id="view-home" class="space-y-8">
+      <div class="bg-gradient-to-r from-teal-900 to-slate-900 text-white p-6 rounded-xl shadow-md border-l-4 border-brand-emerald flex items-start gap-4">
+        <i class="fas fa-dna text-brand-accent text-3xl mt-1"></i>
+        <div>
+          <h3 class="font-bold text-base text-brand-accent">Portal de Epidemiologia e Medicina Veterinária Preventiva</h3>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1">
+            Análises aprofundadas sobre os impactos do El Niño na Clínica Médica de Pequenos e Grandes Animais, Zoonoses, Biologia de Vetores e Sanidade Avícola, Suína e Silvestre.
+          </p>
+        </div>
+      </div>
+
+      <!-- BARRA DE FILTROS POR ÁREA VETERINÁRIA -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-2 border-b border-slate-200">
+        <span class="text-xs font-bold text-slate-500 whitespace-nowrap">Especialidade:</span>
+        <button onclick="filterCategory('todos')" class="filter-btn bg-brand-navy text-white text-xs font-bold px-3 py-1 rounded-full">Todas as Áreas</button>
+        <button onclick="filterCategory('Pequenos Animais')" class="filter-btn bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-medium px-3 py-1 rounded-full">Pequenos Animais</button>
+        <button onclick="filterCategory('Bovinocultura')" class="filter-btn bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-medium px-3 py-1 rounded-full">Bovinocultura</button>
+        <button onclick="filterCategory('Equinocultura')" class="filter-btn bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-medium px-3 py-1 rounded-full">Equinocultura</button>
+        <button onclick="filterCategory('Avicultura e Suinocultura')" class="filter-btn bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-medium px-3 py-1 rounded-full">Avicultura & Suinocultura</button>
+        <button onclick="filterCategory('Fauna Silvestre')" class="filter-btn bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-medium px-3 py-1 rounded-full">Fauna Silvestre & Zoonoses</button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-6">
+          <h2 class="text-xl font-bold text-slate-900 border-b-2 border-brand-emerald pb-2 flex items-center justify-between">
+            <span><i class="fas fa-journal-whills text-brand-emerald mr-2"></i>Artigos Técnicos e Monografias Epidemiológicas</span>
+            <span class="text-xs text-slate-500 font-normal" id="article-count">Carregando...</span>
+          </h2>
+
+          <div id="news-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <!-- Injetado via JS -->
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="space-y-6">
+          <div class="bg-white p-5 rounded-xl shadow border border-slate-200">
+            <h4 class="font-bold text-slate-900 border-b pb-2 mb-3 text-sm"><i class="fas fa-notes-medical text-brand-emerald mr-1"></i> Indicadores de Monitoramento</h4>
+            <ul class="space-y-2 text-xs text-slate-600">
+              <li class="flex items-start gap-2"><i class="fas fa-angle-right text-brand-emerald mt-0.5"></i> <strong>Pequenos Animais:</strong> Monitoramento do ITU em pets urbanos e sorologia para *Ehrlichia* e *Leishmania*.</li>
+              <li class="flex items-start gap-2"><i class="fas fa-angle-right text-brand-emerald mt-0.5"></i> <strong>Ruminantes:</strong> Biocarrapaticidograma para *R. microplus* e suplementação com fósforo solúvel.</li>
+              <li class="flex items-start gap-2"><i class="fas fa-angle-right text-brand-emerald mt-0.5"></i> <strong>Equídeos:</strong> Vacinação contra Alphavirus e drenagem peri-estábulo.</li>
+              <li class="flex items-start gap-2"><i class="fas fa-angle-right text-brand-emerald mt-0.5"></i> <strong>Avicultura:</strong> Equilíbrio ácido-base em matrizes e ventilação em galpões industriais.</li>
+            </ul>
+          </div>
+
+          <div class="bg-gradient-to-br from-brand-navy to-brand-dark text-white p-6 rounded-xl shadow">
+            <h4 class="font-bold text-sm mb-2"><i class="fas fa-flask text-brand-mint mr-1"></i> Caderno de Pesquisa</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Os dados deste repositório sintetizam artigos e normativas de vigilância sanitária e saúde única publicados por órgãos como Embrapa, Fiocruz, WOAH e Ministério da Saúde.
+            </p>
+          </div>
+        </aside>
+      </div>
+
+      <!-- FEED DE NOTÍCIAS ATUALIZADAS -->
+      <section id="live-news-section" class="bg-white rounded-xl shadow border border-slate-200 p-5 md:p-6 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-slate-200 pb-3">
+          <div>
+            <h2 class="text-xl font-bold text-slate-900"><i class="fas fa-satellite-dish text-brand-emerald mr-2"></i>Últimas notícias veterinárias</h2>
+            <p class="text-xs text-slate-500 mt-1">Atualização automática de notícias publicadas na web; confira a matéria original na fonte.</p>
+          </div>
+          <button id="refresh-live-news" onclick="loadLiveNews(true)" class="self-start sm:self-auto bg-brand-navy hover:bg-brand-emerald text-white text-xs font-bold px-4 py-2 rounded-lg transition">
+            <i class="fas fa-rotate mr-1"></i> Atualizar agora
+          </button>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 text-[11px] text-slate-500">
+          <span class="bg-emerald-50 text-emerald-800 px-2 py-1 rounded-full font-semibold"><i class="fas fa-circle text-[7px] mr-1"></i>Feed externo</span>
+          <span id="live-news-updated">Buscando notícias recentes…</span>
+        </div>
+        <div id="live-news-status" role="status" aria-live="polite" class="text-sm text-slate-600">Conectando às fontes de notícias…</div>
+        <div id="live-news-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
+        <div class="border-t border-slate-100 pt-3 text-[11px] text-slate-500 leading-relaxed">
+          <strong>Nota:</strong> as manchetes são fornecidas por um agregador de notícias e podem incluir conteúdos jornalísticos. Para decisões sanitárias, confirme informações em fontes oficiais, como o <a class="text-sky-700 underline" href="https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/saude-animal" target="_blank" rel="noopener noreferrer">MAPA</a> e o <a class="text-sky-700 underline" href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z" target="_blank" rel="noopener noreferrer">Ministério da Saúde</a>.
+        </div>
+      </section>
+    </div>
+
+    <!-- VIEW 2: O PROJETO & INFOGRÁFICO -->
+    <div id="view-projeto" class="hidden space-y-8">
+      <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+        <div class="bg-gradient-to-r from-teal-700 to-brand-navy text-white p-8 text-center">
+          <span class="bg-brand-accent text-slate-900 text-xs font-extrabold uppercase px-3 py-1 rounded-full">Campanha de Extensão Universitária</span>
+          <h2 class="text-3xl md:text-4xl font-black mt-3">EL NIÑO E A MEDICINA VETERINÁRIA</h2>
+          <p class="text-teal-100 text-sm md:text-base mt-2">Saúde Única, Biologia de Vetores e Impactos Clínico-Epidemiológicos</p>
+        </div>
+
+        <div class="p-6 md:p-10 space-y-10">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-slate-50 p-6 rounded-xl border border-slate-200">
+            <div>
+              <h3 class="text-xl font-extrabold text-slate-900 mb-3 flex items-center gap-2">
+                <i class="fas fa-globe-americas text-brand-emerald"></i> O Fenômeno El Niño
+              </h3>
+              <p class="text-sm text-slate-700 leading-relaxed">
+                O fenômeno El Niño-Oscilação do Sul (ENOS) resulta do aquecimento anormal das águas superficiais do Oceano Pacífico Equatorial. Suas perturbações alteram a circulação atmosférica global, gerando estiagens severas em certas regiões e precipitações pluviométricas extremas em outras. Essas variações desestabilizam nichos ecológicos, aceleram o desenvolvimento de ectoparasitas e vetores e favorecem o surgimento de zoonoses e hemoparasitoses.
+              </p>
+            </div>
+            <div class="bg-slate-900 rounded-lg overflow-hidden shadow-inner p-2 text-center">
+              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Planeta Terra Clima" class="rounded h-48 w-full object-cover opacity-90">
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-6 text-center">Eixos de Impacto na Sanidade Animal</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div class="bg-white p-5 rounded-xl shadow border-t-4 border-blue-500">
+                <i class="fas fa-water text-2xl text-blue-500 mb-3"></i>
+                <h4 class="font-bold text-sm text-slate-900 mb-1">Precipitações e Inundações</h4>
+                <p class="text-xs text-slate-600">Lixiviação bacteriana, alagamento de pastagens e disseminação de *Leptospira interrogans* e *Fasciola hepatica*.</p>
+              </div>
+              <div class="bg-white p-5 rounded-xl shadow border-t-4 border-red-500">
+                <i class="fas fa-temperature-high text-2xl text-red-500 mb-3"></i>
+                <h4 class="font-bold text-sm text-slate-900 mb-1">Estresse Térmico</h4>
+                <p class="text-xs text-slate-600">Comprometimento da termorregulação, alcalose respiratória, queda da imunidade humoral e choque térmico.</p>
+              </div>
+              <div class="bg-white p-5 rounded-xl shadow border-t-4 border-brand-emerald">
+                <i class="fas fa-bug text-2xl text-brand-emerald mb-3"></i>
+                <h4 class="font-bold text-sm text-slate-900 mb-1">Vetorização e Parasitismo</h4>
+                <p class="text-xs text-slate-600">Aceleração do ciclo metabólico de carrapatos, culicídeos e flebotomíneos transmissores de zoonoses.</p>
+              </div>
+              <div class="bg-white p-5 rounded-xl shadow border-t-4 border-amber-500">
+                <i class="fas fa-tint-slash text-2xl text-amber-500 mb-3"></i>
+                <h4 class="font-bold text-sm text-slate-900 mb-1">Estiagens Prolongadas</h4>
+                <p class="text-xs text-slate-600">Deficiência nutricional e mineral, osteofagia em bovinos e eclosão de intoxicações e botulismo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: SIMULADOR DE RISCO EPIDEMIOLÓGICO -->
+    <div id="view-calculadora" class="hidden space-y-6">
+      <div class="bg-white p-6 md:p-8 rounded-xl shadow border border-slate-200">
+        <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-3">
+          <i class="fas fa-calculator text-brand-emerald"></i> Algoritmo de Avaliação de Risco Epidemiológico
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 mb-6">
+          Selecione as variáveis ambientais e operacionais para gerar uma estimativa do nível de vulnerabilidade sanitária da sua propriedade ou sistema clínico durante o El Niño:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-6 rounded-xl border border-slate-200">
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Espécie / Sistema de Criação:</label>
+              <select id="calc-especie" class="w-full text-xs p-2.5 rounded border border-slate-300">
+                <option value="bovinos">Bovinos de Corte / Leite</option>
+                <option value="pets">Cães e Gatos (Pequenos Animais)</option>
+                <option value="equinos">Equídeos (Trabalho / Esporte)</option>
+                <option value="aves">Aves de Postura / Corte (Comercial)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Anomalia Climática Predominante:</label>
+              <select id="calc-clima" class="w-full text-xs p-2.5 rounded border border-slate-300">
+                <option value="calor_extremo">Ondas de Calor Extremo e Seca</option>
+                <option value="chuvas_intensas">Inundações e Chuvas Torrenciais</option>
+                <option value="umidade_alta">Alta Umidade Relativa e Temperatura Elevação</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Profilaxia Sanitária e Imunológica:</label>
+              <select id="calc-vacina" class="w-full text-xs p-2.5 rounded border border-slate-300">
+                <option value="baixo">Desatualizada / Sem Manejo de Vetores</option>
+                <option value="medio">Parcial (Esquema vacinal em dia, sem controle ambiental)</option>
+                <option value="alto">Rigorosa (Vacinação + Controle Ambiental de Vetores)</option>
+              </select>
+            </div>
+
+            <button onclick="calcularRisco()" class="w-full bg-brand-emerald hover:bg-brand-navy text-white font-bold py-3 rounded text-xs transition">
+              Processar Diagnóstico Epidemiológico
+            </button>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-slate-200 flex flex-col justify-between" id="calc-resultado">
+            <div>
+              <h3 class="text-sm font-bold text-slate-800 border-b pb-2 mb-3">Parecer Técnico Estimado</h3>
+              <div class="text-center py-6">
+                <i class="fas fa-shield-virus text-4xl text-slate-300 mb-2"></i>
+                <p class="text-xs text-slate-500">Insira os parâmetros climáticos para avaliar o risco sanitário.</p>
+              </div>
+            </div>
+            <div class="text-[10px] text-slate-400 text-center">
+              Algoritmo de inferência baseado em diretrizes da OMSA, Embrapa e Ministério da Saúde.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 4: ARTIGOS CIENTÍFICOS & REFERÊNCIAS -->
+    <div id="view-artigos" class="hidden space-y-6">
+      <div class="bg-white p-6 md:p-8 rounded-xl shadow border border-slate-200">
+        <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-3">
+          <i class="fas fa-graduation-cap text-brand-emerald"></i> Acervo de Literatura Científica
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 mb-6">
+          Referências bibliográficas institucionais utilizadas na elaboração das monografias epidemiológicas deste portal:
+        </p>
+
+        <div class="space-y-6">
+          <div class="p-5 bg-slate-50 rounded-xl border-l-4 border-brand-emerald space-y-2">
+            <span class="text-[10px] font-bold bg-brand-emerald text-white px-2 py-0.5 rounded">Bovinocultura & Parasitologia</span>
+            <h3 class="font-bold text-slate-900 text-sm">Epidemiologia de Rhipicephalus microplus e Tristeza Parasitária Bovina</h3>
+            <p class="text-xs text-slate-600">EMBRAPA GADO DE CORTE. <em>Estratégias de Controle Integrado do Carrapato dos Bovinos e Prevenção da Tristeza Parasitária em Climas Tropicais</em>. Campo Grande: Embrapa, Documentos 284, 2024.</p>
+          </div>
+
+          <div class="p-5 bg-slate-50 rounded-xl border-l-4 border-blue-600 space-y-2">
+            <span class="text-[10px] font-bold bg-blue-600 text-white px-2 py-0.5 rounded">Zoonoses & Saúde Pública</span>
+            <h3 class="font-bold text-slate-900 text-sm">Manual de Vigilância Epidemiológica de Leptospirose e Leishmaniose</h3>
+            <p class="text-xs text-slate-600">BRASIL. Ministério da Saúde. Secretaria de Vigilância em Saúde. <em>Guia de Vigilância em Saúde: Doenças Transmitidas por Vetores e Zoonoses Emergentes</em>. 6. ed. Brasília: Ministério da Saúde, 2025.</p>
+          </div>
+
+          <div class="p-5 bg-slate-50 rounded-xl border-l-4 border-purple-600 space-y-2">
+            <span class="text-[10px] font-bold bg-purple-600 text-white px-2 py-0.5 rounded">Equídeos & Arboviroses</span>
+            <h3 class="font-bold text-slate-900 text-sm">Arboviroses em Equídeos e Impactos das Mudanças Climáticas</h3>
+            <p class="text-xs text-slate-600">WORLD ORGANISATION FOR ANIMAL HEALTH (WOAH). <em>Terrestrial Manual: Equine Encephalomyelitis and Vector Control Standards</em>. Paris: WOAH, 2025.</p>
+          </div>
+
+          <div class="p-5 bg-slate-50 rounded-xl border-l-4 border-amber-600 space-y-2">
+            <span class="text-[10px] font-bold bg-amber-600 text-white px-2 py-0.5 rounded">Avicultura Industrial</span>
+            <h3 class="font-bold text-slate-900 text-sm">Manejo Térmico e Fisiologia do Estresse em Aves Comerciais</h3>
+            <p class="text-xs text-slate-600">EMBRAPA SUÍNOS E AVES. <em>Impactos do Estresse Térmico na Produtividade e Imunidade de Aves Comerciais</em>. Concórdia: Embrapa Suínos e Aves, 2023.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- MODAL LEITOR INTERNO EXPANDIDO -->
+  <div id="article-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-800 text-2xl font-bold">
+        &times;
+      </button>
+      <div id="modal-content">
+        <!-- Preenchido via JS com Artigo Científico Completo -->
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-brand-navy text-slate-400 py-8 border-t border-slate-800 mt-12 text-xs text-center space-y-2">
+    <p class="font-semibold text-slate-300">Portal EcoVet - El Niño e Medicina Veterinária Preventiva</p>
+    <p>Projeto Acadêmico de Extensão Universitária e Saúde Única.</p>
+  </footer>
+
+  <!-- VLIBRAS WIDGET -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
+  <!-- JAVASCRIPT LOGIC (BASE CIENTÍFICA Densa + SIMULADOR + FILTROS) -->
+  <script>
+    const articlesData = [
+      {
+            "id": 1,
+            "title": "Ondas de calor aumentam o risco de hipertermia em cães braquicefálicos",
+            "category": "Pequenos Animais",
+            "date": "Outubro, 2026",
+            "image": "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=1000&q=85",
+            "desc": "Alterações anatômicas e temperaturas elevadas podem comprometer a termorregulação de Pugs, Bulldogs e outros cães de focinho curto.",
+            "source": "<strong>Referências:</strong><br>1. <a class=\"text-sky-700 underline\" target=\"_blank\" rel=\"noopener\" href=\"https://www.frontiersin.org/journals/animal-science/articles/10.3389/fanim.2025.1679377/full\">Heat stress in domestic dogs: morphological and environmental risk factors for dog welfare in a warming world. Frontiers in Animal Science, 2025.</a><br>2. <a class=\"text-sky-700 underline\" target=\"_blank\" rel=\"noopener\" href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC13011106/\">Clark et al. Heatstroke and brachycephalic dogs – is there an increased risk? Veterinary Evidence, 2022.</a>",
+            "content": "<p class=\"mb-3\"><strong>Temperaturas elevadas e características anatômicas podem aumentar o risco de emergências térmicas em cães.</strong> Pugs, Buldogues Franceses e Buldogues Ingleses apresentam conformações das vias respiratórias que podem dificultar a passagem do ar e a dissipação de calor.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Por que o calor é perigoso?</h3><p class=\"mb-3\">Os cães perdem boa parte do calor por evaporação durante a respiração ofegante. Em ambientes quentes e úmidos, esse mecanismo pode ser insuficiente; nos braquicefálicos, a obstrução das vias aéreas pode agravar o esforço respiratório. Obesidade, exercício intenso e falta de sombra aumentam a vulnerabilidade.</p><p class=\"mb-3\">A hipertermia grave pode desencadear alterações circulatórias, lesões renais, distúrbios de coagulação e comprometimento neurológico. Respiração muito intensa, salivação excessiva, fraqueza, vômitos, desorientação ou colapso exigem atendimento veterinário imediato.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Prevenção</h3><p class=\"mb-3\">Ofereça água fresca, sombra e ambiente ventilado; evite passeios e exercícios nos horários mais quentes e nunca deixe o animal dentro de veículos estacionados. Diante de suspeita de hipertermia, inicie resfriamento com água fresca (não gelada) e ventilação enquanto busca atendimento veterinário. O El Niño pode contribuir para períodos de calor em algumas regiões, mas seus efeitos dependem da época e das condições climáticas locais.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Como reconhecer a progressão do quadro?</h3><p class=\"mb-3\">O estresse térmico começa quando o animal acumula calor mais rapidamente do que consegue dissipá-lo. A exposição pode ser agravada por umidade elevada, radiação solar direta, ausência de circulação de ar, exercício físico, transporte e permanência em locais fechados. A temperatura ambiente, sozinha, não descreve todo o risco: umidade, ventilação, condição corporal, idade e doenças respiratórias também influenciam a resposta individual.</p><p class=\"mb-3\">A síndrome obstrutiva das vias aéreas dos braquicefálicos pode aumentar o esforço necessário para respirar. O ruído respiratório intenso, o ronco quando acordado, a intolerância ao exercício e a recuperação demorada após atividade física merecem avaliação veterinária, mesmo fora de episódios de calor. Esses sinais não devem ser considerados normais apenas por serem frequentes em determinadas raças.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">O que fazer em uma suspeita de intermação?</h3><p class=\"mb-3\">Interrompa imediatamente a atividade e leve o cão para um local fresco e ventilado. Molhar o corpo com água fresca e promover circulação de ar pode auxiliar no resfriamento durante o deslocamento para atendimento, mas não se deve atrasar a avaliação profissional para tentar resolver o quadro em casa. Evite cobrir o animal com toalhas molhadas que retenham calor e não force a ingestão de água se ele estiver desorientado ou com dificuldade para engolir.</p><p class=\"mb-3\">O atendimento pode exigir monitoramento de temperatura, perfusão, glicemia, função renal, eletrólitos e coagulação, pois algumas complicações surgem ou se tornam evidentes após a redução da temperatura corporal. Por isso, uma melhora aparente não exclui lesões sistêmicas. Para tutores, a mensagem central é adaptar a rotina ao clima e reconhecer cedo os sinais de dificuldade respiratória ou fraqueza.</p><p class=\"mb-3\"><strong>Relação com o El Niño:</strong> o fenômeno pode alterar padrões de chuva e temperatura em determinadas regiões, mas seus efeitos não são uniformes. Atribuir um caso individual diretamente ao El Niño exige dados meteorológicos e epidemiológicos; a recomendação prática é acompanhar alertas locais e reforçar os cuidados em períodos quentes.</p>"
+      },
+      {
+            "id": 2,
+            "title": "Clima e manejo influenciam a dinâmica dos carrapatos e o risco de tristeza parasitária bovina",
+            "category": "Bovinocultura",
+            "date": "Outubro, 2026",
+            "image": "https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1000&q=85",
+            "desc": "Temperatura, umidade e imunidade do rebanho influenciam a infestação por carrapatos e a ocorrência de babesiose e anaplasmose.",
+            "source": "<strong>Referências:</strong><br>1. <a class=\"text-sky-700 underline\" target=\"_blank\" rel=\"noopener\" href=\"https://doi.org/10.1590/S1984-29612023007\">Puentes, J. D.; Riet-Correa, F. Epidemiological aspects of cattle tick fever in Brazil. Revista Brasileira de Parasitologia Veterinária, 2023.</a><br>2. <a class=\"text-sky-700 underline\" target=\"_blank\" rel=\"noopener\" href=\"https://doi.org/10.1017/S0031182004005967\">Jongejan, F.; Uilenberg, G. The global importance of ticks. Parasitology, 2004.</a>",
+            "content": "<p class=\"mb-3\"><strong>A tristeza parasitária bovina é um complexo de doenças associado principalmente a <em>Babesia bovis</em>, <em>Babesia bigemina</em> e <em>Anaplasma marginale</em>.</strong> A babesiose e a anaplasmose são transmitidas sobretudo pelo carrapato <em>Rhipicephalus microplus</em>, embora a transmissão de <em>A. marginale</em> também possa ocorrer por instrumentos contaminados e outros mecanismos.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">O papel do ambiente</h3><p class=\"mb-3\">Temperatura e umidade interferem na sobrevivência dos ovos e larvas e no desenvolvimento do carrapato. Entretanto, calor maior não significa necessariamente mais carrapatos: secas intensas e condições ambientais extremas também podem reduzir a sobrevivência dos estágios de vida livre. O risco depende ainda da região, do manejo e da proporção de bovinos suscetíveis.</p><p class=\"mb-3\">Os sinais clínicos podem incluir febre, anemia, icterícia, apatia, queda na produção e, em determinados casos, urina escura ou alterações neurológicas. A confirmação requer avaliação veterinária e exames laboratoriais, pois diferentes doenças podem produzir sinais semelhantes.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Vigilância e controle</h3><p class=\"mb-3\">O controle integrado deve considerar monitoramento das infestações, escolha correta de acaricidas, avaliação de resistência e estratégias adequadas à região. Registros de carrapatos, casos clínicos e condições meteorológicas ajudam a planejar as ações. Tratamentos e medidas preventivas devem ser definidos com assistência médico-veterinária.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Por que o mesmo clima não produz o mesmo risco em todas as propriedades?</h3><p class=\"mb-3\">A dinâmica de <em>Rhipicephalus microplus</em> resulta da interação entre clima, pastagem, lotação, raça, manejo e uso prévio de acaricidas. O carrapato apresenta uma fase parasitária sobre o bovino e fases de vida livre no ambiente. Temperatura e umidade afetam a oviposição, a eclosão e a sobrevivência das larvas, mas a resposta depende da combinação desses fatores e pode variar entre microrregiões e estações do ano.</p><p class=\"mb-3\">A estabilidade enzoótica também precisa ser interpretada com cuidado. Em certas condições, a exposição dos bezerros pode favorecer o desenvolvimento de imunidade, mas isso não significa que a infestação deva ser mantida sem controle ou que todos os animais estejam protegidos. Mudanças no manejo, introdução de bovinos de outras regiões e redução da exposição podem alterar o equilíbrio e aumentar a proporção de animais suscetíveis.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Diagnóstico e impacto produtivo</h3><p class=\"mb-3\">A suspeita clínica deve ser investigada com hemograma, avaliação de mucosas e temperatura, além de exames parasitológicos ou moleculares conforme a disponibilidade e a fase da doença. A anemia pode reduzir o ganho de peso e a produção de leite, prolongar a recuperação e aumentar os custos com medicamentos e mão de obra. A babesiose e a anaplasmose compartilham sinais, mas diferem em aspectos biológicos e epidemiológicos; por isso, o tratamento não deve ser escolhido apenas pela aparência dos sintomas.</p><p class=\"mb-3\">O controle estratégico deve ser orientado por contagens de carrapatos, histórico de eficácia dos produtos, período de carência e risco de resistência. A aplicação repetida sem diagnóstico ou sem respeitar a dose e a técnica recomendadas pode selecionar populações resistentes e aumentar resíduos ambientais. A rotação de princípios ativos precisa ser tecnicamente planejada, não feita de forma aleatória.</p><p class=\"mb-3\"><strong>Aplicação para vigilância:</strong> registros simples de data, categoria animal, intensidade de infestação, produto utilizado e resposta observada permitem comparar estações e identificar falhas. O clima é uma variável de planejamento, não um substituto da inspeção do rebanho nem da avaliação veterinária.</p>"
+      },
+      {
+            "id": 3,
+            "title": "Encefalomielites equinas reforçam a importância da vigilância de mosquitos vetores",
+            "category": "Equideocultura",
+            "date": "Outubro, 2026",
+            "image": "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=1000&q=85",
+            "desc": "Arboviroses podem causar doença neurológica grave em equídeos; vigilância e controle de vetores são essenciais.",
+            "source": "<strong>Referências:</strong><br>1. <a class=\"text-sky-700 underline\" target=\"_blank\" rel=\"noopener\" href=\"https://doi.org/10.1016/j.cveq.2022.11.007\">Luethy, D. Eastern, Western, and Venezuelan Equine Encephalitis and West Nile Viruses: Clinical and Public Health Considerations. Veterinary Clinics of North America: Equine Practice, 2023.</a><br>2. <a class=\"text-sky-700 underline\" target=\"_blank\" rel=\"noopener\" href=\"https://www.woah.org/en/what-we-do/animal-health-and-welfare/animal-diseases/\">World Organisation for Animal Health (WOAH). Animal diseases.</a>",
+            "content": "<p class=\"mb-3\"><strong>As encefalomielites equinas do Leste, do Oeste e Venezuelana são doenças virais transmitidas por mosquitos.</strong> Os ciclos de transmissão envolvem vetores e hospedeiros vertebrados, como aves ou roedores, dependendo do vírus. Equídeos e seres humanos podem desenvolver doença, mas o papel epidemiológico dos cavalos varia conforme o agente.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Ambiente e transmissão</h3><p class=\"mb-3\">Chuvas, temperatura, disponibilidade de criadouros e alterações no uso do solo podem modificar a abundância e a distribuição dos mosquitos. Ainda assim, a presença de água parada ou um período chuvoso, isoladamente, não confirma circulação viral: também são necessários o agente, vetores competentes e hospedeiros suscetíveis.</p><p class=\"mb-3\">Nos equídeos, sinais de alerta incluem febre, apatia, falta de coordenação, alterações de comportamento, tremores, dificuldade de locomoção, convulsões e paralisia. Como outras enfermidades causam sinais neurológicos semelhantes, a avaliação clínica e a confirmação laboratorial são fundamentais.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Prevenção e notificação</h3><p class=\"mb-3\">A prevenção pode incluir vacinação quando disponível e indicada para o agente e a região, redução de criadouros, manejo ambiental e proteção dos animais contra mosquitos. Suspeitas de doença neurológica devem ser avaliadas rapidamente e comunicadas aos serviços veterinários oficiais conforme as normas locais.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Ciclos epidemiológicos e diferenças entre os vírus</h3><p class=\"mb-3\">As encefalomielites equinas são arboviroses, mas não devem ser tratadas como uma única doença com ecologia idêntica. Os vírus do Leste e do Oeste mantêm ciclos envolvendo mosquitos e hospedeiros vertebrados, enquanto o vírus da encefalomielite equina venezuelana apresenta diferentes variantes e ciclos epidemiológicos. A relevância dos equídeos como hospedeiros amplificadores depende do agente; em muitas situações, os cavalos adoecem e funcionam como sentinelas, sem sustentar sozinhos a transmissão.</p><p class=\"mb-3\">A investigação de suspeitas neurológicas deve considerar outras causas, incluindo raiva, encefalites por outros vírus, intoxicações, distúrbios metabólicos e traumas. A coleta de amostras e a escolha dos testes dependem da fase clínica e das orientações dos serviços oficiais. Como algumas dessas doenças têm implicações de saúde pública, a manipulação de animais com sinais neurológicos deve seguir protocolos de biossegurança.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Vigilância baseada em risco</h3><p class=\"mb-3\">A vigilância pode integrar dados meteorológicos, identificação de áreas alagadas, monitoramento de mosquitos, movimentação de equídeos e notificações clínicas. Esses indicadores ajudam a priorizar locais para investigação, mas não confirmam por si mesmos a presença de um vírus. A confirmação exige investigação epidemiológica e laboratorial apropriada.</p><p class=\"mb-3\">Medidas de manejo incluem reduzir água parada em recipientes artificiais, manter instalações e áreas de descanso bem manejadas e usar estratégias de proteção contra insetos compatíveis com a espécie e com as orientações veterinárias. Quando houver vacina indicada e disponível para o agente relevante, o protocolo deve considerar risco regional, histórico vacinal e instruções do fabricante. A vacinação não elimina a necessidade de vigilância e controle ambiental.</p><p class=\"mb-3\"><strong>Quando comunicar:</strong> alterações neurológicas agudas, especialmente quando acompanhadas de febre, múltiplos animais afetados ou mortalidade incomum, justificam contato rápido com o médico-veterinário e com o serviço oficial de defesa sanitária. A notificação oportuna melhora a possibilidade de diagnóstico e resposta coordenada.</p>"
+      },
+      {
+            "id": 4,
+            "title": "Estresse térmico pode reduzir a postura e comprometer a qualidade da casca dos ovos",
+            "category": "Avicultura",
+            "date": "Outubro, 2026",
+            "image": "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=1000&q=85",
+            "desc": "Calor intenso altera o consumo de ração, o equilíbrio ácido-base e a formação da casca em galinhas poedeiras.",
+            "source": "<strong>Referências:</strong><br>1. <a class=\"text-sky-700 underline\" target=\"_blank\" rel=\"noopener\" href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC11011014/\">Effects of Heat Stress on the Laying Performance, Egg Quality, and Physiological Response of Laying Hens, 2024.</a><br>2. <a class=\"text-sky-700 underline\" target=\"_blank\" rel=\"noopener\" href=\"https://www.sciencedirect.com/science/article/pii/S0306456521003351\">Impact of relative humidity on laying performance, egg quality, and physiological stress responses of laying hens exposed to high ambient temperature.</a>",
+            "content": "<p class=\"mb-3\"><strong>O estresse térmico é um desafio importante para a avicultura, sobretudo quando a ventilação e o controle ambiental não são suficientes.</strong> Galinhas poedeiras expostas ao calor podem aumentar a frequência respiratória, reduzir o consumo de ração e apresentar queda na produção e na qualidade dos ovos.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Alterações fisiológicas</h3><p class=\"mb-3\">As aves não possuem glândulas sudoríparas e dependem de mecanismos como a respiração ofegante para perder calor. A hiperventilação pode aumentar a eliminação de dióxido de carbono e causar alcalose respiratória. Essa alteração, junto à menor ingestão de cálcio e outros nutrientes, pode prejudicar a formação da casca.</p><p class=\"mb-3\">Cascas mais finas ou frágeis aumentam as perdas durante a coleta, o transporte e a comercialização. A redução da ingestão alimentar também pode comprometer energia, proteína e minerais necessários à postura.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Medidas de manejo</h3><p class=\"mb-3\">Ventilação dimensionada corretamente, oferta constante de água fresca, manutenção dos equipamentos, ajuste da densidade e formulação nutricional adequada ajudam a reduzir os efeitos do calor. As medidas devem considerar temperatura, umidade, linhagem, idade e sistema de criação. Monitorar indicadores ambientais e produtivos permite intervir antes que os prejuízos se agravem.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Como o estresse térmico afeta o desempenho?</h3><p class=\"mb-3\">As aves mantêm a temperatura corporal dentro de limites relativamente estreitos e dependem de trocas de calor com o ambiente, da evaporação respiratória e de ajustes comportamentais. Quando o calor persiste, elas podem permanecer mais tempo com as asas afastadas do corpo, reduzir a atividade e consumir menos alimento. A queda na ingestão de nutrientes limita a energia disponível para manutenção e produção, enquanto o esforço de termorregulação aumenta a demanda fisiológica.</p><p class=\"mb-3\">A magnitude do efeito depende da intensidade e duração do calor, da umidade relativa, da velocidade do ar, da idade, da linhagem e da fase de produção. Por isso, resultados experimentais não devem ser aplicados automaticamente a todas as granjas. O acompanhamento conjunto da temperatura, umidade, consumo de água, consumo de ração, mortalidade e qualidade dos ovos oferece uma visão mais útil do que um único indicador.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">A casca e o equilíbrio ácido-base</h3><p class=\"mb-3\">A formação da casca exige cálcio e carbonato, além de funcionamento adequado do trato digestório, metabolismo mineral e glândula da casca. A hiperventilação pode diminuir a concentração de dióxido de carbono no sangue e contribuir para alcalose respiratória. Esse processo interfere no equilíbrio ácido-base e pode prejudicar a disponibilidade de carbonato, enquanto a redução do consumo alimentar diminui a ingestão diária de cálcio e outros nutrientes.</p><p class=\"mb-3\">O resultado pode incluir ovos menores, cascas menos resistentes e maior proporção de ovos trincados. As perdas econômicas também incluem energia para ventilação, manejo emergencial, mortalidade e menor persistência de postura. A avaliação deve considerar a qualidade dos ovos e o desempenho ao longo do tempo, e não apenas a produção diária.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Medidas de adaptação na granja</h3><p class=\"mb-3\">A prevenção começa com dimensionamento e manutenção dos ventiladores, entradas de ar desobstruídas, distribuição uniforme das aves e fornecimento contínuo de água limpa. Sistemas evaporativos podem ajudar em determinadas condições, mas sua eficiência depende da umidade externa e do projeto do galpão. Ajustes de dieta, horário de fornecimento e granulometria do cálcio devem ser feitos com nutricionista e médico-veterinário, evitando suplementação improvisada.</p><p class=\"mb-3\">Planos de contingência para ondas de calor devem definir quem monitora os sensores, quais parâmetros acionam medidas de emergência e como registrar a resposta produtiva. A adaptação climática combina infraestrutura, nutrição, genética e manejo; nenhuma intervenção isolada resolve todos os cenários.</p>"
+      },
+      {
+            "id": 5,
+            "title": "Seca e falhas nutricionais podem elevar o risco de botulismo em bovinos",
+            "category": "Bovinocultura",
+            "date": "Outubro, 2026",
+            "image": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=1000&q=85",
+            "desc": "Osteofagia e ingestão de carcaças contaminadas podem expor os bovinos à toxina botulínica.",
+            "source": "<strong>Referências:</strong><br>1. <a class=\"text-sky-700 underline\" target=\"_blank\" rel=\"noopener\" href=\"https://www.scielo.br/j/pvb/a/QFs3ZzpdTGt3kBgjVqVWKxf/?lang=en\">Botulism in cattle in Mato Grosso do Sul: History, current situation, and perspectives. Pesquisa Veterinária Brasileira, 2024.</a><br>2. <a class=\"text-sky-700 underline\" target=\"_blank\" rel=\"noopener\" href=\"https://www.gov.br/agricultura/pt-br\">Ministério da Agricultura e Pecuária (MAPA).</a>",
+            "content": "<p class=\"mb-3\"><strong>Períodos de estiagem podem reduzir a disponibilidade de forragem e agravar problemas nutricionais.</strong> Nesse cenário, a osteofagia — ingestão ou mastigação de ossos — merece atenção, pois pode estar associada a deficiências minerais e à exposição a restos de carcaças contaminadas.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Como ocorre o botulismo?</h3><p class=\"mb-3\">O botulismo é uma intoxicação causada por neurotoxinas produzidas por bactérias do gênero <em>Clostridium</em>, principalmente <em>Clostridium botulinum</em>. Quando os bovinos ingerem toxina presente em material contaminado, ela bloqueia a liberação de acetilcolina nas junções neuromusculares, causando paralisia flácida. A osteofagia, por si só, não confirma a doença; é necessária exposição à toxina.</p><p class=\"mb-3\">Os sinais podem incluir fraqueza progressiva, dificuldade para caminhar, redução do tônus da língua, dificuldade de deglutição e incapacidade de permanecer em estação. Em casos graves, a paralisia dos músculos respiratórios pode levar à morte.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Prevenção na propriedade</h3><p class=\"mb-3\">O manejo preventivo inclui recolher e dar destinação adequada às carcaças, fornecer dieta e suplementação mineral equilibradas e manter água e alimento de qualidade. A vacinação com toxoides pode fazer parte do programa sanitário em propriedades de risco, mediante orientação veterinária. Na seca, acompanhar condição corporal, oferta de forragem e consumo de suplementos é essencial.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">O que acontece no organismo?</h3><p class=\"mb-3\">A toxina botulínica impede a liberação de acetilcolina nas terminações nervosas periféricas. Sem esse neurotransmissor, o músculo não recebe adequadamente o estímulo para contrair, provocando fraqueza e paralisia flácida. A evolução pode ser progressiva, e a gravidade varia com a quantidade de toxina ingerida e as condições do animal. Não é necessário que o bovino ingira a bactéria viva: a intoxicação pode ocorrer pela ingestão da toxina já formada em material contaminado.</p><p class=\"mb-3\">A dificuldade de deglutição pode aumentar o risco de aspiração, enquanto a incapacidade de levantar-se leva a complicações secundárias e piora do prognóstico. A presença de vários bovinos com fraqueza semelhante, especialmente após acesso a carcaças ou fontes alimentares suspeitas, deve ser tratada como evento sanitário urgente. O diagnóstico diferencial inclui outras causas de paralisia, distúrbios metabólicos e intoxicações.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Seca, nutrição e osteofagia: uma relação indireta</h3><p class=\"mb-3\">A escassez de forragem pode reduzir a ingestão de nutrientes e tornar mais evidentes deficiências minerais quando a suplementação é inadequada. A osteofagia pode ocorrer em contextos de desequilíbrio nutricional, mas não deve ser interpretada como prova de deficiência específica nem como confirmação de botulismo. A avaliação da dieta, da água, da condição corporal e do manejo é necessária para determinar as causas prováveis.</p><p class=\"mb-3\">O risco de botulismo aumenta quando os animais têm acesso a carcaças ou restos contaminados. Por isso, a remoção rápida e a destinação segura de animais mortos são medidas importantes, assim como impedir que restos de carcaças sejam incorporados à alimentação ou permaneçam em açudes e áreas de pastejo.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Resposta a uma suspeita de surto</h3><p class=\"mb-3\">O produtor deve procurar assistência veterinária imediatamente, restringir o acesso à fonte suspeita, registrar o número de animais afetados e evitar movimentações desnecessárias até receber orientação. A coleta de material para diagnóstico e a comunicação aos órgãos competentes devem seguir as recomendações locais. Não se deve administrar medicamentos ou suplementos indiscriminadamente a todo o rebanho sem avaliação técnica.</p><p class=\"mb-3\">A vacinação com toxoides pode ser recomendada em propriedades com risco reconhecido, mas exige planejamento, primovacinação e reforços conforme o produto. O controle ambiental, a nutrição balanceada e a biossegurança continuam indispensáveis mesmo em rebanhos vacinados.</p>"
+      },
+      {
+            "id": 6,
+            "title": "Mudanças ambientais reforçam a vigilância de zoonoses na fauna silvestre",
+            "category": "Fauna Silvestre",
+            "date": "Outubro, 2026",
+            "image": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&w=1000&q=85",
+            "desc": "Desmatamento, fragmentação de habitats e alterações climáticas podem mudar o contato entre fauna, animais domésticos e pessoas.",
+            "source": "<strong>Referências:</strong><br>1. <a class=\"text-sky-700 underline\" target=\"_blank\" rel=\"noopener\" href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC13040231/\">Mechanistic yellow fever modelling under climate change in Brazil and beyond: Information gaps and future steps. Wellcome Open Research, 2026.</a><br>2. <a class=\"text-sky-700 underline\" target=\"_blank\" rel=\"noopener\" href=\"https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/r/raiva/raiva-animal\">Ministério da Saúde. Raiva animal.</a>",
+            "content": "<p class=\"mb-3\"><strong>A saúde humana, animal e ambiental está conectada.</strong> Desmatamento, queimadas, fragmentação de habitats e mudanças na disponibilidade de alimento e água podem alterar os deslocamentos da fauna e as oportunidades de contato entre animais silvestres, domésticos e seres humanos.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Diferentes zoonoses, diferentes ciclos</h3><p class=\"mb-3\">A raiva é causada por um vírus transmitido principalmente pela saliva de mamíferos infectados. Já a febre amarela é transmitida por mosquitos infectados; na forma silvestre, primatas não humanos participam do ciclo como hospedeiros, mas não transmitem diretamente o vírus às pessoas. Essas diferenças são fundamentais para orientar a vigilância e evitar interpretações incorretas.</p><p class=\"mb-3\">A ocorrência de mortes de macacos pode servir como sinal de alerta para a circulação do vírus da febre amarela e deve ser comunicada às autoridades. Os animais não devem ser perseguidos ou mortos. Morcegos e outros mamíferos também podem participar de ciclos epidemiológicos da raiva, conforme a espécie e a variante viral.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Saúde Única na prática</h3><p class=\"mb-3\">A abordagem de Saúde Única integra vigilância ambiental, veterinária e humana. A prevenção inclui vacinação antirrábica de cães e gatos, vacinação humana contra febre amarela conforme as recomendações oficiais, proteção de habitats e comunicação de eventos suspeitos aos órgãos competentes. Mudanças climáticas podem modificar condições de transmissão, mas não são a única causa de novos focos.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Por que as alterações ambientais importam?</h3><p class=\"mb-3\">A fragmentação de habitats pode aproximar animais silvestres de áreas agrícolas e urbanas, alterar a disponibilidade de abrigo e alimento e modificar a composição das comunidades de hospedeiros e vetores. Esses processos podem mudar oportunidades de transmissão, mas o resultado não é sempre um aumento de doenças: depende do agente infeccioso, da espécie hospedeira, do vetor, da paisagem e das atividades humanas.</p><p class=\"mb-3\">O clima também atua de formas diferentes sobre cada sistema. Temperatura e precipitação podem afetar a sobrevivência de vetores, a disponibilidade de água e o comportamento dos animais, mas não explicam isoladamente a ocorrência de uma zoonose. Estudos epidemiológicos precisam combinar dados de campo, vigilância laboratorial, informações ambientais e histórico de exposição para identificar relações plausíveis.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Animais sentinelas e comunicação responsável</h3><p class=\"mb-3\">Primatas não humanos são sentinelas importantes da circulação do vírus da febre amarela silvestre. Encontrar um macaco morto não significa que o animal tenha transmitido a doença; o evento deve ser comunicado à vigilância para investigação. Tocar, capturar ou matar esses animais pode expor pessoas a riscos, prejudicar a investigação e causar danos à fauna. Da mesma forma, morcegos encontrados caídos ou com comportamento atípico não devem ser manipulados sem orientação.</p><p class=\"mb-3\">Na raiva, a avaliação de risco depende da espécie, do comportamento, da região e da possibilidade de contato com saliva ou tecido nervoso. Pessoas expostas devem procurar imediatamente o serviço de saúde, e animais domésticos envolvidos em contato suspeito precisam ser avaliados por profissional habilitado e conforme protocolos oficiais.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">O papel da Saúde Única</h3><p class=\"mb-3\">A abordagem de Saúde Única promove a troca de informações entre vigilância epidemiológica, serviços veterinários, conservação ambiental, laboratórios e comunidades. Dados sobre mortalidade incomum de fauna, presença de vetores, casos em animais domésticos e alterações no uso do solo podem ajudar a priorizar investigações.</p><p class=\"mb-3\">A prevenção inclui vacinação de animais domésticos conforme calendário e risco, vacinação humana contra febre amarela conforme recomendações oficiais, manejo seguro de resíduos e proteção de habitats. A comunicação pública deve evitar culpar espécies silvestres e explicar que a prevenção depende de compreender o ciclo específico de cada doença.</p>"
+      },
+      {
+            "id": 7,
+            "title": "Enchentes aumentam a preocupação com leptospirose em cães e pessoas",
+            "category": "Pequenos Animais",
+            "date": "Outubro, 2026",
+            "image": "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1000&q=85",
+            "desc": "Água e lama contaminadas com urina de animais infectados podem expor cães e pessoas à bactéria Leptospira.",
+            "source": "<strong>Referências:</strong><br>1. <a class=\"text-sky-700 underline\" target=\"_blank\" rel=\"noopener\" href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC12193477/\">Canine Leptospirosis in Flood-Affected Areas of Southern Brazil: Molecular Assessment and Public Health Implications, 2025.</a><br>2. <a class=\"text-sky-700 underline\" target=\"_blank\" rel=\"noopener\" href=\"https://www.who.int/health-topics/leptospirosis\">World Health Organization. Leptospirosis.</a>",
+            "content": "<p class=\"mb-3\"><strong>Enchentes podem ampliar a exposição de pessoas e animais a agentes infecciosos presentes na água e na lama.</strong> A leptospirose é uma zoonose bacteriana causada por espécies patogênicas do gênero <em>Leptospira</em>. A infecção ocorre principalmente quando mucosas ou pele lesionada entram em contato com água, lama ou solo contaminados pela urina de animais infectados. Roedores são reservatórios importantes, mas outros mamíferos também participam da epidemiologia.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">O que mostrou a investigação após as enchentes?</h3><p class=\"mb-3\">Um estudo publicado em 2025 avaliou 246 cães resgatados em áreas atingidas pelas enchentes de maio de 2024 no Rio Grande do Sul. Nove animais (4%) apresentaram resultado positivo para o alvo molecular investigado. Entre essas amostras, oito tiveram sequências compatíveis com <em>Leptospira interrogans</em> e uma com <em>Leptospira kirschneri</em>. Esses resultados não representam necessariamente a prevalência em todos os cães da região nem comprovam transmissão direta dos cães para pessoas.</p><p class=\"mb-3\">Em cães, a doença pode provocar febre, apatia, vômitos, alterações renais e hepáticas e, nos casos graves, hemorragias e morte. O diagnóstico depende de avaliação veterinária e exames apropriados.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Cuidados após uma inundação</h3><p class=\"mb-3\">Evite o contato desprotegido com água e lama suspeitas, forneça água potável aos animais, higienize os ambientes com segurança e procure atendimento veterinário se surgirem sinais clínicos. Converse com o médico-veterinário sobre a vacinação contra leptospirose, de acordo com os riscos locais e os produtos disponíveis. Abrigos temporários devem priorizar saneamento, triagem clínica e biossegurança.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Como interpretar os resultados de cães resgatados?</h3><p class=\"mb-3\">O estudo molecular realizado após as enchentes do Rio Grande do Sul oferece evidência sobre a presença de material genético de leptospiras em parte dos animais examinados. Contudo, a proporção observada deve ser interpretada considerando o desenho do estudo, a seleção dos cães resgatados, o momento da coleta e o tipo de teste empregado. Ela não corresponde automaticamente à prevalência em toda a população canina, nem permite concluir que os cães tenham sido a fonte de infecção humana.</p><p class=\"mb-3\">A leptospirose pode ter período de incubação variável e manifestações clínicas inespecíficas. Em cães, a lesão renal e hepática pode ser importante; por isso, exames bioquímicos, hemograma, urinálise e testes específicos podem ser solicitados conforme a avaliação clínica. A escolha entre testes sorológicos e moleculares depende do momento da infecção, do histórico vacinal e da pergunta diagnóstica.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Biossegurança no atendimento e nos abrigos</h3><p class=\"mb-3\">Animais com suspeita de leptospirose devem ser manejados com medidas de higiene, luvas e prevenção de contato com urina, especialmente em ambientes coletivos. A limpeza deve ser feita com produtos apropriados e conforme orientação profissional, sem misturar substâncias químicas. A urina e os materiais contaminados precisam ser manejados com cuidado, e os abrigos devem assegurar drenagem, água potável, separação adequada de animais doentes e limpeza regular.</p><p class=\"mb-3\">A vacinação de cães reduz o risco de doença causada pelos sorovares incluídos na formulação, mas não garante proteção contra todos os tipos de leptospiras nem substitui medidas ambientais. O protocolo deve ser definido por médico-veterinário de acordo com o risco local, idade, histórico vacinal e recomendações do produto.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Preparação para eventos extremos</h3><p class=\"mb-3\">Planos de contingência para enchentes devem prever identificação dos animais, registros de vacinação e tratamentos, locais seguros para abrigo, disponibilidade de água potável, equipamentos de proteção e fluxo de encaminhamento para atendimento. A comunicação entre equipes veterinárias, defesa civil e vigilância em saúde permite compartilhar alertas e orientar a população.</p><p class=\"mb-3\">Após contato com água de enchente, pessoas ou animais que apresentem febre, prostração, vômitos ou alterações urinárias devem receber avaliação profissional. A prevenção é mais efetiva quando saneamento, controle de roedores, manejo ambiental e vigilância clínica são planejados de forma integrada.</p>"
+      },
+      {
+            "id": 8,
+            "title": "Vigilância de flebotomíneos é essencial para prevenir a leishmaniose visceral canina",
+            "category": "Pequenos Animais",
+            "date": "Outubro, 2026",
+            "image": "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=1000&q=85",
+            "desc": "Distribuição de vetores, ambiente peridomiciliar e presença do parasito influenciam o risco de transmissão da leishmaniose visceral.",
+            "source": "<strong>Referências:</strong><br>1. <a class=\"text-sky-700 underline\" target=\"_blank\" rel=\"noopener\" href=\"https://pubmed.ncbi.nlm.nih.gov/41779509/\">Visceral Leishmaniasis in Southern Brazil: an overview of current epidemiology. PubMed, 2026.</a><br>2. <a class=\"text-sky-700 underline\" target=\"_blank\" rel=\"noopener\" href=\"https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/l/leishmaniose-visceral\">Ministério da Saúde. Leishmaniose visceral.</a>",
+            "content": "<p class=\"mb-3\"><strong>A leishmaniose visceral é uma zoonose de grande importância no Brasil.</strong> É causada pelo protozoário <em>Leishmania infantum</em> e transmitida pela picada de flebotomíneos infectados, conhecidos como mosquito-palha. <em>Lutzomyia longipalpis</em> é o principal vetor associado à transmissão urbana brasileira.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Ambiente e risco epidemiológico</h3><p class=\"mb-3\">A distribuição dos flebotomíneos é influenciada por temperatura, umidade, matéria orgânica e características do peridomicílio. Mudanças no uso do solo, expansão urbana e alterações climáticas podem modificar as condições locais, mas não se deve atribuir automaticamente um novo foco ao aumento da temperatura: a transmissão depende também da presença do parasito, do vetor e de hospedeiros suscetíveis.</p><p class=\"mb-3\">Os cães são importantes reservatórios domésticos em áreas de transmissão urbana, mas não transmitem habitualmente a doença diretamente às pessoas: o flebotomíneo é necessário para a transmissão. Nos cães, os sinais podem incluir emagrecimento, alterações dermatológicas, crescimento exagerado das unhas, aumento de linfonodos e comprometimento renal. Alguns animais infectados, porém, apresentam poucos sinais ou permanecem sem manifestações evidentes.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Prevenção e vigilância</h3><p class=\"mb-3\">A prevenção envolve limpeza de quintais, remoção de matéria orgânica acumulada, manejo adequado dos abrigos de animais e medidas de proteção contra flebotomíneos. Diagnóstico e acompanhamento veterinário devem considerar exames apropriados e contexto epidemiológico. A vigilância entomológica e a comunicação de casos às autoridades competentes ajudam a identificar áreas de risco e orientar medidas de controle.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Ciclo de transmissão e papel do cão</h3><p class=\"mb-3\">A leishmaniose visceral é causada por <em>Leishmania infantum</em>, transmitida por flebotomíneos infectados. Quando uma fêmea do vetor se alimenta de um hospedeiro infectado, pode adquirir o parasito e transmiti-lo durante alimentações posteriores. A presença do parasito no ambiente não é suficiente para produzir transmissão sem condições adequadas para o vetor e contato entre os componentes do ciclo.</p><p class=\"mb-3\">Os cães são considerados reservatórios domésticos importantes em áreas de transmissão urbana, mas a infecção canina não equivale necessariamente a doença clínica. Alguns animais desenvolvem sinais sistêmicos, enquanto outros podem permanecer sem sinais evidentes por períodos prolongados. A avaliação deve considerar exposição, exame físico e testes recomendados pelos protocolos oficiais; resultados isolados podem exigir interpretação complementar.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Sinais clínicos e avaliação veterinária</h3><p class=\"mb-3\">Além de emagrecimento, alterações cutâneas, onicogrifose e linfadenomegalia, podem ocorrer lesões oculares, apatia, redução do apetite, anemia, alterações laboratoriais e doença renal. O comprometimento renal é uma das complicações que influenciam o prognóstico. Por isso, a avaliação clínica pode incluir hemograma, bioquímica sérica, urinálise e investigação de proteinúria, conforme a situação do paciente.</p><p class=\"mb-3\">Diagnóstico, tratamento e acompanhamento dos cães devem obedecer às normas sanitárias vigentes e ser conduzidos por médico-veterinário. Não se deve iniciar medicamentos por conta própria nem presumir que um cão sem sinais esteja livre da infecção. A conduta depende do estado clínico, dos resultados confirmatórios e das regras aplicáveis na região.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Vigilância entomológica e prevenção no peridomicílio</h3><p class=\"mb-3\">Flebotomíneos podem utilizar ambientes sombreados e ricos em matéria orgânica para abrigo e desenvolvimento, de modo que o manejo do quintal ajuda a reduzir condições favoráveis. Recomenda-se retirar folhas e resíduos orgânicos acumulados, manter abrigos de animais limpos e utilizar medidas de proteção individual dos cães, como produtos repelentes/inseticidas veterinários adequados e telas quando indicadas. Produtos devem ser escolhidos com orientação profissional, pois nem todos são seguros para todas as espécies.</p><p class=\"mb-3\">A vigilância de vetores, a investigação de casos e o acompanhamento dos indicadores locais ajudam a reconhecer mudanças na distribuição da doença. Entretanto, um aumento de temperatura ou a presença de um vetor em determinado local não comprovam, isoladamente, transmissão ativa. A interpretação depende da identificação do vetor, da presença do parasito e de evidências epidemiológicas.</p><p class=\"mb-3\"><strong>Relação com o clima:</strong> o El Niño pode influenciar padrões regionais de chuva e temperatura, mas os efeitos sobre flebotomíneos variam conforme a região e a ecologia local. A melhor estratégia é combinar informação climática com vigilância entomológica e dados clínicos, evitando atribuições causais sem evidência.</p>"
+      }
+];
+
+    function renderNews(list) {
+      const grid = document.getElementById('news-grid');
+      grid.innerHTML = '';
+      document.getElementById('article-count').innerText = `${list.length} Artigo(s) Técnico(s)`;
+
+      if (list.length === 0) {
+        grid.innerHTML = `<div class="col-span-2 text-center py-10 text-xs text-slate-500">Nenhuma monografia encontrada para este filtro.</div>`;
+        return;
+      }
+
+      list.forEach(item => {
+        grid.innerHTML += `
+          <div onclick="openArticleModal(${item.id})" class="bg-white rounded-xl shadow border border-slate-200 overflow-hidden flex flex-col justify-between hover:shadow-lg transition cursor-pointer group">
+            <div>
+              <div class="h-44 overflow-hidden relative">
+                <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                <span class="absolute top-2 left-2 bg-brand-navy text-brand-mint text-[10px] font-bold px-2 py-0.5 rounded">${item.category}</span>
+              </div>
+              <div class="p-4">
+                <span class="text-[10px] text-slate-400"><i class="far fa-calendar"></i> ${item.date}</span>
+                <h4 class="font-bold text-slate-800 text-sm mt-1 mb-2 leading-snug group-hover:text-brand-emerald transition">${item.title}</h4>
+                <p class="text-xs text-slate-600 line-clamp-2">${item.desc}</p>
+              </div>
+            </div>
+            <div class="p-4 pt-0">
+              <span class="inline-flex items-center gap-1 text-xs font-bold text-brand-emerald group-hover:underline">
+                Ler artigo completo & citação <i class="fas fa-arrow-right text-[10px]"></i>
+              </span>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function filterCategory(cat) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-navy', 'text-white');
+        btn.classList.add('bg-slate-200', 'text-slate-700');
+      });
+      event.target.classList.remove('bg-slate-200', 'text-slate-700');
+      event.target.classList.add('bg-brand-navy', 'text-white');
+
+      if (cat === 'todos') {
+        renderNews(articlesData);
+      } else {
+        const filtered = articlesData.filter(a => a.category.toLowerCase().includes(cat.toLowerCase()));
+        renderNews(filtered);
+      }
+    }
+
+    function openArticleModal(id) {
+      const article = articlesData.find(a => a.id === id);
+      if (!article) return;
+
+      const modalContent = document.getElementById('modal-content');
+      modalContent.innerHTML = `
+        <span class="text-xs font-bold text-brand-emerald uppercase tracking-wider">${article.category}</span>
+        <h2 class="text-xl md:text-2xl font-extrabold text-slate-900 mt-1 mb-2 leading-tight">${article.title}</h2>
+        <div class="text-xs text-slate-400 mb-4 flex items-center gap-2 border-b pb-2">
+          <span><i class="far fa-calendar"></i> Publicado em: ${article.date}</span>
+          <span>•</span>
+          <span><i class="fas fa-microscope"></i> Monografia Técnico-Científica EcoVet</span>
+        </div>
+        <img src="${article.image}" alt="${article.title}" class="w-full h-64 object-cover rounded-xl mb-6 shadow">
+        
+        <div class="text-slate-700 text-xs sm:text-sm leading-relaxed space-y-4">
+          ${article.content}
+        </div>
+
+        <div class="mt-8 p-4 bg-slate-100 rounded-lg border-l-4 border-brand-navy">
+          <h4 class="text-xs font-bold text-brand-navy uppercase tracking-wide mb-1"><i class="fas fa-bookmark mr-1"></i> Referência e Citação Bibliográfica:</h4>
+          <p class="text-xs text-slate-600 font-mono">${article.source}</p>
+        </div>
+
+        <div class="mt-6 pt-4 border-t flex justify-end">
+          <button onclick="closeModal()" class="bg-brand-navy text-white text-xs font-bold px-5 py-2.5 rounded-lg hover:bg-brand-emerald transition">
+            Fechar Artigo
+          </button>
+        </div>
+      `;
+
+      document.getElementById('article-modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('article-modal').classList.add('hidden');
+    }
+
+    function switchView(viewName) {
+      ['home', 'projeto', 'calculadora', 'artigos'].forEach(v => {
+        const el = document.getElementById(`view-${v}`);
+        if (el) el.classList.add('hidden');
+        const nav = document.getElementById(`nav-${v}`);
+        if (nav) {
+          nav.classList.remove('bg-brand-emerald', 'text-white');
+          nav.classList.add('bg-slate-100', 'text-slate-700');
+        }
+      });
+
+      const target = document.getElementById(`view-${viewName}`);
+      if (target) target.classList.remove('hidden');
+      const targetNav = document.getElementById(`nav-${viewName}`);
+      if (targetNav) {
+        targetNav.classList.remove('bg-slate-100', 'text-slate-700');
+        targetNav.classList.add('bg-brand-emerald', 'text-white');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function calcularRisco() {
+      const especie = document.getElementById('calc-especie').value;
+      const clima = document.getElementById('calc-clima').value;
+      const vacina = document.getElementById('calc-vacina').value;
+
+      let nivel = "RISCO MODERADO";
+      let cor = "text-amber-600";
+      let bg = "bg-amber-50";
+      let parecer = "";
+
+      if (vacina === "baixo" || (clima === "calor_extremo" && especie === "pets") || (clima === "chuvas_intensas" && especie === "equinos")) {
+        nivel = "VULNERABILIDADE CRÍTICA (ALTO RISCO)";
+        cor = "text-red-600";
+        bg = "bg-red-50";
+        parecer = "O sistema apresenta alto risco de quebra de barreira sanitária. Indicada a instituição imediata de protocolos profiláticos direcionados ao vetor e reforço do calendário vacinal.";
+      } else if (vacina === "alto") {
+        nivel = "BAIXA VULNERABILIDADE EPIDEMIOLÓGICA";
+        cor = "text-emerald-600";
+        bg = "bg-emerald-50";
+        parecer = "As barreiras de biosegurança e profilaxia vacinal oferecem proteção adequada. Manter monitoramento microbiológico e sorológico contínuo.";
+      } else {
+        nivel = "RISCO EPIDEMIOLÓGICO MODERADO";
+        cor = "text-amber-600";
+        bg = "bg-amber-50";
+        parecer = "Atenção ao aumento do ITU e possíveis picos de população de ectoparasitas. Recomenda-se reforçar a higienização ambiental.";
+      }
+
+      document.getElementById('calc-resultado').innerHTML = `
+        <div class="space-y-3">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Diagnóstico Epidemiológico Estimado</span>
+          <div class="p-4 rounded-lg ${bg} border border-slate-200">
+            <h4 class="text-sm font-black ${cor}">${nivel}</h4>
+            <p class="text-xs text-slate-700 mt-2 leading-relaxed"><strong>Parecer Clínico:</strong> ${parecer}</p>
+          </div>
+        </div>
+        <button onclick="calcularRisco()" class="mt-4 text-xs font-bold text-brand-emerald hover:underline">Refazer Simulação</button>
+      `;
+    }
+
+    // FEED DINÂMICO: usa Google News RSS convertido em JSON por um serviço externo.
+    // Requer conexão com a internet; falhas de terceiros são tratadas com mensagem amigável.
+    const LIVE_NEWS_FEED = 'https://news.google.com/rss/search?q=' + encodeURIComponent('(veterinária OR saúde animal OR sanidade animal OR zoonoses OR doenças animais) when:7d') + '&hl=pt-BR&gl=BR&ceid=BR:pt-419';
+    let liveNewsLastLoaded = 0;
+
+    function safeHttpUrl(value) {
+      try { const url = new URL(value); return ['https:', 'http:'].includes(url.protocol) ? url.href : null; }
+      catch (_) { return null; }
+    }
+
+    function makeLiveNewsCard(item) {
+      const card = document.createElement('article');
+      card.className = 'rounded-xl border border-slate-200 p-4 hover:shadow-md transition flex flex-col gap-3';
+      const title = document.createElement('h3');
+      title.className = 'font-bold text-sm leading-snug text-slate-900';
+      title.textContent = item.title || 'Notícia veterinária';
+      const meta = document.createElement('p');
+      meta.className = 'text-[11px] text-slate-500';
+      const date = item.pubDate ? new Date(item.pubDate) : null;
+      const dateText = date && !Number.isNaN(date.getTime()) ? date.toLocaleString('pt-BR', { dateStyle: 'medium', timeStyle: 'short' }) : 'Data não informada';
+      meta.textContent = (item.author || item.source || 'Fonte externa') + ' · ' + dateText;
+      const summary = document.createElement('p');
+      summary.className = 'text-xs text-slate-600 leading-relaxed';
+      const raw = (item.description || '').replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/\s+/g, ' ').trim();
+      summary.textContent = raw ? (raw.length > 230 ? raw.slice(0, 227) + '…' : raw) : 'Acesse a publicação original para consultar os detalhes da notícia.';
+      const link = document.createElement('a');
+      link.className = 'mt-auto inline-flex items-center gap-2 text-xs font-bold text-sky-700 hover:text-emerald-700';
+      const url = safeHttpUrl(item.link);
+      if (url) { link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.textContent = 'Ler notícia original '; const icon = document.createElement('i'); icon.className = 'fas fa-arrow-up-right-from-square'; link.appendChild(icon); }
+      else { link.textContent = 'Link da fonte indisponível'; }
+      card.append(title, meta, summary, link);
+      return card;
+    }
+
+    async function loadLiveNews(manual = false) {
+      const grid = document.getElementById('live-news-grid');
+      const status = document.getElementById('live-news-status');
+      const updated = document.getElementById('live-news-updated');
+      const button = document.getElementById('refresh-live-news');
+      if (!grid || !status || !updated) return;
+      if (manual) { status.textContent = 'Atualizando o feed de notícias…'; if (button) button.disabled = true; }
+      try {
+        const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(LIVE_NEWS_FEED);
+        const response = await fetch(apiUrl, { cache: 'no-store' });
+        if (!response.ok) throw new Error('Serviço de notícias indisponível');
+        const data = await response.json();
+        if (data.status !== 'ok' || !Array.isArray(data.items)) throw new Error('O feed não retornou notícias');
+        const items = data.items.filter(item => safeHttpUrl(item.link)).slice(0, 9);
+        if (!items.length) throw new Error('Nenhuma notícia recente foi encontrada');
+        grid.replaceChildren(...items.map(makeLiveNewsCard));
+        status.textContent = 'Exibindo ' + items.length + ' notícias recentes. A lista é atualizada automaticamente a cada 15 minutos.';
+        updated.textContent = 'Última consulta: ' + new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        liveNewsLastLoaded = Date.now();
+      } catch (error) {
+        if (!grid.children.length) {
+          status.textContent = 'Não foi possível carregar o feed agora. Verifique sua conexão ou tente novamente. Enquanto isso, consulte as fontes oficiais:';
+          const links = document.createElement('div');
+          links.className = 'flex flex-wrap gap-3 text-sm';
+          [['MAPA — Saúde Animal', 'https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/saude-animal'], ['CFMV — Notícias', 'https://www.cfmv.gov.br/categoria/comunicacao/'], ['Ministério da Saúde — Notícias', 'https://www.gov.br/saude/pt-br/assuntos/noticias-ms']].forEach(([label, href]) => { const a = document.createElement('a'); a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.className = 'text-sky-700 underline font-semibold'; a.textContent = label; links.appendChild(a); });
+          grid.appendChild(links);
+        } else { status.textContent = 'Não foi possível atualizar agora; mantendo as notícias carregadas anteriormente.'; }
+      } finally { if (button) button.disabled = false; }
+    }
+
+    let synth = window.speechSynthesis;
+    function readPageText() {
+      if ('speechSynthesis' in window) {
+        stopSpeech();
+        const mainText = document.getElementById('main-content').innerText;
+        const utterance = new SpeechSynthesisUtterance(mainText);
+        utterance.lang = 'pt-BR';
+        utterance.rate = 1.0;
+        synth.speak(utterance);
+      } else {
+        alert('Seu navegador não suporta a função de leitura por voz.');
+      }
+    }
+
+    function stopSpeech() {
+      if (synth && synth.speaking) {
+        synth.cancel();
+      }
+    }
+
+    document.getElementById('search-input').addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      const filtered = articlesData.filter(a => 
+        a.title.toLowerCase().includes(term) || 
+        a.desc.toLowerCase().includes(term) ||
+        a.category.toLowerCase().includes(term) ||
+        a.content.toLowerCase().includes(term)
+      );
+      renderNews(filtered);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById('current-date').innerHTML = `<i class="far fa-calendar-alt text-brand-mint mr-1"></i> ${new Date().toLocaleDateString('pt-BR', opts)}`;
+      renderNews(articlesData);
+      loadLiveNews();
+      window.setInterval(() => loadLiveNews(), 15 * 60 * 1000);
+    });
+  </script>
+</body>
+</html>
