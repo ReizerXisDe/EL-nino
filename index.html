@@ -954,5 +954,64 @@
       window.setInterval(() => loadLiveNews(), 15 * 60 * 1000);
     });
   </script>
+
+
+  <!-- Aviso de boas-vindas: Instagram e revisão de conteúdo -->
+  <div id="vetextensao-instagram-popup" class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-950/70 p-4" role="dialog" aria-modal="true" aria-labelledby="vetextensao-popup-title" aria-describedby="vetextensao-popup-description">
+    <div class="relative w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl sm:p-8">
+      <button type="button" id="vetextensao-popup-close-x" class="absolute right-4 top-4 rounded-full p-2 text-slate-500 hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-600" aria-label="Fechar aviso">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+      <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-50 text-emerald-700" aria-hidden="true">
+        <i class="fab fa-instagram text-3xl"></i>
+      </div>
+      <p class="mb-2 text-xs font-bold uppercase tracking-widest text-emerald-700">Portal VetExtensão</p>
+      <h2 id="vetextensao-popup-title" class="mb-3 pr-7 text-2xl font-bold text-slate-900">Acompanhe nosso projeto</h2>
+      <p id="vetextensao-popup-description" class="mb-4 leading-relaxed text-slate-700">Siga <strong>@elninoesaudeanimal</strong> no Instagram para acompanhar novidades, conteúdos educativos e ações do nosso grupo de extensão.</p>
+      <div class="mb-6 rounded-xl border border-emerald-100 bg-emerald-50 p-4">
+        <p class="font-semibold text-slate-900">Nosso conteúdo está em constante revisão</p>
+        <p class="mt-1 text-sm leading-relaxed text-slate-700">As informações do portal podem ser revisadas e atualizadas periodicamente à medida que novas evidências científicas e fontes confiáveis ficam disponíveis. Consulte as referências e as orientações profissionais quando necessário.</p>
+      </div>
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <a href="https://www.instagram.com/elninoesaudeanimal/" target="_blank" rel="noopener noreferrer" class="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 text-center font-bold text-white transition hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2">
+          <i class="fab fa-instagram" aria-hidden="true"></i> Acessar Instagram
+        </a>
+        <button type="button" id="vetextensao-popup-close" class="inline-flex items-center justify-center rounded-xl border border-slate-300 px-5 py-3 font-semibold text-slate-700 transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-600">Continuar no site</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const popup = document.getElementById('vetextensao-instagram-popup');
+      if (!popup) return;
+      const closeButtons = [
+        document.getElementById('vetextensao-popup-close'),
+        document.getElementById('vetextensao-popup-close-x')
+      ];
+      function closePopup() {
+        popup.classList.add('hidden');
+        popup.classList.remove('flex');
+        document.body.classList.remove('overflow-hidden');
+        try { sessionStorage.setItem('vetextensaoPopupDismissed', '1'); } catch (e) {}
+      }
+      closeButtons.forEach(button => button && button.addEventListener('click', closePopup));
+      popup.addEventListener('click', event => { if (event.target === popup) closePopup(); });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && !popup.classList.contains('hidden')) closePopup();
+      });
+      let dismissed = false;
+      try { dismissed = sessionStorage.getItem('vetextensaoPopupDismissed') === '1'; } catch (e) {}
+      if (!dismissed) {
+        window.setTimeout(() => {
+          popup.classList.remove('hidden');
+          popup.classList.add('flex');
+          document.body.classList.add('overflow-hidden');
+          const closeButton = document.getElementById('vetextensao-popup-close');
+          if (closeButton) closeButton.focus();
+        }, 700);
+      }
+    })();
+  </script>
+
 </body>
 </html>
