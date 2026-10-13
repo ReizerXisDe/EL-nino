@@ -39,7 +39,7 @@
       <div class="flex items-center space-x-3">
         <!-- BOTÃO ACESSIBILIDADE LEITOR DE VOZ -->
         <button onclick="readPageText()" class="bg-brand-dark border border-brand-emerald text-brand-accent hover:bg-brand-emerald hover:text-white px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1 transition">
-          <i class="fas fa-volume-up"></i> Ouvir Página (Acessibilidade Visores)
+          <i class="fas fa-volume-up"></i> Ouvir Página (Acessibilidade)
         </button>
         <button onclick="stopSpeech()" class="text-slate-400 hover:text-red-400 text-xs" title="Parar Leitura">
           <i class="fas fa-stop-circle"></i>
@@ -96,9 +96,8 @@
   <!-- CONTENT VIEWS CONTAINER -->
   <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full" id="main-content">
 
-    <!-- VIEW 1: HOME (NOTÍCIAS INTERATIVAS) -->
+    <!-- VIEW 1: HOME -->
     <div id="view-home" class="space-y-8">
-      <!-- ALERTA PEQUENOS ANIMAIS & CLIMA -->
       <div class="bg-gradient-to-r from-teal-900 to-slate-900 text-white p-6 rounded-xl shadow-md border-l-4 border-brand-emerald flex items-start gap-4">
         <i class="fas fa-dog text-brand-accent text-3xl mt-1"></i>
         <div>
@@ -116,21 +115,18 @@
             <span class="text-xs text-slate-500 font-normal">Clique no card para ler a matéria na íntegra</span>
           </h2>
 
-          <!-- GRID DE NOTÍCIAS INTERATIVAS -->
           <div id="news-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <!-- Injetado via JS -->
           </div>
         </div>
 
-        <!-- SIDEBAR -->
         <aside class="space-y-6">
           <div class="bg-white p-5 rounded-xl shadow border border-slate-200">
-            <h4 class="font-bold text-slate-900 border-b pb-2 mb-3 text-sm"><i class="fas fa-heartbeat text-brand-emerald mr-1"></i> Prevenção Rápida em Cães e Gatos</h4>
+            <h4 class="font-bold text-slate-900 border-b pb-2 mb-3 text-sm"><i class="fas fa-heartbeat text-brand-emerald mr-1"></i> Prevenção Rápida em Pets</h4>
             <ul class="space-y-2 text-xs text-slate-600">
               <li class="flex items-start gap-2"><i class="fas fa-check text-brand-emerald mt-0.5"></i> Troque a água dos pets várias vezes ao dia.</li>
-              <li class="flex items-start gap-2"><i class="fas fa-check text-brand-emerald mt-0.5"></i> Nunca passeie com cães no asfalto quente entre 10h e 16h.</li>
-              <li class="flex items-start gap-2"><i class="fas fa-check text-brand-emerald mt-0.5"></i> Mantenha coleiras ou pipetas de carrapato e mosquito em dia.</li>
-              <li class="flex items-start gap-2"><i class="fas fa-check text-brand-emerald mt-0.5"></i> Evite que cães bebam ou pisem em poças de chuva acumulada.</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check text-brand-emerald mt-0.5"></i> Nunca passeie no asfalto quente entre 10h e 16h.</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check text-brand-emerald mt-0.5"></i> Mantenha a proteção contra carrapatos em dia.</li>
             </ul>
           </div>
 
@@ -162,12 +158,11 @@
                 <i class="fas fa-globe text-brand-emerald"></i> O que é o El Niño?
               </h3>
               <p class="text-sm text-slate-700 leading-relaxed">
-                É um fenômeno climático associado ao aquecimento anormal das águas superficiais do Pacífico Equatorial, que altera padrões de chuva e eleva a temperatura em diversas regiões.
+                É um fenômeno climático associado ao aquecimento anormal das águas superficiais do Pacífico Equatorial, que altera padrões de chuva e eleva a temperatura.
               </p>
             </div>
             <div class="bg-slate-900 rounded-lg overflow-hidden shadow-inner p-2 text-center">
               <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Planeta Terra Clima" class="rounded h-48 w-full object-cover opacity-90">
-              <span class="text-[10px] text-slate-400 mt-1 block">Ilustração de Monitoramento Climático Global</span>
             </div>
           </div>
 
@@ -177,51 +172,22 @@
               <div class="bg-white p-5 rounded-xl shadow border-t-4 border-blue-500">
                 <i class="fas fa-water text-2xl text-blue-500 mb-3"></i>
                 <h4 class="font-bold text-sm text-slate-900 mb-1">Chuvas e Alagamentos</h4>
-                <p class="text-xs text-slate-600">Aumentam a exposição de cães e gatos a ambientes contaminados e o risco de leptospirose.</p>
+                <p class="text-xs text-slate-600">Aumentam o risco de leptospirose em cães e animais de produção.</p>
               </div>
               <div class="bg-white p-5 rounded-xl shadow border-t-4 border-red-500">
                 <i class="fas fa-temperature-high text-2xl text-red-500 mb-3"></i>
                 <h4 class="font-bold text-sm text-slate-900 mb-1">Calor Intenso</h4>
-                <p class="text-xs text-slate-600">Provoca hipertermia em cães de focinho curto (braquicefálicos) e desidratação grave.</p>
+                <p class="text-xs text-slate-600">Provoca hipertermia em pets e estresse térmico em rebanhos.</p>
               </div>
               <div class="bg-white p-5 rounded-xl shadow border-t-4 border-brand-emerald">
                 <i class="fas fa-bug text-2xl text-brand-emerald mb-3"></i>
                 <h4 class="font-bold text-sm text-slate-900 mb-1">Vetores e Carrapatos</h4>
-                <p class="text-xs text-slate-600">O calor acelera o ciclo de carrapatos e pulgas, aumentando a erliquiose e leishmaniose.</p>
+                <p class="text-xs text-slate-600">O calor acelera o ciclo de carrapatos, pulgas e mosquitos transmissores.</p>
               </div>
               <div class="bg-white p-5 rounded-xl shadow border-t-4 border-amber-500">
                 <i class="fas fa-tint-slash text-2xl text-amber-500 mb-3"></i>
                 <h4 class="font-bold text-sm text-slate-900 mb-1">Secas Prolongadas</h4>
-                <p class="text-xs text-slate-600">Aproximam animais silvestres de áreas urbanas, aumentando riscos de zoonoses.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-teal-50 p-6 rounded-xl border border-teal-200">
-              <h4 class="font-bold text-base text-teal-900 mb-3 flex items-center gap-2">
-                <i class="fas fa-shield-alt text-teal-700"></i> Como Prevenir
-              </h4>
-              <ul class="space-y-2 text-xs text-teal-900">
-                <li><i class="fas fa-check-circle text-teal-700 mr-2"></i> Ofereça água limpa e fresca diariamente.</li>
-                <li><i class="fas fa-check-circle text-teal-700 mr-2"></i> Mantenha os animais em locais com sombra e ventilação.</li>
-                <li><i class="fas fa-check-circle text-teal-700 mr-2"></i> Evite o contato com água de enchentes.</li>
-                <li><i class="fas fa-check-circle text-teal-700 mr-2"></i> Mantenha a vacinação V10/V8, antirrábica e vermifugação em dia.</li>
-                <li><i class="fas fa-check-circle text-teal-700 mr-2"></i> Procure atendimento veterinário diante de qualquer sintoma.</li>
-              </ul>
-            </div>
-
-            <div class="bg-amber-50 p-6 rounded-xl border border-amber-200 flex flex-col justify-between">
-              <div>
-                <h4 class="font-bold text-base text-amber-900 mb-2 flex items-center gap-2">
-                  <i class="fas fa-exclamation-triangle text-amber-600"></i> Lembre-se!
-                </h4>
-                <p class="text-xs text-amber-900 leading-relaxed">
-                  O El Niño não causa diretamente todas essas doenças. Ele modifica as condições ambientais e altera os riscos epidemiológicos que dependem do manejo sanitário adequado.
-                </p>
-              </div>
-              <div class="mt-4 pt-4 border-t border-amber-200 text-[11px] text-amber-800 font-semibold">
-                Projeto Acadêmico de Extensão Universitária em Medicina Veterinária.
+                <p class="text-xs text-slate-600">Exigem atenção redobrada à qualidade da água potável oferecida.</p>
               </div>
             </div>
           </div>
@@ -233,10 +199,10 @@
     <div id="view-artigos" class="hidden space-y-6">
       <div class="bg-white p-6 md:p-8 rounded-xl shadow border border-slate-200">
         <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-3">
-          <i class="fas fa-graduation-cap text-brand-emerald"></i> Artigos Científicos & Literatura de Referência
+          <i class="fas fa-graduation-cap text-brand-emerald"></i> Artigos Científicos & Referências
         </h2>
         <p class="text-xs sm:text-sm text-slate-600 mb-6">
-          Consulte os resumos dos trabalhos científicos e acesse os portais acadêmicos oficiais:
+          Consulte os resumos e acesse os portais acadêmicos oficiais verificados:
         </p>
 
         <div class="space-y-6">
@@ -247,9 +213,9 @@
               Estudo focado no aumento de internações de cães braquicefálicos por intermação (hipertermia) e elevação exponencial de Doenças do Carrapato (Erliquiose/Babesiose) em climas quentes.
             </p>
             <div class="text-[11px] text-slate-500 pt-2 border-t border-slate-200 font-mono flex justify-between items-center flex-wrap gap-2">
-              <span><strong>Referência:</strong> Vet Profissional. <em>El Niño na Medicina Veterinária de Pequenos Animais</em>. Artigo Técnico, 2026.</span>
+              <span><strong>Referência:</strong> SciELO Brasil. <em>Artigos de Medicina Veterinária Preventiva</em>.</span>
               <a href="https://www.scielo.br" target="_blank" rel="noopener noreferrer" class="bg-brand-emerald text-white px-3 py-1.5 rounded text-xs font-sans font-bold hover:bg-brand-navy transition flex items-center gap-1">
-                Acessar SciELO Brasil <i class="fas fa-external-link-alt text-[10px]"></i>
+                Acessar SciELO <i class="fas fa-external-link-alt text-[10px]"></i>
               </a>
             </div>
           </div>
@@ -261,9 +227,9 @@
               Revisão sobre o ciclo biológico do mosquito-palha (*Lutzomyia longipalpis*) e como o aumento das temperaturas favorece a transmissão da leishmaniose para cães e humanos.
             </p>
             <div class="text-[11px] text-slate-500 pt-2 border-t border-slate-200 font-mono flex justify-between items-center flex-wrap gap-2">
-              <span><strong>Referência:</strong> FIOCRUZ. <em>Portal de Leishmaniose e Doenças Vetoriais</em>. Rio de Janeiro: Fundação Oswaldo Cruz, 2026.</span>
-              <a href="https://fiocruz.br/taxonomia-geral-05-doencas/leishmaniose" target="_blank" rel="noopener noreferrer" class="bg-blue-600 text-white px-3 py-1.5 rounded text-xs font-sans font-bold hover:bg-brand-navy transition flex items-center gap-1">
-                Acessar Portal Fiocruz <i class="fas fa-external-link-alt text-[10px]"></i>
+              <span><strong>Referência:</strong> FIOCRUZ. <em>Portal Oficial Oswaldo Cruz</em>.</span>
+              <a href="https://portal.fiocruz.br" target="_blank" rel="noopener noreferrer" class="bg-blue-600 text-white px-3 py-1.5 rounded text-xs font-sans font-bold hover:bg-brand-navy transition flex items-center gap-1">
+                Acessar Fiocruz <i class="fas fa-external-link-alt text-[10px]"></i>
               </a>
             </div>
           </div>
@@ -275,9 +241,9 @@
               Manual técnico oficial do Ministério da Saúde com orientações de diagnóstico e contenção de surtos bacterianos pós-inundações.
             </p>
             <div class="text-[11px] text-slate-500 pt-2 border-t border-slate-200 font-mono flex justify-between items-center flex-wrap gap-2">
-              <span><strong>Referência:</strong> BRASIL. Ministério da Saúde. <em>Guia de Leptospirose em Pequenos Animais e Zoonoses</em>. Brasília, 2026.</span>
-              <a href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/l/leptospirose" target="_blank" rel="noopener noreferrer" class="bg-teal-600 text-white px-3 py-1.5 rounded text-xs font-sans font-bold hover:bg-brand-navy transition flex items-center gap-1">
-                Acessar Guia do Governo <i class="fas fa-external-link-alt text-[10px]"></i>
+              <span><strong>Referência:</strong> BRASIL. Ministério da Saúde. <em>Portal de Saúde Pública</em>.</span>
+              <a href="https://www.gov.br/saude" target="_blank" rel="noopener noreferrer" class="bg-teal-600 text-white px-3 py-1.5 rounded text-xs font-sans font-bold hover:bg-brand-navy transition flex items-center gap-1">
+                Acessar Portal GOV <i class="fas fa-external-link-alt text-[10px]"></i>
               </a>
             </div>
           </div>
@@ -309,7 +275,7 @@
 
   </main>
 
-  <!-- MODAL LEITOR INTERNO DE MATÉRIAS (Garante leitura 100% sem erros) -->
+  <!-- MODAL LEITOR INTERNO (Evita erro 404 para sempre) -->
   <div id="article-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative">
       <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-800 text-2xl font-bold">
@@ -327,7 +293,7 @@
     <p>Projeto de Extensão Universitária em Medicina Veterinária Preventiva.</p>
   </footer>
 
-  <!-- VLIBRAS WIDGET (ACESSIBILIDADE SURDOS) -->
+  <!-- VLIBRAS WIDGET -->
   <div vw class="enabled">
     <div vw-access-button class="active"></div>
     <div vw-plugin-wrapper>
@@ -339,9 +305,8 @@
     new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
 
-  <!-- JAVASCRIPT: NOTÍCIAS INTERNAS E LEITOR -->
+  <!-- JAVASCRIPT LOGIC -->
   <script>
-    // BASE DE DADOS COMPLETA DE MATÉRIAS (Incluindo Pequenos Animais)
     const articlesData = [
       {
         id: 1,
@@ -349,16 +314,15 @@
         category: "Pequenos Animais (Pets)",
         date: "Outubro, 2026",
         image: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=800&q=80",
-        desc: "Cães de focinho curto (Pugs, Bulldogs, Shih-Tzus) não conseguem dissipar o calor adequadamente, podendo sofrer choque térmico em poucos minutos.",
+        desc: "Cães de focinho curto (Pugs, Bulldogs, Shih-Tzus) não conseguem dissipar o calor adequadamente, podendo sofrer choque térmico.",
         content: `
-          <p class="mb-3">Durante o fenômeno El Niño, as frequentes ondas de calor extremo elevam as temperaturas urbanas a patamares perigosos. Cães de raças braquicefálicas (focinho achatado) possuem anatomia desfavorável para a termorregulação via arfar.</p>
-          <p class="mb-3"><strong>Sinais de Alerta de Choque Térmico (Hipertermia):</strong> Respiração extremamente ofegante, salivação excessiva e espessa, gengivas muito avermelhadas ou arroxeadas, fraqueza, tremores e vômitos.</p>
+          <p class="mb-3">Durante o fenômeno El Niño, as frequentes ondas de calor extremo elevam as temperaturas urbanas a patamares perigosos. Cães braquicefálicos possuem anatomia desfavorável para a termorregulação via arfar.</p>
+          <p class="mb-3"><strong>Sinais de Alerta de Choque Térmico:</strong> Respiração ofegante, salivação espessa, gengivas avermelhadas, fraqueza e vômitos.</p>
           <h4 class="font-bold text-slate-900 mt-4 mb-2">Cuidados Emergenciais:</h4>
           <ul class="list-disc pl-5 space-y-1 mb-3">
             <li>Nunca passeie com o pet entre 10h e 16h em dias quentes.</li>
-            <li>Umedeça as patas e o abdômen do cão com água em temperatura ambiente (nunca água gelada bruscamente).</li>
+            <li>Umedeça as patas e o abdômen do cão com água em temperatura ambiente.</li>
             <li>Ofereça sombra, ar-condicionado ou ventiladores focados no abrigo do animal.</li>
-            <li>Em caso de prostração, leve-o imediatamente à clínica veterinária mais próxima.</li>
           </ul>
         `
       },
@@ -370,13 +334,12 @@
         image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80",
         desc: "Temperaturas altas encurtam o ciclo biológico do carrapato marrom do cão, disparando o número de infecções graves no sangue.",
         content: `
-          <p class="mb-3">O aumento das temperaturas médias causado pelo El Niño acelera a reprodução e a eclosão dos ovos do carrapato <em>Rhipicephalus sanguineus</em>. Isso resulta em um disparo nos casos de Erliquiose e Babesiose canina (conhecidas como a 'Doença do Carrapato').</p>
-          <p class="mb-3">A bactéria ataca os glóbulos brancos e as plaquetas do cão, podendo causar anemia profunda, sangramentos nasais, apatia e febre alta.</p>
+          <p class="mb-3">O aumento das temperaturas médias causado pelo El Niño acelera a reprodução do carrapato <em>Rhipicephalus sanguineus</em>, resultando em surtos da 'Doença do Carrapato'.</p>
+          <p class="mb-3">A bactéria ataca os glóbulos brancos e as plaquetas, podendo causar anemia profunda, sangramentos nasais e apatia.</p>
           <h4 class="font-bold text-slate-900 mt-4 mb-2">Medidas de Prevenção:</h4>
           <ul class="list-disc pl-5 space-y-1 mb-3">
-            <li>Uso contínuo de comprimidos mastigáveis, coleiras ou pipetas antiparasitárias orientadas pelo veterinário.</li>
+            <li>Uso contínuo de comprimidos mastigáveis ou pipetas antiparasitárias.</li>
             <li>Inspeção diária da pelagem do cão após passeios na rua.</li>
-            <li>Dedetização de frestas em muros, canis e quintais onde os carrapatos se escondem.</li>
           </ul>
         `
       },
@@ -386,15 +349,13 @@
         category: "Zoonoses e Pets",
         date: "Setembro, 2026",
         image: "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=800&q=80",
-        desc: "Enchentes espalham a bactéria Leptospira contida na urina de ratos. O contato das patas com a água contaminada pode levar à insuficiência renal.",
+        desc: "Enchentes espalham a bactéria Leptospira contida na urina de ratos. O contato com a água contaminada leva a problemas renais.",
         content: `
-          <p class="mb-3">Em períodos de chuvas torrenciais do El Niño, as enchentes urbanas lavam bueiros e espalham a bactéria <em>Leptospira</em>. Cães que entram em contato ou bebem dessa água podem contrair a doença através da pele e mucosas.</p>
-          <p class="mb-3"><strong>Sintomas no Cão:</strong> Febre, vômitos, urina de cor escura, amarelamento nos olhos e gengivas (icterícia) e dores musculares intensas.</p>
+          <p class="mb-3">Em períodos de chuvas torrenciais do El Niño, enchentes espalham a bactéria <em>Leptospira</em>. Cães que entram em contato com essa água podem contrair a doença.</p>
           <h4 class="font-bold text-slate-900 mt-4 mb-2">Prevenção Vital:</h4>
           <ul class="list-disc pl-5 space-y-1 mb-3">
             <li>Mantenha a vacina múltipla (V10 ou V8) rigorosamente atualizada.</li>
-            <li>Lave as patas do pet com água limpa e sabão neutro caso ele pise acidentalmente em poças de rua.</li>
-            <li>Armazene a ração do pet em potes hermeticamente fechados para não atrair roedores.</li>
+            <li>Lave as patas do pet com água limpa e sabão caso ele pise em poças de rua.</li>
           </ul>
         `
       },
@@ -404,15 +365,13 @@
         category: "Saúde Pública",
         date: "Setembro, 2026",
         image: "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=800&q=80",
-        desc: "A alta umidade e matéria orgânica acumulada após chuvas criam o ambiente perfeito para a reprodução do vetor da leishmaniose.",
+        desc: "Alta umidade e matéria orgânica acumulada após chuvas aceleram a reprodução do vetor da leishmaniose.",
         content: `
-          <p class="mb-3">A leishmaniose é uma zoonose grave transmitida pela picada do mosquito-palha (flebotomíneo). O cão é o principal hospedeiro doméstico do parasita. O calor do El Niño acelera a atividade de picada desses mosquitos ao entardecer.</p>
-          <p class="mb-3"><strong>Sintomas em Pets:</strong> Crescimento exagerado das unhas, perda de peso, descamação ao redor dos olhos e orelhas, feridas na pele que não cicatrizam.</p>
+          <p class="mb-3">A leishmaniose é uma zoonose grave transmitida pela picada do mosquito-palha. O calor do El Niño acelera a atividade de picada desses mosquitos ao entardecer.</p>
           <h4 class="font-bold text-slate-900 mt-4 mb-2">Como Proteger:</h4>
           <ul class="list-disc pl-5 space-y-1 mb-3">
-            <li>Utilize coleiras repelentes à base de deltametrina no seu cão.</li>
-            <li>Mantenha o quintal limpo, recolhendo fezes e folhas acumuladas (onde a larva do mosquito se desenvolve).</li>
-            <li>Evite deixar os cães no quintal nos horários de crepúsculo e noite.</li>
+            <li>Utilize coleiras repelentes no seu cão.</li>
+            <li>Mantenha o quintal limpo, sem fezes ou folhas acumuladas.</li>
           </ul>
         `
       }
@@ -445,7 +404,6 @@
       });
     }
 
-    // ABRIR E FECHAR LEITOR MODAL INTERNO
     function openArticleModal(id) {
       const article = articlesData.find(a => a.id === id);
       if (!article) return;
@@ -456,8 +414,6 @@
         <h2 class="text-xl md:text-2xl font-extrabold text-slate-900 mt-1 mb-2 leading-tight">${article.title}</h2>
         <div class="text-xs text-slate-400 mb-4 flex items-center gap-2 border-b pb-2">
           <span><i class="far fa-calendar"></i> Publicado em: ${article.date}</span>
-          <span>•</span>
-          <span><i class="fas fa-user-md"></i> Informativo EcoVet Saúde Animal</span>
         </div>
         <img src="${article.image}" alt="${article.title}" class="w-full h-56 object-cover rounded-xl mb-4 shadow">
         <div class="text-slate-700 text-xs sm:text-sm leading-relaxed">
@@ -477,7 +433,6 @@
       document.getElementById('article-modal').classList.add('hidden');
     }
 
-    // NAVEGAÇÃO ENTRE ABAS
     function switchView(viewName) {
       ['home', 'projeto', 'artigos', 'contato'].forEach(v => {
         document.getElementById(`view-${v}`).classList.add('hidden');
@@ -491,7 +446,6 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // ACESSIBILIDADE DE VOZ
     let synth = window.speechSynthesis;
     function readPageText() {
       if ('speechSynthesis' in window) {
@@ -512,46 +466,6 @@
       }
     }
 
-    // BUSCA
-    document.getElementById('search-input').addEventListener('input', (e) => {
-      const term = e.target.value.toLowerCase();
-      const filtered = articlesData.filter(a => 
-        a.title.toLowerCase().includes(term) || 
-        a.desc.toLowerCase().includes(term) ||
-        a.category.toLowerCase().includes(term)
-      );
-      
-      const grid = document.getElementById('news-grid');
-      grid.innerHTML = '';
-      if (filtered.length === 0) {
-        grid.innerHTML = `<div class="col-span-2 text-center py-8 text-xs text-slate-500">Nenhuma matéria encontrada com o termo digitado.</div>`;
-        return;
-      }
-      filtered.forEach(item => {
-        grid.innerHTML += `
-          <div onclick="openArticleModal(${item.id})" class="bg-white rounded-xl shadow border border-slate-200 overflow-hidden flex flex-col justify-between hover:shadow-lg transition cursor-pointer group">
-            <div>
-              <div class="h-44 overflow-hidden relative">
-                <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover">
-                <span class="absolute top-2 left-2 bg-brand-navy text-brand-mint text-[10px] font-bold px-2 py-0.5 rounded">${item.category}</span>
-              </div>
-              <div class="p-4">
-                <span class="text-[10px] text-slate-400"><i class="far fa-calendar"></i> ${item.date}</span>
-                <h4 class="font-bold text-slate-800 text-sm mt-1 mb-2 leading-snug group-hover:text-brand-emerald transition">${item.title}</h4>
-                <p class="text-xs text-slate-600 line-clamp-2">${item.desc}</p>
-              </div>
-            </div>
-            <div class="p-4 pt-0">
-              <span class="inline-flex items-center gap-1 text-xs font-bold text-brand-emerald group-hover:underline">
-                Clique para ler a matéria completa <i class="fas fa-arrow-right text-[10px]"></i>
-              </span>
-            </div>
-          </div>
-        `;
-      });
-    });
-
-    // INICIALIZAÇÃO
     document.addEventListener('DOMContentLoaded', () => {
       const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
       document.getElementById('current-date').innerHTML = `<i class="far fa-calendar-alt text-brand-mint mr-1"></i> ${new Date().toLocaleDateString('pt-BR', opts)}`;
