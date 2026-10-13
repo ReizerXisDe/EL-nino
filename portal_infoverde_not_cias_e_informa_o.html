@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal InfoVerde - Jornalismo e Informação</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0f2027',
+                            900: '#0a192f',
+                            950: '#050c1a',
+                        },
+                        emerald: {
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Merriweather', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .news-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .news-card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -5px rgba(5, 150, 105, 0.15);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a192f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #059669;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased min-h-screen flex flex-col selection:bg-emerald-500 selection:text-white">
+
+    <div class="bg-navy-950 text-slate-300 text-xs py-2 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-4">
+                <span class="flex items-center gap-1.5 font-medium text-emerald-400">
+                    <i class="far flex font-normal fa-calendar-alt"></i>
+                    <span id="current-date">Carregando data...</span>
+                </span>
+                <span class="hidden md:inline text-slate-600">|</span>
+                <span class="hidden md:inline text-slate-400">Edição Digital Exclusiva</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-slate-400 hidden sm:inline">Siga-nos:</span>
+                <a href="#" class="hover:text-emerald-400 transition-colors"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-emerald-400 transition-colors"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-emerald-400 transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-emerald-400 transition-colors"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <header class="bg-navy-900 border-b border-navy-800 text-white sticky top-0 z-40 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-wrap justify-between items-center gap-4">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-navy-950 font-black text-2xl shadow-lg group-hover:scale-105 transition-transform">
+                    IV
+                </div>
+                <div>
+                    <h1 class="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-white flex items-center gap-1">
+                        Portal <span class="text-emerald-400">InfoVerde</span>
+                    </h1>
+                    <p class="text-[10px] sm:text-xs text-slate-400 tracking-widest uppercase font-semibold">Jornalismo Independente & Sustentável</p>
+                </div>
+            </a>
+
+            <!-- Search Bar -->
+            <div class="relative flex-1 max-w-md w-full my-1 sm:my-0">
+                <div class="relative">
+                    <input type="text" id="search-input" placeholder="Buscar notícias, tópicos..." class="w-full bg-navy-950/80 text-sm text-white placeholder-slate-400 rounded-full pl-10 pr-10 py-2 border border-slate-700/60 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all">
+                    <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <button id="clear-search" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white">
+                        <i class="fas fa-times-circle"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hamburger Button for Mobile -->
+            <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-300 hover:text-white focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <nav class="bg-navy-950 border-t border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Desktop Menu -->
+                <ul id="desktop-menu" class="hidden lg:flex items-center space-x-1 text-sm font-medium overflow-x-auto py-1">
+                    <li><a href="#home" class="category-filter active px-4 py-2.5 rounded-md text-emerald-400 hover:bg-navy-900 transition-colors flex items-center gap-1.5" data-category="all"><i class="fas fa-home text-xs"></i> Início</a></li>
+                    <li><a href="#novidades" class="category-filter px-4 py-2.5 rounded-md text-slate-300 hover:text-emerald-400 hover:bg-navy-900 transition-colors" data-category="Novidades">Novidades</a></li>
+                    <li><a href="#politica" class="category-filter px-4 py-2.5 rounded-md text-slate-300 hover:text-emerald-400 hover:bg-navy-900 transition-colors" data-category="Política">Política</a></li>
+                    <li><a href="#tecnologia" class="category-filter px-4 py-2.5 rounded-md text-slate-300 hover:text-emerald-400 hover:bg-navy-900 transition-colors" data-category="Tecnologia">Tecnologia</a></li>
+                    <li><a href="#meio-ambiente" class="category-filter px-4 py-2.5 rounded-md text-slate-300 hover:text-emerald-400 hover:bg-navy-900 transition-colors" data-category="Meio Ambiente">Meio Ambiente</a></li>
+                    <li><a href="#cultura" class="category-filter px-4 py-2.5 rounded-md text-slate-300 hover:text-emerald-400 hover:bg-navy-900 transition-colors" data-category="Cultura">Cultura</a></li>
+                    <li class="ml-auto"><a href="#contato" class="px-4 py-2 rounded-lg bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-600 hover:text-white transition-all text-xs font-semibold flex items-center gap-1.5"><i class="fas fa-paper-plane"></i> Contato</a></li>
+                </ul>
+
+                <!-- Mobile Menu Dropdown -->
+                <div id="mobile-menu" class="hidden lg:hidden py-3 space-y-1 border-t border-slate-800">
+                    <a href="#home" class="category-filter active block px-3 py-2 rounded-md text-emerald-400 hover:bg-navy-900 font-medium text-base" data-category="all"><i class="fas fa-home mr-2"></i> Início</a>
+                    <a href="#novidades" class="category-filter block px-3 py-2 rounded-md text-slate-300 hover:text-emerald-400 hover:bg-navy-900 font-medium text-base" data-category="Novidades">Novidades</a>
+                    <a href="#politica" class="category-filter block px-3 py-2 rounded-md text-slate-300 hover:text-emerald-400 hover:bg-navy-900 font-medium text-base" data-category="Política">Política</a>
+                    <a href="#tecnologia" class="category-filter block px-3 py-2 rounded-md text-slate-300 hover:text-emerald-400 hover:bg-navy-900 font-medium text-base" data-category="Tecnologia">Tecnologia</a>
+                    <a href="#meio-ambiente" class="category-filter block px-3 py-2 rounded-md text-slate-300 hover:text-emerald-400 hover:bg-navy-900 font-medium text-base" data-category="Meio Ambiente">Meio Ambiente</a>
+                    <a href="#cultura" class="category-filter block px-3 py-2 rounded-md text-slate-300 hover:text-emerald-400 hover:bg-navy-900 font-medium text-base" data-category="Cultura">Cultura</a>
+                    <a href="#contato" class="block px-3 py-2 rounded-md text-emerald-400 hover:bg-navy-900 font-medium text-base"><i class="fas fa-envelope mr-2"></i> Contato</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+
+        <!-- Active Filter Indicator -->
+        <div id="filter-indicator" class="hidden mb-6 p-3 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center justify-between text-emerald-900 text-sm">
+            <span>Exibindo resultados para: <strong id="filter-label" class="text-emerald-700"></strong></span>
+            <button id="reset-filter" class="text-xs font-semibold text-emerald-700 hover:text-emerald-900 underline">Limpar filtro</button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+            <!-- MAIN NEWS COLUMN (8 Cols) -->
+            <div class="lg:col-span-8 space-y-8">
+
+                <!-- Featured Article Banner -->
+                <section id="featured-section">
+                    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 news-card-hover group relative">
+                        <div class="relative h-72 sm:h-96 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="Notícia Destaque" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-transparent"></div>
+                            
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-emerald-500 text-navy-950 font-bold text-xs uppercase px-3 py-1.5 rounded-full shadow-md tracking-wider">Destaque Principal</span>
+                            </div>
+
+                            <div class="absolute bottom-0 p-6 sm:p-8 text-white">
+                                <div class="flex items-center gap-3 text-xs text-emerald-300 mb-2 font-medium">
+                                    <span><i class="far fa-clock mr-1"></i> Há 2 horas</span>
+                                    <span>•</span>
+                                    <span><i class="far fa-user mr-1"></i> Por Camila Rocha</span>
+                                </div>
+                                <h2 class="font-serif text-2xl sm:text-4xl font-bold leading-tight mb-3 hover:text-emerald-400 transition-colors">
+                                    Avanços em Energia Renovável Transformam Matriz Energética Nacional
+                                </h2>
+                                <p class="text-slate-300 text-sm sm:text-base line-clamp-2 mb-4 font-light">
+                                    Novos parques eólicos e usinas solares comunitárias registram recorde de produção no último trimestre, reduzindo a pegada de carbono urbana.
+                                </p>
+                                <button onclick="openArticleModal(0)" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-navy-950 font-bold text-sm px-5 py-2.5 rounded-lg transition-all shadow-md">
+                                    Ler Matéria Completa <i class="fas fa-arrow-right text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+
+                <!-- News Grid Header -->
+                <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                    <h3 class="font-serif text-xl font-bold text-navy-900 flex items-center gap-2">
+                        <span class="w-2.5 h-6 bg-emerald-500 rounded-full inline-block"></span>
+                        Últimas Publicações
+                    </h3>
+                    <span id="news-count" class="text-xs text-slate-500 font-medium">Carregando matérias...</span>
+                </div>
+
+                <!-- Articles Grid -->
+                <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Cards injection via JS -->
+                </div>
+
+            </div>
+
+            <!-- SIDEBAR COLUMN (4 Cols) -->
+            <aside class="lg:col-span-4 space-y-8">
+
+                <!-- Weather / Fast Info Widget -->
+                <div class="bg-gradient-to-br from-navy-900 to-navy-950 rounded-2xl p-5 text-white shadow-md border border-navy-800">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                        <span class="text-xs uppercase tracking-wider text-emerald-400 font-bold"><i class="fas fa-cloud-sun mr-1"></i> Clima & Indicadores</span>
+                        <span class="text-[10px] text-slate-400">Atualizado agora</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="text-3xl font-bold font-serif text-white">24°C</div>
+                            <div class="text-xs text-slate-300">São Paulo, SP • Ensolarado</div>
+                        </div>
+                        <i class="fas fa-sun text-4xl text-amber-400 animate-pulse"></i>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 grid grid-cols-2 gap-2 text-center text-xs">
+                        <div class="bg-navy-800/50 p-2 rounded-lg border border-slate-800">
+                            <span class="block text-slate-400 text-[10px]">DÓLAR</span>
+                            <span class="font-semibold text-emerald-400">R$ 5,12 <i class="fas fa-caret-up"></i></span>
+                        </div>
+                        <div class="bg-navy-800/50 p-2 rounded-lg border border-slate-800">
+                            <span class="block text-slate-400 text-[10px]">EURO</span>
+                            <span class="font-semibold text-emerald-400">R$ 5,54 <i class="fas fa-caret-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Most Popular Widget -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <h3 class="font-serif text-lg font-bold text-navy-900 border-b border-slate-100 pb-3 mb-4 flex items-center gap-2">
+                        <i class="fas fa-fire text-amber-500"></i> Mais Lidas da Semana
+                    </h3>
+                    <div class="space-y-4" id="most-read-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Newsletter Subscription Widget -->
+                <div class="bg-emerald-950/10 border border-emerald-500/20 rounded-2xl p-6 relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-6 text-emerald-500/10 text-9xl pointer-events-none">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <span class="bg-emerald-500/20 text-emerald-700 text-[10px] font-bold uppercase px-2.5 py-1 rounded-md tracking-wider">Newsletter</span>
+                        <h4 class="font-serif text-lg font-bold text-navy-900 mt-2 mb-1">Boletim Informativo</h4>
+                        <p class="text-xs text-slate-600 mb-4">Receba as principais notícias diretamente no seu e-mail todas as manhãs.</p>
+                        
+                        <form id="newsletter-form" onsubmit="handleNewsletterSubmit(event)" class="space-y-3">
+                            <div>
+                                <input type="email" required placeholder="Seu melhor e-mail" class="w-full text-xs px-3.5 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 bg-white">
+                            </div>
+                            <button type="submit" class="w-full bg-navy-900 hover:bg-navy-800 text-emerald-400 font-semibold text-xs py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                Inscrever-se Agora <i class="fas fa-check text-[10px]"></i>
+                            </button>
+                        </form>
+                        <p id="newsletter-message" class="hidden text-xs text-emerald-700 font-medium mt-2 text-center"></p>
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+
+        <!-- CONTACT SECTION -->
+        <section id="contato" class="mt-16 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12">
+                <div class="lg:col-span-5 bg-navy-900 text-white p-8 sm:p-10 flex flex-col justify-between">
+                    <div>
+                        <span class="text-emerald-400 font-bold text-xs uppercase tracking-wider">Fale Conosco</span>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold mt-2 mb-4">Entre em Contato com a Redação</h3>
+                        <p class="text-slate-300 text-sm mb-8 leading-relaxed font-light">
+                            Tem uma sugestão de pauta, dúvida ou quer anunciar no Portal InfoVerde? Mande sua mensagem para nossa equipe.
+                        </p>
+
+                        <div class="space-y-4 text-sm">
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-map-marker-alt text-emerald-400 mt-1"></i>
+                                <span class="text-slate-300">Av. Jornalista Roberto Marinho, 1200 - São Paulo, SP</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-envelope text-emerald-400"></i>
+                                <span class="text-slate-300">redacao@portalinfoverde.com.br</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-phone text-emerald-400"></i>
+                                <span class="text-slate-300">+55 (11) 3456-7890</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-slate-800">
+                        <p class="text-xs text-slate-400">Atendimento de segunda a sexta, das 8h às 18h.</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 p-8 sm:p-10">
+                    <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase mb-1.5">Seu Nome</label>
+                                <input type="text" required placeholder="João Silva" class="w-full text-sm px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase mb-1.5">Seu E-mail</label>
+                                <input type="email" required placeholder="joao@email.com" class="w-full text-sm px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1.5">Assunto</label>
+                            <input type="text" required placeholder="Sugestão de Pauta, Dúvida, Parceria..." class="w-full text-sm px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1.5">Mensagem</label>
+                            <textarea rows="4" required placeholder="Escreva sua mensagem aqui..." class="w-full text-sm px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm px-8 py-3 rounded-lg transition-colors shadow-md flex items-center justify-center gap-2">
+                            Enviar Mensagem <i class="fas fa-paper-plane text-xs"></i>
+                        </button>
+                    </form>
+                    <div id="contact-feedback" class="hidden mt-4 p-4 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm">
+                        <i class="fas fa-check-circle text-emerald-600 mr-2"></i> Mensagem enviada com sucesso! Responderemos em breve.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- READ ARTICLE MODAL -->
+    <div id="article-modal" class="fixed inset-0 z-50 hidden bg-navy-950/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div class="bg-white w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col my-auto border border-slate-200 animate-fadeIn">
+            
+            <!-- Modal Header / Actions -->
+            <div class="p-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+                <span id="modal-category" class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                    Categoria
+                </span>
+                <button onclick="closeArticleModal()" class="w-8 h-8 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-600 flex items-center justify-center transition-colors">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content (Scrollable) -->
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-6">
+                <div>
+                    <h2 id="modal-title" class="font-serif text-2xl sm:text-3xl font-bold text-navy-950 leading-snug mb-3">
+                        Título da Notícia Completa
+                    </h2>
+                    <div class="flex items-center gap-4 text-xs text-slate-500 border-b border-slate-100 pb-4">
+                        <span id="modal-date"><i class="far fa-calendar-alt mr-1"></i> Data</span>
+                        <span>•</span>
+                        <span id="modal-author"><i class="far fa-user mr-1"></i> Autor</span>
+                    </div>
+                </div>
+
+                <div class="rounded-xl overflow-hidden h-64 sm:h-80 w-full">
+                    <img id="modal-image" src="" alt="" class="w-full h-full object-cover">
+                </div>
+
+                <div id="modal-body" class="font-serif text-slate-700 leading-relaxed space-y-4 text-base sm:text-lg">
+                    <!-- Text body dynamically inserted -->
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-between items-center text-xs text-slate-500">
+                <span>Compartilhe esta matéria:</span>
+                <div class="flex gap-2">
+                    <button class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center hover:opacity-90"><i class="fab fa-facebook-f"></i></button>
+                    <button class="w-8 h-8 rounded-full bg-sky-500 text-white flex items-center justify-center hover:opacity-90"><i class="fab fa-twitter"></i></button>
+                    <button class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center hover:opacity-90"><i class="fab fa-whatsapp"></i></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-950 text-slate-400 text-xs border-t border-navy-800 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-7 h-7 rounded bg-emerald-500 flex items-center justify-center text-navy-950 font-black text-base">IV</div>
+                        <span class="font-serif text-lg font-bold text-white">Portal InfoVerde</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed">Informação rápida, precisa e comprometida com o meio ambiente e o desenvolvimento sustentável.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold uppercase tracking-wider mb-3">Categorias</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#novidades" class="hover:text-emerald-400 transition-colors">Novidades</a></li>
+                        <li><a href="#politica" class="hover:text-emerald-400 transition-colors">Política Nacional</a></li>
+                        <li><a href="#tecnologia" class="hover:text-emerald-400 transition-colors">Inovação e Tech</a></li>
+                        <li><a href="#meio-ambiente" class="hover:text-emerald-400 transition-colors">Sustentabilidade</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold uppercase tracking-wider mb-3">Institucional</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Sobre Nós</a></li>
+                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Equipe Editorial</a></li>
+                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Código de Ética</a></li>
+                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Políticas de Privacidade</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold uppercase tracking-wider mb-3">Edição Digital</h4>
+                    <p class="mb-3">Acompanhe nossas análises diárias no seu feed.</p>
+                    <div class="flex gap-3 text-base">
+                        <a href="#" class="w-8 h-8 rounded-lg bg-navy-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-emerald-400 hover:border-emerald-500 transition-all"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-lg bg-navy-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-emerald-400 hover:border-emerald-500 transition-all"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-lg bg-navy-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-emerald-400 hover:border-emerald-500 transition-all"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800/80 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-slate-500">
+                <p>&copy; 2026 Portal InfoVerde - Todos os direitos reservados.</p>
+                <p>Desenvolvido para Jornalismo Digital Moderno</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- VLibras Accessibility Widget -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+    <script>
+        // Sample News Database
+        const articlesDatabase = [
+            {
+                id: 0,
+                title: "Avanços em Energia Renovável Transformam Matriz Energética Nacional",
+                category: "Meio Ambiente",
+                date: "13 de Outubro, 2026",
+                author: "Camila Rocha",
+                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+                summary: "Novos parques eólicos e usinas solares comunitárias registram recorde de produção no último trimestre, reduzindo a pegada de carbono urbana.",
+                content: `<p class="mb-4">A transição para fontes de energia limpa alcançou um marco histórico este mês no país. A expansão de projetos solares comunitários aliada a investimentos em parques eólicos offshore permitiu que o sistema nacional atingisse taxas recordes de sustentabilidade.</p>
+                <p class="mb-4">Segundo especialistas do setor elétrico, o custo de instalação das tecnologias limpas reduziu drasticamente nos últimos três anos, permitindo que cidades pequenas e médias também implementem sistemas autônomos de microgeração de energia.</p>
+                <p>A meta para os próximos cinco anos inclui a substituição completa de termelétricas por soluções de armazenamento em baterias industriais de alta eficiência.</p>`
+            },
+            {
+                id: 1,
+                title: "Nova Inteligência Artificial Auxilia Médicos em Diagnósticos Precoces",
+                category: "Tecnologia",
+                date: "12 de Outubro, 2026",
+                author: "Lucas Silveira",
+                image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80",
+                summary: "Ferramenta desenvolvida por pesquisadores identifica alterações em exames de imagem com taxa de precisão inédita.",
+                content: `<p class="mb-4">Um algoritmo treinado com mais de 500 mil exames clínicos provou ser capaz de identificar padrões milimétricos em tomografias e ressonâncias magnéticas muito antes dos primeiros sintomas visíveis.</p>
+                <p>Médicos envolvidos no estudo destacam que a ferramenta atua como uma segunda opinião rápida, otimizando o fluxo de atendimento em hospitais públicos e privados.</p>`
+            },
+            {
+                id: 2,
+                title: "Congresso Aprovou Novo Pacote de Incentivo à Economia Verde",
+                category: "Política",
+                date: "11 de Outubro, 2026",
+                author: "Mariana Costa",
+                image: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80",
+                summary: "Medida visa conceder benefícios fiscais para startups e empresas que reduzirem emissão de poluentes.",
+                content: `<p class="mb-4">Em votação expressiva, os parlamentares aprovaram o projeto de lei que institui isenções tributárias para empresas que adotarem programas de reciclagem e economia circular.</p>
+                <p>A expectativa é atração de investimentos internacionais voltados para infraestrutura sustentável no próximo ano fiscal.</p>`
+            },
+            {
+                id: 3,
+                title: "Exposição de Arte Digital e Ecologia Abre Portas na Capital",
+                category: "Cultura",
+                date: "10 de Outubro, 2026",
+                author: "Beatriz Lima",
+                image: "https://images.unsplash.com/photo-1508997449629-303059a039c0?auto=format&fit=crop&w=800&q=80",
+                summary: "Mostra interativa une instalações imersivas, projeções 3D e debate sobre o futuro dos biomas nativos.",
+                content: `<p class="mb-4">A mostra une tecnologia de realidade virtual e esculturas feitas de materiais reciclados. Artistas locais e internacionais se reuniram para conscientizar o público sobre preservação através da arte multissensorial.</p>`
+            },
+            {
+                id: 4,
+                title: "Startups de Biotecnologia Desenvolvem Embalagens Biodegradáveis de Algas",
+                category: "Novidades",
+                date: "09 de Outubro, 2026",
+                author: "Gabriel Santos",
+                image: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=800&q=80",
+                summary: "Novo material se decompõe em menos de 30 dias na natureza e pode substituir plásticos de uso único na indústria alimentícia.",
+                content: `<p class="mb-4">Pesquisadores da área de materiais inovadores criaram um bioplástico derivado de algas marrons marinhas. Além de ser completamente compostável, o material possui custo produtivo competitivo.</p>`
+            },
+            {
+                id: 5,
+                title: "Cidades Inteligentes Reduzem Tráfego Urbano com Semáforos com IA",
+                category: "Tecnologia",
+                date: "08 de Outubro, 2026",
+                author: "Lucas Silveira",
+                image: "https://images.unsplash.com/photo-1508873696983-2df5057a0256?auto=format&fit=crop&w=800&q=80",
+                summary: "Projetos-piloto no centro da metrópole diminuíram o tempo médio de deslocamento nos horários de pico em até 22%.",
+                content: `<p class="mb-4">A sincronização dinâmica baseada no volume de carros em tempo real permitiu ajustar o tempo dos semáforos automaticamente, diminuindo engarrafamentos históricos.</p>`
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Update Date in Header
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').textContent = new Date().toLocaleDateString('pt-BR', dateOptions);
+
+            // Render Articles & Most Read
+            renderArticles(articlesDatabase);
+            renderMostRead();
+
+            // Setup Event Listeners
+            setupMobileMenu();
+            setupSearch();
+            setupCategoryFilters();
+        });
+
+        // Render Articles Grid
+        function renderArticles(list) {
+            const grid = document.getElementById('articles-grid');
+            const newsCount = document.getElementById('news-count');
+            grid.innerHTML = '';
+
+            newsCount.textContent = `${list.length} matéria(s) encontrada(s)`;
+
+            if (list.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-12 text-center bg-white rounded-2xl border border-slate-200">
+                        <i class="fas fa-search-minus text-4xl text-slate-300 mb-3"></i>
+                        <p class="text-slate-600 font-medium">Nenhuma notícia encontrada para este termo ou categoria.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            list.forEach(item => {
+                const card = document.createElement('article');
+                card.className = "bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 news-card-hover flex flex-col justify-between";
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-navy-900/90 text-emerald-400 font-bold text-[10px] uppercase px-2.5 py-1 rounded-md backdrop-blur-sm">
+                                ${item.category}
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-[11px] text-slate-400 mb-2">
+                                <span><i class="far fa-calendar"></i> ${item.date}</span>
+                                <span>•</span>
+                                <span>${item.author}</span>
+                            </div>
+                            <h4 class="font-serif text-lg font-bold text-navy-950 mb-2 line-clamp-2 hover:text-emerald-600 transition-colors cursor-pointer" onclick="openArticleModal(${item.id})">
+                                ${item.title}
+                            </h4>
+                            <p class="text-slate-600 text-xs line-clamp-3 mb-4 leading-relaxed font-light">
+                                ${item.summary}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-0">
+                        <button onclick="openArticleModal(${item.id})" class="text-xs font-bold text-emerald-600 hover:text-emerald-700 inline-flex items-center gap-1.5 transition-colors">
+                            Ler Notícia <i class="fas fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Render Sidebar Popular Articles
+        function renderMostRead() {
+            const container = document.getElementById('most-read-list');
+            const popular = articlesDatabase.slice(0, 4);
+
+            container.innerHTML = popular.map((item, index) => `
+                <div class="flex items-start gap-3 group cursor-pointer border-b border-slate-100 last:border-none pb-3 last:pb-0" onclick="openArticleModal(${item.id})">
+                    <span class="text-2xl font-serif font-black text-slate-300 group-hover:text-emerald-500 transition-colors">
+                        0${index + 1}
+                    </span>
+                    <div>
+                        <span class="text-[10px] font-bold uppercase text-emerald-600 tracking-wider block">${item.category}</span>
+                        <h5 class="text-xs font-semibold text-navy-900 group-hover:text-emerald-600 transition-colors leading-snug line-clamp-2">
+                            ${item.title}
+                        </h5>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Mobile Menu Toggle
+        function setupMobileMenu() {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        }
+
+        // Category Filter Logic
+        function setupCategoryFilters() {
+            const filters = document.querySelectorAll('.category-filter');
+            const indicator = document.getElementById('filter-indicator');
+            const label = document.getElementById('filter-label');
+            const resetBtn = document.getElementById('reset-filter');
+
+            filters.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const category = btn.getAttribute('data-category');
+
+                    // Update Active Link UI
+                    filters.forEach(f => f.classList.remove('active', 'text-emerald-400'));
+                    btn.classList.add('active', 'text-emerald-400');
+
+                    if (category === 'all') {
+                        indicator.classList.add('hidden');
+                        renderArticles(articlesDatabase);
+                    } else {
+                        indicator.classList.remove('hidden');
+                        label.textContent = category;
+                        const filtered = articlesDatabase.filter(a => a.category.toLowerCase() === category.toLowerCase());
+                        renderArticles(filtered);
+                    }
+
+                    // Close Mobile Menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                });
+            });
+
+            resetBtn.addEventListener('click', () => {
+                indicator.classList.add('hidden');
+                document.querySelector('[data-category="all"]').click();
+            });
+        }
+
+        // Search Functionality
+        function setupSearch() {
+            const input = document.getElementById('search-input');
+            const clearBtn = document.getElementById('clear-search');
+
+            input.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase().trim();
+                
+                if (term.length > 0) {
+                    clearBtn.classList.remove('hidden');
+                } else {
+                    clearBtn.classList.add('hidden');
+                }
+
+                const filtered = articlesDatabase.filter(a => 
+                    a.title.toLowerCase().includes(term) || 
+                    a.summary.toLowerCase().includes(term) ||
+                    a.category.toLowerCase().includes(term)
+                );
+                renderArticles(filtered);
+            });
+
+            clearBtn.addEventListener('click', () => {
+                input.value = '';
+                clearBtn.classList.add('hidden');
+                renderArticles(articlesDatabase);
+            });
+        }
+
+        // Modal Reading Functions
+        function openArticleModal(id) {
+            const article = articlesDatabase.find(a => a.id === id) || articlesDatabase[0];
+            
+            document.getElementById('modal-category').textContent = article.category;
+            document.getElementById('modal-title').textContent = article.title;
+            document.getElementById('modal-date').innerHTML = `<i class="far fa-calendar-alt mr-1"></i> ${article.date}`;
+            document.getElementById('modal-author').innerHTML = `<i class="far fa-user mr-1"></i> ${article.author}`;
+            document.getElementById('modal-image').src = article.image;
+            document.getElementById('modal-body').innerHTML = article.content;
+
+            document.getElementById('article-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling background
+        }
+
+        function closeArticleModal() {
+            document.getElementById('article-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Form Handlers
+        function handleNewsletterSubmit(e) {
+            e.preventDefault();
+            const msg = document.getElementById('newsletter-message');
+            msg.textContent = "Obrigado! Seu e-mail foi cadastrado com sucesso.";
+            msg.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => msg.classList.add('hidden'), 4000);
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const feedback = document.getElementById('contact-feedback');
+            feedback.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => feedback.classList.add('hidden'), 5000);
+        }
+    </script>
+</body>
+</html>
