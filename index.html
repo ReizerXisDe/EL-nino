@@ -26,6 +26,14 @@
       }
     }
   </script>
+<!-- Google Analytics 4: acompanhamento de visitas do Portal VetExtensão -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HBSJJEQ0NT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HBSJJEQ0NT');
+</script>
 </head>
 <body class="bg-slate-100 text-slate-800 font-sans flex flex-col min-h-screen">
 <!-- TOP BAR COM ACESSIBILIDADE DE VOZ -->
@@ -84,6 +92,9 @@
           </button>
 <button class="nav-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full transition whitespace-nowrap" id="nav-artigos" onclick="switchView('artigos')">
 <i class="fas fa-book-medical mr-1 text-brand-emerald"></i> Referências e Fontes
+          </button>
+<button class="nav-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full transition whitespace-nowrap" id="nav-questionario" onclick="switchView('questionario')">
+<i class="fas fa-clipboard-list mr-1 text-brand-emerald"></i> Questionário e Resultados
           </button>
 </div>
 </div>
@@ -521,6 +532,62 @@
 <p class="text-xs text-slate-600 leading-relaxed"><strong>Importante:</strong> o portal é uma ferramenta educativa de extensão universitária. Não substitui vigilância epidemiológica, comunicados oficiais, diagnóstico clínico ou orientação profissional. As relações entre clima e doença são complexas e variam de acordo com a região, a espécie, o agente infeccioso e as condições de manejo.</p>
 </section>
 </div>
+
+<!-- VIEW 5: QUESTIONÁRIO E ACOMPANHAMENTO -->
+<div class="hidden space-y-8" id="view-questionario">
+  <section class="bg-white p-6 md:p-8 rounded-2xl shadow border border-slate-200">
+    <div class="flex items-start gap-4 mb-5">
+      <div class="w-12 h-12 shrink-0 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
+        <i class="fas fa-clipboard-list text-2xl"></i>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900 mb-2">Questionário do Portal VetExtensão</h2>
+        <p class="text-slate-600">Participe da avaliação do portal e contribua para o aprimoramento das ações de educação em saúde animal.</p>
+      </div>
+    </div>
+    <div class="rounded-lg bg-sky-50 border border-sky-200 p-4 mb-5 text-sm text-sky-900">
+      <strong>Sobre a participação:</strong> responda às questões de acordo com seu conhecimento. As respostas serão utilizadas para avaliar a experiência dos visitantes e aprimorar os conteúdos educativos do projeto. Evite inserir informações pessoais desnecessárias.
+    </div>
+    <div class="w-full overflow-hidden rounded-xl border border-slate-200 bg-white">
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSeLk2S7kmQ3o1tsDTD8q5K78i_d_ADusvDMCeEA-APAjbjUnQ/viewform?embedded=true"
+        width="100%"
+        height="1920"
+        style="border:0; display:block; width:100%; max-width:100%;"
+        title="Questionário do Portal VetExtensão"
+        loading="lazy">
+        Carregando formulário…
+      </iframe>
+    </div>
+    <p class="text-xs text-slate-500 mt-3">Se o formulário não carregar, <a class="text-sky-700 underline font-semibold" href="https://docs.google.com/forms/d/e/1FAIpQLSeLk2S7kmQ3o1tsDTD8q5K78i_d_ADusvDMCeEA-APAjbjUnQ/viewform" target="_blank" rel="noopener noreferrer">abra-o diretamente nesta página</a>.</p>
+  </section>
+
+  <section class="bg-white p-6 md:p-8 rounded-2xl shadow border border-slate-200">
+    <div class="flex items-start gap-4 mb-4">
+      <div class="w-12 h-12 shrink-0 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center">
+        <i class="fas fa-chart-column text-2xl"></i>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900 mb-2">Painel de acompanhamento</h2>
+        <p class="text-slate-600">Consulte os dados de participação e o desempenho do portal nos painéis do Google. O acesso aos resultados administrativos exige entrar na conta autorizada.</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="rounded-xl border border-slate-200 p-5">
+        <div class="flex items-center gap-3 mb-2"><i class="fas fa-chart-line text-xl text-emerald-700"></i><h3 class="font-bold text-slate-900">Visualizações do site</h3></div>
+        <p class="text-sm text-slate-600 mb-4">Acompanhe usuários, visualizações de página e origem dos acessos no Google Analytics 4.</p>
+        <a class="inline-flex items-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-sm px-4 py-2" href="https://analytics.google.com/" target="_blank" rel="noopener noreferrer">Abrir Google Analytics <i class="fas fa-arrow-up-right-from-square"></i></a>
+      </div>
+      <div class="rounded-xl border border-slate-200 p-5">
+        <div class="flex items-center gap-3 mb-2"><i class="fas fa-clipboard-check text-xl text-sky-700"></i><h3 class="font-bold text-slate-900">Respostas do questionário</h3></div>
+        <p class="text-sm text-slate-600 mb-4">Veja o resumo das respostas e abra a planilha vinculada no Google Forms. Os resultados não são exibidos publicamente nesta página.</p>
+        <a class="inline-flex items-center gap-2 rounded-lg bg-sky-700 hover:bg-sky-800 text-white font-semibold text-sm px-4 py-2" href="https://forms.google.com/" target="_blank" rel="noopener noreferrer">Abrir Google Forms <i class="fas fa-arrow-up-right-from-square"></i></a>
+      </div>
+    </div>
+    <p class="text-xs text-slate-500 mt-4">Privacidade: mantenha as respostas individuais e as planilhas restritas aos responsáveis autorizados. Este painel não incorpora nem publica dados pessoais.</p>
+  </section>
+</div>
+
 </main>
 <!-- MODAL LEITOR INTERNO EXPANDIDO -->
 <div class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4" id="article-modal">
@@ -723,7 +790,7 @@
     }
 
     function switchView(viewName) {
-      ['home', 'projeto', 'calculadora', 'artigos'].forEach(v => {
+      ['home', 'projeto', 'calculadora', 'artigos', 'questionario'].forEach(v => {
         const el = document.getElementById(`view-${v}`);
         if (el) el.classList.add('hidden');
         const nav = document.getElementById(`nav-${v}`);
