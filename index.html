@@ -111,6 +111,20 @@
 <p class="text-xs sm:text-sm text-slate-300 mt-1">Conteúdo de divulgação científica sobre El Niño, saúde animal e prevenção, com atenção especial aos cães e gatos e materiais complementares sobre animais de produção, fauna silvestre e Saúde Única.</p>
 </div>
 </div>
+<!-- CHAMADA AO QUESTIONÁRIO NA PÁGINA INICIAL -->
+<section class="relative overflow-hidden rounded-2xl border border-emerald-200 bg-gradient-to-r from-emerald-50 via-white to-teal-50 p-5 md:p-6 shadow-sm" aria-labelledby="convite-forms-inicio">
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <div class="flex items-start gap-3">
+      <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-700 text-white" aria-hidden="true"><i class="fas fa-clipboard-list text-xl"></i></div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wide text-emerald-800 mb-1">Sua participação faz a diferença</p>
+        <h2 id="convite-forms-inicio" class="text-lg md:text-xl font-extrabold text-slate-900 mb-1">Ajude a melhorar o Portal VetExtensão</h2>
+        <p class="text-sm text-slate-700 leading-relaxed">Responda ao nosso questionário e compartilhe sua opinião sobre os conteúdos, a navegação e a acessibilidade do site.</p>
+      </div>
+    </div>
+    <button type="button" onclick="switchView('questionario')" class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 font-bold text-white shadow-sm transition hover:bg-emerald-800 focus:outline-none focus:ring-4 focus:ring-emerald-300"><i class="fas fa-clipboard-check"></i> Responder ao questionário <i class="fas fa-arrow-right"></i></button>
+  </div>
+</section>
 <!-- BARRA DE FILTROS POR ÁREA VETERINÁRIA -->
 <div class="flex items-center gap-2 overflow-x-auto pb-2 border-b border-slate-200">
 <span class="text-xs font-bold text-slate-500 whitespace-nowrap">Especialidade:</span>
@@ -444,6 +458,13 @@
 <i class="fas fa-graduation-cap text-brand-emerald"></i> Referências, Fontes e Acervo Científico
         </h2>
 <p class="text-xs sm:text-sm text-slate-600 mb-6">Referências científicas, fontes institucionais e recursos digitais que fundamentam as matérias e as ferramentas educativas do Portal VetExtensão.</p>
+<div class="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 rounded-2xl border border-emerald-200 bg-gradient-to-r from-emerald-50 to-teal-50 p-5 md:p-6">
+  <div class="flex items-start gap-3">
+    <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-700 text-white shadow-sm" aria-hidden="true"><i class="fas fa-comment-dots text-xl"></i></div>
+    <div><h3 class="font-extrabold text-slate-900 text-lg mb-1">Ajude a melhorar o Portal VetExtensão</h3><p class="text-sm text-slate-700 leading-relaxed">Depois de consultar nosso acervo, conte para a equipe o que achou dos conteúdos e como podemos melhorar a experiência e a acessibilidade do site.</p></div>
+  </div>
+  <button type="button" onclick="switchView('questionario')" class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 font-bold text-white shadow-sm transition hover:bg-emerald-800 focus:outline-none focus:ring-4 focus:ring-emerald-300"><i class="fas fa-clipboard-check"></i> Ir para o questionário <i class="fas fa-arrow-right"></i></button>
+</div>
 <div class="space-y-6">
 <div class="p-5 rounded-xl border border-slate-200 bg-white"><h3 class="font-extrabold text-slate-900 mb-3">Fontes institucionais de referência</h3><p class="text-sm text-slate-700 mb-3">Estas páginas ajudam a acompanhar o fenômeno climático, a vigilância de zoonoses e a saúde animal. Consulte a publicação original e a data de atualização antes de compartilhar uma informação.</p><ul class="space-y-2 text-sm"><li><a class="text-sky-700 underline hover:text-sky-900" href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/e/el-nino" rel="noopener noreferrer" target="_blank">Ministério da Saúde — El Niño: impactos, monitoramento e preparação</a></li><li><a class="text-sky-700 underline hover:text-sky-900" href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/z/zoonoses" rel="noopener noreferrer" target="_blank">Ministério da Saúde — vigilância, prevenção e controle de zoonoses</a></li><li><a class="text-sky-700 underline hover:text-sky-900" href="https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/julho/ministerio-da-saude-alerta-estados-e-municipios-sobre-possivel-aumento-de-arboviroses-no-pais-devido-ao-el-nino" rel="noopener noreferrer" target="_blank">Ministério da Saúde — alerta sobre possível aumento de arboviroses associado ao El Niño (2026)</a></li><li><a class="text-sky-700 underline hover:text-sky-900" href="https://www.woah.org/en/article/vector-borne-diseases-surveillance-a-global-health-imperative/" rel="noopener noreferrer" target="_blank">WOAH — vigilância de doenças transmitidas por vetores</a></li><li><a class="text-sky-700 underline hover:text-sky-900" href="https://portal.inmet.gov.br/" rel="noopener noreferrer" target="_blank">INMET — monitoramento meteorológico</a></li><li><a class="text-sky-700 underline hover:text-sky-900" href="https://www.cemaden.gov.br/" rel="noopener noreferrer" target="_blank">Cemaden — monitoramento e alertas de desastres</a></li><li><a class="text-sky-700 underline hover:text-sky-900" href="https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/saude-animal" rel="noopener noreferrer" target="_blank">MAPA — saúde animal</a></li><li><a class="text-sky-700 underline hover:text-sky-900" href="https://www.embrapa.br/" rel="noopener noreferrer" target="_blank">Embrapa — pesquisa e orientações agropecuárias</a></li><li><a class="text-sky-700 underline hover:text-sky-900" href="https://www.vet.cornell.edu/departments-centers-and-institutes/riney-canine-health-center/canine-health-information/canine-leptospirosis" rel="noopener noreferrer" target="_blank">Cornell University — Canine leptospirosis</a></li></ul></div><div class="p-5 rounded-xl border border-slate-200 bg-slate-50"><h3 class="font-extrabold text-slate-900 mb-2">Fontes citadas nas matérias do portal</h3><p class="text-sm text-slate-600 mb-4">A lista abaixo reúne os links de referência associados às oito matérias do acervo editorial. Os links direcionam para artigos, registros bibliográficos ou páginas institucionais relacionados ao tema de cada texto.</p><div class="mb-4 last:mb-0"><h4 class="font-bold text-sm text-slate-800 mb-1">Ondas de calor aumentam o risco de hipertermia em cães braquicefálicos</h4><ul class="list-disc pl-5 space-y-1 text-sm"><li><a class="text-sky-700 underline break-words" href="https://www.frontiersin.org/journals/animal-science/articles/10.3389/fanim.2025.1679377/full" rel="noopener noreferrer" target="_blank">Heat stress in domestic dogs: morphological and environmental risk factors for dog welfare in a warming world. Frontiers in Animal Science, 2025.</a></li><li><a class="text-sky-700 underline break-words" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13011106/" rel="noopener noreferrer" target="_blank">Clark et al. Heatstroke and brachycephalic dogs – is there an increased risk? Veterinary Evidence, 2022.</a></li></ul></div><div class="mb-4 last:mb-0"><h4 class="font-bold text-sm text-slate-800 mb-1">Clima e manejo influenciam a dinâmica dos carrapatos e o risco de tristeza parasitária bovina</h4><ul class="list-disc pl-5 space-y-1 text-sm"><li><a class="text-sky-700 underline break-words" href="https://doi.org/10.1590/S1984-29612023007" rel="noopener noreferrer" target="_blank">Puentes, J. D.; Riet-Correa, F. Epidemiological aspects of cattle tick fever in Brazil. Revista Brasileira de Parasitologia Veterinária, 2023.</a></li><li><a class="text-sky-700 underline break-words" href="https://doi.org/10.1017/S0031182004005967" rel="noopener noreferrer" target="_blank">Jongejan, F.; Uilenberg, G. The global importance of ticks. Parasitology, 2004.</a></li></ul></div><div class="mb-4 last:mb-0"><h4 class="font-bold text-sm text-slate-800 mb-1">Encefalomielites equinas reforçam a importância da vigilância de mosquitos vetores</h4><ul class="list-disc pl-5 space-y-1 text-sm"><li><a class="text-sky-700 underline break-words" href="https://doi.org/10.1016/j.cveq.2022.11.007" rel="noopener noreferrer" target="_blank">Luethy, D. Eastern, Western, and Venezuelan Equine Encephalitis and West Nile Viruses: Clinical and Public Health Considerations. Veterinary Clinics of North America: Equine Practice, 2023.</a></li><li><a class="text-sky-700 underline break-words" href="https://www.woah.org/en/what-we-do/animal-health-and-welfare/animal-diseases/" rel="noopener noreferrer" target="_blank">World Organisation for Animal Health (WOAH). Animal diseases.</a></li></ul></div><div class="mb-4 last:mb-0"><h4 class="font-bold text-sm text-slate-800 mb-1">Estresse térmico pode reduzir a postura e comprometer a qualidade da casca dos ovos</h4><ul class="list-disc pl-5 space-y-1 text-sm"><li><a class="text-sky-700 underline break-words" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11011014/" rel="noopener noreferrer" target="_blank">Effects of Heat Stress on the Laying Performance, Egg Quality, and Physiological Response of Laying Hens, 2024.</a></li><li><a class="text-sky-700 underline break-words" href="https://www.sciencedirect.com/science/article/pii/S0306456521003351" rel="noopener noreferrer" target="_blank">Impact of relative humidity on laying performance, egg quality, and physiological stress responses of laying hens exposed to high ambient temperature.</a></li></ul></div><div class="mb-4 last:mb-0"><h4 class="font-bold text-sm text-slate-800 mb-1">Seca e falhas nutricionais podem elevar o risco de botulismo em bovinos</h4><ul class="list-disc pl-5 space-y-1 text-sm"><li><a class="text-sky-700 underline break-words" href="https://www.scielo.br/j/pvb/a/QFs3ZzpdTGt3kBgjVqVWKxf/?lang=en" rel="noopener noreferrer" target="_blank">Botulism in cattle in Mato Grosso do Sul: History, current situation, and perspectives. Pesquisa Veterinária Brasileira, 2024.</a></li><li><a class="text-sky-700 underline break-words" href="https://www.gov.br/agricultura/pt-br" rel="noopener noreferrer" target="_blank">Ministério da Agricultura e Pecuária (MAPA).</a></li></ul></div><div class="mb-4 last:mb-0"><h4 class="font-bold text-sm text-slate-800 mb-1">Mudanças ambientais reforçam a vigilância de zoonoses na fauna silvestre</h4><ul class="list-disc pl-5 space-y-1 text-sm"><li><a class="text-sky-700 underline break-words" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13040231/" rel="noopener noreferrer" target="_blank">Mechanistic yellow fever modelling under climate change in Brazil and beyond: Information gaps and future steps. Wellcome Open Research, 2026.</a></li><li><a class="text-sky-700 underline break-words" href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/r/raiva/raiva-animal" rel="noopener noreferrer" target="_blank">Ministério da Saúde. Raiva animal.</a></li></ul></div><div class="mb-4 last:mb-0"><h4 class="font-bold text-sm text-slate-800 mb-1">Enchentes aumentam a preocupação com leptospirose em cães e pessoas</h4><ul class="list-disc pl-5 space-y-1 text-sm"><li><a class="text-sky-700 underline break-words" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12193477/" rel="noopener noreferrer" target="_blank">Canine Leptospirosis in Flood-Affected Areas of Southern Brazil: Molecular Assessment and Public Health Implications, 2025.</a></li><li><a class="text-sky-700 underline break-words" href="https://www.who.int/health-topics/leptospirosis" rel="noopener noreferrer" target="_blank">World Health Organization. Leptospirosis.</a></li></ul></div><div class="mb-4 last:mb-0"><h4 class="font-bold text-sm text-slate-800 mb-1">Vigilância de flebotomíneos é essencial para prevenir a leishmaniose visceral canina</h4><ul class="list-disc pl-5 space-y-1 text-sm"><li><a class="text-sky-700 underline break-words" href="https://pubmed.ncbi.nlm.nih.gov/41779509/" rel="noopener noreferrer" target="_blank">Visceral Leishmaniasis in Southern Brazil: an overview of current epidemiology. PubMed, 2026.</a></li><li><a class="text-sky-700 underline break-words" href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/l/leishmaniose-visceral" rel="noopener noreferrer" target="_blank">Ministério da Saúde. Leishmaniose visceral.</a></li></ul></div></div><div class="rounded-xl border border-emerald-200 bg-emerald-50 p-5">
 <h3 class="font-extrabold text-slate-900 mb-2">Como o acervo foi organizado</h3>
@@ -533,31 +554,44 @@
 
 <!-- VIEW 5: QUESTIONÁRIO E ACOMPANHAMENTO -->
 <div class="hidden space-y-8" id="view-questionario">
-  <section class="bg-white p-6 md:p-8 rounded-2xl shadow border border-slate-200">
-    <div class="flex items-start gap-4 mb-5">
-      <div class="w-12 h-12 shrink-0 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
-        <i class="fas fa-clipboard-list text-2xl"></i>
+  <section class="overflow-hidden rounded-2xl shadow-lg border border-emerald-200 bg-white">
+    <div class="relative overflow-hidden bg-gradient-to-br from-emerald-800 via-emerald-700 to-teal-600 px-6 py-8 md:px-10 md:py-10 text-white">
+      <div class="absolute -right-8 -top-10 opacity-10" aria-hidden="true"><i class="fas fa-clipboard-check text-[180px]"></i></div>
+      <div class="relative z-10 max-w-3xl">
+        <span class="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/25 px-3 py-1 text-xs sm:text-sm font-semibold mb-4"><i class="fas fa-heart"></i> Sua participação faz a diferença</span>
+        <h2 class="text-3xl md:text-4xl font-extrabold leading-tight mb-3">Ajude a fortalecer o Portal VetExtensão</h2>
+        <p class="text-emerald-50 text-base md:text-lg leading-relaxed mb-6">Responda ao nosso questionário e contribua para melhorar os conteúdos educativos, a comunicação e a acessibilidade do projeto.</p>
+        <a href="#formulario-portal-vetextensao" class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 font-bold text-emerald-800 shadow-md hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-white/40 transition"><i class="fas fa-pen-to-square"></i> Responder ao questionário <i class="fas fa-arrow-down text-sm"></i></a>
       </div>
-      <div>
-        <h2 class="text-2xl font-bold text-slate-900 mb-2">Questionário do Portal VetExtensão</h2>
-        <p class="text-slate-600">Participe da avaliação do portal e contribua para o aprimoramento das ações de educação em saúde animal.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 p-5 md:p-6 bg-emerald-50/70">
+      <div class="flex items-center gap-3 rounded-xl bg-white border border-emerald-100 p-3"><div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0"><i class="fas fa-clock"></i></div><div><p class="font-bold text-slate-800 text-sm">Rápido e simples</p><p class="text-xs text-slate-600">Responda no seu ritmo</p></div></div>
+      <div class="flex items-center gap-3 rounded-xl bg-white border border-emerald-100 p-3"><div class="w-10 h-10 rounded-lg bg-teal-100 text-teal-800 flex items-center justify-center shrink-0"><i class="fas fa-comments"></i></div><div><p class="font-bold text-slate-800 text-sm">Sua opinião importa</p><p class="text-xs text-slate-600">Ajude a orientar melhorias</p></div></div>
+      <div class="flex items-center gap-3 rounded-xl bg-white border border-emerald-100 p-3"><div class="w-10 h-10 rounded-lg bg-sky-100 text-sky-800 flex items-center justify-center shrink-0"><i class="fas fa-universal-access"></i></div><div><p class="font-bold text-slate-800 text-sm">Mais acessibilidade</p><p class="text-xs text-slate-600">Conteúdo para mais pessoas</p></div></div>
+    </div>
+    <div class="p-5 md:p-8">
+      <div class="rounded-xl bg-sky-50 border border-sky-200 p-4 mb-5 text-sm text-sky-950 leading-relaxed">
+        <div class="flex items-start gap-3"><i class="fas fa-circle-info text-lg mt-0.5 text-sky-700"></i><p><strong>Antes de começar:</strong> responda de acordo com sua experiência e conhecimento. As respostas serão usadas para avaliar a experiência dos visitantes e aprimorar os conteúdos educativos do projeto. Evite inserir informações pessoais desnecessárias.</p></div>
       </div>
+      <div id="formulario-portal-vetextensao" class="scroll-mt-6 rounded-2xl border-2 border-emerald-100 overflow-hidden bg-white shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 bg-slate-50 px-4 md:px-6 py-4 border-b border-slate-200">
+          <div><h3 class="font-bold text-slate-900 text-lg">Questionário de avaliação</h3><p class="text-sm text-slate-600">Portal VetExtensão</p></div>
+          <span class="inline-flex items-center gap-2 text-xs font-semibold text-emerald-800 bg-emerald-100 rounded-full px-3 py-1.5"><i class="fas fa-shield-heart"></i> Participe com responsabilidade</span>
+        </div>
+        <div class="w-full overflow-hidden bg-white">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSeLk2S7kmQ3o1tsDTD8q5K78i_d_ADusvDMCeEA-APAjbjUnQ/viewform?embedded=true"
+            width="100%"
+            height="1920"
+            style="border:0; display:block; width:100%; max-width:100%;"
+            title="Questionário do Portal VetExtensão"
+            loading="lazy">
+            Carregando formulário…
+          </iframe>
+        </div>
+      </div>
+      <p class="text-sm text-slate-500 mt-4 text-center">Se o formulário não carregar corretamente, <a class="text-emerald-800 underline font-bold" href="https://docs.google.com/forms/d/e/1FAIpQLSeLk2S7kmQ3o1tsDTD8q5K78i_d_ADusvDMCeEA-APAjbjUnQ/viewform" target="_blank" rel="noopener noreferrer">abra o questionário diretamente no Google Forms</a>.</p>
     </div>
-    <div class="rounded-lg bg-sky-50 border border-sky-200 p-4 mb-5 text-sm text-sky-900">
-      <strong>Sobre a participação:</strong> responda às questões de acordo com seu conhecimento. As respostas serão utilizadas para avaliar a experiência dos visitantes e aprimorar os conteúdos educativos do projeto. Evite inserir informações pessoais desnecessárias.
-    </div>
-    <div class="w-full overflow-hidden rounded-xl border border-slate-200 bg-white">
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSeLk2S7kmQ3o1tsDTD8q5K78i_d_ADusvDMCeEA-APAjbjUnQ/viewform?embedded=true"
-        width="100%"
-        height="1920"
-        style="border:0; display:block; width:100%; max-width:100%;"
-        title="Questionário do Portal VetExtensão"
-        loading="lazy">
-        Carregando formulário…
-      </iframe>
-    </div>
-    <p class="text-xs text-slate-500 mt-3">Se o formulário não carregar, <a class="text-sky-700 underline font-semibold" href="https://docs.google.com/forms/d/e/1FAIpQLSeLk2S7kmQ3o1tsDTD8q5K78i_d_ADusvDMCeEA-APAjbjUnQ/viewform" target="_blank" rel="noopener noreferrer">abra-o diretamente nesta página</a>.</p>
   </section>
 
   <section class="bg-white p-6 md:p-8 rounded-2xl shadow border border-slate-200">
