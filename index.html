@@ -37,6 +37,7 @@
         <span class="hidden sm:inline"><i class="fas fa-shield-alt text-brand-mint mr-1"></i> Extensão Universitária & Saúde Única</span>
       </div>
       <div class="flex items-center space-x-3">
+        <!-- BOTÃO ACESSIBILIDADE LEITOR DE VOZ -->
         <button onclick="readPageText()" class="bg-brand-dark border border-brand-emerald text-brand-accent hover:bg-brand-emerald hover:text-white px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1 transition">
           <i class="fas fa-volume-up"></i> Ouvir Página (Acessibilidade)
         </button>
@@ -100,9 +101,9 @@
       <div class="bg-gradient-to-r from-teal-900 to-slate-900 text-white p-6 rounded-xl shadow-md border-l-4 border-brand-emerald flex items-start gap-4">
         <i class="fas fa-dog text-brand-accent text-3xl mt-1"></i>
         <div>
-          <h3 class="font-bold text-base text-brand-accent">Informativo Geral Epidemiológico & Clima</h3>
+          <h3 class="font-bold text-base text-brand-accent">Informativo de Pequenos Animais & Clima</h3>
           <p class="text-xs sm:text-sm text-slate-300 mt-1">
-            Temperaturas extremas e enchentes causadas pelo El Niño afetam diretamente pets urbanos e rebanhos, aumentando casos de hipertermia, leishmaniose, leptospirose e doenças transmitidas por carrapatos.
+            Temperaturas extremas e enchentes causadas pelo El Niño afetam diretamente pets urbanos, aumentando casos de hipertermia, leishmaniose, leptospirose e doenças transmitidas por carrapatos.
           </p>
         </div>
       </div>
@@ -110,8 +111,8 @@
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div class="lg:col-span-2 space-y-6">
           <h2 class="text-xl font-bold text-slate-900 border-b-2 border-brand-emerald pb-2 flex items-center justify-between">
-            <span><i class="fas fa-newspaper text-brand-emerald mr-2"></i>Matérias Completas & Relatórios Sanitários</span>
-            <span class="text-xs text-slate-500 font-normal">Clique para abrir o relatório detalhado</span>
+            <span><i class="fas fa-newspaper text-brand-emerald mr-2"></i>Notícias & Guias de Saúde Animal</span>
+            <span class="text-xs text-slate-500 font-normal">Clique no card para ler a matéria na íntegra</span>
           </h2>
 
           <div id="news-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -121,17 +122,17 @@
 
         <aside class="space-y-6">
           <div class="bg-white p-5 rounded-xl shadow border border-slate-200">
-            <h4 class="font-bold text-slate-900 border-b pb-2 mb-3 text-sm"><i class="fas fa-heartbeat text-brand-emerald mr-1"></i> Diretrizes Emergenciais</h4>
+            <h4 class="font-bold text-slate-900 border-b pb-2 mb-3 text-sm"><i class="fas fa-heartbeat text-brand-emerald mr-1"></i> Prevenção Rápida em Pets</h4>
             <ul class="space-y-2 text-xs text-slate-600">
-              <li class="flex items-start gap-2"><i class="fas fa-check text-brand-emerald mt-0.5"></i> Água potável e renovada várias vezes ao dia.</li>
-              <li class="flex items-start gap-2"><i class="fas fa-check text-brand-emerald mt-0.5"></i> Passeios com cães apenas em horários de piso frio (antes das 9h e após as 18h).</li>
-              <li class="flex items-start gap-2"><i class="fas fa-check text-brand-emerald mt-0.5"></i> Controle e profilaxia rigorosa contra carrapatos, pulgas e mosquitos.</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check text-brand-emerald mt-0.5"></i> Troque a água dos pets várias vezes ao dia.</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check text-brand-emerald mt-0.5"></i> Nunca passeie no asfalto quente entre 10h e 16h.</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check text-brand-emerald mt-0.5"></i> Mantenha a proteção contra carrapatos em dia.</li>
             </ul>
           </div>
 
           <div class="bg-gradient-to-br from-brand-navy to-brand-dark text-white p-6 rounded-xl shadow">
-            <h4 class="font-bold text-sm mb-2">Boletim Epidemiológico</h4>
-            <p class="text-xs text-slate-300 mb-4">Inscreva-se para receber relatórios de monitoramento de zoonoses e saúde animal.</p>
+            <h4 class="font-bold text-sm mb-2">Boletim Epidemiológico Pet</h4>
+            <p class="text-xs text-slate-300 mb-4">Receba novidades sobre vacinação e prevenção veterinária para pequenos animais no seu e-mail.</p>
             <form onsubmit="alert('Inscrição efetuada com sucesso!'); event.preventDefault();" class="space-y-2">
               <input type="email" placeholder="Seu e-mail..." required class="w-full text-xs px-3 py-2 rounded bg-slate-800 border border-slate-700 text-white placeholder-slate-400">
               <button type="submit" class="w-full bg-brand-emerald hover:bg-brand-mint text-white font-bold text-xs py-2 rounded transition">Inscrever-se</button>
@@ -157,7 +158,7 @@
                 <i class="fas fa-globe text-brand-emerald"></i> O que é o El Niño?
               </h3>
               <p class="text-sm text-slate-700 leading-relaxed">
-                É um fenômeno climático associado ao aquecimento anormal das águas superficiais do Pacífico Equatorial, que altera padrões de chuva e eleva a temperatura global.
+                É um fenômeno climático associado ao aquecimento anormal das águas superficiais do Pacífico Equatorial, que altera padrões de chuva e eleva a temperatura.
               </p>
             </div>
             <div class="bg-slate-900 rounded-lg overflow-hidden shadow-inner p-2 text-center">
@@ -171,22 +172,22 @@
               <div class="bg-white p-5 rounded-xl shadow border-t-4 border-blue-500">
                 <i class="fas fa-water text-2xl text-blue-500 mb-3"></i>
                 <h4 class="font-bold text-sm text-slate-900 mb-1">Chuvas e Alagamentos</h4>
-                <p class="text-xs text-slate-600">Aumentam a exposição a ambientes contaminados e o risco de leptospirose em cães e rebanhos.</p>
+                <p class="text-xs text-slate-600">Aumentam o risco de leptospirose em cães e animais de produção.</p>
               </div>
               <div class="bg-white p-5 rounded-xl shadow border-t-4 border-red-500">
                 <i class="fas fa-temperature-high text-2xl text-red-500 mb-3"></i>
                 <h4 class="font-bold text-sm text-slate-900 mb-1">Calor Intenso</h4>
-                <p class="text-xs text-slate-600">Provoca hipertermia em pets braquicefálicos e estresse térmico em bovinos.</p>
+                <p class="text-xs text-slate-600">Provoca hipertermia em pets e estresse térmico em rebanhos.</p>
               </div>
               <div class="bg-white p-5 rounded-xl shadow border-t-4 border-brand-emerald">
                 <i class="fas fa-bug text-2xl text-brand-emerald mb-3"></i>
                 <h4 class="font-bold text-sm text-slate-900 mb-1">Vetores e Carrapatos</h4>
-                <p class="text-xs text-slate-600">O calor acelera o ciclo biológico de carrapatos, pulgas e mosquitos transmissores.</p>
+                <p class="text-xs text-slate-600">O calor acelera o ciclo de carrapatos, pulgas e mosquitos transmissores.</p>
               </div>
               <div class="bg-white p-5 rounded-xl shadow border-t-4 border-amber-500">
                 <i class="fas fa-tint-slash text-2xl text-amber-500 mb-3"></i>
                 <h4 class="font-bold text-sm text-slate-900 mb-1">Secas Prolongadas</h4>
-                <p class="text-xs text-slate-600">Aproximam fauna silvestre do convívio urbano e afetam a qualidade da água.</p>
+                <p class="text-xs text-slate-600">Exigem atenção redobrada à qualidade da água potável oferecida.</p>
               </div>
             </div>
           </div>
@@ -198,10 +199,10 @@
     <div id="view-artigos" class="hidden space-y-6">
       <div class="bg-white p-6 md:p-8 rounded-xl shadow border border-slate-200">
         <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-3">
-          <i class="fas fa-graduation-cap text-brand-emerald"></i> Referências e Fontes Oficiais
+          <i class="fas fa-graduation-cap text-brand-emerald"></i> Artigos Científicos & Referências
         </h2>
         <p class="text-xs sm:text-sm text-slate-600 mb-6">
-          Consulte o acervo institucional de onde derivam os dados científicos apresentados no portal:
+          Consulte os resumos e acesse os portais acadêmicos oficiais verificados:
         </p>
 
         <div class="space-y-6">
@@ -209,10 +210,13 @@
             <span class="text-[10px] font-bold bg-brand-emerald text-white px-2 py-0.5 rounded">Clima & Pequenos Animais</span>
             <h3 class="font-bold text-slate-900 text-sm">O Impacto do El Niño na Rotina de Pequenos Animais e Clínica Veterinária Urbana</h3>
             <p class="text-xs text-slate-600">
-              Estudo e levantamento clínico sobre intermação (hipertermia) e vetores de carrapatos (*Rhipicephalus*) durante anomalias térmicas.
+              Estudo focado no aumento de internações de cães braquicefálicos por intermação (hipertermia) e elevação exponencial de Doenças do Carrapato (Erliquiose/Babesiose) em climas quentes.
             </p>
-            <div class="text-[11px] text-slate-500 pt-2 border-t border-slate-200 font-mono">
-              <strong>Referência Bibliográfica:</strong> SCIELO BRASIL. <em>Revista Brasileira de Ciência Veterinária</em>. Disponível em: &lt;https://www.scielo.br&gt;.
+            <div class="text-[11px] text-slate-500 pt-2 border-t border-slate-200 font-mono flex justify-between items-center flex-wrap gap-2">
+              <span><strong>Referência:</strong> SciELO Brasil. <em>Artigos de Medicina Veterinária Preventiva</em>.</span>
+              <a href="https://www.scielo.br" target="_blank" rel="noopener noreferrer" class="bg-brand-emerald text-white px-3 py-1.5 rounded text-xs font-sans font-bold hover:bg-brand-navy transition flex items-center gap-1">
+                Acessar SciELO <i class="fas fa-external-link-alt text-[10px]"></i>
+              </a>
             </div>
           </div>
 
@@ -220,10 +224,13 @@
             <span class="text-[10px] font-bold bg-blue-600 text-white px-2 py-0.5 rounded">Zoonoses & Fiocruz</span>
             <h3 class="font-bold text-slate-900 text-sm">Leishmaniose Visceral Canina e Vetores Flebotomíneos em Períodos Quentes</h3>
             <p class="text-xs text-slate-600">
-              Análise epidemiológica do vetor *Lutzomyia longipalpis* e diretrizes de controle da Leishmaniose em cães urbanos.
+              Revisão sobre o ciclo biológico do mosquito-palha (*Lutzomyia longipalpis*) e como o aumento das temperaturas favorece a transmissão da leishmaniose para cães e humanos.
             </p>
-            <div class="text-[11px] text-slate-500 pt-2 border-t border-slate-200 font-mono">
-              <strong>Referência Bibliográfica:</strong> FIOCRUZ. <em>Manual de Vigilância e Controle da Leishmaniose Visceral</em>. Fundação Oswaldo Cruz, Rio de Janeiro.
+            <div class="text-[11px] text-slate-500 pt-2 border-t border-slate-200 font-mono flex justify-between items-center flex-wrap gap-2">
+              <span><strong>Referência:</strong> FIOCRUZ. <em>Portal Oficial Oswaldo Cruz</em>.</span>
+              <a href="https://portal.fiocruz.br" target="_blank" rel="noopener noreferrer" class="bg-blue-600 text-white px-3 py-1.5 rounded text-xs font-sans font-bold hover:bg-brand-navy transition flex items-center gap-1">
+                Acessar Fiocruz <i class="fas fa-external-link-alt text-[10px]"></i>
+              </a>
             </div>
           </div>
 
@@ -231,10 +238,13 @@
             <span class="text-[10px] font-bold bg-teal-600 text-white px-2 py-0.5 rounded">Epidemiologia Urbana</span>
             <h3 class="font-bold text-slate-900 text-sm">Prevenção e Manejo da Leptospirose Canina e Humana em Áreas de Alagamento</h3>
             <p class="text-xs text-slate-600">
-              Protocolo sanitário para contingência de surtos de *Leptospira* causados por enchentes e precipitações extremas.
+              Manual técnico oficial do Ministério da Saúde com orientações de diagnóstico e contenção de surtos bacterianos pós-inundações.
             </p>
-            <div class="text-[11px] text-slate-500 pt-2 border-t border-slate-200 font-mono">
-              <strong>Referência Bibliográfica:</strong> BRASIL. Ministério da Saúde. <em>Guia de Vigilância em Saúde: Leptospirose</em>. Secretaria de Vigilância em Saúde, Brasília.
+            <div class="text-[11px] text-slate-500 pt-2 border-t border-slate-200 font-mono flex justify-between items-center flex-wrap gap-2">
+              <span><strong>Referência:</strong> BRASIL. Ministério da Saúde. <em>Portal de Saúde Pública</em>.</span>
+              <a href="https://www.gov.br/saude" target="_blank" rel="noopener noreferrer" class="bg-teal-600 text-white px-3 py-1.5 rounded text-xs font-sans font-bold hover:bg-brand-navy transition flex items-center gap-1">
+                Acessar Portal GOV <i class="fas fa-external-link-alt text-[10px]"></i>
+              </a>
             </div>
           </div>
         </div>
@@ -265,14 +275,14 @@
 
   </main>
 
-  <!-- MODAL LEITOR INTERNO EXPANDIDO COM FONTES -->
+  <!-- MODAL LEITOR INTERNO (Evita erro 404 para sempre) -->
   <div id="article-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative">
       <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-800 text-2xl font-bold">
         &times;
       </button>
       <div id="modal-content">
-        <!-- Preenchido via JS com Matéria Completa + Fonte -->
+        <!-- Preenchido via JS -->
       </div>
     </div>
   </div>
@@ -297,100 +307,71 @@
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
-    // MATÉRIAS APROFUNDADAS COM FONTES
     const articlesData = [
       {
         id: 1,
-        title: "Hipertermia e Choque Térmico em Cães Braquicefálicos durante Ondas de Calor do El Niño",
+        title: "Hipertermia em Cães Braquicefálicos: O Risco Extremo nas Ondas de Calor do El Niño",
         category: "Pequenos Animais (Pets)",
         date: "Outubro, 2026",
         image: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=800&q=80",
-        desc: "Análise fisiológica completa dos riscos de parada cardiorrespiratória e falência múltipla de órgãos por intermação em Pugs, Bulldogs e Shih-Tzus.",
-        source: "Conselho Federal de Medicina Veterinária (CFMV) & Associação Brasileira de Clínicos Veterinários de Pequenos Animais (Anclivepa)",
+        desc: "Cães de focinho curto (Pugs, Bulldogs, Shih-Tzus) não conseguem dissipar o calor adequadamente, podendo sofrer choque térmico.",
         content: `
-          <h3 class="text-base font-bold text-slate-900 mb-2">Anatomia e Fisiopatologia do Choque Térmico</h3>
-          <p class="mb-3">Durante a vigência do fenômeno El Niño, a frequência de dias com temperaturas acima de 35°C aumenta consideravelmente. Cães não possuem glândulas sudoríparas espalhadas pelo corpo como os humanos (a transpiração ocorre apenas discretamente nos coxins/almofadinhas das patas). O principal mecanismo de dissipação de calor é a evaporação da saliva através da arfagem (respiração rápida por boca aberta).</p>
-          <p class="mb-3">Raças braquicefálicas (como Pug, Bulldog Inglês, Bulldog Francês, Shih-Tzu e Boxer) apresentam estreitamento das narinas, palato mole prolongado e traqueia hipoplásica. Em dias quentes, a tentativa contínua de arfar gera edema nas vias aéreas superiores, reduzindo ainda mais a passagem de ar e impedindo o resfriamento corpóreo. Quando a temperatura corporal ultrapassa 40,5°C, inicia-se a denaturação proteica, coagulação intravascular disseminada (CIVD) e edema cerebral.</p>
-          
-          <h3 class="text-base font-bold text-slate-900 mt-4 mb-2">Quadro Clínico e Sintomas de Emergência</h3>
+          <p class="mb-3">Durante o fenômeno El Niño, as frequentes ondas de calor extremo elevam as temperaturas urbanas a patamares perigosos. Cães braquicefálicos possuem anatomia desfavorável para a termorregulação via arfar.</p>
+          <p class="mb-3"><strong>Sinais de Alerta de Choque Térmico:</strong> Respiração ofegante, salivação espessa, gengivas avermelhadas, fraqueza e vômitos.</p>
+          <h4 class="font-bold text-slate-900 mt-4 mb-2">Cuidados Emergenciais:</h4>
           <ul class="list-disc pl-5 space-y-1 mb-3">
-            <li>Ofegante extremo com ruído estridoso ou rouquidão respiratória.</li>
-            <li>Salivação abundante, espessa e viscosa.</li>
-            <li>Mucosas oculares e gengivais de cor vermelho-escura, cianóticas (roxas) ou pálidas.</li>
-            <li>Apatia motora, incapacidade de ficar em pé, tremores, convulsões e vômitos hemorrágicos.</li>
+            <li>Nunca passeie com o pet entre 10h e 16h em dias quentes.</li>
+            <li>Umedeça as patas e o abdômen do cão com água em temperatura ambiente.</li>
+            <li>Ofereça sombra, ar-condicionado ou ventiladores focados no abrigo do animal.</li>
           </ul>
-
-          <h3 class="text-base font-bold text-slate-900 mt-4 mb-2">Protocolo de Prevenção e Primeiro Socorro</h3>
-          <p class="mb-3">Se o pet demonstrar sinais de hipertermia, a primeira ação é resfriá-lo gradualmente antes ou durante o transporte emergencial ao veterinário. Borrife água em temperatura ambiente (entre 20°C e 25°C) no corpo do animal e posicionador focado em ventilador. NUNCA utilize banho de gelo ou água congelada bruscamente, pois isso causa vasoconstrição periférica, aprisionando o calor no interior do organismo.</p>
         `
       },
       {
         id: 2,
-        title: "Surtos de Erliquiose e Babesiose Canina: Aceleração Biológica do Carrapato Urbano",
+        title: "Surto de Erliquiose e Babesiose em Cães: O Calor Acelera o Carrapato Urbano",
         category: "Doenças de Vetores",
         date: "Outubro, 2026",
         image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80",
-        desc: "Estudo detalhado sobre a redução do ciclo de eclosão do Rhipicephalus sanguineus e as manifestações clínicas da hemoparasitose em cães.",
-        source: "Revista Brasileira de Parasitologia Veterinária (RBPV) & Departamento de Parasitologia da USP",
+        desc: "Temperaturas altas encurtam o ciclo biológico do carrapato marrom do cão, disparando o número de infecções graves no sangue.",
         content: `
-          <h3 class="text-base font-bold text-slate-900 mb-2">A Influência Climática na Proliferação do Carrapato Marrom</h3>
-          <p class="mb-3">O aumento das temperaturas médias e os períodos de estiagem alternados com umidade provocados pelo El Niño otimizam a biologia do <em>Rhipicephalus sanguineus</em> (carrapato marrom do cão). Em temperaturas ideais (entre 28°C e 32°C), o tempo de eclosão dos ovos cai de 30 para apenas 10 a 14 dias, gerando um efeito de superpopulação de parasitas em quintais, canis e parques urbanos.</p>
-          <p class="mb-3">O carrapato é o vetor de dois hemoparasitas graves: a bactéria <em>Ehrlichia canis</em> (Erliquiose) e o protozoário <em>Babesia canis</em> (Babesiose). Ambas as doenças atacam as células sanguíneas dos cães.</p>
-
-          <h3 class="text-base font-bold text-slate-900 mt-4 mb-2">Fases da Doença e Diagnóstico</h3>
-          <p class="mb-3">Na fase aguda, o animal apresenta febre alta contínua, letargia, perda de apetite e aparecimento de petéquias (manchas avermelhadas na pele/gengiva). Se não tratada com antibióticos específicos (como a Doxiciclina), a erliquiose pode avançar para a fase crônica, causando aplasia de medula óssea, insuficiência renal severa e cegueira uveítica.</p>
-
-          <h3 class="text-base font-bold text-slate-900 mt-4 mb-2">Estratégia Manejo Integrado de Parasitas</h3>
-          <p class="mb-3">A prevenção exige proteção contínua durante todo o ano por meio de isoxazolinas orais (comprimidos mensais ou trimestrais), associadas à desinfecção do ambiente urbano (dedetização de frestas e muros com piretroides ou organofosforados), uma vez que 95% da população de carrapatos vive no ambiente e apenas 5% está no corpo do cão.</p>
+          <p class="mb-3">O aumento das temperaturas médias causado pelo El Niño acelera a reprodução do carrapato <em>Rhipicephalus sanguineus</em>, resultando em surtos da 'Doença do Carrapato'.</p>
+          <p class="mb-3">A bactéria ataca os glóbulos brancos e as plaquetas, podendo causar anemia profunda, sangramentos nasais e apatia.</p>
+          <h4 class="font-bold text-slate-900 mt-4 mb-2">Medidas de Prevenção:</h4>
+          <ul class="list-disc pl-5 space-y-1 mb-3">
+            <li>Uso contínuo de comprimidos mastigáveis ou pipetas antiparasitárias.</li>
+            <li>Inspeção diária da pelagem do cão após passeios na rua.</li>
+          </ul>
         `
       },
       {
         id: 3,
-        title: "Leptospirose em Cães e Zoonose Urbana após Eventos Pluviométricos do El Niño",
+        title: "Leptospirose Canina Pós-Enchentes: Como Proteger Seu Cão da Água de Chuva",
         category: "Zoonoses e Pets",
         date: "Setembro, 2026",
         image: "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=800&q=80",
-        desc: "Diretrizes epidemiológicas do contágio por Leptospira interrogans em águas de enchentes e prevenção vacinal.",
-        source: "Ministério da Saúde (Secretaria de Vigilância em Saúde) & Fundação Oswaldo Cruz (Fiocruz)",
+        desc: "Enchentes espalham a bactéria Leptospira contida na urina de ratos. O contato com a água contaminada leva a problemas renais.",
         content: `
-          <h3 class="text-base font-bold text-slate-900 mb-2">Mecanismo de Contágio e Transmissão em Enchentes</h3>
-          <p class="mb-3">Tempestades severas atreladas ao El Niño provocam alagamentos frequentes em áreas urbanas e rurais. A água da chuva invade bueiros e toca a urina de ratos urbanos (<em>Rattus norvegicus</em>), reservatórios primários da espiroqueta <em>Leptospira interrogans</em> (sorovares Icterohaemorrhagiae e Canicola).</p>
-          <p class="mb-3">A bactéria penetra de forma ativa na pele íntegra ou amolecida pela água, bem como através de pequenas escoriações e mucosas do cão. Uma vez no organismo, dissemina-se pelo sangue (leptospiremia) atingindo principalmente rins e fígado.</p>
-
-          <h3 class="text-base font-bold text-slate-900 mt-4 mb-2">Manifestações Clínicas em Pequenos Animais</h3>
+          <p class="mb-3">Em períodos de chuvas torrenciais do El Niño, enchentes espalham a bactéria <em>Leptospira</em>. Cães que entram em contato com essa água podem contrair a doença.</p>
+          <h4 class="font-bold text-slate-900 mt-4 mb-2">Prevenção Vital:</h4>
           <ul class="list-disc pl-5 space-y-1 mb-3">
-            <li>Insuficiência renal aguda (anúria ou oligúria).</li>
-            <li>Icterícia acentuada (pele e gengivas amarelas devido à necrose hepática).</li>
-            <li>Vômitos com estrias de sangue, diarreia fétida e prostração severa.</li>
-            <li>Vasculite sistêmica levando à Síndrome de Hemorragia Pulmonar.</li>
+            <li>Mantenha a vacina múltipla (V10 ou V8) rigorosamente atualizada.</li>
+            <li>Lave as patas do pet com água limpa e sabão caso ele pise em poças de rua.</li>
           </ul>
-
-          <h3 class="text-base font-bold text-slate-900 mt-4 mb-2">Protocolos de Profilaxia</h3>
-          <p class="mb-3">Imunização anual com vacinas polivalentes (V8, V10 ou vacinas específicas contra leptospirose com reforço semestral em áreas de risco). Tutores devem rigorosamente desinfetar áreas alagadas com água sanitária (hipoclorito de sódio a 2,5%) e impedir o acesso de cães a poças de rua pós-chuva.</p>
         `
       },
       {
         id: 4,
-        title: "Expansão da Leishmaniose Visceral Canina e do Mosquito-Palha em Períodos Úmidos e Quentes",
+        title: "Leishmaniose Visceral: Aumento do Mosquito-Palha em Regiões Quentes",
         category: "Saúde Pública",
         date: "Setembro, 2026",
         image: "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=800&q=80",
-        desc: "O papel do clima na proliferação da Lutzomyia longipalpis e os desafios do controle da Leishmaniose nos centros urbanos.",
-        source: "Organização Mundial da Saúde Animal (WOAH) & Centro de Controle de Zoonoses (CCZ)",
+        desc: "Alta umidade e matéria orgânica acumulada após chuvas aceleram a reprodução do vetor da leishmaniose.",
         content: `
-          <h3 class="text-base font-bold text-slate-900 mb-2">A Dinâmica Epidemiológica do Vetor</h3>
-          <p class="mb-3">A combinação de alta umidade do ar e acúmulo de matéria orgânica no solo durante o El Niño favorece a criação do vetor da Leishmaniose Visceral: o flebotomíneo <em>Lutzomyia longipalpis</em> (conhecido popularmente como mosquito-palha ou birigui). Diferente dos mosquitos comuns, a larva do mosquito-palha desenvolve-se em terra úmida, folhas em decomposição e fezes de animais.</p>
-          <p class="mb-3">O cão atua como o principal reservatório doméstico do protozoário <em>Leishmania infantum</em>. Ao picar o cão infectado, o mosquito transmite o parasita para outros animais e seres humanos.</p>
-
-          <h3 class="text-base font-bold text-slate-900 mt-4 mb-2">Quadro Clínico e Diagnóstico no Cão</h3>
-          <p class="mb-3">A doença é crônica e sistêmica. Os sinais clínicos clássicos incluem emagrecimento progressivo, lesões de pele (especialmente ao redor dos olhos e pontas das orelhas com descamação furfurácea), crescimento anormal das unhas (onicogrifose), úlceras na pele e organomegalia (aumento de baço e fígado).</p>
-
-          <h3 class="text-base font-bold text-slate-900 mt-4 mb-2">Ações de Prevenção e Posse Responsável</h3>
+          <p class="mb-3">A leishmaniose é uma zoonose grave transmitida pela picada do mosquito-palha. O calor do El Niño acelera a atividade de picada desses mosquitos ao entardecer.</p>
+          <h4 class="font-bold text-slate-900 mt-4 mb-2">Como Proteger:</h4>
           <ul class="list-disc pl-5 space-y-1 mb-3">
-            <li>Uso constante de coleiras impregnadas com inseticidas repelentes (Deltametrina a 4%).</li>
-            <li>Limpeza periódica do quintal, recolhendo fezes de animais, folhas e frutos em decomposição.</li>
-            <li>Instalação de telas de malha fina (1 mm) em canis e janelas residenciais.</li>
-            <li>Vacinação específica contra Leishmaniose sob supervisão do médico veterinário.</li>
+            <li>Utilize coleiras repelentes no seu cão.</li>
+            <li>Mantenha o quintal limpo, sem fezes ou folhas acumuladas.</li>
           </ul>
         `
       }
@@ -415,7 +396,7 @@
             </div>
             <div class="p-4 pt-0">
               <span class="inline-flex items-center gap-1 text-xs font-bold text-brand-emerald group-hover:underline">
-                Ler matéria detalhada & fonte <i class="fas fa-arrow-right text-[10px]"></i>
+                Clique para ler a matéria completa <i class="fas fa-arrow-right text-[10px]"></i>
               </span>
             </div>
           </div>
@@ -433,22 +414,13 @@
         <h2 class="text-xl md:text-2xl font-extrabold text-slate-900 mt-1 mb-2 leading-tight">${article.title}</h2>
         <div class="text-xs text-slate-400 mb-4 flex items-center gap-2 border-b pb-2">
           <span><i class="far fa-calendar"></i> Publicado em: ${article.date}</span>
-          <span>•</span>
-          <span><i class="fas fa-microscope"></i> Informativo de Epidemiologia EcoVet</span>
         </div>
-        <img src="${article.image}" alt="${article.title}" class="w-full h-60 object-cover rounded-xl mb-4 shadow">
-        
-        <div class="text-slate-700 text-xs sm:text-sm leading-relaxed space-y-3">
+        <img src="${article.image}" alt="${article.title}" class="w-full h-56 object-cover rounded-xl mb-4 shadow">
+        <div class="text-slate-700 text-xs sm:text-sm leading-relaxed">
           ${article.content}
         </div>
-
-        <div class="mt-6 p-4 bg-slate-100 rounded-lg border-l-4 border-brand-navy">
-          <h4 class="text-xs font-bold text-brand-navy uppercase tracking-wide mb-1"><i class="fas fa-book mr-1"></i> Fonte Bibliográfica e Institucional:</h4>
-          <p class="text-xs text-slate-600 font-mono">${article.source}</p>
-        </div>
-
         <div class="mt-6 pt-4 border-t flex justify-end">
-          <button onclick="closeModal()" class="bg-brand-navy text-white text-xs font-bold px-5 py-2.5 rounded-lg hover:bg-brand-emerald transition">
+          <button onclick="closeModal()" class="bg-brand-navy text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-brand-emerald transition">
             Fechar Matéria
           </button>
         </div>
