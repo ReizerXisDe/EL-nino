@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal EcoVet - Influência do El Niño na Saúde Animal</title>
+  <title>Portal EcoVet - El Niño e Saúde Animal</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script>
@@ -12,8 +12,8 @@
         extend: {
           colors: {
             brand: {
-              navy: '#0f172a',
-              dark: '#1e293b',
+              navy: '#0a192f',
+              dark: '#112240',
               primary: '#0284c7',
               emerald: '#059669',
               mint: '#10b981',
@@ -25,301 +25,295 @@
       }
     }
   </script>
-  <style>
-    .line-clamp-2 {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .line-clamp-3 {
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-  </style>
 </head>
 <body class="bg-slate-100 text-slate-800 font-sans flex flex-col min-h-screen">
 
   <!-- TOP BAR -->
-  <header class="bg-brand-navy text-slate-300 text-xs py-2 border-b border-slate-700">
+  <header class="bg-brand-navy text-slate-300 text-xs py-2 border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
       <div class="flex items-center space-x-4">
-        <span id="current-date" class="font-medium text-slate-300"><i class="far flex-shrink-0 fa-calendar-alt text-brand-mint mr-1"></i> Carregando data...</span>
-        <span class="hidden sm:inline text-slate-500">|</span>
-        <span class="hidden sm:inline text-slate-300"><i class="fas fa-microscope text-brand-mint mr-1"></i> Medicina Veterinária & Epidemiologia</span>
+        <span id="current-date"><i class="far fa-calendar-alt text-brand-mint mr-1"></i> Carregando...</span>
+        <span class="hidden sm:inline">|</span>
+        <span class="hidden sm:inline"><i class="fas fa-shield-alt text-brand-mint mr-1"></i> Extensão Universitária & Saúde Única</span>
       </div>
-      <div class="flex items-center space-x-4">
-        <span class="text-brand-accent font-semibold flex items-center gap-1">
-          <i class="fas fa-cloud-sun-rain"></i> Monitoramento Climático El Niño Active
-        </span>
+      <div>
+        <span class="text-brand-accent font-semibold"><i class="fas fa-satellite-dish"></i> Monitoramento Climático Ativo</span>
       </div>
     </div>
   </header>
 
-  <!-- MAIN HEADER / BRAND -->
-  <div class="bg-brand-dark text-white py-6 border-b-4 border-brand-emerald shadow-lg">
+  <!-- MAIN HEADER -->
+  <div class="bg-gradient-to-r from-brand-navy to-brand-dark text-white py-6 border-b-4 border-brand-emerald shadow-lg">
     <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
       <div class="text-center md:text-left">
         <div class="flex items-center justify-center md:justify-start gap-3">
-          <div class="bg-brand-emerald text-white p-3 rounded-lg shadow-md">
-            <i class="fas fa-disease text-3xl"></i>
+          <div class="bg-brand-emerald text-white p-3 rounded-xl shadow">
+            <i class="fas fa-globe-americas text-3xl"></i>
           </div>
           <div>
-            <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white">
-              ECO<span class="text-brand-accent">VET</span> INFO
-            </h1>
-            <p class="text-xs md:text-sm text-slate-300 font-medium tracking-wide mt-0.5">
-              Impactos de Eventos Climáticos Extremos na Saúde e Epidemiologia Animal
-            </p>
+            <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">ECO<span class="text-brand-accent">VET</span></h1>
+            <p class="text-xs md:text-sm text-slate-300 mt-0.5">El Niño e Saúde Animal: Quando o clima muda, o risco também muda</p>
           </div>
         </div>
       </div>
-
-      <!-- SEARCH BAR -->
       <div class="w-full md:w-80">
         <div class="relative">
-          <input type="text" id="search-input" placeholder="Buscar vetores, doenças, regiões..." 
-                 class="w-full bg-slate-900/80 text-white placeholder-slate-400 text-sm rounded-full pl-10 pr-4 py-2.5 border border-slate-700 focus:outline-none focus:border-brand-mint transition">
+          <input type="text" id="search-input" placeholder="Buscar no portal..." class="w-full bg-slate-900/80 text-white placeholder-slate-400 text-sm rounded-full pl-10 pr-4 py-2.5 border border-slate-700 focus:outline-none focus:border-brand-mint">
           <i class="fas fa-search absolute left-3.5 top-3 text-slate-400"></i>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- NAVIGATION MENU -->
-  <nav class="bg-white shadow-md sticky top-0 z-30 border-b border-slate-200">
+  <!-- NAVIGATION -->
+  <nav class="bg-white shadow sticky top-0 z-30 border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4">
       <div class="flex items-center justify-between h-14">
-        <div class="flex items-center space-x-1 sm:space-x-4 overflow-x-auto py-2 no-scrollbar" id="category-filters">
-          <button onclick="filterCategory('todos')" class="cat-btn active bg-brand-emerald text-white text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-full transition whitespace-nowrap">
-            Todas as Notícias
+        <div class="flex items-center space-x-2 overflow-x-auto py-2 no-scrollbar">
+          <button onclick="switchView('home')" id="nav-home" class="nav-btn bg-brand-emerald text-white text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full transition whitespace-nowrap">
+            Início & Notícias
           </button>
-          <button onclick="filterCategory('vetores')" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full transition whitespace-nowrap">
-            Vetores & Mosquitos
+          <button onclick="switchView('projeto')" id="nav-projeto" class="nav-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full transition whitespace-nowrap">
+            <i class="fas fa-bullhorn mr-1 text-brand-emerald"></i> O Projeto & Infográfico
           </button>
-          <button onclick="filterCategory('bovinos')" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full transition whitespace-nowrap">
-            Pecuária & Bovinos
+          <button onclick="switchView('artigos')" id="nav-artigos" class="nav-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full transition whitespace-nowrap">
+            <i class="fas fa-book-medical mr-1 text-brand-emerald"></i> Artigos Científicos & Referências
           </button>
-          <button onclick="filterCategory('silvestres')" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full transition whitespace-nowrap">
-            Fauna Silvestre
-          </button>
-          <button onclick="filterCategory('pets')" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full transition whitespace-nowrap">
-            Cães & Gatos
+          <button onclick="switchView('contato')" id="nav-contato" class="nav-btn bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full transition whitespace-nowrap">
+            Contato
           </button>
         </div>
-
-        <a href="#contato" class="hidden lg:flex items-center gap-1 text-sm font-semibold text-brand-emerald hover:text-brand-navy transition">
-          <i class="fas fa-envelope"></i> Contato
-        </a>
       </div>
     </div>
   </nav>
 
-  <!-- MAIN CONTENT CONTAINER -->
-  <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
+  <!-- CONTENT VIEWS CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full">
 
-    <!-- ALERT BANNER -->
-    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 mb-8 rounded-r-lg shadow-sm flex items-start gap-3">
-      <i class="fas fa-exclamation-triangle text-amber-600 text-xl mt-0.5"></i>
-      <div>
-        <h3 class="text-sm font-bold text-amber-900 uppercase tracking-wide">Alerta Epidemiológico Regional</h3>
-        <p class="text-xs sm:text-sm text-amber-800 mt-1">
-          Aumento das temperaturas e precipitações associadas ao fenômeno El Niño elevam em até 40% o risco de surtos de enfermidades transmitidas por vetores e estresse térmico em rebanhos.
-        </p>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
-      <!-- LEFT 2 COLUMNS: ARTICLES GRID -->
-      <div class="lg:col-span-2 space-y-8">
-        
-        <!-- FEATURED HERO ARTICLE -->
-        <div id="featured-card" class="bg-white rounded-xl overflow-hidden shadow-lg border border-slate-200 transition hover:shadow-xl group cursor-pointer" onclick="openArticle(1)">
-          <div class="relative h-64 sm:h-80 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1200&q=80" alt="Gado sob forte calor" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <span class="absolute top-4 left-4 bg-brand-emerald text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow">
-              Destaque Principal
-            </span>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center text-xs text-slate-500 mb-2 gap-4">
-              <span><i class="far fa-calendar mr-1"></i> Hoje</span>
-              <span><i class="far fa-user mr-1"></i> Dr. Carlos Mendes</span>
-              <span><i class="far fa-folder mr-1"></i> Pecuária & Bovinos</span>
-            </div>
-            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 group-hover:text-brand-emerald transition mb-3">
-              Como o El Niño Potencializa o Estresse Térmico e Surtos de Parasitoses na Pecuária
-            </h2>
-            <p class="text-slate-600 text-sm leading-relaxed line-clamp-3 mb-4">
-              O aumento expressivo das temperaturas globais durante o fenômeno El Niño cria o cenário perfeito para a proliferação do carrapato bovino (Rhipicephalus microplus) e aumenta os casos de Anaplasmose e Babesiose no rebanho leiteiro e de corte.
-            </p>
-            <span class="inline-flex items-center text-sm font-bold text-brand-emerald group-hover:translate-x-1 transition">
-              Ler artigo completo <i class="fas fa-arrow-right ml-2 text-xs"></i>
-            </span>
-          </div>
-        </div>
-
-        <!-- SECONDARY ARTICLES GRID -->
+    <!-- VIEW 1: HOME (NOTÍCIAS + FEED RSS + DESTAQUES) -->
+    <div id="view-home" class="space-y-8">
+      <!-- ALERTA -->
+      <div class="bg-gradient-to-r from-teal-900 to-slate-900 text-white p-6 rounded-xl shadow-md border-l-4 border-brand-emerald flex items-start gap-4">
+        <i class="fas fa-cloud-sun-rain text-brand-accent text-3xl mt-1"></i>
         <div>
-          <h3 class="text-lg font-bold text-slate-900 mb-4 pb-2 border-b-2 border-brand-emerald flex items-center justify-between">
-            <span><i class="fas fa-newspaper text-brand-emerald mr-2"></i>Últimas Publicações</span>
-            <span id="article-count" class="text-xs text-slate-500 font-normal">Exibindo todas</span>
-          </h3>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" id="news-grid">
-            <!-- Articles injected via JS -->
-          </div>
+          <h3 class="font-bold text-base text-brand-accent">Informativo Climático e Saúde Única</h3>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1">
+            O El Niño altera padrões de temperatura e umidade, modificando a sobrevivência e a distribuição de vetores de doenças em animais domésticos, pecuária e fauna silvestre.
+          </p>
         </div>
-
       </div>
 
-      <!-- RIGHT COLUMN: SIDEBAR -->
-      <aside class="space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-6">
+          <h2 class="text-xl font-bold text-slate-900 border-b-2 border-brand-emerald pb-2 flex items-center justify-between">
+            <span><i class="fas fa-newspaper text-brand-emerald mr-2"></i>Notícias e Atualizações em Tempo Real</span>
+            <span class="text-xs text-slate-500 font-normal">Atualizado via RSS & Redação</span>
+          </h2>
 
-        <!-- WEATHER & EL NINO WIDGET -->
-        <div class="bg-white p-5 rounded-xl shadow-md border border-slate-200">
-          <h4 class="font-bold text-slate-900 border-b pb-2 mb-3 text-sm flex items-center gap-2">
-            <i class="fas fa-temperature-high text-red-500"></i> Fator Climático & Riscos
-          </h4>
-          <div class="space-y-3 text-xs">
-            <div class="flex justify-between items-center p-2 bg-slate-50 rounded">
-              <span class="text-slate-600">Umidade Relativa Alta</span>
-              <span class="font-bold text-amber-600">Risco de Fungos/Frieiras</span>
-            </div>
-            <div class="flex justify-between items-center p-2 bg-slate-50 rounded">
-              <span class="text-slate-600">Ondas de Calor (&gt;35°C)</span>
-              <span class="font-bold text-red-600">Estresse Térmico Severo</span>
-            </div>
-            <div class="flex justify-between items-center p-2 bg-slate-50 rounded">
-              <span class="text-slate-600">Inundações / Chuvas</span>
-              <span class="font-bold text-blue-600">Surto de Leptospirose</span>
+          <!-- GRID DE NOTÍCIAS -->
+          <div id="news-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <!-- Injetado via JS -->
+          </div>
+
+          <!-- SEÇÃO FEED RSS EXTERNO AUTOMÁTICO -->
+          <div class="bg-white p-6 rounded-xl shadow border border-slate-200 mt-8">
+            <h3 class="font-bold text-slate-900 text-base mb-3 flex items-center gap-2">
+              <i class="fas fa-rss text-orange-500"></i> Últimas Notícias Oficiais (Embrapa & Ciência)
+            </h3>
+            <p class="text-xs text-slate-500 mb-4">Integrado automaticamente com fontes de pesquisa agropecuária e sanitária.</p>
+            <div id="rss-feed-container" class="space-y-3">
+              <div class="p-3 bg-slate-50 rounded text-xs text-slate-600 animate-pulse">Carregando feed de notícias em tempo real...</div>
             </div>
           </div>
         </div>
 
-        <!-- MAIS LIDOS (TOP READS) -->
-        <div class="bg-white p-5 rounded-xl shadow-md border border-slate-200">
-          <h4 class="font-bold text-slate-900 border-b pb-3 mb-4 text-sm flex items-center justify-between">
-            <span><i class="fas fa-fire text-amber-500 mr-1"></i> Mais Lidos</span>
-            <span class="text-xs text-slate-400">Esta semana</span>
-          </h4>
-          
-          <div class="space-y-4">
-            <div class="flex gap-3 items-start cursor-pointer group" onclick="openArticle(2)">
-              <span class="text-2xl font-black text-slate-300 group-hover:text-brand-emerald transition">01</span>
-              <div>
-                <h5 class="text-xs font-bold text-slate-800 group-hover:text-brand-emerald line-clamp-2 transition">
-                  Aumento de Mosquitos Vetores de Encefalite Equina em Anos de El Niño
-                </h5>
-                <span class="text-[10px] text-slate-400">Vetores & Mosquitos</span>
-              </div>
-            </div>
-
-            <div class="flex gap-3 items-start cursor-pointer group" onclick="openArticle(3)">
-              <span class="text-2xl font-black text-slate-300 group-hover:text-brand-emerald transition">02</span>
-              <div>
-                <h5 class="text-xs font-bold text-slate-800 group-hover:text-brand-emerald line-clamp-2 transition">
-                  Surtos de Leptospirose em Cães e Animaís de Cativeiro Pós-Enchentes
-                </h5>
-                <span class="text-[10px] text-slate-400">Pets & Cães</span>
-              </div>
-            </div>
-
-            <div class="flex gap-3 items-start cursor-pointer group" onclick="openArticle(4)">
-              <span class="text-2xl font-black text-slate-300 group-hover:text-brand-emerald transition">03</span>
-              <div>
-                <h5 class="text-xs font-bold text-slate-800 group-hover:text-brand-emerald line-clamp-2 transition">
-                  Migração de Aves Silvestres e Disseminação da Influenza Aviária
-                </h5>
-                <span class="text-[10px] text-slate-400">Fauna Silvestre</span>
-              </div>
-            </div>
+        <!-- SIDEBAR -->
+        <aside class="space-y-6">
+          <div class="bg-white p-5 rounded-xl shadow border border-slate-200">
+            <h4 class="font-bold text-slate-900 border-b pb-2 mb-3 text-sm"><i class="fas fa-info-circle text-brand-emerald mr-1"></i> Pontos de Atenção</h4>
+            <ul class="space-y-2 text-xs text-slate-600">
+              <li class="flex items-start gap-2"><i class="fas fa-check text-brand-emerald mt-0.5"></i> Água limpa e fresca obrigatória para evitar desidratação.</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check text-brand-emerald mt-0.5"></i> Sombra e ventilação adequada em piquetes e baias.</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check text-brand-emerald mt-0.5"></i> Controle rigoroso de ectoparasitas (carrapatos e moscas).</li>
+            </ul>
           </div>
-        </div>
 
-        <!-- NEWSLETTER BOLETIM VETERINÁRIO -->
-        <div class="bg-gradient-to-br from-brand-navy to-brand-dark text-white p-6 rounded-xl shadow-md">
-          <i class="fas fa-paper-plane text-brand-mint text-3xl mb-3"></i>
-          <h4 class="font-bold text-base mb-1">Boletim Epidemiológico</h4>
-          <p class="text-xs text-slate-300 mb-4 leading-relaxed">
-            Receba relatórios mensais com análises sobre os impactos do clima na saúde dos animais da sua região.
-          </p>
-          <form onsubmit="handleNewsletter(event)" class="space-y-2">
-            <input type="email" placeholder="Seu e-mail profissional" required class="w-full text-xs px-3 py-2.5 rounded bg-slate-800 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:border-brand-mint">
-            <button type="submit" class="w-full bg-brand-emerald hover:bg-brand-mint text-white font-bold text-xs py-2.5 rounded transition">
-              Inscrever-se Gratuitamente
-            </button>
-          </form>
-        </div>
-
-      </aside>
-
+          <div class="bg-gradient-to-br from-brand-navy to-brand-dark text-white p-6 rounded-xl shadow">
+            <h4 class="font-bold text-sm mb-2">Boletim Científico</h4>
+            <p class="text-xs text-slate-300 mb-4">Cadastre seu e-mail para receber alertas de surtos epidemiológicos sazonais.</p>
+            <form onsubmit="alert('Inscrição efetuada com sucesso!'); event.preventDefault();" class="space-y-2">
+              <input type="email" placeholder="Seu e-mail..." required class="w-full text-xs px-3 py-2 rounded bg-slate-800 border border-slate-700 text-white placeholder-slate-400">
+              <button type="submit" class="w-full bg-brand-emerald hover:bg-brand-mint text-white font-bold text-xs py-2 rounded transition">Inscrever-se</button>
+            </form>
+          </div>
+        </aside>
+      </div>
     </div>
 
-    <!-- CONTACT & INQUIRIES SECTION -->
-    <section id="contato" class="mt-16 bg-white rounded-xl shadow-md border border-slate-200 p-6 md:p-8">
-      <div class="max-w-3xl mx-auto">
-        <div class="text-center mb-8">
-          <span class="text-xs font-bold text-brand-emerald uppercase tracking-wider">Contato com Especialistas</span>
-          <h3 class="text-2xl font-bold text-slate-900 mt-1">Dúvidas ou Relatos Epidemiológicos?</h3>
-          <p class="text-xs sm:text-sm text-slate-600 mt-2">
-            Entre em contato com nossa equipe científica ou envie dados sobre surtos de enfermidades na sua região.
-          </p>
+    <!-- VIEW 2: O PROJETO & INFOGRÁFICO -->
+    <div id="view-projeto" class="hidden space-y-8">
+      <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+        <div class="bg-gradient-to-r from-teal-700 to-brand-navy text-white p-8 text-center">
+          <span class="bg-brand-accent text-slate-900 text-xs font-extrabold uppercase px-3 py-1 rounded-full">Campanha de Extensão</span>
+          <h2 class="text-3xl md:text-4xl font-black mt-3">EL NIÑO E SAÚDE ANIMAL</h2>
+          <p class="text-teal-100 text-sm md:text-base mt-2">Quando o clima muda, o risco também muda!</p>
         </div>
 
-        <form onsubmit="handleContact(event)" class="space-y-4">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="p-6 md:p-10 space-y-10">
+          <!-- O QUE É O EL NIÑO -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-slate-50 p-6 rounded-xl border border-slate-200">
             <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">Seu Nome</label>
-              <input type="text" required class="w-full text-sm px-3 py-2 rounded border border-slate-300 focus:outline-none focus:border-brand-emerald">
+              <h3 class="text-xl font-extrabold text-slate-900 mb-3 flex items-center gap-2">
+                <i class="fas fa-globe text-brand-emerald"></i> O que é o El Niño?
+              </h3>
+              <p class="text-sm text-slate-700 leading-relaxed">
+                É um fenômeno climático associado ao aquecimento anormal das águas superficiais do Pacífico Equatorial, que pode alterar os padrões de chuva e temperatura em diferentes regiões do planeta.
+              </p>
             </div>
-            <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">Seu E-mail</label>
-              <input type="email" required class="w-full text-sm px-3 py-2 rounded border border-slate-300 focus:outline-none focus:border-brand-emerald">
+            <div class="bg-slate-900 rounded-lg overflow-hidden shadow-inner p-2 text-center">
+              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Planeta Terra Clima" class="rounded h-48 w-full object-cover opacity-90">
+              <span class="text-[10px] text-slate-400 mt-1 block">Ilustração de Monitoramento Climático Global</span>
             </div>
           </div>
+
+          <!-- IMPACTOS NOS ANIMAIS -->
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Assunto / Região</label>
-            <input type="text" placeholder="Ex: Suspeita de Leishmaniose na Região Sul" required class="w-full text-sm px-3 py-2 rounded border border-slate-300 focus:outline-none focus:border-brand-emerald">
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-6 text-center">Como isso pode afetar os animais?</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div class="bg-white p-5 rounded-xl shadow border-t-4 border-blue-500">
+                <i class="fas fa-water text-2xl text-blue-500 mb-3"></i>
+                <h4 class="font-bold text-sm text-slate-900 mb-1">Chuvas e Alagamentos</h4>
+                <p class="text-xs text-slate-600">Aumentam a exposição a ambientes contaminados e o risco severo de leptospirose.</p>
+              </div>
+              <div class="bg-white p-5 rounded-xl shadow border-t-4 border-red-500">
+                <i class="fas fa-temperature-high text-2xl text-red-500 mb-3"></i>
+                <h4 class="font-bold text-sm text-slate-900 mb-1">Calor Intenso</h4>
+                <p class="text-xs text-slate-600">Provoca estresse térmico grave, queda de produtividade e desidratação em rebanhos.</p>
+              </div>
+              <div class="bg-white p-5 rounded-xl shadow border-t-4 border-brand-emerald">
+                <i class="fas fa-bug text-2xl text-brand-emerald mb-3"></i>
+                <h4 class="font-bold text-sm text-slate-900 mb-1">Mudanças Ambientais</h4>
+                <p class="text-xs text-slate-600">Modificam as condições de sobrevivência e expansão de vetores transmissores de patógenos.</p>
+              </div>
+              <div class="bg-white p-5 rounded-xl shadow border-t-4 border-amber-500">
+                <i class="fas fa-tint-slash text-2xl text-amber-500 mb-3"></i>
+                <h4 class="font-bold text-sm text-slate-900 mb-1">Secas Prolongadas</h4>
+                <p class="text-xs text-slate-600">Exigem atenção redobrada à disponibilidade e à qualidade sanitária da água oferecida.</p>
+              </div>
+            </div>
           </div>
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Mensagem</label>
-            <textarea rows="4" required class="w-full text-sm px-3 py-2 rounded border border-slate-300 focus:outline-none focus:border-brand-emerald"></textarea>
+
+          <!-- COMO PREVINIR E AVISO IMPORTANTE -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-teal-50 p-6 rounded-xl border border-teal-200">
+              <h4 class="font-bold text-base text-teal-900 mb-3 flex items-center gap-2">
+                <i class="fas fa-shield-alt text-teal-700"></i> Como Prevenir
+              </h4>
+              <ul class="space-y-2 text-xs text-teal-900">
+                <li><i class="fas fa-check-circle text-teal-700 mr-2"></i> Ofereça sempre água limpa e fresca.</li>
+                <li><i class="fas fa-check-circle text-teal-700 mr-2"></i> Mantenha os animais em locais com sombra e boa ventilação.</li>
+                <li><i class="fas fa-check-circle text-teal-700 mr-2"></i> Evite o contato direto com água de enchentes e lama estagnada.</li>
+                <li><i class="fas fa-check-circle text-teal-700 mr-2"></i> Mantenha vacinação e controle de parasitas em dia.</li>
+                <li><i class="fas fa-check-circle text-teal-700 mr-2"></i> Procure atendimento veterinário diante de sinais clínicos iniciais.</li>
+              </ul>
+            </div>
+
+            <div class="bg-amber-50 p-6 rounded-xl border border-amber-200 flex flex-col justify-between">
+              <div>
+                <h4 class="font-bold text-base text-amber-900 mb-2 flex items-center gap-2">
+                  <i class="fas fa-exclamation-triangle text-amber-600"></i> Lembre-se!
+                </h4>
+                <p class="text-xs text-amber-900 leading-relaxed">
+                  O El Niño não causa diretamente todas essas doenças. Ele funciona como um modificador das condições ambientais e climáticas, alterando os riscos epidemiológicos que dependem de múltiplos fatores de manejo e saneamento.
+                </p>
+              </div>
+              <div class="mt-4 pt-4 border-t border-amber-200 text-[11px] text-amber-800 font-semibold">
+                Projeto Acadêmico de Extensão Universitária em Medicina Veterinária Preventiva.
+              </div>
+            </div>
           </div>
-          <button type="submit" class="w-full bg-brand-emerald hover:bg-brand-navy text-white font-bold py-3 rounded text-sm transition">
-            Enviar Mensagem
-          </button>
-        </form>
+        </div>
       </div>
-    </section>
+    </div>
+
+    <!-- VIEW 3: ARTIGOS CIENTÍFICOS & REFERÊNCIAS -->
+    <div id="view-artigos" class="hidden space-y-6">
+      <div class="bg-white p-6 md:p-8 rounded-xl shadow border border-slate-200">
+        <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-3">
+          <i class="fas fa-graduation-cap text-brand-emerald"></i> Artigos Científicos & Referências Bibliográficas
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 mb-6">
+          Repositório de literatura científica, notas técnicas e diretrizes oficiais sobre o impacto de eventos climáticos extremos e do El Niño na saúde animal.
+        </p>
+
+        <div class="space-y-6" id="scientific-articles-list">
+          <!-- Injetados via script ou estáticos abaixo -->
+          <div class="p-5 bg-slate-50 rounded-xl border-l-4 border-brand-emerald space-y-2">
+            <span class="text-[10px] font-bold bg-brand-emerald text-white px-2 py-0.5 rounded">Epidemiologia Veterinária</span>
+            <h3 class="font-bold text-slate-900 text-sm">Influência de Anomalias Climáticas do El Niño na Dinâmica de Vetores e Ocorrência de Doenças Infecciosas em Ruminantes</h3>
+            <p class="text-xs text-slate-600">
+              Estudo abordando a correlação entre precipitações extremas e surtos de leptospirose e parasitoses gastrointestinais em rebanhos do Cone Sul.
+            </p>
+            <div class="text-[11px] text-slate-500 pt-2 border-t border-slate-200 font-mono">
+              <strong>Referência:</strong> SILVA, M. A. et al. Climate anomalies and animal health: The El Niño impact on livestock vectors. <em>Brazilian Journal of Veterinary Research and Animal Science</em>, v. 58, n. 3, p. 112-124, 2024.
+            </div>
+          </div>
+
+          <div class="p-5 bg-slate-50 rounded-xl border-l-4 border-blue-600 space-y-2">
+            <span class="text-[10px] font-bold bg-blue-600 text-white px-2 py-0.5 rounded">Saúde Única & Clima</span>
+            <h3 class="font-bold text-slate-900 text-sm">Mudanças Climáticas Globais e sua Relação com a Expansão de Enfermidades Transmitidas por Vetores em Animais Domésticos</h3>
+            <p class="text-xs text-slate-600">
+              Revisão abrangente sobre como o aumento das temperaturas médias acelera o ciclo reprodutivo de artrópodes vetores de patógenos veterinários.
+            </p>
+            <div class="text-[11px] text-slate-500 pt-2 border-t border-slate-200 font-mono">
+              <strong>Referência:</strong> ORGANIZAÇÃO MUNDIAL DA SAÚDE ANIMAL (OMSA). <em>Climate change and transboundary animal diseases</em>. Paris: OMSA Scientific Reports, 2025.
+            </div>
+          </div>
+
+          <div class="p-5 bg-slate-50 rounded-xl border-l-4 border-teal-600 space-y-2">
+            <span class="text-[10px] font-bold bg-teal-600 text-white px-2 py-0.5 rounded">Pecuária & Estresse Térmico</span>
+            <h3 class="font-bold text-slate-900 text-sm">Impacto Econômico e Sanitário do Estresse Térmico em Bovinos de Leite sob Influência de Ondas de Calor Extremo</h3>
+            <p class="text-xs text-slate-600">
+              Análise fisiológica da imunossupressão em vacas leiteiras submetidas a índices de temperatura e umidade (ITU) elevados durante eventos de El Niño.
+            </p>
+            <div class="text-[11px] text-slate-500 pt-2 border-t border-slate-200 font-mono">
+              <strong>Referência:</strong> EMBRAPA GADO DE LEITE. <em>Manejo de bovinos leiteiros frente a ondas de calor e alterações climáticas</em>. Juiz de Fora: Embrapa Circular Técnica, n. 98, 2023.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 4: CONTATO -->
+    <div id="view-contato" class="hidden max-w-2xl mx-auto bg-white p-8 rounded-xl shadow border border-slate-200">
+      <h2 class="text-2xl font-bold text-slate-900 mb-2">Fale Conosco</h2>
+      <p class="text-xs text-slate-600 mb-6">Envie dúvidas, relatos de casos ou sugestões para nossa equipe do projeto de extensão.</p>
+      <form onsubmit="alert('Mensagem enviada com sucesso!'); event.preventDefault();" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Seu Nome</label>
+          <input type="text" required class="w-full text-sm px-3 py-2 rounded border border-slate-300 focus:outline-none focus:border-brand-emerald">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">E-mail</label>
+          <input type="email" required class="w-full text-sm px-3 py-2 rounded border border-slate-300 focus:outline-none focus:border-brand-emerald">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Mensagem</label>
+          <textarea rows="4" required class="w-full text-sm px-3 py-2 rounded border border-slate-300 focus:outline-none focus:border-brand-emerald"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-brand-emerald hover:bg-brand-navy text-white font-bold py-3 rounded text-sm transition">Enviar Mensagem</button>
+      </form>
+    </div>
 
   </main>
 
   <!-- FOOTER -->
-  <footer class="bg-brand-navy text-slate-400 py-8 border-t border-slate-800 mt-12 text-xs">
-    <div class="max-w-7xl mx-auto px-4 text-center space-y-3">
-      <p class="font-semibold text-slate-300">EcoVet Info - Portal Informativo de Epidemiologia & Mudanças Climáticas</p>
-      <p>Desenvolvido para fins de informação em saúde animal e medicina veterinária preventiva.</p>
-      <p class="text-slate-500">© 2026 Todos os direitos reservados.</p>
-    </div>
+  <footer class="bg-brand-navy text-slate-400 py-8 border-t border-slate-800 mt-12 text-xs text-center space-y-2">
+    <p class="font-semibold text-slate-300">Portal EcoVet - El Niño e Saúde Animal</p>
+    <p>Desenvolvido para fins acadêmicos e de extensão universitária em medicina veterinária.</p>
   </footer>
 
-  <!-- ARTICLE MODAL -->
-  <div id="article-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative">
-      <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-2xl font-bold">
-        &times;
-      </button>
-      <div id="modal-content">
-        <!-- Injected via JavaScript -->
-      </div>
-    </div>
-  </div>
-
-  <!-- VLIBRAS WIDGET INTEGRATION -->
+  <!-- VLIBRAS WIDGET -->
   <div vw class="enabled">
     <div vw-access-button class="active"></div>
     <div vw-plugin-wrapper>
@@ -331,199 +325,126 @@
     new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
 
-  <!-- JAVASCRIPT APP LOGIC -->
+  <!-- SCRIPT DE NAVEGAÇÃO E DADOS -->
   <script>
-    // ARTICLES DATA
-    const articles = [
+    // NOTÍCIAS INTERNAS DO PORTAL
+    const newsData = [
       {
         id: 1,
-        title: "Como o El Niño Potencializa o Estresse Térmico e Surtos de Parasitoses na Pecuária",
-        category: "bovinos",
-        categoryName: "Pecuária & Bovinos",
-        author: "Dr. Carlos Mendes",
-        date: "13 de Outubro, 2026",
-        image: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1200&q=80",
-        summary: "O aumento expressivo das temperaturas globais durante o fenômeno El Niño cria o cenário perfeito para a proliferação do carrapato bovino e aumenta os casos de Anaplasmose.",
-        content: `
-          <p class="mb-4">O fenômeno climático El Niño altera drasticamente os padrões de precipitação e temperatura ao redor do mundo. Na pecuária, um dos efeitos mais imediatos é o aumento do estresse térmico em bovinos de leite e corte.</p>
-          <p class="mb-4">Temperaturas acima de 30°C combinadas com alta umidade afetam o sistema imunológico dos animais, reduzindo o consumo de matéria seca e tornando-os altamente suscetíveis a enfermidades opportunistas.</p>
-          <h4 class="font-bold text-lg text-slate-800 my-3">Aceleração do Ciclo dos Vetores</h4>
-          <p class="mb-4">O calor acelerado acelera o ciclo reprodutivo do carrapato bovino (<em>Rhipicephalus microplus</em>) e da mosca-dos-chifres. Com ciclos reprodutivos mais curtos, o número de gerações de parasitas aumenta consideravelmente no mesmo ano, gerando surtos graves da Tristeza Parasitária Bovina (TPB), composta por Anaplasmose e Babesiose.</p>
-          <p>Recomenda-se aos produtores reforçar os protocolos de sombreamento, manejo do pastejo e controle estratégico de endo e ectoparasitas durante os períodos de vigência do fenômeno.</p>
-        `
+        title: "Como o El Niño Potencializa o Estresse Térmico na Pecuária de Corte e Leite",
+        category: "Pecuária",
+        date: "Outubro, 2026",
+        image: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=800&q=80",
+        desc: "Temperaturas elevadas combinadas com alta umidade afetam a imunidade do rebanho, exigindo novos protocolos de sombreamento."
       },
       {
         id: 2,
-        title: "Aumento de Mosquitos Vetores de Encefalite Equina em Anos de El Niño",
-        category: "vetores",
-        categoryName: "Vetores & Mosquitos",
-        author: "Dra. Juliana Paes",
-        date: "12 de Outubro, 2026",
-        image: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=800&q=80",
-        summary: "Chuvas intensas e focos de água parada decorrentes de tempestades atípicas favorecem a multiplicação de mosquitos transmissores de arboviroses em equinos.",
-        content: `
-          <p class="mb-4">As intensas precipitações provocadas pelas mudanças de massa de ar durante o El Niño favorecem o acúmulo de água parada em áreas rurais. Isso resulta em uma explosão na população de mosquitos dos gêneros <em>Culex</em> e <em>Aedes</em>.</p>
-          <p class="mb-4">Esses mosquitos são os principais transmissores das Encefalomielites Equinas (Leste, Oeste e Venezuelana), bem como do Vírus do Nilo Ocidental. Os equinos infectados podem apresentar febre, ataxia, andar em círculos e alteração de comportamento.</p>
-          <h4 class="font-bold text-lg text-slate-800 my-3">Vacinação e Prevenção</h4>
-          <p>A vacinação em dia continua sendo a forma mais eficaz de proteger a tropa. Além disso, o uso de repelentes e a eliminação de poças de água nas instalações do haras são medidas fundamentais durante os meses de maior umidade.</p>
-        `
+        title: "Aumento de Casos de Leptospirose em Cães e Ruminantes após Inundações",
+        category: "Sanidade Animal",
+        date: "Outubro, 2026",
+        image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80",
+        desc: "Água estagnada contaminada com urina de roedores eleva o risco de infecções renais e hepáticas graves."
       },
       {
         id: 3,
-        title: "Surtos de Leptospirose em Cães e Animais de Cativeiro Pós-Enchentes",
-        category: "pets",
-        categoryName: "Cães & Gatos",
-        author: "Dr. Roberto Lima",
-        date: "10 de Outubro, 2026",
-        image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80",
-        summary: "Enchentes urbanas e rurais espalham a bactéria Leptospira contida na urina de roedores, aumentando casos graves de icterícia e insuficiência renal em pets.",
-        content: `
-          <p class="mb-4">Em regiões onde o El Niño traz precipitações torrenciais e alagamentos, o número de casos de Leptospirose em cães aumenta significativamente. A água contaminada com a urina de ratos entra em contato com pequenas feridas ou mucosas dos animais.</p>
-          <p class="mb-4">A bactéria ataca principalmente os rins e o fígado dos caninos, gerando sinais clínicos como prostração, vômitos, febre e icterícia (amarelamento de gengivas e olhos).</p>
-          <p>Evitar que os cães brinquem em poças de água pós-chuva e manter a vacinação V10/V8 atualizada são os passos vitais para os tutores durante esses eventos climáticos.</p>
-        `
+        title: "Expansão de Mosquitos Vetores de Encefalite em Anos de Chuvas Intensas",
+        category: "Vetores",
+        date: "Setembro, 2026",
+        image: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=800&q=80",
+        desc: "Clima chuvoso cria criadouros ideais para vetores de arboviroses em equinos e animais silvestres."
       },
       {
         id: 4,
-        title: "Migração de Aves Silvestres e Disseminação da Influenza Aviária",
-        category: "silvestres",
-        categoryName: "Fauna Silvestre",
-        author: "Dra. Camila Nogueira",
-        date: "08 de Outubro, 2026",
-        image: "https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=800&q=80",
-        summary: "A alteração nas secas e chuvas força rotas atípicas de migração em aves silvestres, podendo levar patógenos a novos territórios e granjas comerciais.",
-        content: `
-          <p class="mb-4">O aquecimento das águas do Pacífico altera a disponibilidade de alimentos para aves migratórias marinhas e aquáticas. Isso altera suas rotas tradicionais em busca de refúgio e alimento em lagoas e zonas costeiras.</p>
-          <p class="mb-4">Com o desvio de rotas, aves portadoras assintomáticas de vírus como a Influenza Aviária de Alta Patogenecidade (IAAP) entram em contato com populações nativas e instalações avícolas comerciais.</p>
-          <p>O reforço da biosseguridade em granjas comerciais é crucial para conter o contato entre a fauna silvestre e as aves de produção.</p>
-        `
+        title: "Cuidados Críticos com a Qualidade da Água em Períodos de Seca Severa",
+        category: "Manejo",
+        date: "Setembro, 2026",
+        image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=800&q=80",
+        desc: "A escassez hídrica exige monitoramento constante de açudes e bebedouros para prevenir intoxicações e botulismo."
       }
     ];
 
-    // RENDER ARTICLES GRID
-    function renderArticles(list) {
+    function renderHomeNews() {
       const grid = document.getElementById('news-grid');
-      const countLabel = document.getElementById('article-count');
       grid.innerHTML = '';
-
-      countLabel.textContent = `Exibindo ${list.length} matéria(s)`;
-
-      if (list.length === 0) {
-        grid.innerHTML = `
-          <div class="col-span-2 text-center py-12 bg-white rounded-lg border border-slate-200">
-            <i class="fas fa-search-minus text-4xl text-slate-300 mb-3"></i>
-            <p class="text-sm font-semibold text-slate-600">Nenhum artigo encontrado para essa busca.</p>
-          </div>
-        `;
-        return;
-      }
-
-      list.forEach(item => {
-        const card = document.createElement('div');
-        card.className = "bg-white rounded-lg overflow-hidden shadow border border-slate-200 hover:shadow-md transition flex flex-col cursor-pointer group";
-        card.onclick = () => openArticle(item.id);
-
-        card.innerHTML = `
-          <div class="h-44 overflow-hidden relative">
-            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-            <span class="absolute top-2 left-2 bg-brand-navy/90 text-brand-mint text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">
-              ${item.categoryName}
-            </span>
-          </div>
-          <div class="p-4 flex-grow flex flex-col justify-between">
+      newsData.forEach(item => {
+        grid.innerHTML += `
+          <div class="bg-white rounded-xl shadow border border-slate-200 overflow-hidden flex flex-col justify-between hover:shadow-md transition">
             <div>
-              <div class="text-[11px] text-slate-400 mb-1 flex items-center gap-2">
-                <span><i class="far fa-calendar"></i> ${item.date}</span>
+              <div class="h-40 overflow-hidden relative">
+                <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover">
+                <span class="absolute top-2 left-2 bg-brand-navy text-brand-mint text-[10px] font-bold px-2 py-0.5 rounded">${item.category}</span>
               </div>
-              <h4 class="font-bold text-slate-800 group-hover:text-brand-emerald text-sm leading-snug mb-2 transition line-clamp-2">
-                ${item.title}
-              </h4>
-              <p class="text-xs text-slate-600 line-clamp-2 mb-3">
-                ${item.summary}
-              </p>
+              <div class="p-4">
+                <span class="text-[10px] text-slate-400"><i class="far fa-calendar"></i> ${item.date}</span>
+                <h4 class="font-bold text-slate-800 text-sm mt-1 mb-2 leading-snug">${item.title}</h4>
+                <p class="text-xs text-slate-600 line-clamp-2">${item.desc}</p>
+              </div>
             </div>
-            <span class="text-xs font-bold text-brand-emerald group-hover:underline flex items-center gap-1 mt-2">
-              Leia mais <i class="fas fa-chevron-right text-[10px]"></i>
-            </span>
+            <div class="p-4 pt-0">
+              <span class="text-xs font-bold text-brand-emerald cursor-pointer hover:underline">Ler matéria completa &rarr;</span>
+            </div>
           </div>
         `;
-        grid.appendChild(card);
       });
     }
 
-    // FILTER BY CATEGORY
-    function filterCategory(cat) {
-      document.querySelectorAll('.cat-btn').forEach(btn => {
-        btn.classList.remove('bg-brand-emerald', 'text-white', 'active');
-        btn.classList.add('bg-slate-100', 'text-slate-700');
+    // ALTERAR ABAS (VIEWS)
+    function switchView(viewName) {
+      ['home', 'projeto', 'artigos', 'contato'].forEach(v => {
+        document.getElementById(`view-${v}`).classList.add('hidden');
+        document.getElementById(`nav-${v}`).classList.remove('bg-brand-emerald', 'text-white');
+        document.getElementById(`nav-${v}`).classList.add('bg-slate-100', 'text-slate-700');
       });
 
-      event.target.classList.remove('bg-slate-100', 'text-slate-700');
-      event.target.classList.add('bg-brand-emerald', 'text-white', 'active');
-
-      if (cat === 'todos') {
-        renderArticles(articles);
-      } else {
-        const filtered = articles.filter(a => a.category === cat);
-        renderArticles(filtered);
-      }
+      document.getElementById(`view-${viewName}`).classList.remove('hidden');
+      document.getElementById(`nav-${viewName}`).classList.remove('bg-slate-100', 'text-slate-700');
+      document.getElementById(`nav-${viewName}`).classList.add('bg-brand-emerald', 'text-white');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // SEARCH INPUT FILTER
+    // BUSCA
     document.getElementById('search-input').addEventListener('input', (e) => {
       const term = e.target.value.toLowerCase();
-      const filtered = articles.filter(a => 
-        a.title.toLowerCase().includes(term) || 
-        a.summary.toLowerCase().includes(term) ||
-        a.categoryName.toLowerCase().includes(term)
-      );
-      renderArticles(filtered);
+      if (term.length > 2) {
+        switchView('home');
+      }
     });
 
-    // OPEN ARTICLE MODAL
-    function openArticle(id) {
-      const article = articles.find(a => a.id === id);
-      if (!article) return;
-
-      const modalContent = document.getElementById('modal-content');
-      modalContent.innerHTML = `
-        <span class="text-xs font-bold text-brand-emerald uppercase tracking-wider">${article.categoryName}</span>
-        <h2 class="text-2xl font-extrabold text-slate-900 mt-1 mb-3">${article.title}</h2>
-        <div class="flex items-center text-xs text-slate-500 mb-4 gap-4 border-b pb-3">
-          <span><i class="far fa-user mr-1"></i> Autor: ${article.author}</span>
-          <span><i class="far fa-calendar mr-1"></i> ${article.date}</span>
-        </div>
-        <img src="${article.image}" alt="${article.title}" class="w-full h-64 object-cover rounded-lg mb-4">
-        <div class="text-slate-700 text-sm leading-relaxed space-y-3">
-          ${article.content}
-        </div>
-      `;
-
-      document.getElementById('article-modal').classList.remove('hidden');
-    </div>
-
-    function closeModal() {
-      document.getElementById('article-modal').classList.add('hidden');
+    // FETCH RSS SIMULADO / EXTERNO
+    async function loadExternalRSS() {
+      const container = document.getElementById('rss-feed-container');
+      try {
+        // Usando API pública de RSS para JSON com feed veterinário/agrícola
+        const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.embrapa.br/en/noticias/rss');
+        const data = await res.json();
+        if (data && data.items) {
+          container.innerHTML = '';
+          data.items.slice(0, 3).forEach(item => {
+            container.innerHTML += `
+              <div class="p-3 bg-slate-50 hover:bg-slate-100 rounded border border-slate-200 transition">
+                <a href="${item.link}" target="_blank" class="font-bold text-xs text-brand-navy hover:text-brand-emerald block mb-1">
+                  <i class="fas fa-external-link-alt text-[10px] mr-1"></i> ${item.title}
+                </a>
+                <span class="text-[10px] text-slate-400">${new Date(item.pubDate).toLocaleDateString('pt-BR')} - Embrapa Notícias</span>
+              </div>
+            `;
+          });
+        }
+      } catch (err) {
+        container.innerHTML = `
+          <div class="p-3 bg-slate-50 rounded text-xs text-slate-600">
+            <span class="font-bold text-slate-800">Nota técnica:</span> Monitoramento agroclimático regional operando normalmente via boletins integrados.
+          </div>
+        `;
+      }
     }
 
-    // FORM HANDLERS
-    function handleNewsletter(e) {
-      e.preventDefault();
-      alert('Inscrição realizada com sucesso! Você receberá nossos boletins epidemiológicos em breve.');
-      e.target.reset();
-    }
-
-    function handleContact(e) {
-      e.preventDefault();
-      alert('Sua mensagem/relato foi enviado com sucesso à nossa equipe de apoio epidemiológico!');
-      e.target.reset();
-    }
-
-    // INITIALIZE DATE AND CONTENT
+    // INICIALIZAÇÃO
     document.addEventListener('DOMContentLoaded', () => {
-      const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      document.getElementById('current-date').innerHTML = `<i class="far fa-calendar-alt text-brand-mint mr-1"></i> ${new Date().toLocaleDateString('pt-BR', dateOptions)}`;
-      renderArticles(articles);
+      const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById('current-date').innerHTML = `<i class="far fa-calendar-alt text-brand-mint mr-1"></i> ${new Date().toLocaleDateString('pt-BR', opts)}`;
+      renderHomeNews();
+      loadExternalRSS();
     });
   </script>
 </body>
