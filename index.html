@@ -944,15 +944,43 @@
       return (box.textContent || box.innerText || '').replace(/\s+/g, ' ').trim();
     }
 
-    // Imagens alternativas por tema: usadas quando a fonte original não fornece miniatura.
+    // Bancos de imagens alternativas por tema. A seleção é determinística pelo título,
+    // para que notícias diferentes não repitam automaticamente a mesma foto de categoria.
+    // Quando o feed fornece uma miniatura própria, ela continua tendo prioridade.
     const NEWS_CATEGORY_IMAGES = {
-      'Pequenos animais': 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80',
-      'Zoonoses e saúde pública': 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=1000&q=80',
-      'Animais de produção': 'https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1000&q=80',
-      'Pesquisa e inovação veterinária': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=80',
-      'Saúde Única e clima': 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1000&q=80'
+      'Pequenos animais': [
+        'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80',
+        'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1000&q=80',
+        'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1000&q=80',
+        'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1000&q=80',
+        'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=1000&q=80'
+      ],
+      'Zoonoses e saúde pública': [
+        'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=1000&q=80',
+        'https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=1000&q=80',
+        'https://images.unsplash.com/photo-1551739440-5dd934d3a94a?auto=format&fit=crop&w=1000&q=80',
+        'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80'
+      ],
+      'Animais de produção': [
+        'https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1000&q=80',
+        'https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=1000&q=80',
+        'https://images.unsplash.com/photo-1546445317-29f0cf341b8a?auto=format&fit=crop&w=1000&q=80',
+        'https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?auto=format&fit=crop&w=1000&q=80'
+      ],
+      'Pesquisa e inovação veterinária': [
+        'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=80',
+        'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=1000&q=80',
+        'https://images.unsplash.com/photo-1581093458791-9d42e3c9c35c?auto=format&fit=crop&w=1000&q=80',
+        'https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=1000&q=80'
+      ],
+      'Saúde Única e clima': [
+        'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1000&q=80',
+        'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1000&q=80',
+        'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=80',
+        'https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1000&q=80'
+      ]
     };
-    const NEWS_DEFAULT_IMAGE = NEWS_CATEGORY_IMAGES['Pequenos animais'];
+    const NEWS_DEFAULT_IMAGE = NEWS_CATEGORY_IMAGES['Pequenos animais'][0];
 
     function imageFromMarkup(value) {
       if (!value) return '';
@@ -964,7 +992,53 @@
     }
 
     function fallbackNewsImage(item) {
-      return NEWS_CATEGORY_IMAGES[item.category] || NEWS_DEFAULT_IMAGE;
+      // Não usar fotos genéricas como se fossem da notícia. Sem imagem editorial,
+      // os componentes exibem um marcador visual com a categoria.
+      return '';
+    }
+
+    function categorySymbol(category) {
+      const symbols = {
+        'Pequenos animais': '🐾',
+        'Zoonoses e saúde pública': '🩺',
+        'Animais de produção': '🐄',
+        'Pesquisa e inovação veterinária': '🔬',
+        'Saúde Única e clima': '🌎'
+      };
+      return symbols[category] || '🐾';
+    }
+
+    function makeNewsVisual(item, className, altText = '') {
+      const imageUrl = safeHttpUrl(item.image);
+      if (imageUrl) {
+        const img = document.createElement('img');
+        img.className = className + ' bg-slate-100';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.alt = altText || ('Imagem da matéria: ' + (item.title || 'notícia veterinária'));
+        img.src = imageUrl;
+        img.addEventListener('error', () => {
+          img.replaceWith(makeNewsPlaceholder(item, className));
+        }, {once:true});
+        return img;
+      }
+      return makeNewsPlaceholder(item, className);
+    }
+
+    function makeNewsPlaceholder(item, className) {
+      const box = document.createElement('div');
+      box.className = className + ' flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-emerald-50 to-sky-100 text-emerald-900';
+      box.setAttribute('role', 'img');
+      box.setAttribute('aria-label', 'Imagem indisponível; categoria: ' + (item.category || 'Saúde animal'));
+      const symbol = document.createElement('span');
+      symbol.className = 'text-3xl';
+      symbol.setAttribute('aria-hidden', 'true');
+      symbol.textContent = categorySymbol(item.category);
+      const label = document.createElement('span');
+      label.className = 'px-2 text-center text-[10px] font-bold uppercase tracking-wide';
+      label.textContent = item.category || 'Saúde animal';
+      box.append(symbol, label);
+      return box;
     }
 
     function parseNewsDate(value) {
@@ -997,7 +1071,7 @@
       const description = cleanNewsText(item.description || item.summary || item.content || '');
       const category = classifyNews({title, description, category:item.category}, fallbackCategory);
       const candidateImage = item.image || item.thumbnail || item.image_url || item.enclosure?.link || item.enclosure?.url || imageFromMarkup(item.content) || imageFromMarkup(item.description) || '';
-      const image = safeHttpUrl(candidateImage) || NEWS_CATEGORY_IMAGES[category] || NEWS_DEFAULT_IMAGE;
+      const image = safeHttpUrl(candidateImage) || fallbackNewsImage({category, title, link});
       return { title, link, pubDate, description, image, source: cleanNewsText(item.source || item.author || item.creator || '') || (() => { try { return new URL(link).hostname.replace(/^www\./, ''); } catch (_) { return 'Fonte externa'; } })(), category };
     }
 
@@ -1023,12 +1097,7 @@
     function makeLiveNewsCard(item) {
       const card = document.createElement('article');
       card.className = 'rounded-xl border border-slate-200 bg-white overflow-hidden hover:shadow-md transition flex flex-col gap-3';
-      const image = document.createElement('img');
-      image.className = 'h-44 w-full object-cover bg-slate-100';
-      image.loading = 'lazy'; image.decoding = 'async';
-      image.src = safeHttpUrl(item.image) || fallbackNewsImage(item);
-      image.alt = 'Imagem ilustrativa: ' + (item.category || 'notícia veterinária') + ' — ' + item.title;
-      image.addEventListener('error', () => { if (image.dataset.fallbackTried !== 'true') { image.dataset.fallbackTried = 'true'; image.src = fallbackNewsImage(item); } else { image.style.display = 'none'; } }, {once:false});
+      const image = makeNewsVisual(item, 'h-44 w-full object-cover', 'Imagem da notícia: ' + (item.title || 'notícia veterinária'));
       const body = document.createElement('div');
       body.className = 'p-4 flex flex-1 flex-col gap-3';
       const category = document.createElement('span');
@@ -1079,19 +1148,28 @@
       const item = liveNewsItems[carouselIndex];
       const featureImage = document.getElementById('carousel-image');
       if (featureImage) {
-        featureImage.dataset.fallbackTried = 'false';
-        featureImage.alt = 'Imagem ilustrativa da notícia: ' + item.title;
-        featureImage.src = safeHttpUrl(item.image) || fallbackNewsImage(item);
-        featureImage.onerror = () => {
-          if (featureImage.dataset.fallbackTried !== 'true') {
-            featureImage.dataset.fallbackTried = 'true';
-            featureImage.src = fallbackNewsImage(item);
-          } else {
-            featureImage.src = NEWS_DEFAULT_IMAGE;
-            featureImage.onerror = () => { featureImage.style.display = 'none'; };
-          }
-        };
-        featureImage.style.display = '';
+        let placeholder = document.getElementById('carousel-image-placeholder');
+        if (!placeholder) {
+          placeholder = makeNewsPlaceholder(item, featureImage.className);
+          placeholder.id = 'carousel-image-placeholder';
+          featureImage.insertAdjacentElement('afterend', placeholder);
+        }
+        const imageUrl = safeHttpUrl(item.image);
+        if (imageUrl) {
+          placeholder.style.display = 'none';
+          featureImage.style.display = '';
+          featureImage.alt = 'Imagem da matéria: ' + item.title;
+          featureImage.onerror = () => {
+            featureImage.style.display = 'none';
+            placeholder.style.display = 'flex';
+            placeholder.setAttribute('aria-label', 'Imagem original indisponível. Categoria: ' + (item.category || 'Saúde animal'));
+          };
+          featureImage.src = imageUrl;
+        } else {
+          featureImage.style.display = 'none';
+          placeholder.style.display = 'flex';
+          placeholder.setAttribute('aria-label', 'Imagem original não disponibilizada pela fonte. Categoria: ' + (item.category || 'Saúde animal'));
+        }
       }
       const category = document.getElementById('carousel-category');
       const headline = document.getElementById('carousel-headline');
@@ -1109,7 +1187,7 @@
         liveNewsItems.filter((_,i) => i !== carouselIndex).slice(0,3).forEach((other) => {
           const button = document.createElement('button'); button.type='button'; button.className='block w-full rounded-lg border border-slate-200 p-3 text-left hover:border-emerald-400 hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-600';
           button.className += ' flex items-start gap-3';
-          const thumb=document.createElement('img'); thumb.className='h-16 w-20 shrink-0 rounded-md object-cover bg-slate-100'; thumb.loading='lazy'; thumb.alt=''; thumb.src=safeHttpUrl(other.image)||fallbackNewsImage(other); thumb.onerror=()=>{thumb.src=fallbackNewsImage(other);thumb.onerror=()=>{thumb.style.display='none';};};
+          const thumb=makeNewsVisual(other, 'h-16 w-20 shrink-0 rounded-md object-cover', '');
           const copy=document.createElement('span'); copy.className='min-w-0 flex-1';
           const cat=document.createElement('span'); cat.className='block text-[10px] font-bold uppercase tracking-wide text-emerald-800'; cat.textContent=other.category || 'Saúde animal';
           const title=document.createElement('span'); title.className='mt-1 block text-sm font-bold leading-snug text-slate-800'; title.textContent=other.title;
@@ -1127,13 +1205,14 @@
     }
 
     function restartCarouselTimer() {
-      if (carouselTimer) window.clearTimeout(carouselTimer);
+      // Um único temporizador ativo evita timers duplicados após recarregar o feed.
+      if (carouselTimer) window.clearInterval(carouselTimer);
       carouselTimer = null;
       if (!carouselPaused && !document.hidden && liveNewsItems.length > 1) {
-        carouselTimer = window.setTimeout(() => {
+        carouselTimer = window.setInterval(() => {
+          if (carouselPaused || document.hidden || liveNewsItems.length < 2) return;
           carouselIndex = (carouselIndex + 1) % liveNewsItems.length;
           renderCarousel();
-          restartCarouselTimer();
         }, 6000);
       }
     }
@@ -1200,7 +1279,8 @@
       // A pessoa pode pausá-la explicitamente no botão; quando a aba fica oculta, economizamos recursos.
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
-          if (carouselTimer) { window.clearInterval(carouselTimer); carouselTimer = null; }
+          if (carouselTimer) window.clearInterval(carouselTimer);
+          carouselTimer = null;
         } else {
           restartCarouselTimer();
         }
