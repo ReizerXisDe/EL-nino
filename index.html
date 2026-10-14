@@ -140,7 +140,7 @@
   </div>
   <div class="grid grid-cols-1 gap-0 md:grid-cols-[1.4fr_1fr]">
     <div id="news-carousel-feature" class="flex min-h-[250px] flex-col justify-between bg-gradient-to-br from-emerald-50 via-white to-sky-50 p-5 md:min-h-[290px] md:p-7" aria-live="polite">
-      <img id="carousel-image" class="mb-5 h-44 w-full rounded-xl object-cover shadow-sm md:h-56" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Imagem ilustrativa de meio ambiente" loading="eager" decoding="async" />
+      
       <div><span id="carousel-category" class="inline-flex rounded-full bg-emerald-100 px-3 py-1 text-[11px] font-bold text-emerald-900">Carregando notícias</span><h3 id="carousel-headline" class="mt-4 text-xl font-extrabold leading-tight text-slate-900 md:text-2xl">Buscando manchetes recentes…</h3><p id="carousel-summary" class="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600">O portal está consultando notícias sobre clínica veterinária, prevenção, zoonoses, sanidade animal e pesquisa.</p></div>
       <div class="mt-5 flex flex-wrap items-center justify-between gap-3"><p id="carousel-meta" class="text-xs text-slate-500">Aguarde um instante</p><a id="carousel-link" class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-bold text-white hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-600" href="https://portal.inmet.gov.br/" target="_blank" rel="noopener noreferrer">Consultar fonte <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>
     </div>
@@ -921,11 +921,12 @@
     const NEWS_MAX_AGE_DAYS = 90;
     const NEWS_LIMIT = 12;
     const NEWS_QUERIES = [
-      { category: 'Pequenos animais', query: '("medicina veterinária" OR veterinário OR veterinária) (cães OR gatos OR felinos OR caninos OR pets) (saúde OR doença OR prevenção OR tratamento OR vacinação)' },
-      { category: 'Zoonoses e saúde pública', query: '(zoonose OR zoonoses OR raiva OR leishmaniose OR leptospirose OR esporotricose OR febre maculosa) (vigilância OR prevenção OR animais OR Brasil)' },
-      { category: 'Animais de produção', query: '(sanidade animal OR saúde animal OR veterinária) (bovinos OR caprinos OR ovinos OR suínos OR aves OR equinos) (doença OR vacina OR diagnóstico OR prevenção)' },
-      { category: 'Pesquisa e inovação veterinária', query: '("medicina veterinária" OR veterinária OR "saúde animal") (pesquisa OR estudo OR universidade OR diagnóstico OR vacina OR tratamento)' },
-      { category: 'Saúde Única e clima', query: '("saúde animal" OR veterinária OR zoonoses) ("saúde única" OR calor OR seca OR enchente OR "mudanças climáticas" OR "El Niño")' }
+      { category: 'Pequenos animais', language: 'Português', query: '("medicina veterinária" OR veterinário OR veterinária) (cães OR gatos OR felinos OR caninos OR pets) (saúde OR doença OR prevenção OR tratamento OR vacinação)', lang: 'pt-BR', gl: 'BR', ceid: 'BR:pt-419' },
+      { category: 'Zoonoses e saúde pública', language: 'Português', query: '(zoonose OR zoonoses OR raiva OR leishmaniose OR leptospirose OR esporotricose OR febre maculosa) (vigilância OR prevenção OR animais OR Brasil)', lang: 'pt-BR', gl: 'BR', ceid: 'BR:pt-419' },
+      { category: 'Animais de produção', language: 'Português', query: '(sanidade animal OR saúde animal OR veterinária) (bovinos OR caprinos OR ovinos OR suínos OR aves OR equinos) (doença OR vacina OR diagnóstico OR prevenção)', lang: 'pt-BR', gl: 'BR', ceid: 'BR:pt-419' },
+      { category: 'Pesquisa e inovação veterinária', language: 'English', query: '("veterinary medicine" OR "animal health") (research OR study OR diagnostics OR vaccine OR treatment)', lang: 'en-US', gl: 'US', ceid: 'US:en' },
+      { category: 'Saúde Única e clima', language: 'English', query: '("One Health" OR "animal health") (climate OR heat OR drought OR flood OR "climate change")', lang: 'en-US', gl: 'US', ceid: 'US:en' },
+      { category: 'Pequenos animais', language: 'English', query: '(veterinary OR veterinarian) (dogs OR cats OR canine OR feline) (health OR disease OR treatment OR vaccination OR prevention)', lang: 'en-US', gl: 'US', ceid: 'US:en' }
     ];
     let liveNewsItems = [];
     let liveNewsFilter = 'Todas';
@@ -942,103 +943,6 @@
       const box = document.createElement('div');
       box.innerHTML = String(value || '');
       return (box.textContent || box.innerText || '').replace(/\s+/g, ' ').trim();
-    }
-
-    // Bancos de imagens alternativas por tema. A seleção é determinística pelo título,
-    // para que notícias diferentes não repitam automaticamente a mesma foto de categoria.
-    // Quando o feed fornece uma miniatura própria, ela continua tendo prioridade.
-    const NEWS_CATEGORY_IMAGES = {
-      'Pequenos animais': [
-        'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=1000&q=80'
-      ],
-      'Zoonoses e saúde pública': [
-        'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1551739440-5dd934d3a94a?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80'
-      ],
-      'Animais de produção': [
-        'https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1546445317-29f0cf341b8a?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?auto=format&fit=crop&w=1000&q=80'
-      ],
-      'Pesquisa e inovação veterinária': [
-        'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1581093458791-9d42e3c9c35c?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=1000&q=80'
-      ],
-      'Saúde Única e clima': [
-        'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1000&q=80'
-      ]
-    };
-    const NEWS_DEFAULT_IMAGE = NEWS_CATEGORY_IMAGES['Pequenos animais'][0];
-
-    function imageFromMarkup(value) {
-      if (!value) return '';
-      const box = document.createElement('div');
-      box.innerHTML = String(value);
-      const img = box.querySelector('img[src]');
-      if (img) return safeHttpUrl(img.getAttribute('src')) || '';
-      return '';
-    }
-
-    function fallbackNewsImage(item) {
-      // Não usar fotos genéricas como se fossem da notícia. Sem imagem editorial,
-      // os componentes exibem um marcador visual com a categoria.
-      return '';
-    }
-
-    function categorySymbol(category) {
-      const symbols = {
-        'Pequenos animais': '🐾',
-        'Zoonoses e saúde pública': '🩺',
-        'Animais de produção': '🐄',
-        'Pesquisa e inovação veterinária': '🔬',
-        'Saúde Única e clima': '🌎'
-      };
-      return symbols[category] || '🐾';
-    }
-
-    function makeNewsVisual(item, className, altText = '') {
-      const imageUrl = safeHttpUrl(item.image);
-      if (imageUrl) {
-        const img = document.createElement('img');
-        img.className = className + ' bg-slate-100';
-        img.loading = 'lazy';
-        img.decoding = 'async';
-        img.alt = altText || ('Imagem da matéria: ' + (item.title || 'notícia veterinária'));
-        img.src = imageUrl;
-        img.addEventListener('error', () => {
-          img.replaceWith(makeNewsPlaceholder(item, className));
-        }, {once:true});
-        return img;
-      }
-      return makeNewsPlaceholder(item, className);
-    }
-
-    function makeNewsPlaceholder(item, className) {
-      const box = document.createElement('div');
-      box.className = className + ' flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-emerald-50 to-sky-100 text-emerald-900';
-      box.setAttribute('role', 'img');
-      box.setAttribute('aria-label', 'Imagem indisponível; categoria: ' + (item.category || 'Saúde animal'));
-      const symbol = document.createElement('span');
-      symbol.className = 'text-3xl';
-      symbol.setAttribute('aria-hidden', 'true');
-      symbol.textContent = categorySymbol(item.category);
-      const label = document.createElement('span');
-      label.className = 'px-2 text-center text-[10px] font-bold uppercase tracking-wide';
-      label.textContent = item.category || 'Saúde animal';
-      box.append(symbol, label);
-      return box;
     }
 
     function parseNewsDate(value) {
@@ -1070,9 +974,8 @@
       const pubDate = item.pubDate || item.date || item.published || '';
       const description = cleanNewsText(item.description || item.summary || item.content || '');
       const category = classifyNews({title, description, category:item.category}, fallbackCategory);
-      const candidateImage = item.image || item.thumbnail || item.image_url || item.enclosure?.link || item.enclosure?.url || imageFromMarkup(item.content) || imageFromMarkup(item.description) || '';
-      const image = safeHttpUrl(candidateImage) || fallbackNewsImage({category, title, link});
-      return { title, link, pubDate, description, image, source: cleanNewsText(item.source || item.author || item.creator || '') || (() => { try { return new URL(link).hostname.replace(/^www\./, ''); } catch (_) { return 'Fonte externa'; } })(), category };
+      const language = item.language || (/\b(the|and|with|from|study|research|veterinary|animal|health|dogs|cats|disease)\b/i.test(title + ' ' + description) ? 'English' : 'Português');
+      return { title, link, pubDate, description, source: cleanNewsText(item.source || item.author || item.creator || '') || (() => { try { return new URL(link).hostname.replace(/^www\./, ''); } catch (_) { return 'Fonte externa'; } })(), category, language };
     }
 
     function deduplicateNews(items) {
@@ -1096,13 +999,12 @@
 
     function makeLiveNewsCard(item) {
       const card = document.createElement('article');
-      card.className = 'rounded-xl border border-slate-200 bg-white overflow-hidden hover:shadow-md transition flex flex-col gap-3';
-      const image = makeNewsVisual(item, 'h-44 w-full object-cover', 'Imagem da notícia: ' + (item.title || 'notícia veterinária'));
+      card.className = 'rounded-xl border border-slate-200 bg-white hover:shadow-md transition flex flex-col gap-3';
       const body = document.createElement('div');
       body.className = 'p-4 flex flex-1 flex-col gap-3';
       const category = document.createElement('span');
       category.className = 'self-start rounded-full bg-emerald-50 px-2.5 py-1 text-[10px] font-bold text-emerald-800';
-      category.textContent = item.category || 'Saúde animal';
+      category.textContent = (item.category || 'Saúde animal') + ' · ' + (item.language || 'Português');
       const title = document.createElement('h3');
       title.className = 'font-bold text-sm leading-snug text-slate-900';
       title.textContent = item.title || 'Notícia veterinária';
@@ -1119,7 +1021,7 @@
       if (url) { link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.textContent = 'Ler notícia original '; const icon = document.createElement('i'); icon.className = 'fas fa-arrow-up-right-from-square'; icon.setAttribute('aria-hidden','true'); link.appendChild(icon); }
       else { link.textContent = 'Link da fonte indisponível'; }
       body.append(category, title, meta, summary, link);
-      card.append(image, body);
+      card.append(body);
       return card;
     }
 
@@ -1147,36 +1049,13 @@
       carouselIndex = ((carouselIndex % liveNewsItems.length) + liveNewsItems.length) % liveNewsItems.length;
       const item = liveNewsItems[carouselIndex];
       const featureImage = document.getElementById('carousel-image');
-      if (featureImage) {
-        let placeholder = document.getElementById('carousel-image-placeholder');
-        if (!placeholder) {
-          placeholder = makeNewsPlaceholder(item, featureImage.className);
-          placeholder.id = 'carousel-image-placeholder';
-          featureImage.insertAdjacentElement('afterend', placeholder);
-        }
-        const imageUrl = safeHttpUrl(item.image);
-        if (imageUrl) {
-          placeholder.style.display = 'none';
-          featureImage.style.display = '';
-          featureImage.alt = 'Imagem da matéria: ' + item.title;
-          featureImage.onerror = () => {
-            featureImage.style.display = 'none';
-            placeholder.style.display = 'flex';
-            placeholder.setAttribute('aria-label', 'Imagem original indisponível. Categoria: ' + (item.category || 'Saúde animal'));
-          };
-          featureImage.src = imageUrl;
-        } else {
-          featureImage.style.display = 'none';
-          placeholder.style.display = 'flex';
-          placeholder.setAttribute('aria-label', 'Imagem original não disponibilizada pela fonte. Categoria: ' + (item.category || 'Saúde animal'));
-        }
-      }
+      if (featureImage) featureImage.style.display = 'none';
       const category = document.getElementById('carousel-category');
       const headline = document.getElementById('carousel-headline');
       const summary = document.getElementById('carousel-summary');
       const meta = document.getElementById('carousel-meta');
       const link = document.getElementById('carousel-link');
-      if (category) category.textContent = item.category || 'Saúde animal';
+      if (category) category.textContent = (item.category || 'Saúde animal') + ' · ' + (item.language || 'Português');
       if (headline) headline.textContent = item.title;
       if (summary) summary.textContent = item.description || 'Leia a matéria na publicação original para consultar os detalhes e o contexto completo.';
       if (meta) meta.textContent = (item.source || 'Fonte externa') + ' · ' + newsDateLabel(item) + ' · ' + (carouselIndex + 1) + ' de ' + liveNewsItems.length;
@@ -1187,12 +1066,11 @@
         liveNewsItems.filter((_,i) => i !== carouselIndex).slice(0,3).forEach((other) => {
           const button = document.createElement('button'); button.type='button'; button.className='block w-full rounded-lg border border-slate-200 p-3 text-left hover:border-emerald-400 hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-600';
           button.className += ' flex items-start gap-3';
-          const thumb=makeNewsVisual(other, 'h-16 w-20 shrink-0 rounded-md object-cover', '');
           const copy=document.createElement('span'); copy.className='min-w-0 flex-1';
-          const cat=document.createElement('span'); cat.className='block text-[10px] font-bold uppercase tracking-wide text-emerald-800'; cat.textContent=other.category || 'Saúde animal';
+          const cat=document.createElement('span'); cat.className='block text-[10px] font-bold uppercase tracking-wide text-emerald-800'; cat.textContent=(other.category || 'Saúde animal')+' · '+(other.language || 'Português');
           const title=document.createElement('span'); title.className='mt-1 block text-sm font-bold leading-snug text-slate-800'; title.textContent=other.title;
           const date=document.createElement('span'); date.className='mt-1 block text-[11px] text-slate-500'; date.textContent=(other.source || 'Fonte externa')+' · '+newsDateLabel(other);
-          copy.append(cat,title,date); button.append(thumb,copy); button.addEventListener('click',()=>{carouselIndex=liveNewsItems.indexOf(other);renderCarousel();restartCarouselTimer();}); side.appendChild(button);
+          copy.append(cat,title,date); button.append(copy); button.addEventListener('click',()=>{carouselIndex=liveNewsItems.indexOf(other);renderCarousel();restartCarouselTimer();}); side.appendChild(button);
         });
       }
       const dots = document.getElementById('carousel-dots');
@@ -1205,14 +1083,13 @@
     }
 
     function restartCarouselTimer() {
-      // Um único temporizador ativo evita timers duplicados após recarregar o feed.
-      if (carouselTimer) window.clearInterval(carouselTimer);
+      if (carouselTimer) window.clearTimeout(carouselTimer);
       carouselTimer = null;
       if (!carouselPaused && !document.hidden && liveNewsItems.length > 1) {
-        carouselTimer = window.setInterval(() => {
-          if (carouselPaused || document.hidden || liveNewsItems.length < 2) return;
+        carouselTimer = window.setTimeout(() => {
           carouselIndex = (carouselIndex + 1) % liveNewsItems.length;
           renderCarousel();
+          restartCarouselTimer();
         }, 6000);
       }
     }
@@ -1220,12 +1097,12 @@
     async function fetchBrowserFallback() {
       const all = [];
       const queries = NEWS_QUERIES.slice(0,5).map(async topic => {
-        const rss = 'https://news.google.com/rss/search?q=' + encodeURIComponent('(' + topic.query + ') when:30d') + '&hl=pt-BR&gl=BR&ceid=BR:pt-419';
+        const rss = 'https://news.google.com/rss/search?q=' + encodeURIComponent('(' + topic.query + ') when:30d') + '&hl=' + topic.lang + '&gl=' + topic.gl + '&ceid=' + encodeURIComponent(topic.ceid);
         const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rss);
         const response = await fetch(apiUrl, {cache:'no-store'});
         if (!response.ok) throw new Error('Uma fonte de notícias não respondeu');
         const data = await response.json();
-        if (data.status === 'ok' && Array.isArray(data.items)) data.items.forEach(item=>all.push({...item,category:topic.category}));
+        if (data.status === 'ok' && Array.isArray(data.items)) data.items.forEach(item=>all.push({...item,category:topic.category,language:topic.language}));
       });
       await Promise.allSettled(queries);
       return deduplicateNews(all).filter(item=>newsAgeDays(item)<=NEWS_MAX_AGE_DAYS).slice(0,NEWS_LIMIT);
@@ -1279,8 +1156,7 @@
       // A pessoa pode pausá-la explicitamente no botão; quando a aba fica oculta, economizamos recursos.
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
-          if (carouselTimer) window.clearInterval(carouselTimer);
-          carouselTimer = null;
+          if (carouselTimer) { window.clearInterval(carouselTimer); carouselTimer = null; }
         } else {
           restartCarouselTimer();
         }
