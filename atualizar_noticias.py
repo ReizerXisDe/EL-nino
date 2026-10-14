@@ -13,6 +13,13 @@ OUTPUT = ROOT / "noticias.json"
 MAX_ITEMS = 27
 MIN_ITEMS_BEFORE_EXPANDING = 8
 MAX_AGE_DAYS = 90
+FALLBACK_PT_QUERIES = [
+    ("Pequenos animais", 'medicina veterinária cães gatos', "pt"),
+    ("Zoonoses e saúde pública", 'zoonoses animais saúde pública Brasil', "pt"),
+    ("Animais de produção", 'saúde animal veterinária Embrapa', "pt"),
+    ("Pesquisa e inovação veterinária", 'pesquisa veterinária saúde animal universidade', "pt"),
+    ("Saúde Única e clima", 'animais mudanças climáticas saúde animal', "pt"),
+]
 QUERIES = [
     ("Pequenos animais", '("medicina veterinária" OR veterinário OR veterinária) (cães OR gatos OR felinos OR caninos OR pets) (saúde OR doença OR prevenção OR tratamento OR vacinação)', "pt"),
     ("Zoonoses e saúde pública", '(zoonose OR zoonoses OR raiva OR leishmaniose OR leptospirose OR esporotricose OR febre maculosa) (vigilância OR prevenção OR animais OR Brasil)', "pt"),
@@ -102,6 +109,10 @@ def balanced(items, limit=MAX_ITEMS):
     english = [x for x in items if x.get("language") == "English"]
     selected = []
     p = e = 0
+    # Se as consultas em português falharem por indisponibilidade do feed,
+    # não deixe o portal vazio: exiba as manchetes em inglês disponíveis.
+    if not portuguese:
+        return english[:limit]
     while len(selected) < limit and p < len(portuguese):
         # Bloco de até oito notícias em português.
         for _ in range(8):
@@ -115,20 +126,38 @@ def balanced(items, limit=MAX_ITEMS):
 
 def main():
     items = []
-    # Prioridade: notícias veterinárias dos últimos 30 dias, com cinco consultas temáticas.
+    # Primeira tentativa: consultas temáticas veterinárias nos últimos 30 dias.
     for category, query, language in QUERIES:
         items.extend(fetch_query(category, query, 30, language))
         time.sleep(0.25)
     items = unique_sorted(items)
     used_window = 30
-    # Amplia a janela somente quando a variedade de fontes resulta em poucas manchetes.
-    if len(items) < MIN_ITEMS_BEFORE_EXPANDING:
-        print("Menos de oito notícias nos últimos 30 dias; ampliando a busca para 90 dias.")
+
+    portuguese_count = sum(1 for x in items if x.get("language") != "English")
+    english_count = sum(1 for x in items if x.get("language") == "English")
+    print(f"Coleta inicial: {portuguese_count} notícias em português e {english_count} em inglês.")
+
+    # A quantidade em inglês não deve impedir a ampliação das buscas em português.
+    if portuguese_count < MIN_ITEMS_BEFORE_EXPANDING:
+        print("Poucas notícias em português; ampliando as consultas temáticas para 90 dias.")
         for category, query, language in QUERIES:
+            if language == "pt":
+                items.extend(fetch_query(category, query, 90, language))
+                time.sleep(0.25)
+        items = unique_sorted(items)
+        used_window = 90
+
+    portuguese_count = sum(1 for x in items if x.get("language") != "English")
+    # Último recurso: consultas simples, menos restritivas, em português.
+    if portuguese_count == 0:
+        print("Nenhuma manchete em português nas consultas temáticas; tentando consultas amplas.")
+        for category, query, language in FALLBACK_PT_QUERIES:
             items.extend(fetch_query(category, query, 90, language))
             time.sleep(0.25)
         items = unique_sorted(items)
         used_window = 90
+
+    print(f"Antes da seleção: {sum(1 for x in items if x.get('language') != 'English')} em português; {sum(1 for x in items if x.get('language') == 'English')} em inglês.")
     final_items = balanced(items)
     data = {
         "updated_at": datetime.now(timezone.utc).isoformat(),
