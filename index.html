@@ -160,25 +160,56 @@
 <button class="filter-btn bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-medium px-3 py-1 rounded-full" onclick="filterCategory('Avicultura e Suinocultura')">Avicultura &amp; Suinocultura</button>
 <button class="filter-btn bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-medium px-3 py-1 rounded-full" onclick="filterCategory('Fauna Silvestre')">Fauna Silvestre &amp; Zoonoses</button>
 </div>
+<section class="mb-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm" aria-labelledby="editorial-title">
+  <div class="grid grid-cols-1 lg:grid-cols-[1.45fr_.75fr]">
+    <div class="p-6 md:p-8">
+      <p class="mb-2 text-xs font-bold uppercase tracking-[.18em] text-emerald-800">Caderno técnico autoral · Saúde Única</p>
+      <h2 id="editorial-title" class="text-2xl font-extrabold leading-tight text-slate-950 md:text-3xl">Artigos Técnicos e Monografias Epidemiológicas</h2>
+      <p class="mt-3 max-w-3xl text-sm leading-7 text-slate-600">Textos elaborados pela equipe do Portal VetExtensão a partir de literatura científica e fontes institucionais, com foco em como o El Niño pode modificar os riscos ambientais, epidemiológicos e sanitários para animais domésticos, de produção e silvestres.</p>
+      <div class="mt-5 flex flex-wrap gap-2" aria-label="Princípios editoriais">
+        <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700"><i class="fas fa-book-open mr-1.5 text-emerald-700" aria-hidden="true"></i>Fontes verificáveis</span>
+        <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700"><i class="fas fa-quote-right mr-1.5 text-emerald-700" aria-hidden="true"></i>Referências citadas</span>
+        <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700"><i class="fas fa-universal-access mr-1.5 text-emerald-700" aria-hidden="true"></i>Leitura acessível</span>
+      </div>
+    </div>
+    <aside class="border-t border-slate-200 bg-slate-50 p-6 lg:border-l lg:border-t-0 md:p-8" aria-label="Nota editorial">
+      <h3 class="text-sm font-extrabold text-slate-900"><i class="fas fa-clipboard-check mr-2 text-emerald-700" aria-hidden="true"></i>Nota editorial</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">As publicações são materiais autorais de divulgação técnico-científica baseados em revisão narrativa de fontes selecionadas. Não são artigos originais nem publicações submetidas à revisão por pares.</p>
+      <p class="mt-3 text-sm leading-6 text-slate-600">O El Niño não produz os mesmos efeitos em todas as regiões. Os textos diferenciam evidências documentadas, mecanismos plausíveis e lacunas de conhecimento; associação climática não significa causalidade comprovada.</p>
+    </aside>
+  </div>
+</section>
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 <div class="lg:col-span-2 space-y-6">
-<h2 class="text-xl font-bold text-slate-900 border-b-2 border-brand-emerald pb-2 flex items-center justify-between">
-<span><i class="fas fa-journal-whills text-brand-emerald mr-2"></i>Artigos Técnicos e Monografias Epidemiológicas</span>
-<span class="text-xs text-slate-500 font-normal" id="article-count">Carregando...</span>
-</h2>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-6" id="news-grid">
-<!-- Injetado via JS -->
+<div class="flex flex-col gap-3 border-b-2 border-brand-emerald pb-4 sm:flex-row sm:items-end sm:justify-between">
+  <div><h2 class="text-xl font-bold text-slate-900"><i class="fas fa-book-open text-brand-emerald mr-2" aria-hidden="true"></i>Acervo de publicações</h2><p class="mt-1 text-xs leading-relaxed text-slate-500">Pesquise por tema, espécie, doença ou palavra-chave.</p></div>
+  <span class="text-xs text-slate-500" id="article-count" aria-live="polite">Carregando...</span>
 </div>
+<div class="space-y-3">
+  <label for="article-search" class="block text-xs font-bold text-slate-700">Buscar no acervo</label>
+  <div class="relative"><i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true"></i><input id="article-search" type="search" placeholder="Ex.: El Niño, seca, bovinos, fauna silvestre…" class="w-full rounded-xl border border-slate-300 bg-white py-3 pl-10 pr-4 text-sm text-slate-900 outline-none transition focus:border-emerald-700 focus:ring-4 focus:ring-emerald-100" autocomplete="off" aria-describedby="article-search-help"><p id="article-search-help" class="mt-1 text-xs text-slate-500">A busca considera títulos, resumos, categorias e palavras-chave.</p></div>
+  <div class="flex flex-wrap gap-2" aria-label="Filtrar publicações por grupo animal">
+    <button type="button" class="article-filter rounded-full bg-slate-900 px-3 py-2 text-xs font-bold text-white focus:outline-none focus:ring-2 focus:ring-emerald-600" data-filter="todos" aria-pressed="true">Todas</button>
+    <button type="button" class="article-filter rounded-full bg-slate-100 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-600" data-filter="domésticos" aria-pressed="false">Animais domésticos</button>
+    <button type="button" class="article-filter rounded-full bg-slate-100 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-600" data-filter="produção" aria-pressed="false">Animais de produção</button>
+    <button type="button" class="article-filter rounded-full bg-slate-100 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-600" data-filter="silvestre" aria-pressed="false">Fauna silvestre</button>
+    <button type="button" class="article-filter rounded-full bg-slate-100 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-600" data-filter="el niño" aria-pressed="false">El Niño</button>
+  </div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5" id="news-grid" aria-live="polite">
+<!-- Publicações inseridas via JavaScript -->
+</div>
+<nav id="article-pagination" class="mt-6 flex flex-wrap items-center justify-center gap-2" aria-label="Páginas do acervo de publicações"></nav>
 </div>
 <!-- SIDEBAR -->
 <aside class="space-y-6">
-<div class="bg-white p-5 rounded-xl shadow border border-slate-200">
-<h4 class="font-bold text-slate-900 border-b pb-2 mb-3 text-sm"><i class="fas fa-notes-medical text-brand-emerald mr-1"></i> Indicadores de Monitoramento</h4>
-<ul class="space-y-2 text-xs text-slate-600">
-<li class="flex items-start gap-2"><i class="fas fa-angle-right text-brand-emerald mt-0.5"></i> <strong>Pequenos Animais:</strong> Monitoramento do ITU em pets urbanos e sorologia para *Ehrlichia* e *Leishmania*.</li>
-<li class="flex items-start gap-2"><i class="fas fa-angle-right text-brand-emerald mt-0.5"></i> <strong>Ruminantes:</strong> Biocarrapaticidograma para *R. microplus* e suplementação com fósforo solúvel.</li>
-<li class="flex items-start gap-2"><i class="fas fa-angle-right text-brand-emerald mt-0.5"></i> <strong>Equídeos:</strong> Vacinação contra Alphavirus e drenagem peri-estábulo.</li>
-<li class="flex items-start gap-2"><i class="fas fa-angle-right text-brand-emerald mt-0.5"></i> <strong>Avicultura:</strong> Equilíbrio ácido-base em matrizes e ventilação em galpões industriais.</li>
+<div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+<h3 class="mb-3 border-b border-slate-200 pb-2 text-sm font-extrabold text-slate-900"><i class="fas fa-temperature-high mr-1 text-emerald-700" aria-hidden="true"></i> Eixos de análise climática</h3>
+<ul class="space-y-3 text-xs leading-relaxed text-slate-600">
+<li class="flex items-start gap-2"><i class="fas fa-paw mt-0.5 text-emerald-700" aria-hidden="true"></i><span><strong class="text-slate-800">Animais domésticos:</strong> estresse térmico, água potável, abrigo e exposição a ambientes contaminados.</span></li>
+<li class="flex items-start gap-2"><i class="fas fa-cow mt-0.5 text-emerald-700" aria-hidden="true"></i><span><strong class="text-slate-800">Animais de produção:</strong> conforto térmico, pastagem, nutrição, produtividade e plano de contingência.</span></li>
+<li class="flex items-start gap-2"><i class="fas fa-leaf mt-0.5 text-emerald-700" aria-hidden="true"></i><span><strong class="text-slate-800">Fauna silvestre:</strong> disponibilidade de água e alimento, habitat, incêndios e mudanças ecológicas.</span></li>
+<li class="flex items-start gap-2"><i class="fas fa-microscope mt-0.5 text-emerald-700" aria-hidden="true"></i><span><strong class="text-slate-800">Vigilância epidemiológica:</strong> monitorar dados locais e não atribuir doença ao El Niño sem evidências.</span></li>
 </ul>
 </div>
 <div class="bg-gradient-to-br from-brand-navy to-brand-dark text-white p-6 rounded-xl shadow">
@@ -656,9 +687,9 @@
 
 </main>
 <!-- MODAL LEITOR INTERNO EXPANDIDO -->
-<div class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4" id="article-modal">
+<div class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/80 p-4 backdrop-blur-sm" id="article-modal" role="dialog" aria-modal="true" aria-labelledby="modal-article-title">
 <div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative">
-<button class="absolute top-4 right-4 text-slate-400 hover:text-slate-800 text-2xl font-bold" onclick="closeModal()">
+<button type="button" class="absolute right-4 top-4 z-10 rounded-full bg-white px-3 py-1 text-2xl font-bold text-slate-500 shadow hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-600" onclick="closeModal()" aria-label="Fechar artigo">
         ×
       </button>
 <div id="modal-content">
@@ -764,57 +795,174 @@
             "desc": "Distribuição de vetores, ambiente peridomiciliar e presença do parasito influenciam o risco de transmissão da leishmaniose visceral.",
             "source": "<strong>Referências:</strong><br>1. <a class=\"text-sky-700 underline\" target=\"_blank\" rel=\"noopener\" href=\"https://pubmed.ncbi.nlm.nih.gov/41779509/\">Visceral Leishmaniasis in Southern Brazil: an overview of current epidemiology. PubMed, 2026.</a><br>2. <a class=\"text-sky-700 underline\" target=\"_blank\" rel=\"noopener\" href=\"https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/l/leishmaniose-visceral\">Ministério da Saúde. Leishmaniose visceral.</a>",
             "content": "<p class=\"mb-3\"><strong>A leishmaniose visceral é uma zoonose de grande importância no Brasil.</strong> É causada pelo protozoário <em>Leishmania infantum</em> e transmitida pela picada de flebotomíneos infectados, conhecidos como mosquito-palha. <em>Lutzomyia longipalpis</em> é o principal vetor associado à transmissão urbana brasileira.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Ambiente e risco epidemiológico</h3><p class=\"mb-3\">A distribuição dos flebotomíneos é influenciada por temperatura, umidade, matéria orgânica e características do peridomicílio. Mudanças no uso do solo, expansão urbana e alterações climáticas podem modificar as condições locais, mas não se deve atribuir automaticamente um novo foco ao aumento da temperatura: a transmissão depende também da presença do parasito, do vetor e de hospedeiros suscetíveis.</p><p class=\"mb-3\">Os cães são importantes reservatórios domésticos em áreas de transmissão urbana, mas não transmitem habitualmente a doença diretamente às pessoas: o flebotomíneo é necessário para a transmissão. Nos cães, os sinais podem incluir emagrecimento, alterações dermatológicas, crescimento exagerado das unhas, aumento de linfonodos e comprometimento renal. Alguns animais infectados, porém, apresentam poucos sinais ou permanecem sem manifestações evidentes.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Prevenção e vigilância</h3><p class=\"mb-3\">A prevenção envolve limpeza de quintais, remoção de matéria orgânica acumulada, manejo adequado dos abrigos de animais e medidas de proteção contra flebotomíneos. Diagnóstico e acompanhamento veterinário devem considerar exames apropriados e contexto epidemiológico. A vigilância entomológica e a comunicação de casos às autoridades competentes ajudam a identificar áreas de risco e orientar medidas de controle.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Ciclo de transmissão e papel do cão</h3><p class=\"mb-3\">A leishmaniose visceral é causada por <em>Leishmania infantum</em>, transmitida por flebotomíneos infectados. Quando uma fêmea do vetor se alimenta de um hospedeiro infectado, pode adquirir o parasito e transmiti-lo durante alimentações posteriores. A presença do parasito no ambiente não é suficiente para produzir transmissão sem condições adequadas para o vetor e contato entre os componentes do ciclo.</p><p class=\"mb-3\">Os cães são considerados reservatórios domésticos importantes em áreas de transmissão urbana, mas a infecção canina não equivale necessariamente a doença clínica. Alguns animais desenvolvem sinais sistêmicos, enquanto outros podem permanecer sem sinais evidentes por períodos prolongados. A avaliação deve considerar exposição, exame físico e testes recomendados pelos protocolos oficiais; resultados isolados podem exigir interpretação complementar.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Sinais clínicos e avaliação veterinária</h3><p class=\"mb-3\">Além de emagrecimento, alterações cutâneas, onicogrifose e linfadenomegalia, podem ocorrer lesões oculares, apatia, redução do apetite, anemia, alterações laboratoriais e doença renal. O comprometimento renal é uma das complicações que influenciam o prognóstico. Por isso, a avaliação clínica pode incluir hemograma, bioquímica sérica, urinálise e investigação de proteinúria, conforme a situação do paciente.</p><p class=\"mb-3\">Diagnóstico, tratamento e acompanhamento dos cães devem obedecer às normas sanitárias vigentes e ser conduzidos por médico-veterinário. Não se deve iniciar medicamentos por conta própria nem presumir que um cão sem sinais esteja livre da infecção. A conduta depende do estado clínico, dos resultados confirmatórios e das regras aplicáveis na região.</p><h3 class=\"text-base font-bold text-slate-900 mt-4 mb-2\">Vigilância entomológica e prevenção no peridomicílio</h3><p class=\"mb-3\">Flebotomíneos podem utilizar ambientes sombreados e ricos em matéria orgânica para abrigo e desenvolvimento, de modo que o manejo do quintal ajuda a reduzir condições favoráveis. Recomenda-se retirar folhas e resíduos orgânicos acumulados, manter abrigos de animais limpos e utilizar medidas de proteção individual dos cães, como produtos repelentes/inseticidas veterinários adequados e telas quando indicadas. Produtos devem ser escolhidos com orientação profissional, pois nem todos são seguros para todas as espécies.</p><p class=\"mb-3\">A vigilância de vetores, a investigação de casos e o acompanhamento dos indicadores locais ajudam a reconhecer mudanças na distribuição da doença. Entretanto, um aumento de temperatura ou a presença de um vetor em determinado local não comprovam, isoladamente, transmissão ativa. A interpretação depende da identificação do vetor, da presença do parasito e de evidências epidemiológicas.</p><p class=\"mb-3\"><strong>Relação com o clima:</strong> o El Niño pode influenciar padrões regionais de chuva e temperatura, mas os efeitos sobre flebotomíneos variam conforme a região e a ecologia local. A melhor estratégia é combinar informação climática com vigilância entomológica e dados clínicos, evitando atribuições causais sem evidência.</p>"
+      },
+      {
+        "id": 9,
+        "title": "El Niño e animais domésticos: calor, escassez de água e mudanças no risco sanitário",
+        "category": "Animais domésticos · El Niño",
+        "date": "14 de outubro de 2026",
+        "author": "Equipe VetExtensão",
+        "subtitle": "Como tutores podem preparar cães e gatos para períodos de calor intenso, seca ou chuva extrema.",
+        "readingTime": "7 min de leitura",
+        "keywords": ["El Niño", "cães", "gatos", "estresse térmico", "água", "vetores", "animais domésticos"],
+        "evidence": "Revisão narrativa de fontes institucionais e literatura científica",
+        "image": "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=1000&q=85",
+        "desc": "O El Niño pode contribuir para alterações regionais de temperatura e chuva. Em cães e gatos, os riscos passam pelo calor, pela disponibilidade de água, por enchentes e por mudanças ambientais que podem alterar a exposição a agentes e vetores.",
+        "source": `<strong>Referências</strong><ol class="mt-2 list-decimal space-y-2 pl-5"><li>WORLD ORGANISATION FOR ANIMAL HEALTH (WOAH). <a class="text-sky-700 underline break-words" target="_blank" rel="noopener noreferrer" href="https://www.woah.org/en/article/the-wide-ranging-impacts-of-el-nino-on-wildlife-and-animal-health/">The wide-ranging impacts of El Niño on wildlife and animal health</a>. 2023.</li><li>WORLD HEALTH ORGANIZATION (WHO). <a class="text-sky-700 underline break-words" target="_blank" rel="noopener noreferrer" href="https://www.who.int/news-room/fact-sheets/detail/el-nino-southern-oscillation-%28enso%29">El Niño Southern Oscillation (ENSO)</a>.</li><li>FRONTIERS IN ANIMAL SCIENCE. <a class="text-sky-700 underline break-words" target="_blank" rel="noopener noreferrer" href="https://www.frontiersin.org/journals/animal-science/articles/10.3389/fanim.2025.1679377/full">Heat stress in domestic dogs: morphological and environmental risk factors for dog welfare in a warming world</a>. 2025.</li></ol>`,
+        "content": `<p class="mb-4"><strong>Resumo.</strong> O El Niño é um fenômeno oceânico-atmosférico que altera padrões de circulação e pode modificar a distribuição de chuvas e temperaturas em diferentes regiões. Para cães e gatos, os efeitos são principalmente indiretos: ondas de calor, restrição de água, alteração da rotina, fumaça de queimadas e, em áreas sujeitas a chuvas intensas, enchentes e contaminação ambiental. A intensidade e a direção desses efeitos dependem da região, da estação do ano e das condições locais.</p><h3 class="mt-6 mb-2 text-lg font-bold text-slate-900">1. Estresse térmico e grupos vulneráveis</h3><p class="mb-3">Cães dissipam calor em grande parte pela respiração ofegante; gatos também podem sofrer quando não conseguem encontrar ambientes frescos e água. Animais braquicefálicos, idosos, muito jovens, obesos ou com doenças cardíacas e respiratórias podem apresentar maior vulnerabilidade. Respiração muito intensa, salivação excessiva, fraqueza, vômitos, desorientação ou colapso em contexto de calor são sinais de urgência veterinária.</p><p class="mb-3">O El Niño não é a causa direta de cada episódio de hipertermia. O fenômeno pode favorecer anomalias climáticas em determinadas regiões, enquanto o risco individual depende da temperatura real, umidade, ventilação, exposição solar, atividade física e acesso a abrigo.</p><h3 class="mt-6 mb-2 text-lg font-bold text-slate-900">2. Água, alimento e segurança ambiental</h3><p class="mb-3">Em períodos de seca, tutores devem garantir água limpa e fresca, recipientes higienizados e locais sombreados. Durante enchentes, a água pode estar contaminada por esgoto, resíduos e urina de roedores; evite que os animais atravessem ou bebam água de alagamentos. Abrigos temporários precisam prever identificação, transporte seguro, medicamentos de uso contínuo e registros de vacinação.</p><h3 class="mt-6 mb-2 text-lg font-bold text-slate-900">3. Vetores e doenças: atenção sem alarmismo</h3><p class="mb-3">Mudanças de temperatura e precipitação podem alterar a ecologia de mosquitos, flebotomíneos, carrapatos e outros organismos, mas a resposta não é uniforme. A transmissão de uma doença depende também do agente, do vetor competente, dos hospedeiros, do ambiente e das medidas de controle. Não se deve concluir que o El Niño aumentará automaticamente a leishmaniose, a dirofilariose ou outras doenças em todo local.</p><p class="mb-3">A prevenção inclui manter vacinação e controle de parasitas conforme orientação veterinária, retirar água parada quando aplicável, proteger os animais de vetores e acompanhar comunicados da vigilância local. Produtos destinados a cães podem ser tóxicos para gatos; nunca aplique antiparasitários de uma espécie em outra sem confirmar a segurança com um médico-veterinário.</p><h3 class="mt-6 mb-2 text-lg font-bold text-slate-900">4. Plano prático para tutores</h3><ul class="mb-4 list-disc space-y-2 pl-5"><li>Planeje passeios em horários mais frescos e evite exercício intenso no calor.</li><li>Não deixe animais em veículos estacionados ou em locais sem ventilação.</li><li>Tenha água, caixa de transporte, identificação e plano de abrigo para emergências.</li><li>Após enchentes, evite contato com água potencialmente contaminada e procure avaliação se surgirem sinais clínicos.</li><li>Procure atendimento veterinário diante de dificuldade respiratória, colapso, vômitos persistentes ou alteração importante de comportamento.</li></ul><h3 class="mt-6 mb-2 text-lg font-bold text-slate-900">Considerações finais</h3><p class="mb-3">A melhor resposta ao risco climático é a preparação antecipada e baseada em alertas locais. As recomendações de bem-estar e prevenção são úteis em períodos de calor ou eventos extremos, mas não demonstram, por si só, que um problema individual tenha sido causado pelo El Niño. A vigilância veterinária e as fontes oficiais devem orientar decisões específicas.</p><p class="mt-4 rounded-lg border-l-4 border-emerald-700 bg-emerald-50 p-4 text-sm"><strong>Limite da evidência:</strong> este texto é uma revisão narrativa de divulgação científica. Os efeitos do El Niño variam geograficamente; não constitui diagnóstico nem substitui orientação veterinária.</p>`
+      },
+      {
+        "id": 10,
+        "title": "El Niño e animais de produção: proteger rebanhos contra calor, seca e perda de alimento",
+        "category": "Animais de produção · El Niño",
+        "date": "14 de outubro de 2026",
+        "author": "Equipe VetExtensão",
+        "subtitle": "Estratégias de manejo para bovinos, caprinos, ovinos, suínos e aves em cenários climáticos extremos.",
+        "readingTime": "8 min de leitura",
+        "keywords": ["El Niño", "bovinos", "caprinos", "ovinos", "suínos", "aves", "estresse térmico", "seca"],
+        "evidence": "Revisão narrativa de fontes institucionais e literatura científica",
+        "image": "https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1000&q=85",
+        "desc": "O calor e as mudanças na chuva podem reduzir conforto térmico, disponibilidade de forragem e água, desempenho reprodutivo e produtividade. O planejamento deve ser regional e combinar nutrição, instalações e vigilância sanitária.",
+        "source": `<strong>Referências</strong><ol class="mt-2 list-decimal space-y-2 pl-5"><li>FOOD AND AGRICULTURE ORGANIZATION OF THE UNITED NATIONS (FAO). <a class="text-sky-700 underline break-words" target="_blank" rel="noopener noreferrer" href="https://www.fao.org/climate-change/news/news-detail/extreme-heat-in-an-el-ni%C3%B1o-year--how-agrifood-systems-can-prepare/en">Extreme heat in an El Niño year: how agrifood systems can prepare</a>. 7 jul. 2026.</li><li>SAILO, Lalrengpuii; DAS, Ramendra. <a class="text-sky-700 underline break-words" target="_blank" rel="noopener noreferrer" href="https://agris.fao.org/search/en/providers/122436/records/6970c684bd789e57df2d2d0f">Heat Stress in Livestock: Impacts and Ameliorative Strategies—a Review</a>. 2023.</li><li>WORLD ORGANISATION FOR ANIMAL HEALTH (WOAH). <a class="text-sky-700 underline break-words" target="_blank" rel="noopener noreferrer" href="https://www.woah.org/en/article/the-wide-ranging-impacts-of-el-nino-on-wildlife-and-animal-health/">The wide-ranging impacts of El Niño on wildlife and animal health</a>. 2023.</li></ol>`,
+        "content": `<p class="mb-4"><strong>Resumo.</strong> O El Niño pode modificar o regime de chuvas e favorecer extremos de temperatura em partes do mundo. Em sistemas pecuários, isso pode repercutir sobre água, pastagens, produção de forragem, conforto térmico e custos de alimentação. A direção e a intensidade dos impactos dependem da região: algumas áreas enfrentam estiagem, enquanto outras podem registrar chuva intensa, inundação ou condições favoráveis a problemas sanitários específicos.</p><h3 class="mt-6 mb-2 text-lg font-bold text-slate-900">1. Estresse térmico e desempenho produtivo</h3><p class="mb-3">Quando a carga de calor ultrapassa a capacidade de dissipação do animal, podem ocorrer aumento da frequência respiratória, mudanças de comportamento e redução do consumo de alimento. Em vacas leiteiras, o estresse térmico pode comprometer produção de leite e reprodução; em bovinos de corte, pode reduzir ganho de peso; em suínos, pode afetar consumo e desempenho reprodutivo; em aves, pode diminuir postura, qualidade da casca e eficiência produtiva. A magnitude do efeito varia com espécie, raça, idade, umidade, ventilação, densidade e duração da exposição.</p><h3 class="mt-6 mb-2 text-lg font-bold text-slate-900">2. Água e disponibilidade de alimento</h3><p class="mb-3">Em regiões onde o El Niño contribui para estiagem, a queda na produção de forragem pode elevar o custo alimentar e piorar a condição corporal. A restrição de água afeta bem-estar, consumo, termorregulação e produção. O planejamento inclui avaliar a capacidade de armazenamento, verificar vazamentos, manter bebedouros limpos, monitorar a qualidade da água e formular reservas de volumoso antes do período crítico.</p><p class="mb-3">A suplementação não deve ser improvisada: mudanças bruscas na dieta ou fornecimento inadequado de minerais podem gerar distúrbios metabólicos. Ajustes de dieta, uso de alimentos alternativos e decisões sobre lotação devem considerar análise nutricional e orientação de profissional habilitado.</p><h3 class="mt-6 mb-2 text-lg font-bold text-slate-900">3. Instalações e manejo térmico</h3><p class="mb-3">Sombra, ventilação dimensionada, manutenção de ventiladores e nebulizadores quando apropriados, densidade adequada e acesso distribuído à água reduzem a carga térmica. Em aves e suínos, falhas de energia ou ventilação podem evoluir rapidamente para emergência; por isso, sistemas intensivos precisam de alarmes, manutenção preventiva e plano de contingência. Em sistemas a pasto, a disponibilidade de sombra e o acesso a água são componentes centrais do manejo.</p><h3 class="mt-6 mb-2 text-lg font-bold text-slate-900">4. Vigilância sanitária e doenças</h3><p class="mb-3">Clima e precipitação podem alterar a sobrevivência de vetores, o contato entre hospedeiros e agentes infecciosos e a qualidade ambiental. Contudo, calor não significa necessariamente aumento de todos os vetores: secas severas também podem reduzir alguns estágios de vida livre. Carrapatos, moscas e mosquitos devem ser monitorados segundo a espécie, o sistema de criação e a epidemiologia local. A vigilância de mortalidade, abortos, queda de produção e sinais clínicos ajuda a identificar alterações que precisam de investigação.</p><p class="mb-3">A ocorrência de doenças não deve ser atribuída ao El Niño sem dados. O registro de clima, manejo, movimentação de animais, vacinação, parasitismo e resultados laboratoriais contribui para uma avaliação mais robusta e para notificação aos serviços veterinários quando indicada.</p><h3 class="mt-6 mb-2 text-lg font-bold text-slate-900">5. Lista de preparação para propriedades</h3><ul class="mb-4 list-disc space-y-2 pl-5"><li>Mapear fontes de água e estimar a demanda diária do rebanho.</li><li>Planejar estoque de forragem e insumos antes de períodos de escassez.</li><li>Verificar sombra, ventilação, densidade, geradores e alarmes.</li><li>Manter calendário sanitário e registros de produção, mortalidade e reprodução.</li><li>Definir contatos para assistência veterinária e órgãos oficiais em caso de suspeita de surto.</li></ul><h3 class="mt-6 mb-2 text-lg font-bold text-slate-900">Considerações finais</h3><p class="mb-3">A adaptação ao El Niño depende de previsão climática regional, planejamento hídrico, nutrição, instalações e vigilância sanitária. Medidas preventivas reduzem vulnerabilidades, mas precisam ser ajustadas ao sistema produtivo e às condições locais, sem tratar todos os rebanhos ou regiões como se enfrentassem o mesmo cenário.</p><p class="mt-4 rounded-lg border-l-4 border-emerald-700 bg-emerald-50 p-4 text-sm"><strong>Limite da evidência:</strong> revisão narrativa para fins educativos. Recomendações específicas de nutrição, tratamento ou manejo devem ser discutidas com médico-veterinário e zootecnista conforme a situação.</p>`
+      },
+      {
+        "id": 11,
+        "title": "El Niño e fauna silvestre: água, alimento, habitat e vigilância da biodiversidade",
+        "category": "Fauna silvestre · El Niño",
+        "date": "14 de outubro de 2026",
+        "author": "Equipe VetExtensão",
+        "subtitle": "Como mudanças de chuva e temperatura podem afetar animais silvestres terrestres e aquáticos — e quais são os limites das evidências.",
+        "readingTime": "8 min de leitura",
+        "keywords": ["El Niño", "fauna silvestre", "biodiversidade", "seca", "queimadas", "habitat", "animais aquáticos"],
+        "evidence": "Revisão narrativa de fontes institucionais e literatura científica",
+        "image": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&w=1000&q=85",
+        "desc": "Alterações climáticas regionais podem mudar disponibilidade de água e alimento, risco de incêndios, habitats e dinâmica de ecossistemas. As consequências variam entre espécies e não são sempre negativas ou iguais em todos os biomas.",
+        "source": `<strong>Referências</strong><ol class="mt-2 list-decimal space-y-2 pl-5"><li>WORLD ORGANISATION FOR ANIMAL HEALTH (WOAH). <a class="text-sky-700 underline break-words" target="_blank" rel="noopener noreferrer" href="https://www.woah.org/en/article/the-wide-ranging-impacts-of-el-nino-on-wildlife-and-animal-health/">The wide-ranging impacts of El Niño on wildlife and animal health</a>. 2023.</li><li>JAKSIC, Fabian M. <a class="text-sky-700 underline break-words" target="_blank" rel="noopener noreferrer" href="https://nsojournals.onlinelibrary.wiley.com/doi/10.1034/j.1600-0587.2001.240301.x">Ecological effects of El Niño in terrestrial ecosystems of western South America</a>. Ecography, 2001.</li><li>McTIGUE, Leah E.; van den BOSCH, Merijn; BOONE, Hailey M.; McCASLIN, Hanna M.; JONES, Lilly N.; MOLA, John M.; STEEL, Zachary L. <a class="text-sky-700 underline break-words" target="_blank" rel="noopener noreferrer" href="https://doi.org/10.1111/gcb.70752">Global Trends in Drought Impacts on Wildlife—A Review</a>. Global Change Biology, v. 32, n. 2, e70752, 2026.</li></ol>`,
+        "content": `<p class="mb-4"><strong>Resumo.</strong> A fauna silvestre responde a variações de chuva e temperatura por meio de mudanças no acesso à água, disponibilidade de alimento, condição corporal, reprodução, deslocamento e uso de habitat. Como o El Niño altera padrões climáticos de maneira regionalmente desigual, seus efeitos dependem do bioma, da estação, da intensidade do evento e das características de cada espécie. O fenômeno pode contribuir para secas ou chuvas intensas em algumas áreas e não deve ser tratado como explicação universal para alterações na fauna.</p><h3 class="mt-6 mb-2 text-lg font-bold text-slate-900">1. Água, alimento e condição corporal</h3><p class="mb-3">Em ambientes onde a precipitação diminui, poças, riachos e áreas alagadas podem secar, enquanto plantas e frutos usados como alimento ficam menos disponíveis. Herbívoros podem percorrer distâncias maiores ou concentrar-se perto de fontes de água; predadores e necrófagos também podem responder às mudanças na distribuição das presas e carcaças. Esses deslocamentos variam entre espécies e podem alterar interações ecológicas, mas a direção do efeito precisa ser avaliada com dados de campo.</p><p class="mb-3">A seca não afeta todos os animais da mesma forma. Algumas espécies toleram melhor períodos sem água, outras dependem de ambientes úmidos ou de recursos sazonais. Uma revisão global recente sobre seca e vertebrados silvestres encontrou respostas predominantemente negativas em estudos de espécie única, mas também destacou muitas respostas incertas e lacunas geográficas e taxonômicas. Isso reforça a necessidade de evitar generalizações.</p><h3 class="mt-6 mb-2 text-lg font-bold text-slate-900">2. Habitat, queimadas e deslocamentos</h3><p class="mb-3">Quando a estiagem se combina com altas temperaturas e fontes de ignição, pode aumentar a vulnerabilidade de ecossistemas ao fogo. Incêndios podem causar mortalidade direta, destruir abrigos, reduzir recursos alimentares e fragmentar rotas de deslocamento. Mesmo quando os animais sobrevivem, o retorno da vegetação e da disponibilidade de alimento pode demorar. A intensidade desses impactos depende do tipo de vegetação, do histórico de fogo, do uso do solo e das medidas de prevenção.</p><p class="mb-3">Em outros lugares, chuvas intensas podem inundar ninhos, tocas ou áreas de reprodução, alterar cursos d’água e aumentar a erosão. Por isso, planos de conservação devem considerar tanto seca e fogo quanto enchentes e alterações rápidas do habitat, em vez de presumir que todo El Niño produz apenas estiagem.</p><h3 class="mt-6 mb-2 text-lg font-bold text-slate-900">3. Ecossistemas aquáticos e marinhos</h3><p class="mb-3">O aquecimento anômalo da superfície do mar associado ao El Niño pode alterar a disponibilidade de nutrientes, a produtividade e a distribuição de organismos em algumas regiões oceânicas, com repercussões sobre peixes, aves marinhas e mamíferos marinhos. Em ambientes continentais, mudanças no volume e na temperatura da água podem influenciar oxigenação, reprodução e distribuição de espécies aquáticas. A resposta depende da região oceânica ou bacia hidrográfica e não pode ser extrapolada automaticamente para todos os ecossistemas.</p><h3 class="mt-6 mb-2 text-lg font-bold text-slate-900">4. Saúde, doenças e vigilância da fauna</h3><p class="mb-3">A alteração de habitats e de padrões de chuva pode modificar o contato entre animais, vetores e agentes infecciosos. Entretanto, um evento climático não confirma a ocorrência de uma doença nem demonstra causalidade. Investigações confiáveis combinam observações de campo, identificação de espécies, diagnóstico laboratorial, dados ambientais e séries temporais.</p><p class="mb-3">Mortalidade incomum de animais silvestres, concentração atípica em fontes de água, presença de animais debilitados ou eventos de fogo devem ser comunicados aos órgãos ambientais ou serviços de fauna competentes. Não manipule animais silvestres doentes ou mortos e não ofereça alimento sem orientação, pois isso pode expor pessoas e animais a riscos e alterar o comportamento da fauna.</p><h3 class="mt-6 mb-2 text-lg font-bold text-slate-900">5. Medidas de conservação e preparação</h3><ul class="mb-4 list-disc space-y-2 pl-5"><li>Proteger remanescentes de vegetação, corredores ecológicos e áreas úmidas.</li><li>Planejar prevenção e resposta a incêndios em áreas vulneráveis.</li><li>Monitorar água, vegetação, mortalidade e deslocamentos com métodos padronizados.</li><li>Integrar dados de clima, conservação e vigilância sanitária sem presumir causalidade.</li><li>Registrar e comunicar eventos incomuns aos órgãos ambientais responsáveis.</li></ul><h3 class="mt-6 mb-2 text-lg font-bold text-slate-900">Considerações finais</h3><p class="mb-3">O El Niño pode alterar as condições ecológicas das quais dependem os animais silvestres, mas o impacto real precisa ser demonstrado para cada local e grupo biológico. A conservação deve combinar monitoramento de longo prazo, proteção de habitats e respostas locais baseadas em evidências.</p><p class="mt-4 rounded-lg border-l-4 border-emerald-700 bg-emerald-50 p-4 text-sm"><strong>Limite da evidência:</strong> revisão narrativa de fontes selecionadas. Não atribua um evento de mortalidade, deslocamento ou doença ao El Niño sem investigação ambiental e epidemiológica adequada.</p>`
       }
 ];
 
-    function renderNews(list) {
-      const grid = document.getElementById('news-grid');
-      grid.innerHTML = '';
-      document.getElementById('article-count').innerText = `${list.length} Artigo(s) Técnico(s)`;
+    let activeArticleFilter = 'todos';
+    let activeArticleQuery = '';
+    let activeArticlePage = 1;
+    const articlesPerPage = 4;
 
-      if (list.length === 0) {
-        grid.innerHTML = `<div class="col-span-2 text-center py-10 text-xs text-slate-500">Nenhuma monografia encontrada para este filtro.</div>`;
-        return;
-      }
-
-      list.forEach(item => {
-        grid.innerHTML += `
-          <div onclick="openArticleModal(${item.id})" class="bg-white rounded-xl shadow border border-slate-200 overflow-hidden flex flex-col justify-between hover:shadow-lg transition cursor-pointer group">
-            <div>
-              <div class="h-44 overflow-hidden relative">
-                <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                <span class="absolute top-2 left-2 bg-brand-navy text-brand-mint text-[10px] font-bold px-2 py-0.5 rounded">${item.category}</span>
-              </div>
-              <div class="p-4">
-                <span class="text-[10px] text-slate-400"><i class="far fa-calendar"></i> ${item.date}</span>
-                <h4 class="font-bold text-slate-800 text-sm mt-1 mb-2 leading-snug group-hover:text-brand-emerald transition">${item.title}</h4>
-                <p class="text-xs text-slate-600 line-clamp-2">${item.desc}</p>
-              </div>
-            </div>
-            <div class="p-4 pt-0">
-              <span class="inline-flex items-center gap-1 text-xs font-bold text-brand-emerald group-hover:underline">
-                Ler artigo completo & citação <i class="fas fa-arrow-right text-[10px]"></i>
-              </span>
-            </div>
-          </div>
-        `;
+    function getFilteredArticles() {
+      const q = activeArticleQuery.trim().toLocaleLowerCase('pt-BR');
+      return articlesData.filter(item => {
+        const category = (item.category || '').toLocaleLowerCase('pt-BR');
+        const keys = (item.keywords || []).join(' ').toLocaleLowerCase('pt-BR');
+        const haystack = `${item.title} ${item.desc} ${item.subtitle || ''} ${category} ${keys}`.toLocaleLowerCase('pt-BR');
+        const matchesQuery = !q || haystack.includes(q);
+        let matchesFilter = activeArticleFilter === 'todos';
+        if (activeArticleFilter === 'domésticos') matchesFilter = /doméstic|pequenos animais|cães|gatos/.test(`${category} ${keys}`);
+        else if (activeArticleFilter === 'produção') matchesFilter = /produção|bovinocultura|avicultura|suinocultura|equinocultura|ruminantes|bovinos|caprinos|ovinos/.test(`${category} ${keys}`);
+        else if (activeArticleFilter === 'silvestre') matchesFilter = /silvestre|fauna/.test(`${category} ${keys}`);
+        else if (activeArticleFilter === 'el niño') matchesFilter = /el niño/.test(haystack);
+        else if (activeArticleFilter !== 'todos') matchesFilter = category.includes(activeArticleFilter);
+        return matchesQuery && matchesFilter;
       });
     }
 
-    function filterCategory(cat) {
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('bg-brand-navy', 'text-white');
-        btn.classList.add('bg-slate-200', 'text-slate-700');
-      });
-      event.target.classList.remove('bg-slate-200', 'text-slate-700');
-      event.target.classList.add('bg-brand-navy', 'text-white');
-
-      if (cat === 'todos') {
-        renderNews(articlesData);
-      } else {
-        const filtered = articlesData.filter(a => a.category.toLowerCase().includes(cat.toLowerCase()));
-        renderNews(filtered);
+    function renderNews(list) {
+      const grid = document.getElementById('news-grid');
+      const pagination = document.getElementById('article-pagination');
+      const count = document.getElementById('article-count');
+      const totalPages = Math.max(1, Math.ceil(list.length / articlesPerPage));
+      activeArticlePage = Math.min(activeArticlePage, totalPages);
+      grid.innerHTML = '';
+      pagination.innerHTML = '';
+      count.innerText = `${list.length} ${list.length === 1 ? 'publicação encontrada' : 'publicações encontradas'}${list.length ? ` · página ${activeArticlePage} de ${totalPages}` : ''}`;
+      if (!list.length) {
+        grid.innerHTML = `<div class="col-span-full rounded-xl border border-dashed border-slate-300 bg-slate-50 px-6 py-10 text-center"><i class="fas fa-search mb-3 text-2xl text-slate-400" aria-hidden="true"></i><p class="font-semibold text-slate-700">Nenhuma publicação encontrada</p><p class="mt-1 text-sm text-slate-500">Tente outra palavra-chave ou selecione “Todas”.</p><button type="button" onclick="resetArticleFilters()" class="mt-4 rounded-lg bg-slate-900 px-4 py-2 text-xs font-bold text-white hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-600">Limpar filtros</button></div>`;
+        return;
       }
+      const startIndex = (activeArticlePage - 1) * articlesPerPage;
+      const visibleArticles = list.slice(startIndex, startIndex + articlesPerPage);
+      visibleArticles.forEach(item => {
+        const el = document.createElement('article');
+        el.className = 'group flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md';
+        const titleId = `article-title-${item.id}`;
+        const keywords = (item.keywords || []).slice(0, 3).map(k => `<span class="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-medium text-slate-600">${k}</span>`).join('');
+        el.innerHTML = `
+          <div class="relative h-40 overflow-hidden bg-slate-100">
+            <img src="${item.image}" alt="Imagem ilustrativa relacionada a ${item.category}" loading="lazy" class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]" onerror="this.style.display='none'">
+            <span class="absolute left-3 top-3 max-w-[85%] rounded-md bg-slate-950/90 px-2.5 py-1 text-[10px] font-bold text-white">${item.category}</span>
+          </div>
+          <div class="flex flex-1 flex-col p-5">
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-500"><span><i class="far fa-calendar mr-1" aria-hidden="true"></i>${item.date}</span><span><i class="far fa-clock mr-1" aria-hidden="true"></i>${item.readingTime || 'Leitura técnica'}</span></div>
+            <h3 id="${titleId}" class="mt-3 text-base font-extrabold leading-snug text-slate-900 group-hover:text-emerald-800">${item.title}</h3>
+            ${item.subtitle ? `<p class="mt-2 text-xs font-semibold leading-relaxed text-slate-600">${item.subtitle}</p>` : ''}
+            <p class="mt-3 flex-1 text-sm leading-6 text-slate-600">${item.desc}</p>
+            ${keywords ? `<div class="mt-4 flex flex-wrap gap-1.5">${keywords}</div>` : ''}
+            <div class="mt-5 border-t border-slate-100 pt-4">
+              <p class="text-[11px] text-slate-500">Autoria: <span class="font-semibold text-slate-700">${item.author || 'Equipe editorial VetExtensão'}</span></p>
+              <button type="button" aria-labelledby="${titleId}" onclick="openArticleModal(${item.id})" class="mt-3 inline-flex w-full items-center justify-between rounded-lg border border-emerald-800 px-3 py-2.5 text-xs font-bold text-emerald-900 transition hover:bg-emerald-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-emerald-100"><span>Ler publicação</span><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+            </div>
+          </div>`;
+        grid.appendChild(el);
+      });
+      if (totalPages > 1) {
+        const makePageButton = (label, page, options = {}) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.textContent = label;
+          button.disabled = Boolean(options.disabled);
+          button.setAttribute('aria-label', options.ariaLabel || `Ir para a página ${page}`);
+          if (options.current) button.setAttribute('aria-current', 'page');
+          button.className = `min-w-10 rounded-lg border px-3 py-2 text-sm font-bold transition focus:outline-none focus:ring-2 focus:ring-emerald-600 ${options.current ? 'border-emerald-800 bg-emerald-800 text-white' : 'border-slate-300 bg-white text-slate-700 hover:bg-slate-100'} ${options.disabled ? 'cursor-not-allowed opacity-40' : ''}`;
+          button.addEventListener('click', () => {
+            if (options.disabled || page === activeArticlePage) return;
+            activeArticlePage = page;
+            renderNews(getFilteredArticles());
+            document.getElementById('article-pagination').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          });
+          return button;
+        };
+        pagination.appendChild(makePageButton('Anterior', Math.max(1, activeArticlePage - 1), { disabled: activeArticlePage === 1, ariaLabel: 'Página anterior' }));
+        for (let page = 1; page <= totalPages; page++) {
+          pagination.appendChild(makePageButton(String(page), page, { current: page === activeArticlePage }));
+        }
+        pagination.appendChild(makePageButton('Próxima', Math.min(totalPages, activeArticlePage + 1), { disabled: activeArticlePage === totalPages, ariaLabel: 'Próxima página' }));
+      }
+    }
+
+    function updateArticleResults() {
+      activeArticlePage = 1;
+      renderNews(getFilteredArticles());
+    }
+    function resetArticleFilters() {
+      activeArticleFilter = 'todos'; activeArticleQuery = '';
+      const search = document.getElementById('article-search'); if (search) search.value = '';
+      document.querySelectorAll('.article-filter').forEach(btn => {
+        const active = btn.dataset.filter === 'todos';
+        btn.setAttribute('aria-pressed', String(active));
+        btn.className = `article-filter rounded-full px-3 py-2 text-xs font-${active ? 'bold' : 'semibold'} ${active ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'} focus:outline-none focus:ring-2 focus:ring-emerald-600`;
+      });
+      updateArticleResults();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const search = document.getElementById('article-search');
+      if (search) search.addEventListener('input', () => { activeArticleQuery = search.value; updateArticleResults(); });
+      document.querySelectorAll('.article-filter').forEach(btn => btn.addEventListener('click', () => {
+        activeArticleFilter = btn.dataset.filter;
+        document.querySelectorAll('.article-filter').forEach(other => {
+          const active = other === btn;
+          other.setAttribute('aria-pressed', String(active));
+          other.className = `article-filter rounded-full px-3 py-2 text-xs font-${active ? 'bold' : 'semibold'} ${active ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'} focus:outline-none focus:ring-2 focus:ring-emerald-600`;
+        });
+        updateArticleResults();
+      }));
+      updateArticleResults();
+    });
+
+    function filterCategory(cat) {
+      activeArticleFilter = cat === 'todos' ? 'todos' : cat.toLocaleLowerCase('pt-BR');
+      activeArticleQuery = '';
+      const search = document.getElementById('article-search'); if (search) search.value = '';
+      updateArticleResults();
     }
 
     function openArticleModal(id) {
@@ -823,22 +971,23 @@
 
       const modalContent = document.getElementById('modal-content');
       modalContent.innerHTML = `
-        <span class="text-xs font-bold text-brand-emerald uppercase tracking-wider">${article.category}</span>
-        <h2 class="text-xl md:text-2xl font-extrabold text-slate-900 mt-1 mb-2 leading-tight">${article.title}</h2>
-        <div class="text-xs text-slate-400 mb-4 flex items-center gap-2 border-b pb-2">
-          <span><i class="far fa-calendar"></i> Publicado em: ${article.date}</span>
-          <span>•</span>
-          <span><i class="fas fa-microscope"></i> Monografia Técnico-Científica Portal VetExtensão</span>
+        <p class="text-xs font-bold uppercase tracking-[.16em] text-emerald-800">${article.category}</p>
+        <h2 id="modal-article-title" class="mt-2 text-2xl font-extrabold leading-tight text-slate-950 md:text-3xl">${article.title}</h2>
+        ${article.subtitle ? `<p class="mt-3 text-base leading-7 text-slate-600">${article.subtitle}</p>` : ''}
+        <div class="mt-4 flex flex-wrap gap-x-4 gap-y-2 border-y border-slate-200 py-3 text-xs text-slate-600">
+          <span><i class="far fa-calendar mr-1 text-emerald-800" aria-hidden="true"></i>${article.date}</span>
+          <span><i class="fas fa-user-edit mr-1 text-emerald-800" aria-hidden="true"></i>${article.author || 'Equipe editorial VetExtensão'}</span>
+          <span><i class="far fa-clock mr-1 text-emerald-800" aria-hidden="true"></i>${article.readingTime || 'Leitura técnica'}</span>
         </div>
-        <img src="${article.image}" alt="${article.title}" class="w-full h-64 object-cover rounded-xl mb-6 shadow">
-        
-        <div class="text-slate-700 text-xs sm:text-sm leading-relaxed space-y-4">
+        <div class="my-5 rounded-lg border border-slate-200 bg-slate-50 p-4"><p class="text-[11px] font-bold uppercase tracking-wide text-slate-700">Natureza do conteúdo</p><p class="mt-1 text-xs leading-relaxed text-slate-600">${article.evidence || 'Texto técnico de divulgação científica baseado em fontes citadas; não equivale a pesquisa original nem a publicação revisada por pares.'}</p></div>
+        <img src="${article.image}" alt="Imagem ilustrativa: ${article.category}" loading="lazy" class="mb-6 max-h-72 w-full rounded-xl bg-slate-100 object-cover" onerror="this.style.display='none'">
+        <article class="prose max-w-none text-sm leading-7 text-slate-700">
           ${article.content}
-        </div>
+        </article>
 
         <div class="mt-8 p-4 bg-slate-100 rounded-lg border-l-4 border-brand-navy">
           <h4 class="text-xs font-bold text-brand-navy uppercase tracking-wide mb-1"><i class="fas fa-bookmark mr-1"></i> Referência e Citação Bibliográfica:</h4>
-          <p class="text-xs text-slate-600 font-mono">${article.source}</p>
+          <div class="text-xs leading-6 text-slate-700">${article.source}</div>
         </div>
 
         <div class="mt-6 pt-4 border-t flex justify-end">
@@ -849,10 +998,14 @@
       `;
 
       document.getElementById('article-modal').classList.remove('hidden');
+      document.getElementById('article-modal').classList.add('flex');
+      document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
       document.getElementById('article-modal').classList.add('hidden');
+      document.getElementById('article-modal').classList.remove('flex');
+      document.body.style.overflow = '';
     }
 
     function switchView(viewName) {
