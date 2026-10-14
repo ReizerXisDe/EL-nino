@@ -125,6 +125,32 @@
     <button type="button" onclick="switchView('questionario')" class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 font-bold text-white shadow-sm transition hover:bg-emerald-800 focus:outline-none focus:ring-4 focus:ring-emerald-300"><i class="fas fa-clipboard-check"></i> Responder ao questionário <i class="fas fa-arrow-right"></i></button>
   </div>
 </section>
+<!-- CARROSSEL DE NOTÍCIAS RECENTES: CLIMA, MEIO AMBIENTE E SAÚDE ANIMAL -->
+<section id="radar-noticias" class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm" aria-labelledby="radar-titulo">
+  <div class="flex flex-col gap-3 border-b border-slate-200 bg-gradient-to-r from-brand-navy to-brand-dark px-5 py-4 text-white sm:flex-row sm:items-center sm:justify-between md:px-7">
+    <div>
+      <p class="mb-1 text-[11px] font-bold uppercase tracking-[0.18em] text-emerald-300"><i class="fas fa-satellite-dish mr-1" aria-hidden="true"></i> Radar de atualidades</p>
+      <h2 id="radar-titulo" class="text-xl font-extrabold md:text-2xl">Clima, meio ambiente e saúde animal</h2>
+      <p class="mt-1 text-sm text-slate-300">Notícias recentes selecionadas de fontes externas.</p>
+    </div>
+    <div class="flex flex-wrap items-center gap-2">
+      <button id="radar-pause" type="button" class="inline-flex items-center gap-2 rounded-lg border border-white/30 px-3 py-2 text-xs font-semibold text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-300" aria-pressed="false" aria-label="Pausar rotação automática"><i class="fas fa-pause" aria-hidden="true"></i><span>Pausar</span></button>
+      <a href="https://news.google.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-3 py-2 text-xs font-bold text-white transition hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-300">Ver notícias <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <div class="relative bg-slate-950" aria-roledescription="carrossel" aria-label="Notícias recentes sobre clima, meio ambiente e animais">
+    <div id="radar-slides" class="relative min-h-[390px] sm:min-h-[340px]" aria-live="off">
+      <div class="flex min-h-[390px] items-center justify-center px-6 py-12 text-center text-white sm:min-h-[340px]" role="status">Carregando notícias recentes…</div>
+    </div>
+    <button id="radar-prev" type="button" class="absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-slate-950/75 text-white shadow-lg transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-white" aria-label="Notícia anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+    <button id="radar-next" type="button" class="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-slate-950/75 text-white shadow-lg transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-white" aria-label="Próxima notícia"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+  </div>
+  <div class="flex flex-col gap-2 px-5 py-3 sm:flex-row sm:items-center sm:justify-between md:px-7">
+    <p id="radar-status" class="text-xs text-slate-500" role="status">As notícias serão carregadas de um feed externo. A disponibilidade depende da fonte.</p>
+    <div id="radar-dots" class="flex items-center justify-center gap-2" aria-label="Selecionar notícia"></div>
+  </div>
+  <p class="border-t border-slate-100 bg-slate-50 px-5 py-3 text-[11px] leading-relaxed text-slate-500 md:px-7">As manchetes e os links são fornecidos por fontes externas. O Portal VetExtensão não é responsável pelo conteúdo original nem endossa automaticamente todas as publicações. A relação entre clima e saúde animal deve ser interpretada com base nas evidências e no contexto regional.</p>
+</section>
 <!-- BARRA DE FILTROS POR ÁREA VETERINÁRIA -->
 <div class="flex items-center gap-2 overflow-x-auto pb-2 border-b border-slate-200">
 <span class="text-xs font-bold text-slate-500 whitespace-nowrap">Especialidade:</span>
@@ -1042,6 +1068,88 @@
           if (closeButton) closeButton.focus();
         }, 700);
       }
+    })();
+  </script>
+
+
+  <script>
+    /* Radar de notícias: feed externo, navegação manual e rotação acessível */
+    (function () {
+      const root = document.getElementById('radar-noticias');
+      if (!root) return;
+      const slidesEl = document.getElementById('radar-slides');
+      const dotsEl = document.getElementById('radar-dots');
+      const statusEl = document.getElementById('radar-status');
+      const pauseButton = document.getElementById('radar-pause');
+      const prevButton = document.getElementById('radar-prev');
+      const nextButton = document.getElementById('radar-next');
+      const feed = 'https://news.google.com/rss/search?q=' + encodeURIComponent('(El Niño OR clima OR mudanças climáticas OR meio ambiente OR saúde animal OR fauna) when:7d') + '&hl=pt-BR&gl=BR&ceid=BR:pt-419';
+      const fallback = [
+        { title: 'El Niño, fauna silvestre e saúde animal: por que acompanhar o clima?', description: 'A variabilidade climática pode alterar a disponibilidade de água e alimento, os habitats e alguns riscos sanitários. Os efeitos dependem da região e devem ser avaliados com base em evidências.', source: 'Organização Mundial de Saúde Animal (OMSA/WOAH)', link: 'https://www.woah.org/en/article/the-wide-ranging-impacts-of-el-nino-on-wildlife-and-animal-health/', thumbnail: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1400&q=85' },
+        { title: 'Calor intenso: cuidados preventivos com cães e gatos', description: 'Água fresca, sombra, ventilação e evitar atividades nos horários mais quentes são medidas importantes. Sinais como fraqueza, desorientação ou dificuldade respiratória exigem avaliação veterinária urgente.', source: 'Conselho Regional de Medicina Veterinária do Rio de Janeiro', link: 'https://www.crmvrj.org.br/por-que-o-el-nino-tambem-e-uma-preocupacao-da-medicina-veterinaria/', thumbnail: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1400&q=85' },
+        { title: 'Acompanhe os avisos e as previsões meteorológicas oficiais', description: 'Consultar previsões e alertas ajuda a planejar ações preventivas diante de estiagens, chuvas intensas e ondas de calor. Considere sempre os avisos válidos para a sua região.', source: 'Instituto Nacional de Meteorologia (INMET)', link: 'https://portal.inmet.gov.br/', thumbnail: 'https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=1400&q=85' }
+      ];
+      let items = [];
+      let active = 0;
+      let paused = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let timer = null;
+      function safeUrl(value) { try { const u = new URL(value); return (u.protocol === 'https:' || u.protocol === 'http:') ? u.href : ''; } catch (_) { return ''; } }
+      function cleanText(value) { const box = document.createElement('div'); box.innerHTML = value || ''; return (box.textContent || box.innerText || '').replace(/\s+/g, ' ').trim(); }
+      function render() {
+        slidesEl.replaceChildren(); dotsEl.replaceChildren();
+        items.forEach((item, index) => {
+          const slide = document.createElement('article');
+          slide.className = 'absolute inset-0 transition-opacity duration-500 ' + (index === active ? 'opacity-100' : 'pointer-events-none opacity-0');
+          slide.setAttribute('aria-hidden', index === active ? 'false' : 'true');
+          slide.setAttribute('role', 'group'); slide.setAttribute('aria-roledescription', 'slide');
+          slide.setAttribute('aria-label', (index + 1) + ' de ' + items.length);
+          const imageUrl = safeUrl(item.thumbnail || item.enclosure && item.enclosure.link) || 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1400&q=85';
+          const image = document.createElement('img'); image.src = imageUrl; image.alt = ''; image.loading = index === 0 ? 'eager' : 'lazy';
+          image.className = 'absolute inset-0 h-full w-full object-cover';
+          image.onerror = function () { this.style.display = 'none'; };
+          const shade = document.createElement('div'); shade.className = 'absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/75 to-slate-950/10';
+          const content = document.createElement('div'); content.className = 'relative z-[1] flex min-h-[390px] flex-col justify-end px-14 pb-12 pt-16 text-white sm:min-h-[340px] sm:px-16 md:px-20 md:pb-14';
+          const label = document.createElement('p'); label.className = 'mb-3 text-[10px] font-extrabold uppercase tracking-[0.2em] text-emerald-300'; label.textContent = item.source || 'Notícias ambientais';
+          const title = document.createElement('h3'); title.className = 'max-w-4xl text-xl font-extrabold leading-tight sm:text-2xl md:text-3xl'; title.textContent = cleanText(item.title) || 'Notícia sobre clima, ambiente e saúde animal';
+          const summary = document.createElement('p'); summary.className = 'mt-3 max-w-3xl text-sm leading-relaxed text-slate-200 sm:text-base';
+          const desc = cleanText(item.description || item.content || 'Acesse a publicação original para ler a matéria completa.'); summary.textContent = desc.length > 260 ? desc.slice(0,257) + '…' : desc;
+          const link = document.createElement('a'); link.className = 'mt-5 inline-flex w-fit items-center gap-2 rounded-lg bg-emerald-600 px-4 py-3 text-sm font-bold text-white transition hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-white';
+          const href = safeUrl(item.link); link.href = href || 'https://news.google.com/'; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.textContent = 'Ler notícia na fonte '; const icon = document.createElement('i'); icon.className = 'fas fa-arrow-up-right-from-square'; icon.setAttribute('aria-hidden','true'); link.appendChild(icon);
+          content.append(label, title, summary, link); slide.append(image, shade, content); slidesEl.appendChild(slide);
+          const dot = document.createElement('button'); dot.type = 'button'; dot.className = 'h-2.5 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2 ' + (index === active ? 'w-7 bg-emerald-700' : 'w-2.5 bg-slate-300 hover:bg-slate-500'); dot.setAttribute('aria-label', 'Mostrar notícia ' + (index + 1)); dot.setAttribute('aria-current', index === active ? 'true' : 'false'); dot.addEventListener('click', () => { active = index; show(); restart(); }); dotsEl.appendChild(dot);
+        });
+        show();
+      }
+      function show() {
+        Array.from(slidesEl.children).forEach((el, i) => { el.classList.toggle('opacity-100', i === active); el.classList.toggle('opacity-0', i !== active); el.classList.toggle('pointer-events-none', i !== active); el.setAttribute('aria-hidden', i === active ? 'false' : 'true'); });
+        Array.from(dotsEl.children).forEach((el, i) => { el.classList.toggle('w-7', i === active); el.classList.toggle('bg-emerald-700', i === active); el.classList.toggle('w-2.5', i !== active); el.classList.toggle('bg-slate-300', i !== active); el.setAttribute('aria-current', i === active ? 'true' : 'false'); });
+      }
+      function go(step) { if (!items.length) return; active = (active + step + items.length) % items.length; show(); restart(); }
+      function stop() { if (timer) window.clearInterval(timer); timer = null; }
+      function restart() { stop(); if (!paused && items.length > 1) timer = window.setInterval(() => { active = (active + 1) % items.length; show(); }, 7000); }
+      function updatePauseButton() { pauseButton.setAttribute('aria-pressed', paused ? 'true' : 'false'); pauseButton.setAttribute('aria-label', paused ? 'Retomar rotação automática' : 'Pausar rotação automática'); pauseButton.innerHTML = paused ? '<i class="fas fa-play" aria-hidden="true"></i><span>Retomar</span>' : '<i class="fas fa-pause" aria-hidden="true"></i><span>Pausar</span>'; }
+      pauseButton.addEventListener('click', () => { paused = !paused; updatePauseButton(); restart(); });
+      prevButton.addEventListener('click', () => go(-1)); nextButton.addEventListener('click', () => go(1));
+      root.addEventListener('mouseenter', stop); root.addEventListener('mouseleave', restart);
+      root.addEventListener('focusin', stop); root.addEventListener('focusout', () => { if (!paused) restart(); });
+      document.addEventListener('visibilitychange', () => document.hidden ? stop() : restart());
+      updatePauseButton();
+      async function load() {
+        try {
+          const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feed), { cache: 'no-store' });
+          if (!response.ok) throw new Error('Feed indisponível');
+          const data = await response.json();
+          if (data.status !== 'ok' || !Array.isArray(data.items)) throw new Error('Feed sem resultados');
+          const recent = data.items.filter(item => safeUrl(item.link) && item.title).slice(0, 8).map(item => ({ title: item.title, description: item.description, content: item.content, link: item.link, source: item.author || 'Fonte externa', thumbnail: item.thumbnail || (item.enclosure && item.enclosure.link) }));
+          if (!recent.length) throw new Error('Nenhuma notícia válida');
+          items = recent; active = 0; statusEl.textContent = 'Exibindo ' + items.length + ' notícias encontradas no feed de busca recente. A consulta é refeita a cada 15 minutos; a disponibilidade depende dos serviços externos.';
+        } catch (error) {
+          items = fallback; active = 0;
+          statusEl.textContent = 'Não foi possível consultar notícias recentes agora. Exibindo fontes de referência como alternativa; use os links para acessar as publicações.';
+        }
+        render(); restart();
+      }
+      load(); window.setInterval(load, 15 * 60 * 1000);
     })();
   </script>
 
