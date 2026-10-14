@@ -1,0 +1,28 @@
+PORTAL VETEXTENSÃO — MELHORIA DO CARROSSEL E DO FEED DE NOTÍCIAS
+
+ARQUIVOS
+- index.html: página do portal com carrossel na página inicial, filtros por tema e feed ampliado.
+- atualizar_noticias.py: busca RSS por cinco grupos temáticos, remove duplicatas e prioriza notícias recentes.
+- noticias.json: arquivo de notícias que o site lê; é preenchido pelo workflow.
+- .github/workflows/atualizar-noticias.yml: automação programada do GitHub Actions.
+
+COMO PUBLICAR NO GITHUB PAGES
+1. Faça uma cópia de segurança do HTML atual.
+2. No repositório do site, substitua o HTML publicado pelo conteúdo de index.html (se seu arquivo principal se chama index.html, substitua-o; se usa outro nome, mantenha o nome atual do arquivo principal).
+3. Envie também atualizar_noticias.py, noticias.json e a pasta .github/workflows/atualizar-noticias.yml para a raiz do repositório, mantendo a estrutura da pasta .github.
+4. No GitHub, abra Settings > Actions > General e confirme que GitHub Actions está habilitado. Em repositórios com restrições de permissões, permita que Actions tenha acesso de escrita ao conteúdo do repositório.
+5. Abra a aba Actions, selecione “Atualizar notícias do Portal VetExtensão” e clique em “Run workflow” para executar a primeira atualização manual.
+6. Depois da primeira execução, confira o arquivo noticias.json e abra o site. A automação programada tenta atualizar o arquivo a cada seis horas; o GitHub pode atrasar execuções agendadas.
+
+COMO FUNCIONA
+- O sistema busca cinco temas: clima/El Niño, saúde animal, zoonoses/vetores, meio ambiente e produção animal.
+- Prioriza resultados publicados nos últimos 30 dias. Se houver menos de oito notícias, amplia a busca até 90 dias.
+- Remove títulos duplicados, mantém até 12 manchetes e limita a concentração de uma única categoria.
+- O site lê noticias.json. Se o arquivo não estiver acessível ou estiver vazio, tenta uma consulta de contingência no navegador; se a consulta também falhar, apresenta links para fontes institucionais.
+- O carrossel roda automaticamente a cada sete segundos, permite pausa, setas, seleção por indicadores e navegação por teclado. Ao receber foco ou ao passar o mouse, a rotação pausa temporariamente.
+
+LIMITAÇÕES IMPORTANTES
+- As manchetes são agregadas pelo Google News RSS e podem vir de veículos jornalísticos diversos. O agregador não garante que toda matéria seja científica nem endossa seu conteúdo.
+- A automação depende da disponibilidade dos feeds e do GitHub Actions. O horário de seis horas é uma programação desejada, não uma garantia de execução exata.
+- Sempre abra a fonte original, confira a data e priorize comunicados oficiais (INMET, INPE, Cemaden, MAPA, Ministério da Saúde, Embrapa, CFMV e WOAH) para informações sanitárias.
+- O arquivo noticias.json é iniciado vazio intencionalmente; não há notícias fictícias apresentadas como recentes. Execute o workflow para preenchê-lo.
