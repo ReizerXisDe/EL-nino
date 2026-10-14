@@ -6,7 +6,6 @@ from urllib.parse import quote_plus
 from urllib.request import Request, urlopen
 from xml.etree import ElementTree as ET
 import json, re, time
-from urllib.parse import urlparse
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -15,11 +14,16 @@ MAX_ITEMS = 12
 MIN_ITEMS_BEFORE_EXPANDING = 8
 MAX_AGE_DAYS = 90
 QUERIES = [
-    ("Pequenos animais", '("medicina veterinária" OR veterinário OR veterinária) (cães OR gatos OR felinos OR caninos OR pets) (saúde OR doença OR prevenção OR tratamento OR vacinação)'),
-    ("Zoonoses e saúde pública", '(zoonose OR zoonoses OR raiva OR leishmaniose OR leptospirose OR esporotricose OR febre maculosa) (vigilância OR prevenção OR animais OR Brasil)'),
-    ("Animais de produção", '(sanidade animal OR saúde animal OR veterinária) (bovinos OR caprinos OR ovinos OR suínos OR aves OR equinos) (doença OR vacina OR diagnóstico OR prevenção)'),
-    ("Pesquisa e inovação veterinária", '("medicina veterinária" OR veterinária OR "saúde animal") (pesquisa OR estudo OR universidade OR diagnóstico OR vacina OR tratamento)'),
-    ("Saúde Única e clima", '("saúde animal" OR veterinária OR zoonoses) ("saúde única" OR calor OR seca OR enchente OR "mudanças climáticas" OR "El Niño")'),
+    ("Pequenos animais", '("medicina veterinária" OR veterinário OR veterinária) (cães OR gatos OR felinos OR caninos OR pets) (saúde OR doença OR prevenção OR tratamento OR vacinação)', "pt"),
+    ("Zoonoses e saúde pública", '(zoonose OR zoonoses OR raiva OR leishmaniose OR leptospirose OR esporotricose OR febre maculosa) (vigilância OR prevenção OR animais OR Brasil)', "pt"),
+    ("Animais de produção", '(sanidade animal OR saúde animal OR veterinária) (bovinos OR caprinos OR ovinos OR suínos OR aves OR equinos) (doença OR vacina OR diagnóstico OR prevenção)', "pt"),
+    ("Pesquisa e inovação veterinária", '("medicina veterinária" OR veterinária OR "saúde animal") (pesquisa OR estudo OR universidade OR diagnóstico OR vacina OR tratamento)', "pt"),
+    ("Saúde Única e clima", '("saúde animal" OR veterinária OR zoonoses) ("saúde única" OR calor OR seca OR enchente OR "mudanças climáticas" OR "El Niño")', "pt"),
+    ("Pequenos animais", '(veterinary OR veterinarian) (dogs OR cats OR canine OR feline) (health OR disease OR treatment OR vaccination OR prevention)', "en"),
+    ("Zoonoses e saúde pública", '(zoonotic disease OR zoonoses OR rabies OR leptospirosis OR leishmaniasis) (animal health OR public health OR surveillance)', "en"),
+    ("Animais de produção", '(veterinary OR livestock health) (cattle OR sheep OR goats OR poultry OR pigs OR horses) (disease OR vaccine OR diagnosis OR prevention)', "en"),
+    ("Pesquisa e inovação veterinária", '("veterinary medicine" OR "animal health") (research OR study OR diagnostics OR vaccine OR treatment)', "en"),
+    ("Saúde Única e clima", '("One Health" OR "animal health") (climate OR heat OR drought OR flood OR "climate change")', "en"),
 ]
 def text(node, path, default=""):
     found = node.find(path)
@@ -41,66 +45,13 @@ def strip_html(value):
     value = value.replace("&nbsp;", " ").replace("&amp;", "&").replace("&quot;", '"').replace("&#39;", "'")
     return re.sub(r"\s+", " ", value).strip()
 
-def valid_image_url(value):
-    if not value:
-        return ""
-    value = value.strip()
-    parsed = urlparse(value)
-    return value if parsed.scheme in ("http", "https") and parsed.netloc else ""
 
-def find_image(item, description):
-    # RSS feeds podem publicar imagens por media:content, media:thumbnail ou enclosure.
-    for node in item.iter():
-        tag = node.tag.lower()
-        if tag.endswith("thumbnail") or tag.endswith("content") or tag.endswith("enclosure"):
-            candidate = node.attrib.get("url") or node.attrib.get("href")
-            if candidate:
-                candidate = valid_image_url(candidate)
-                if candidate:
-                    return candidate
-    # Alguns feeds embutem a miniatura em HTML dentro da descrição.
-    match = re.search(r'<img[^>]+(?:src|data-src)=["\']([^"\']+)', description or "", re.I)
-    if match:
-        candidate = valid_image_url(match.group(1))
-        if candidate:
-            return candidate
-    return ""
-
-
-def fetch_page_image(link):
-    """Tenta obter a imagem editorial da própria matéria; não inventa imagens."""
-    req = Request(link, headers={"User-Agent": "Mozilla/5.0 (compatible; PortalVetExtensao/1.0)"})
-    try:
-        with urlopen(req, timeout=8) as response:
-            final_url = response.geturl()
-            html = response.read(700_000).decode("utf-8", errors="ignore")
-    except Exception:
-        return ""
-    # Open Graph / Twitter metadata are the most reliable generic article-image signals.
-    patterns = [
-        r"<meta[^>]+property=['\\\"]og:image(?::url)?['\\\"][^>]+content=['\\\"]([^'\\\"]+)",
-        r"<meta[^>]+content=['\\\"]([^'\\\"]+)['\\\"][^>]+property=['\\\"]og:image(?::url)?['\\\"]",
-        r"<meta[^>]+name=['\\\"]twitter:image(?::src)?['\\\"][^>]+content=['\\\"]([^'\\\"]+)",
-        r"<meta[^>]+content=['\\\"]([^'\\\"]+)['\\\"][^>]+name=['\\\"]twitter:image(?::src)?['\\\"]",
-    ]
-    for pattern in patterns:
-        match = re.search(pattern, html, re.I)
-        if match:
-            candidate = match.group(1).replace("&amp;", "&")
-            if candidate.startswith("//"):
-                candidate = "https:" + candidate
-            elif candidate.startswith("/"):
-                parsed = urlparse(final_url)
-                candidate = f"{parsed.scheme}://{parsed.netloc}{candidate}"
-            candidate = valid_image_url(candidate)
-            if candidate:
-                return candidate
-    return ""
-
-
-def fetch_query(category, query, days):
+def fetch_query(category, query, days, language="pt"):
     q = f"({query}) when:{days}d"
-    url = "https://news.google.com/rss/search?q=" + quote_plus(q) + "&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+    if language == "en":
+        url = "https://news.google.com/rss/search?q=" + quote_plus(q) + "&hl=en-US&gl=US&ceid=US:en"
+    else:
+        url = "https://news.google.com/rss/search?q=" + quote_plus(q) + "&hl=pt-BR&gl=BR&ceid=BR:pt-419"
     req = Request(url, headers={"User-Agent": "PortalVetExtensaoNewsBot/1.0 (+GitHub Actions; RSS reader)"})
     try:
         with urlopen(req, timeout=20) as response:
@@ -115,7 +66,6 @@ def fetch_query(category, query, days):
         link = text(item, "link")
         raw_description = text(item, "description")
         description = strip_html(raw_description)
-        image = find_image(item, raw_description)
         published = parse_date(text(item, "pubDate"))
         source_node = item.find("source")
         source = (source_node.text or "").strip() if source_node is not None else "Google News / fonte jornalística"
@@ -130,9 +80,9 @@ def fetch_query(category, query, days):
             "link": link,
             "pubDate": published.isoformat(),
             "description": description[:1200],
-            "image": image,
             "source": source or "Fonte jornalística",
             "category": category,
+            "language": "English" if language == "en" else "Português",
         })
     return results
 
@@ -164,27 +114,20 @@ def balanced(items, limit=MAX_ITEMS):
 def main():
     items = []
     # Prioridade: notícias veterinárias dos últimos 30 dias, com cinco consultas temáticas.
-    for category, query in QUERIES:
-        items.extend(fetch_query(category, query, 30))
+    for category, query, language in QUERIES:
+        items.extend(fetch_query(category, query, 30, language))
         time.sleep(0.25)
     items = unique_sorted(items)
     used_window = 30
     # Amplia a janela somente quando a variedade de fontes resulta em poucas manchetes.
     if len(items) < MIN_ITEMS_BEFORE_EXPANDING:
         print("Menos de oito notícias nos últimos 30 dias; ampliando a busca para 90 dias.")
-        for category, query in QUERIES:
-            items.extend(fetch_query(category, query, 90))
+        for category, query, language in QUERIES:
+            items.extend(fetch_query(category, query, 90, language))
             time.sleep(0.25)
         items = unique_sorted(items)
         used_window = 90
     final_items = balanced(items)
-    # Google News RSS nem sempre fornece miniatura. Tenta extrair a imagem original
-    # da página do veículo; quando não houver, mantém image vazio para a página
-    # mostrar um marcador temático, em vez de uma fotografia aleatória.
-    for item in final_items:
-        if not item.get("image"):
-            item["image"] = fetch_page_image(item["link"])
-            time.sleep(0.15)
     data = {
         "updated_at": datetime.now(timezone.utc).isoformat(),
         "window_days": used_window,
