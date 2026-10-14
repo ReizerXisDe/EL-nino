@@ -919,7 +919,7 @@
 
     // FEED MULTIFONTE: prefere noticias.json (atualizado por GitHub Actions) e usa RSS2JSON como contingência.
     const NEWS_MAX_AGE_DAYS = 90;
-    const NEWS_LIMIT = 12;
+    const NEWS_LIMIT = 27;
     const NEWS_QUERIES = [
       { category: 'Pequenos animais', language: 'Português', query: '("medicina veterinária" OR veterinário OR veterinária) (cães OR gatos OR felinos OR caninos OR pets) (saúde OR doença OR prevenção OR tratamento OR vacinação)', lang: 'pt-BR', gl: 'BR', ceid: 'BR:pt-419' },
       { category: 'Zoonoses e saúde pública', language: 'Português', query: '(zoonose OR zoonoses OR raiva OR leishmaniose OR leptospirose OR esporotricose OR febre maculosa) (vigilância OR prevenção OR animais OR Brasil)', lang: 'pt-BR', gl: 'BR', ceid: 'BR:pt-419' },
@@ -990,6 +990,19 @@
         result.push(item);
       }
       return result.sort((a,b) => (parseNewsDate(b.pubDate)?.getTime() || 0) - (parseNewsDate(a.pubDate)?.getTime() || 0));
+    }
+
+    // Mantém aproximadamente oito notícias em português para cada notícia em inglês.
+    function mixNewsLanguages(items, limit = NEWS_LIMIT) {
+      const portuguese = items.filter(item => (item.language || 'Português') !== 'English');
+      const english = items.filter(item => item.language === 'English');
+      const mixed = [];
+      let p = 0, e = 0;
+      while (mixed.length < limit && p < portuguese.length) {
+        for (let n = 0; n < 8 && p < portuguese.length && mixed.length < limit; n++, p++) mixed.push(portuguese[p]);
+        if (e < english.length && mixed.length < limit) mixed.push(english[e++]);
+      }
+      return mixed;
     }
 
     function newsDateLabel(item) {
@@ -1096,7 +1109,7 @@
 
     async function fetchBrowserFallback() {
       const all = [];
-      const queries = NEWS_QUERIES.slice(0,5).map(async topic => {
+      const queries = NEWS_QUERIES.map(async topic => {
         const rss = 'https://news.google.com/rss/search?q=' + encodeURIComponent('(' + topic.query + ') when:30d') + '&hl=' + topic.lang + '&gl=' + topic.gl + '&ceid=' + encodeURIComponent(topic.ceid);
         const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rss);
         const response = await fetch(apiUrl, {cache:'no-store'});
@@ -1105,7 +1118,7 @@
         if (data.status === 'ok' && Array.isArray(data.items)) data.items.forEach(item=>all.push({...item,category:topic.category,language:topic.language}));
       });
       await Promise.allSettled(queries);
-      return deduplicateNews(all).filter(item=>newsAgeDays(item)<=NEWS_MAX_AGE_DAYS).slice(0,NEWS_LIMIT);
+      return mixNewsLanguages(deduplicateNews(all).filter(item=>newsAgeDays(item)<=NEWS_MAX_AGE_DAYS));
     }
 
     async function loadLiveNews(manual = false) {
@@ -1122,7 +1135,7 @@
           const response = await fetch('noticias.json?ts=' + Date.now(), {cache:'no-store'});
           if (response.ok) {
             const data = await response.json();
-            if (Array.isArray(data.items)) items = deduplicateNews(data.items).filter(item=>newsAgeDays(item)<=NEWS_MAX_AGE_DAYS).slice(0,NEWS_LIMIT);
+            if (Array.isArray(data.items)) items = mixNewsLanguages(deduplicateNews(data.items).filter(item=>newsAgeDays(item)<=NEWS_MAX_AGE_DAYS));
             if (items.length && data.updated_at) updated.textContent = 'Base atualizada em ' + new Date(data.updated_at).toLocaleString('pt-BR');
           }
         } catch (_) { /* fallback below */ }
