@@ -66,6 +66,38 @@ def find_image(item, description):
             return candidate
     return ""
 
+
+def fetch_page_image(link):
+    """Tenta obter a imagem editorial da própria matéria; não inventa imagens."""
+    req = Request(link, headers={"User-Agent": "Mozilla/5.0 (compatible; PortalVetExtensao/1.0)"})
+    try:
+        with urlopen(req, timeout=8) as response:
+            final_url = response.geturl()
+            html = response.read(700_000).decode("utf-8", errors="ignore")
+    except Exception:
+        return ""
+    # Open Graph / Twitter metadata are the most reliable generic article-image signals.
+    patterns = [
+        r"<meta[^>]+property=['\\\"]og:image(?::url)?['\\\"][^>]+content=['\\\"]([^'\\\"]+)",
+        r"<meta[^>]+content=['\\\"]([^'\\\"]+)['\\\"][^>]+property=['\\\"]og:image(?::url)?['\\\"]",
+        r"<meta[^>]+name=['\\\"]twitter:image(?::src)?['\\\"][^>]+content=['\\\"]([^'\\\"]+)",
+        r"<meta[^>]+content=['\\\"]([^'\\\"]+)['\\\"][^>]+name=['\\\"]twitter:image(?::src)?['\\\"]",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, html, re.I)
+        if match:
+            candidate = match.group(1).replace("&amp;", "&")
+            if candidate.startswith("//"):
+                candidate = "https:" + candidate
+            elif candidate.startswith("/"):
+                parsed = urlparse(final_url)
+                candidate = f"{parsed.scheme}://{parsed.netloc}{candidate}"
+            candidate = valid_image_url(candidate)
+            if candidate:
+                return candidate
+    return ""
+
+
 def fetch_query(category, query, days):
     q = f"({query}) when:{days}d"
     url = "https://news.google.com/rss/search?q=" + quote_plus(q) + "&hl=pt-BR&gl=BR&ceid=BR:pt-419"
@@ -146,6 +178,13 @@ def main():
         items = unique_sorted(items)
         used_window = 90
     final_items = balanced(items)
+    # Google News RSS nem sempre fornece miniatura. Tenta extrair a imagem original
+    # da página do veículo; quando não houver, mantém image vazio para a página
+    # mostrar um marcador temático, em vez de uma fotografia aleatória.
+    for item in final_items:
+        if not item.get("image"):
+            item["image"] = fetch_page_image(item["link"])
+            time.sleep(0.15)
     data = {
         "updated_at": datetime.now(timezone.utc).isoformat(),
         "window_days": used_window,
