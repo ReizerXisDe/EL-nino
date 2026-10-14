@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 OUTPUT = ROOT / "noticias.json"
-MAX_ITEMS = 12
+MAX_ITEMS = 27
 MIN_ITEMS_BEFORE_EXPANDING = 8
 MAX_AGE_DAYS = 90
 QUERIES = [
@@ -97,19 +97,21 @@ def unique_sorted(items):
     return out
 
 def balanced(items, limit=MAX_ITEMS):
-    """Limita repetição de uma mesma categoria para dar diversidade ao feed."""
-    selected, deferred, counts = [], [], {}
-    for item in items:
-        cat = item.get("category", "Saúde animal")
-        if counts.get(cat, 0) < 4 and len(selected) < limit:
-            selected.append(item); counts[cat] = counts.get(cat, 0) + 1
-        else:
-            deferred.append(item)
-    for item in deferred:
-        if len(selected) >= limit:
-            break
-        selected.append(item)
-    return sorted(selected, key=lambda x: x.get("pubDate", ""), reverse=True)[:limit]
+    """Intercala até oito notícias em português para cada notícia em inglês."""
+    portuguese = [x for x in items if x.get("language", "Português") != "English"]
+    english = [x for x in items if x.get("language") == "English"]
+    selected = []
+    p = e = 0
+    while len(selected) < limit and p < len(portuguese):
+        # Bloco de até oito notícias em português.
+        for _ in range(8):
+            if p >= len(portuguese) or len(selected) >= limit:
+                break
+            selected.append(portuguese[p]); p += 1
+        # Uma notícia em inglês após cada bloco, quando houver.
+        if e < len(english) and len(selected) < limit:
+            selected.append(english[e]); e += 1
+    return selected
 
 def main():
     items = []
