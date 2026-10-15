@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-15T17:05:26.384784+00:00",
+  "updated_at": "2026-10-15T21:27:07.968003+00:00",
   "window_days": 90,
   "items": [
     {
@@ -18,6 +18,15 @@
       "description": "Hematoma ou abscesso? Veterinário explica como identificar a lesão em bovinos Canal Rural",
       "source": "Canal Rural",
       "category": "Animais de produção",
+      "language": "Português"
+    },
+    {
+      "title": "Avanço da febre maculosa no Brasil acende alerta para diagnóstico precoce - Afya | Home",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxONjNsNURTNlRYc3RQVzlvRlhOOVhxcklJaXVxb0U4bHRKcEktbDhKTW83akJSNmZFMUZENkdfTzF2aWpBR0ZQZzB2MXhQdzFPbHpISTM4eDZoaEdEMjRLZ0tkVllWTDBFaV9QMk1LVlVEeGRpNkd3dk9KUG1veFFRQ2RpdGxjQTNIajZSUE54Zm53QTh5Y1pJVTgtLTN3bWlaZ3Zxa1hOTlZNZw?oc=5",
+      "pubDate": "2026-08-14T07:00:00+00:00",
+      "description": "Avanço da febre maculosa no Brasil acende alerta para diagnóstico precoce Afya | Home",
+      "source": "Afya | Home",
+      "category": "Zoonoses e saúde pública",
       "language": "Português"
     },
     {
@@ -75,6 +84,6 @@
       "language": "English"
     }
   ],
-  "count": 8,
+  "count": 9,
   "note": "Manchetes agregadas via Google News RSS. Verifique a publicação original e fontes oficiais antes de usar informações sanitárias."
 }
