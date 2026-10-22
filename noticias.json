@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-21T21:46:19.809679+00:00",
+  "updated_at": "2026-10-22T04:54:35.940573+00:00",
   "window_days": 90,
   "items": [
     {
@@ -57,21 +57,21 @@
       "language": "Português"
     },
     {
+      "title": "MSD Saúde Animal apresenta inovações na Expointer 2026 - boca.com.br",
+      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNYXZIZk5tUDQyQ3Rqak5WeWpLMUx0T2pVT1F4M2hIOTdaR3pEUURQR1lPbFI2VVA4YlNBR1NyejJmVVo4MU1yR2JEeTBELUt2ZEFDd0NPcXBKczVEd25tMjlxdnM4SUxvdFBjNEh4aHlvYWw3ZTRCZEgwTGhvOGVyTTFZUi0tNjRrUEVz?oc=5",
+      "pubDate": "2026-08-27T07:00:00+00:00",
+      "description": "MSD Saúde Animal apresenta inovações na Expointer 2026 boca.com.br",
+      "source": "boca.com.br",
+      "category": "Animais de produção",
+      "language": "Português"
+    },
+    {
       "title": "Hematoma ou abscesso? Veterinário explica como identificar a lesão em bovinos - Canal Rural",
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQVEpxODFuMTZaVHo5QUM1VXBYQ3p1Q2g2Z2hPeGUydG5ta1QxWVExRFVyZDNjQ2dXSmtoVEwzQlBuLVdmVnltTzVCNzNwV3dtdDZwQXhYOGRrZGVPMXpxTnVLYzJfWlFvMWtVeUp2Ti1pT3FlOUo1N3VHTFJmdXR0dHZVUC05c3B6Qkc5QUtmdXhLTDNodXNyMk9rT1hpeXc1UTBqeVNHNkd2Q1lVYURqbUkybFcyUjQ?oc=5",
       "pubDate": "2026-08-17T07:00:00+00:00",
       "description": "Hematoma ou abscesso? Veterinário explica como identificar a lesão em bovinos Canal Rural",
       "source": "Canal Rural",
       "category": "Animais de produção",
-      "language": "Português"
-    },
-    {
-      "title": "Febre maculosa causa quatro mortes no Rio de Janeiro - CNN Brasil",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNT1JxUDB0NjNyNnJORy02UUZha0RreE5xckdtclJmNUZlYW1WdG14eENvS20zNHJwdFkxNzlPcXpMNWNocF82NlpQVDJ1anF6YnpReHA0Z3A2Z05GVEJsZkc2TmJScmRkX0t5dkQ1bnY1TU5FQmtUQVJNN191aUt5WXc4NHdENlVzcC04eF9HLTE0dw?oc=5",
-      "pubDate": "2026-08-12T07:00:00+00:00",
-      "description": "Febre maculosa causa quatro mortes no Rio de Janeiro CNN Brasil",
-      "source": "CNN Brasil",
-      "category": "Zoonoses e saúde pública",
       "language": "Português"
     },
     {
@@ -82,6 +82,15 @@
       "source": "AgroLatam",
       "category": "Animais de produção",
       "language": "English"
+    },
+    {
+      "title": "Febre maculosa causa quatro mortes no Rio de Janeiro - CNN Brasil",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNT1JxUDB0NjNyNnJORy02UUZha0RreE5xckdtclJmNUZlYW1WdG14eENvS20zNHJwdFkxNzlPcXpMNWNocF82NlpQVDJ1anF6YnpReHA0Z3A2Z05GVEJsZkc2TmJScmRkX0t5dkQ1bnY1TU5FQmtUQVJNN191aUt5WXc4NHdENlVzcC04eF9HLTE0dw?oc=5",
+      "pubDate": "2026-08-12T07:00:00+00:00",
+      "description": "Febre maculosa causa quatro mortes no Rio de Janeiro CNN Brasil",
+      "source": "CNN Brasil",
+      "category": "Zoonoses e saúde pública",
+      "language": "Português"
     },
     {
       "title": "SP registra 18 mortes por febre maculosa em 19 casos confirmados - Agência Brasil",
@@ -111,6 +120,6 @@
       "language": "English"
     }
   ],
-  "count": 12,
+  "count": 13,
   "note": "Manchetes agregadas via Google News RSS. Verifique a publicação original e fontes oficiais antes de usar informações sanitárias."
 }
