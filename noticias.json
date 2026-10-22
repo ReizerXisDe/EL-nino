@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22T11:58:29.891798+00:00",
+  "updated_at": "2026-10-22T17:14:22.549003+00:00",
   "window_days": 90,
   "items": [
     {
@@ -26,15 +26,6 @@
       "pubDate": "2026-10-20T13:45:31+00:00",
       "description": "México suspende importação de frango do Brasil após foco de doença de Newcastle em Santa Catarina Portal R10",
       "source": "Portal R10",
-      "category": "Animais de produção",
-      "language": "Português"
-    },
-    {
-      "title": "Doença de Newcastle é confirmada em criação de perus em Nova Itaberaba/SC - TV KZ",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQdXM3MnM0ekdNM0Y1QVBBcXRfT1lkRi1TUU15aV9TS0xyOUJ1SFhTUDY1QjZIR1phRjhoQm5qVHM5ZDMyWkVzUWkyYzNQYWxiTE5hdlJXUVhqMURyVXloMVlZTER3ZF9ZZEhmLVMzeVZkSXNrNzJzWWJJYnowdVgtLS1VSk9tOWZ1LXc5NHdTOUE0b0Z6dGhF?oc=5",
-      "pubDate": "2026-10-19T20:03:00+00:00",
-      "description": "Doença de Newcastle é confirmada em criação de perus em Nova Itaberaba/SC TV KZ",
-      "source": "TV KZ",
       "category": "Animais de produção",
       "language": "Português"
     },
@@ -75,15 +66,6 @@
       "language": "Português"
     },
     {
-      "title": "New Cattle Vaccine Targets Screwworm Threat as USDA Expands Defenses - AgroLatam",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOX1RrSjA0aE4xUHJyZGNiMk9PZE1nekRndDhpM3BqVkR0N0djbmdiZkFlVnpjak9lSjVzMWduc1JETXVHSUNRdlFCUF9UYUpFeU52WmNJSWdTUlhxSUFOaFA3YWhhYjFnNDZZQUxQVXRtYXhwQWJCTW1PZERKa2JfYkdLM1RYNDlWSms4X2VhbC1Mdw?oc=5",
-      "pubDate": "2026-10-14T21:41:01+00:00",
-      "description": "New Cattle Vaccine Targets Screwworm Threat as USDA Expands Defenses AgroLatam",
-      "source": "AgroLatam",
-      "category": "Animais de produção",
-      "language": "English"
-    },
-    {
       "title": "Febre maculosa causa quatro mortes no Rio de Janeiro - CNN Brasil",
       "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNT1JxUDB0NjNyNnJORy02UUZha0RreE5xckdtclJmNUZlYW1WdG14eENvS20zNHJwdFkxNzlPcXpMNWNocF82NlpQVDJ1anF6YnpReHA0Z3A2Z05GVEJsZkc2TmJScmRkX0t5dkQ1bnY1TU5FQmtUQVJNN191aUt5WXc4NHdENlVzcC04eF9HLTE0dw?oc=5",
       "pubDate": "2026-08-12T07:00:00+00:00",
@@ -91,6 +73,15 @@
       "source": "CNN Brasil",
       "category": "Zoonoses e saúde pública",
       "language": "Português"
+    },
+    {
+      "title": "Detections of Highly Pathogenic Avian Influenza in Wild Birds | Animal and Plant Health Inspection Service - Animal and Plant Health Inspection Service (.gov)",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPaEg0WVFLTi1wU2RNaThjT3d6UXl1NnNIX0lFZUFXSl9jSU5Cb2g2dEpBdEFjbV9EQm5JcVdBMDEtblQ1TktUWjFzbHNwM2xyMnR1MS14RGlBeERRYU9vc1R0YU1BSlJUcE1HNlVIN3hUX1BEU3hYMC1oMjV5ai1NX1Z0cHN4dGFuREVzU0phQ1g4ZkdUYTdWQkM4eXJIQ1BtaTQ0?oc=5",
+      "pubDate": "2026-10-16T07:00:00+00:00",
+      "description": "Detections of Highly Pathogenic Avian Influenza in Wild Birds | Animal and Plant Health Inspection Service Animal and Plant Health Inspection Service (.gov)",
+      "source": "Animal and Plant Health Inspection Service (.gov)",
+      "category": "Animais de produção",
+      "language": "English"
     },
     {
       "title": "SP registra 18 mortes por febre maculosa em 19 casos confirmados - Agência Brasil",
@@ -120,6 +111,6 @@
       "language": "English"
     }
   ],
-  "count": 13,
+  "count": 12,
   "note": "Manchetes agregadas via Google News RSS. Verifique a publicação original e fontes oficiais antes de usar informações sanitárias."
 }
