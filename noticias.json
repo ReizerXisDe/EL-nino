@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-25T16:27:49.808334+00:00",
+  "updated_at": "2026-10-25T20:54:30.432545+00:00",
   "window_days": 90,
   "items": [
     {
@@ -66,11 +66,11 @@
       "language": "Português"
     },
     {
-      "title": "China confirma foco de febre aftosa em suínos em Chongqing - SpaceMoney",
-      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPV0MwYlk4U0RZWU1wRWd3dEFBT2R5RW9wLWVmUUVReWtUeWphb2hPOS1DM1RlRzAzT0YtZ2xNV01PNEctTGlpOU43clRJYzltcjY0cUZ4aU9KRm05eDduOGRvemlCcHRqWTJvTl9yUlJHT1lTMW1xNzBhMS12VFcwVFJQcVFwakJBM2RB?oc=5",
+      "title": "Sanidade Animal - Secretaria de Agricultura de Descalvado e Defesa Agropecuária reforçam medidas de prevenção à Influenza Aviária - Defesa Agropecuária do Estado de São Paulo",
+      "link": "https://news.google.com/rss/articles/CBMinAJBVV95cUxPOVBWU1MxVkRIUGVxVksxMlZOUkc3YWVVckZJeEhXZzdlbmlkbFFOVnpKckNFVVFYTHd4RDF3UDBJWUN3SHVmcnkyS0hIbGdUV1JsZ0ZaMTJBXzA2WnZCakdVUDc0cVdieXg3R2ZBU2tHZXdVMDU2a3g0QXhVZEsxRGcydkx2MlMtZUhyOXlkYTV5RmMzZkFidTdFRHY2U0VDaWFoZGJ1cEVrMTBwa0RVZ2dQbXBzTHhsNjB0LUV4NDE2TWI5Y1VTUE8yNVBrUUg4NGhSMEs2NXJMVHE2V3ZmVmJ4UFpKcU5xbjZZRTlEc2kwZmJ0aUpuaTd5ckNROVF5Zk1zMFVGbGlhMzVLVjlRVml3SUJib0hqSWxmcw?oc=5",
       "pubDate": "2026-09-10T07:00:00+00:00",
-      "description": "China confirma foco de febre aftosa em suínos em Chongqing SpaceMoney",
-      "source": "SpaceMoney",
+      "description": "Sanidade Animal - Secretaria de Agricultura de Descalvado e Defesa Agropecuária reforçam medidas de prevenção à Influenza Aviária Defesa Agropecuária do Estado de São Paulo",
+      "source": "Defesa Agropecuária do Estado de São Paulo",
       "category": "Animais de produção",
       "language": "Português"
     },
@@ -82,6 +82,15 @@
       "source": "Centers for Disease Control and Prevention | CDC (.gov)",
       "category": "Zoonoses e saúde pública",
       "language": "English"
+    },
+    {
+      "title": "China confirma foco de febre aftosa em suínos em Chongqing - SpaceMoney",
+      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPV0MwYlk4U0RZWU1wRWd3dEFBT2R5RW9wLWVmUUVReWtUeWphb2hPOS1DM1RlRzAzT0YtZ2xNV01PNEctTGlpOU43clRJYzltcjY0cUZ4aU9KRm05eDduOGRvemlCcHRqWTJvTl9yUlJHT1lTMW1xNzBhMS12VFcwVFJQcVFwakJBM2RB?oc=5",
+      "pubDate": "2026-09-10T07:00:00+00:00",
+      "description": "China confirma foco de febre aftosa em suínos em Chongqing SpaceMoney",
+      "source": "SpaceMoney",
+      "category": "Animais de produção",
+      "language": "Português"
     },
     {
       "title": "MSD Saúde Animal apresenta inovações na Expointer 2026 - boca.com.br",
@@ -138,6 +147,6 @@
       "language": "English"
     }
   ],
-  "count": 15,
+  "count": 16,
   "note": "Manchetes agregadas via Google News RSS. Verifique a publicação original e fontes oficiais antes de usar informações sanitárias."
 }
