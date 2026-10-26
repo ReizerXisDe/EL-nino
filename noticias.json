@@ -1,7 +1,16 @@
 {
-  "updated_at": "2026-10-26T13:09:54.962666+00:00",
-  "window_days": 90,
+  "updated_at": "2026-10-26T22:42:40.366821+00:00",
+  "window_days": 30,
   "items": [
+    {
+      "title": "Ministério da Agricultura confirma novo foco da doença de Newcastle em Santa Catarina - Canal Rural",
+      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQd25wcUU2eGFtemxmSnVtN0w4T3FyajdLTzJMZnhjTW1wdzc1ZzdWcHFfV1ZEQjZzaHh5N1d2c1NyNHBMY3ZYRWxlT1BGMzFSZU93RHZOMThHbnJYcEMyX2FDdzBUejVRUjVSakFDVldxZTJtUDVITERPM0d0TEFyNGljYTB6OTZCM3phb190cWVVMlM2NVZXcFBXUUl4M3Z3VS01REJBaWZ0V09QOWxsU3FZb1BTOG82eklHZ0VvMjlSaTJSaFdZVFBR?oc=5",
+      "pubDate": "2026-10-26T13:03:02+00:00",
+      "description": "Ministério da Agricultura confirma novo foco da doença de Newcastle em Santa Catarina Canal Rural",
+      "source": "Canal Rural",
+      "category": "Animais de produção",
+      "language": "Português"
+    },
     {
       "title": "Santa Catarina conclui retirada de aves após foco da doença de Newcastle - A Crítica de Campo Grande",
       "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPVWx0M2RJYmdXX3BoMV93M04xaVFOdF8tZS1IUXpaWkI4NHNtbU0xRlh4WmFiRmo3dU5YYlFzWndxeTd2QWdvUjRLZ2NxZFdIU25nRmc1LUZBaUtWSVJ0LW1tcElpZEROLTdCVmozcUk3VUg4ekNaWXZ2VzB1c1hKblVUZEpXME1neXBVdVpfRW82bVlOc3VJQUFsREdfZmlt?oc=5",
@@ -66,78 +75,15 @@
       "language": "Português"
     },
     {
-      "title": "China confirma foco de febre aftosa em suínos em Chongqing - SpaceMoney",
-      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPV0MwYlk4U0RZWU1wRWd3dEFBT2R5RW9wLWVmUUVReWtUeWphb2hPOS1DM1RlRzAzT0YtZ2xNV01PNEctTGlpOU43clRJYzltcjY0cUZ4aU9KRm05eDduOGRvemlCcHRqWTJvTl9yUlJHT1lTMW1xNzBhMS12VFcwVFJQcVFwakJBM2RB?oc=5",
-      "pubDate": "2026-09-10T07:00:00+00:00",
-      "description": "China confirma foco de febre aftosa em suínos em Chongqing SpaceMoney",
-      "source": "SpaceMoney",
-      "category": "Animais de produção",
-      "language": "Português"
-    },
-    {
-      "title": "One Health Day - Centers for Disease Control and Prevention | CDC (.gov)",
+      "title": "One Health Day Communications Toolkit - Centers for Disease Control and Prevention | CDC (.gov)",
       "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9oQjZ5UHVvdzM1dnRCUTVPWUtRU3FrenVoXzZKZzBXcGxaTVEzaXAwaHlSQ1dNdVhyQkt5bHFqd2FldGhvZVNZS3dWajRwZ0o3MTlzcXBMUWRNVXFMVG1WOE9UU3VGZnFwR2VjOHo1SnhOdHNMdWtSOVBvNA?oc=5",
       "pubDate": "2026-10-23T07:00:00+00:00",
-      "description": "One Health Day Centers for Disease Control and Prevention | CDC (.gov)",
+      "description": "One Health Day Communications Toolkit Centers for Disease Control and Prevention | CDC (.gov)",
       "source": "Centers for Disease Control and Prevention | CDC (.gov)",
       "category": "Zoonoses e saúde pública",
       "language": "English"
-    },
-    {
-      "title": "MSD Saúde Animal apresenta inovações na Expointer 2026 - boca.com.br",
-      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNYXZIZk5tUDQyQ3Rqak5WeWpLMUx0T2pVT1F4M2hIOTdaR3pEUURQR1lPbFI2VVA4YlNBR1NyejJmVVo4MU1yR2JEeTBELUt2ZEFDd0NPcXBKczVEd25tMjlxdnM4SUxvdFBjNEh4aHlvYWw3ZTRCZEgwTGhvOGVyTTFZUi0tNjRrUEVz?oc=5",
-      "pubDate": "2026-08-27T07:00:00+00:00",
-      "description": "MSD Saúde Animal apresenta inovações na Expointer 2026 boca.com.br",
-      "source": "boca.com.br",
-      "category": "Animais de produção",
-      "language": "Português"
-    },
-    {
-      "title": "Hematoma ou abscesso? Veterinário explica como identificar a lesão em bovinos - Canal Rural",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQVEpxODFuMTZaVHo5QUM1VXBYQ3p1Q2g2Z2hPeGUydG5ta1QxWVExRFVyZDNjQ2dXSmtoVEwzQlBuLVdmVnltTzVCNzNwV3dtdDZwQXhYOGRrZGVPMXpxTnVLYzJfWlFvMWtVeUp2Ti1pT3FlOUo1N3VHTFJmdXR0dHZVUC05c3B6Qkc5QUtmdXhLTDNodXNyMk9rT1hpeXc1UTBqeVNHNkd2Q1lVYURqbUkybFcyUjQ?oc=5",
-      "pubDate": "2026-08-17T07:00:00+00:00",
-      "description": "Hematoma ou abscesso? Veterinário explica como identificar a lesão em bovinos Canal Rural",
-      "source": "Canal Rural",
-      "category": "Animais de produção",
-      "language": "Português"
-    },
-    {
-      "title": "Febre maculosa causa quatro mortes no Rio de Janeiro - CNN Brasil",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNT1JxUDB0NjNyNnJORy02UUZha0RreE5xckdtclJmNUZlYW1WdG14eENvS20zNHJwdFkxNzlPcXpMNWNocF82NlpQVDJ1anF6YnpReHA0Z3A2Z05GVEJsZkc2TmJScmRkX0t5dkQ1bnY1TU5FQmtUQVJNN191aUt5WXc4NHdENlVzcC04eF9HLTE0dw?oc=5",
-      "pubDate": "2026-08-12T07:00:00+00:00",
-      "description": "Febre maculosa causa quatro mortes no Rio de Janeiro CNN Brasil",
-      "source": "CNN Brasil",
-      "category": "Zoonoses e saúde pública",
-      "language": "Português"
-    },
-    {
-      "title": "SP registra 18 mortes por febre maculosa em 19 casos confirmados - Agência Brasil",
-      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQMW9PZjdhaTNYRm9hcVVydG9NUFVhbnlFbmM4dkk0bVp3ZVVCOGd6U3dEallZbzRPelNlLVZ4djdYMm1HcjFiZjU4dEl1bER0RlNnX1JBR0pFSnRUUFN6WjMyTGZlbGpSUEZrc3F5YUg2Z2x0SUttQ0JNZWh4bS1BUUttSkRNdVE3MzZFSzY2QkttanllX0x5b2hCdEM3c2xTeTBBbUlZOVFLVVZTdXdfd2wyajJCY09JOUM0?oc=5",
-      "pubDate": "2026-08-11T07:00:00+00:00",
-      "description": "SP registra 18 mortes por febre maculosa em 19 casos confirmados Agência Brasil",
-      "source": "Agência Brasil",
-      "category": "Zoonoses e saúde pública",
-      "language": "Português"
-    },
-    {
-      "title": "Raiva bovina acende alerta em Santa Catarina, mas casos seguem abaixo dos registrados nos últimos anos - Canal Rural",
-      "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPZ0xXTVkxYmx2d3gxQU45UURzLW1xVEctVnFwZmRtWnVnYW91SXdaNVZoZnZaVk9vYW1IaWloTU1OY3NPczViV21OR0E0Qmw2RGdGUnF5TU5pUjFySjBDX1I0a1JDVTllUWM5THNRSl9TM1pQUmtVWWwwS2NZRjVXd0ZOaE9GVG5UZEthZlRpZEpJazV1Y2ltX0c5UkZfMlpiQzBuQ25NTzFsWTNvNzc3MUllS3Azd2NxbVNCcWdpeFg0ZFloV2Jybi0tYUhRaTRDSzhyRE96WDE?oc=5",
-      "pubDate": "2026-08-06T07:00:00+00:00",
-      "description": "Raiva bovina acende alerta em Santa Catarina, mas casos seguem abaixo dos registrados nos últimos anos Canal Rural",
-      "source": "Canal Rural",
-      "category": "Animais de produção",
-      "language": "Português"
-    },
-    {
-      "title": "Animal Disease Traceability - Animal and Plant Health Inspection Service (.gov)",
-      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBKVkF3QnlOeDd3QzZMT3NjUExYX0hJMHVGelJaeG9iU0RzWVJudDFkSEQ4UjcxcGZBVlJsNExHSTZHM3RGck1EMFkxeDFwYmNqSHdZcGFIeFpteEJTTjR5RnFrczd2UW9NbGNBT01nekxTMWM?oc=5",
-      "pubDate": "2026-10-21T07:00:00+00:00",
-      "description": "Animal Disease Traceability Animal and Plant Health Inspection Service (.gov)",
-      "source": "Animal and Plant Health Inspection Service (.gov)",
-      "category": "Animais de produção",
-      "language": "English"
     }
   ],
-  "count": 15,
+  "count": 9,
   "note": "Manchetes agregadas via Google News RSS. Verifique a publicação original e fontes oficiais antes de usar informações sanitárias."
 }
