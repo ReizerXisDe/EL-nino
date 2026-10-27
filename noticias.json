@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-27T05:10:54.536099+00:00",
-  "window_days": 30,
+  "updated_at": "2026-10-27T12:18:14.324119+00:00",
+  "window_days": 90,
   "items": [
     {
       "title": "Ministério da Agricultura confirma novo foco da doença de Newcastle em Santa Catarina - Canal Rural",
@@ -48,15 +48,6 @@
       "language": "Português"
     },
     {
-      "title": "INFLUENZA AVIÁRIA (IA) — Ministério da Agricultura e Pecuária - Governo Federal",
-      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOdm55Y3U3aWxCblFWeHJYYU1SNGdjVjF2X1A1b3R2bjdIa0VqR0EwUmxYaHFCSUpVZXpXNXQxUDBuYXJjYllUYmJtYlk5N0VxSEZ0d0JfOUVIWTNBeG9PM1JTRUNsSDVvOXk1RUJmZk90SnRvMjBWQnNOMmkxWkFMdVlUUjdKQ1dLTkQ4NDUyTFBNcUU2bmpvQWF0ODNCN1RhcXF3a1RMWGsxNlJNNVFrT01OelhvUWNzbFBKLTRhWnVwVmx3X1VuRWFjdVlxUQ?oc=5",
-      "pubDate": "2026-10-19T16:12:00+00:00",
-      "description": "INFLUENZA AVIÁRIA (IA) — Ministério da Agricultura e Pecuária Governo Federal",
-      "source": "Governo Federal",
-      "category": "Animais de produção",
-      "language": "Português"
-    },
-    {
       "title": "Jundiaí intensifica monitoramento e prevenção à febre maculosa - Portal Novo Dia",
       "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPeE1yMkRuX1lHa3dMUkxwYnppbGJTaW43UXIwTk1pNG4wSXVTOTNseDJKRlcyU2hhN1J0WUFkOUNNYmNmX3JxZGlyZ0NJRThWNktVWUNfcW1OVjBSS3hTWmU5NVBzQWJfNVh1dmNKeDY1SHR2LXVEaDQ5anZ0eVktdFpwbzFzN1dfTkJPR1NOYVhVVlkwX25DUXAtRGJ1MHBQVjVzVA?oc=5",
       "pubDate": "2026-10-15T10:11:54+00:00",
@@ -75,6 +66,15 @@
       "language": "Português"
     },
     {
+      "title": "Prevenir, acompanhar e orientar: o papel do médico-veterinário na saúde animal - 3tres3.com",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9LTXd0M2czSUZyanJjVllNQlJJZWpGc0xuOUh4cThibzFBR1RQX0VCNGxOczMyX0l0VTVubDR2TWYxY285Zk9fX0U4NWJNNHo2SGFNd2poTERyN3A4VjIyaDVEVUcwWnc4WnJOMXF6cFMwYjZIcGVLZk8yVjNTa0E?oc=5",
+      "pubDate": "2026-09-03T07:00:00+00:00",
+      "description": "Prevenir, acompanhar e orientar: o papel do médico-veterinário na saúde animal 3tres3.com",
+      "source": "3tres3.com",
+      "category": "Animais de produção",
+      "language": "Português"
+    },
+    {
       "title": "One Health Day Communications Toolkit - Centers for Disease Control and Prevention | CDC (.gov)",
       "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9oQjZ5UHVvdzM1dnRCUTVPWUtRU3FrenVoXzZKZzBXcGxaTVEzaXAwaHlSQ1dNdVhyQkt5bHFqd2FldGhvZVNZS3dWajRwZ0o3MTlzcXBMUWRNVXFMVG1WOE9UU3VGZnFwR2VjOHo1SnhOdHNMdWtSOVBvNA?oc=5",
       "pubDate": "2026-10-23T07:00:00+00:00",
@@ -82,8 +82,62 @@
       "source": "Centers for Disease Control and Prevention | CDC (.gov)",
       "category": "Zoonoses e saúde pública",
       "language": "English"
+    },
+    {
+      "title": "Hematoma ou abscesso? Veterinário explica como identificar a lesão em bovinos - Canal Rural",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQVEpxODFuMTZaVHo5QUM1VXBYQ3p1Q2g2Z2hPeGUydG5ta1QxWVExRFVyZDNjQ2dXSmtoVEwzQlBuLVdmVnltTzVCNzNwV3dtdDZwQXhYOGRrZGVPMXpxTnVLYzJfWlFvMWtVeUp2Ti1pT3FlOUo1N3VHTFJmdXR0dHZVUC05c3B6Qkc5QUtmdXhLTDNodXNyMk9rT1hpeXc1UTBqeVNHNkd2Q1lVYURqbUkybFcyUjQ?oc=5",
+      "pubDate": "2026-08-17T07:00:00+00:00",
+      "description": "Hematoma ou abscesso? Veterinário explica como identificar a lesão em bovinos Canal Rural",
+      "source": "Canal Rural",
+      "category": "Animais de produção",
+      "language": "Português"
+    },
+    {
+      "title": "Avanço da febre maculosa no Brasil acende alerta para diagnóstico precoce - Afya | Home",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxONjNsNURTNlRYc3RQVzlvRlhOOVhxcklJaXVxb0U4bHRKcEktbDhKTW83akJSNmZFMUZENkdfTzF2aWpBR0ZQZzB2MXhQdzFPbHpISTM4eDZoaEdEMjRLZ0tkVllWTDBFaV9QMk1LVlVEeGRpNkd3dk9KUG1veFFRQ2RpdGxjQTNIajZSUE54Zm53QTh5Y1pJVTgtLTN3bWlaZ3Zxa1hOTlZNZw?oc=5",
+      "pubDate": "2026-08-14T07:00:00+00:00",
+      "description": "Avanço da febre maculosa no Brasil acende alerta para diagnóstico precoce Afya | Home",
+      "source": "Afya | Home",
+      "category": "Zoonoses e saúde pública",
+      "language": "Português"
+    },
+    {
+      "title": "Febre maculosa causa quatro mortes no Rio de Janeiro - CNN Brasil",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNT1JxUDB0NjNyNnJORy02UUZha0RreE5xckdtclJmNUZlYW1WdG14eENvS20zNHJwdFkxNzlPcXpMNWNocF82NlpQVDJ1anF6YnpReHA0Z3A2Z05GVEJsZkc2TmJScmRkX0t5dkQ1bnY1TU5FQmtUQVJNN191aUt5WXc4NHdENlVzcC04eF9HLTE0dw?oc=5",
+      "pubDate": "2026-08-12T07:00:00+00:00",
+      "description": "Febre maculosa causa quatro mortes no Rio de Janeiro CNN Brasil",
+      "source": "CNN Brasil",
+      "category": "Zoonoses e saúde pública",
+      "language": "Português"
+    },
+    {
+      "title": "SP registra 18 mortes por febre maculosa em 19 casos confirmados - Agência Brasil",
+      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQMW9PZjdhaTNYRm9hcVVydG9NUFVhbnlFbmM4dkk0bVp3ZVVCOGd6U3dEallZbzRPelNlLVZ4djdYMm1HcjFiZjU4dEl1bER0RlNnX1JBR0pFSnRUUFN6WjMyTGZlbGpSUEZrc3F5YUg2Z2x0SUttQ0JNZWh4bS1BUUttSkRNdVE3MzZFSzY2QkttanllX0x5b2hCdEM3c2xTeTBBbUlZOVFLVVZTdXdfd2wyajJCY09JOUM0?oc=5",
+      "pubDate": "2026-08-11T07:00:00+00:00",
+      "description": "SP registra 18 mortes por febre maculosa em 19 casos confirmados Agência Brasil",
+      "source": "Agência Brasil",
+      "category": "Zoonoses e saúde pública",
+      "language": "Português"
+    },
+    {
+      "title": "Raiva bovina acende alerta em Santa Catarina, mas casos seguem abaixo dos registrados nos últimos anos - Canal Rural",
+      "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPZ0xXTVkxYmx2d3gxQU45UURzLW1xVEctVnFwZmRtWnVnYW91SXdaNVZoZnZaVk9vYW1IaWloTU1OY3NPczViV21OR0E0Qmw2RGdGUnF5TU5pUjFySjBDX1I0a1JDVTllUWM5THNRSl9TM1pQUmtVWWwwS2NZRjVXd0ZOaE9GVG5UZEthZlRpZEpJazV1Y2ltX0c5UkZfMlpiQzBuQ25NTzFsWTNvNzc3MUllS3Azd2NxbVNCcWdpeFg0ZFloV2Jybi0tYUhRaTRDSzhyRE96WDE?oc=5",
+      "pubDate": "2026-08-06T07:00:00+00:00",
+      "description": "Raiva bovina acende alerta em Santa Catarina, mas casos seguem abaixo dos registrados nos últimos anos Canal Rural",
+      "source": "Canal Rural",
+      "category": "Animais de produção",
+      "language": "Português"
+    },
+    {
+      "title": "Animal Disease Traceability - Animal and Plant Health Inspection Service (.gov)",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBKVkF3QnlOeDd3QzZMT3NjUExYX0hJMHVGelJaeG9iU0RzWVJudDFkSEQ4UjcxcGZBVlJsNExHSTZHM3RGck1EMFkxeDFwYmNqSHdZcGFIeFpteEJTTjR5RnFrczd2UW9NbGNBT01nekxTMWM?oc=5",
+      "pubDate": "2026-10-21T07:00:00+00:00",
+      "description": "Animal Disease Traceability Animal and Plant Health Inspection Service (.gov)",
+      "source": "Animal and Plant Health Inspection Service (.gov)",
+      "category": "Animais de produção",
+      "language": "English"
     }
   ],
-  "count": 9,
+  "count": 15,
   "note": "Manchetes agregadas via Google News RSS. Verifique a publicação original e fontes oficiais antes de usar informações sanitárias."
 }
