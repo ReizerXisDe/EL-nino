@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T13:08:36.221835+00:00",
+  "updated_at": "2026-11-07T21:54:44.806501+00:00",
   "window_days": 90,
   "items": [
     {
@@ -26,6 +26,15 @@
       "pubDate": "2026-10-26T07:00:00+00:00",
       "description": "Ministério da Agricultura confirma novo foco da doença de Newcastle em Santa Catarina Canal Rural",
       "source": "Canal Rural",
+      "category": "Animais de produção",
+      "language": "Português"
+    },
+    {
+      "title": "Tratamento de ferimentos crônicos em bovinos requer diagnóstico de especialista - Giro do Boi - Canal Rural",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPZG1tUGlyY2xSamlqMnJScWt6WXNrbHR2ZUFKaXlKbkJna1RVZzB5SGNOY1dxekxVZF9YOUZrX2NzTUlONm9wdEtaU3QwM21NYWV4ejJhVXhJZEdyQU5QdW9jU3VYTk82MzJaOXByZGhLa2toTEstdUdrbHY0djdVdDJjZFRxdURHSXpOQmlOT0c1Sl9aUG0tU21QZXA5aFpDdlQ4LTBqVEZEWGhVNktOZ2tFam9ieWc?oc=5",
+      "pubDate": "2026-10-26T07:00:00+00:00",
+      "description": "Tratamento de ferimentos crônicos em bovinos requer diagnóstico de especialista Giro do Boi - Canal Rural",
+      "source": "Giro do Boi - Canal Rural",
       "category": "Animais de produção",
       "language": "Português"
     },
@@ -66,6 +75,15 @@
       "language": "Português"
     },
     {
+      "title": "New Animal Health and Food Safety Lab Opens in Turlock, California; $108 Million Facility Expands Disease Testing for Livestock and Poultry, UC Davis Announces - Sierra Sun Times",
+      "link": "https://news.google.com/rss/articles/CBMiygJBVV95cUxOLUhaMzJEYm1rbmliZy14R3o3QnV3NF9ELVo4U0pEb01yaEk4eDB0S1F4NDllbG1YRm9HVHhDbVhVTlQ2UEJFR2pINVhlalA0YWVHQXdoYlM2YThadFQ4X2hOY204YjIwZDhEdVFNOURKS0hKWWxWVlJYYS03WGh4eFRNUWplTHJ4WTlNM2dJTHpNTnlRTEJTVWt3b3hYcXZOY1VnVF8yX3FpMWk4MTFNUG41czlyLVNUUV9KX05GNGZJSm5LejBOeHdLaGVIWGNnQ1J6TTJHQVkzcE43N0w1M3c3ZDF0QVMtR01jelVmYlJTYjZDckhRV1dkbzVVTGl2dHEzYzBzdnJla1hwTGJRdTZLLTMteC1wMDc3TGpjRjRXeTdxN3A0eEZZdEN5a3Y3Ui1DRHdLbjBWUFFtR0pCa1FWSVpEU25ldnc?oc=5",
+      "pubDate": "2026-11-07T12:28:49+00:00",
+      "description": "New Animal Health and Food Safety Lab Opens in Turlock, California; $108 Million Facility Expands Disease Testing for Livestock and Poultry, UC Davis Announces Sierra Sun Times",
+      "source": "Sierra Sun Times",
+      "category": "Animais de produção",
+      "language": "English"
+    },
+    {
       "title": "Avanço da febre maculosa no Brasil acende alerta para diagnóstico precoce - Afya | Home",
       "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxONjNsNURTNlRYc3RQVzlvRlhOOVhxcklJaXVxb0U4bHRKcEktbDhKTW83akJSNmZFMUZENkdfTzF2aWpBR0ZQZzB2MXhQdzFPbHpISTM4eDZoaEdEMjRLZ0tkVllWTDBFaV9QMk1LVlVEeGRpNkd3dk9KUG1veFFRQ2RpdGxjQTNIajZSUE54Zm53QTh5Y1pJVTgtLTN3bWlaZ3Zxa1hOTlZNZw?oc=5",
       "pubDate": "2026-08-14T07:00:00+00:00",
@@ -73,15 +91,6 @@
       "source": "Afya | Home",
       "category": "Zoonoses e saúde pública",
       "language": "Português"
-    },
-    {
-      "title": "Current Status of New World Screwworm | Screwworm.gov - Animal and Plant Health Inspection Service (.gov)",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQeGpPNUpMeVA2Z3JndnNKNDllbmt1T1RqZGNmN3pNQi00Qk5JZ3dnTmI2NzE1UzlmeHBHdV9XQTBDMk5VVGNhU1hXQ3dlRG9OYnpWeEluc2c4SXdENjhTSnd5ejU0cTVoZURta0ZLWWRubjNzeTdKcmVHZE1jUzZJQVVBdlVReTRpQlhDbXVzdVFpWXVEOE9nQWRjSmp2TnA0WTg2TzNOeWhlQVNu?oc=5",
-      "pubDate": "2026-11-04T08:00:00+00:00",
-      "description": "Current Status of New World Screwworm | Screwworm.gov Animal and Plant Health Inspection Service (.gov)",
-      "source": "Animal and Plant Health Inspection Service (.gov)",
-      "category": "Animais de produção",
-      "language": "English"
     },
     {
       "title": "Febre maculosa causa quatro mortes no Rio de Janeiro - CNN Brasil",
@@ -102,15 +111,15 @@
       "language": "Português"
     },
     {
-      "title": "Screwworm.gov | Animal and Plant Health Inspection Service - USDA (.gov)",
-      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNUzc2WGdFNVZjSHFEWUM2M2ZGYmhIZ0lpd2FiMzlYSVU3eUNQUEl0bHBpNjI3Z1JwOEo3djV1UHJiV3ptREJVRE5jbVNxZTZ3QjZpcFZReWZJTGVBSUhIYlh3aXRjeFo1Ml9DREUyQUEzZ2dheU5COTB5dFNidHNoSkdiQjNtWm1rQnVTeWFpa1RBZ0FnRHJlZw?oc=5",
-      "pubDate": "2026-10-29T07:00:00+00:00",
-      "description": "Screwworm.gov | Animal and Plant Health Inspection Service USDA (.gov)",
-      "source": "USDA (.gov)",
+      "title": "California animal health lab expands disease testing beyond poultry - The National Provisioner",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOdlJCaEpUVzBELTUxdVZGcVdyQnRXWkJCSmU2WGVNbkRiMHpQUnNfSVpuUWtDZUZkVEMyeFMzU3JURVgtWHFjaUx4aldGNkFrSDBNbE5aLWJPSFhsZjlRNmgySW9Zal9DNkd0UG1yZUVQX0o5OFVWU1VoYXR4WVBCeWNEOEJMaWdvUU9aeVcxX3c3SFdxVDU3bXVfV0NVeHNPQWZDcDhuRGtLajRZWjRZeW5ZMHd2XzZr?oc=5",
+      "pubDate": "2026-11-06T18:15:20+00:00",
+      "description": "California animal health lab expands disease testing beyond poultry The National Provisioner",
+      "source": "The National Provisioner",
       "category": "Animais de produção",
       "language": "English"
     }
   ],
-  "count": 12,
+  "count": 13,
   "note": "Manchetes agregadas via Google News RSS. Verifique a publicação original e fontes oficiais antes de usar informações sanitárias."
 }
