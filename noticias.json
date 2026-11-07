@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T06:03:57.339079+00:00",
+  "updated_at": "2026-11-07T13:08:36.221835+00:00",
   "window_days": 90,
   "items": [
     {
@@ -26,15 +26,6 @@
       "pubDate": "2026-10-26T07:00:00+00:00",
       "description": "Ministério da Agricultura confirma novo foco da doença de Newcastle em Santa Catarina Canal Rural",
       "source": "Canal Rural",
-      "category": "Animais de produção",
-      "language": "Português"
-    },
-    {
-      "title": "Tratamento de ferimentos crônicos em bovinos requer diagnóstico de especialista - Giro do Boi - Canal Rural",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPZG1tUGlyY2xSamlqMnJScWt6WXNrbHR2ZUFKaXlKbkJna1RVZzB5SGNOY1dxekxVZF9YOUZrX2NzTUlONm9wdEtaU3QwM21NYWV4ejJhVXhJZEdyQU5QdW9jU3VYTk82MzJaOXByZGhLa2toTEstdUdrbHY0djdVdDJjZFRxdURHSXpOQmlOT0c1Sl9aUG0tU21QZXA5aFpDdlQ4LTBqVEZEWGhVNktOZ2tFam9ieWc?oc=5",
-      "pubDate": "2026-10-26T07:00:00+00:00",
-      "description": "Tratamento de ferimentos crônicos em bovinos requer diagnóstico de especialista Giro do Boi - Canal Rural",
-      "source": "Giro do Boi - Canal Rural",
       "category": "Animais de produção",
       "language": "Português"
     },
@@ -75,15 +66,6 @@
       "language": "Português"
     },
     {
-      "title": "Current Status of New World Screwworm | Screwworm.gov - Animal and Plant Health Inspection Service (.gov)",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQeGpPNUpMeVA2Z3JndnNKNDllbmt1T1RqZGNmN3pNQi00Qk5JZ3dnTmI2NzE1UzlmeHBHdV9XQTBDMk5VVGNhU1hXQ3dlRG9OYnpWeEluc2c4SXdENjhTSnd5ejU0cTVoZURta0ZLWWRubjNzeTdKcmVHZE1jUzZJQVVBdlVReTRpQlhDbXVzdVFpWXVEOE9nQWRjSmp2TnA0WTg2TzNOeWhlQVNu?oc=5",
-      "pubDate": "2026-11-04T08:00:00+00:00",
-      "description": "Current Status of New World Screwworm | Screwworm.gov Animal and Plant Health Inspection Service (.gov)",
-      "source": "Animal and Plant Health Inspection Service (.gov)",
-      "category": "Animais de produção",
-      "language": "English"
-    },
-    {
       "title": "Avanço da febre maculosa no Brasil acende alerta para diagnóstico precoce - Afya | Home",
       "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxONjNsNURTNlRYc3RQVzlvRlhOOVhxcklJaXVxb0U4bHRKcEktbDhKTW83akJSNmZFMUZENkdfTzF2aWpBR0ZQZzB2MXhQdzFPbHpISTM4eDZoaEdEMjRLZ0tkVllWTDBFaV9QMk1LVlVEeGRpNkd3dk9KUG1veFFRQ2RpdGxjQTNIajZSUE54Zm53QTh5Y1pJVTgtLTN3bWlaZ3Zxa1hOTlZNZw?oc=5",
       "pubDate": "2026-08-14T07:00:00+00:00",
@@ -91,6 +73,15 @@
       "source": "Afya | Home",
       "category": "Zoonoses e saúde pública",
       "language": "Português"
+    },
+    {
+      "title": "Current Status of New World Screwworm | Screwworm.gov - Animal and Plant Health Inspection Service (.gov)",
+      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQeGpPNUpMeVA2Z3JndnNKNDllbmt1T1RqZGNmN3pNQi00Qk5JZ3dnTmI2NzE1UzlmeHBHdV9XQTBDMk5VVGNhU1hXQ3dlRG9OYnpWeEluc2c4SXdENjhTSnd5ejU0cTVoZURta0ZLWWRubjNzeTdKcmVHZE1jUzZJQVVBdlVReTRpQlhDbXVzdVFpWXVEOE9nQWRjSmp2TnA0WTg2TzNOeWhlQVNu?oc=5",
+      "pubDate": "2026-11-04T08:00:00+00:00",
+      "description": "Current Status of New World Screwworm | Screwworm.gov Animal and Plant Health Inspection Service (.gov)",
+      "source": "Animal and Plant Health Inspection Service (.gov)",
+      "category": "Animais de produção",
+      "language": "English"
     },
     {
       "title": "Febre maculosa causa quatro mortes no Rio de Janeiro - CNN Brasil",
@@ -120,6 +111,6 @@
       "language": "English"
     }
   ],
-  "count": 13,
+  "count": 12,
   "note": "Manchetes agregadas via Google News RSS. Verifique a publicação original e fontes oficiais antes de usar informações sanitárias."
 }
