@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08T22:10:39.467382+00:00",
+  "updated_at": "2026-11-09T06:41:46.929956+00:00",
   "window_days": 90,
   "items": [
     {
@@ -57,20 +57,20 @@
       "language": "Português"
     },
     {
+      "title": "México suspende importação de frango do Brasil após foco da doença de Newcastle em SC - G1",
+      "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOQjZFQ3ZZN3lBcEZ1TGdrSmdTaFFDaWd0dGRDZklxcElJeTFpT0hJcklnbEpaRWJ4cnlDT3F6WERQRVpDVHhqSklxY3B3ZUNZSmpXUHZheUhDbThvdEFKNGw1SFY1WXdJakgyamRVa0pCTGR4b1YyS1FPUWFybERxaXBOT2N4cjVhMk04MDVLZEk1d1BSdW1zY2tZeHBzRUE1T2ZnR3l3RVJTZnZsSFZmREJKZU5WSFRmbWZEV25CSGdmQzlSejRkX0FTLUFtTlZabXdyZTlOUlRHdnIwcVhoZmE0bnExcVhO0gH3AUFVX3lxTE5kc3BSeGpaQkRMTFZNRmFvMmtpTkw2bFBWYjlEb0Zpb2Y0M0VjQzQwMzI4MHdpangzcXZmN201Tl95RUxJLUJCWUt3MnNCVzJBVExUem9Ya0RTUXlXdXV2QTlZQXp5eTgzcmg3d2Q5QjE4OExaeThLREdDb2ZPVlliN1BqX0lmemFPck9RcEZBV3dqR2c0QVlmR1pWYS1NSmtVQlpNWGREVHh6VzFFdnM4T0RidW9jckUxUThpdEF2SzhNUWlCUU5LeHVXWlJrb1JZNnNfVzlVMWxkZTBHRHprNG82LXN6THU1dmdpaFc1Wkp3cTR5SUE?oc=5",
+      "pubDate": "2026-10-19T07:00:00+00:00",
+      "description": "México suspende importação de frango do Brasil após foco da doença de Newcastle em SC G1",
+      "source": "G1",
+      "category": "Animais de produção",
+      "language": "Português"
+    },
+    {
       "title": "Prevenir, acompanhar e orientar: o papel do médico-veterinário na saúde animal - 3tres3.com",
       "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9LTXd0M2czSUZyanJjVllNQlJJZWpGc0xuOUh4cThibzFBR1RQX0VCNGxOczMyX0l0VTVubDR2TWYxY285Zk9fX0U4NWJNNHo2SGFNd2poTERyN3A4VjIyaDVEVUcwWnc4WnJOMXF6cFMwYjZIcGVLZk8yVjNTa0E?oc=5",
       "pubDate": "2026-09-03T07:00:00+00:00",
       "description": "Prevenir, acompanhar e orientar: o papel do médico-veterinário na saúde animal 3tres3.com",
       "source": "3tres3.com",
-      "category": "Animais de produção",
-      "language": "Português"
-    },
-    {
-      "title": "Hematoma ou abscesso? Veterinário explica como identificar a lesão em bovinos - Canal Rural",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQVEpxODFuMTZaVHo5QUM1VXBYQ3p1Q2g2Z2hPeGUydG5ta1QxWVExRFVyZDNjQ2dXSmtoVEwzQlBuLVdmVnltTzVCNzNwV3dtdDZwQXhYOGRrZGVPMXpxTnVLYzJfWlFvMWtVeUp2Ti1pT3FlOUo1N3VHTFJmdXR0dHZVUC05c3B6Qkc5QUtmdXhLTDNodXNyMk9rT1hpeXc1UTBqeVNHNkd2Q1lVYURqbUkybFcyUjQ?oc=5",
-      "pubDate": "2026-08-17T07:00:00+00:00",
-      "description": "Hematoma ou abscesso? Veterinário explica como identificar a lesão em bovinos Canal Rural",
-      "source": "Canal Rural",
       "category": "Animais de produção",
       "language": "Português"
     },
@@ -82,6 +82,15 @@
       "source": "Sierra Sun Times",
       "category": "Animais de produção",
       "language": "English"
+    },
+    {
+      "title": "Hematoma ou abscesso? Veterinário explica como identificar a lesão em bovinos - Canal Rural",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQVEpxODFuMTZaVHo5QUM1VXBYQ3p1Q2g2Z2hPeGUydG5ta1QxWVExRFVyZDNjQ2dXSmtoVEwzQlBuLVdmVnltTzVCNzNwV3dtdDZwQXhYOGRrZGVPMXpxTnVLYzJfWlFvMWtVeUp2Ti1pT3FlOUo1N3VHTFJmdXR0dHZVUC05c3B6Qkc5QUtmdXhLTDNodXNyMk9rT1hpeXc1UTBqeVNHNkd2Q1lVYURqbUkybFcyUjQ?oc=5",
+      "pubDate": "2026-08-17T07:00:00+00:00",
+      "description": "Hematoma ou abscesso? Veterinário explica como identificar a lesão em bovinos Canal Rural",
+      "source": "Canal Rural",
+      "category": "Animais de produção",
+      "language": "Português"
     },
     {
       "title": "Avanço da febre maculosa no Brasil acende alerta para diagnóstico precoce - Afya | Home",
@@ -120,6 +129,6 @@
       "language": "English"
     }
   ],
-  "count": 13,
+  "count": 14,
   "note": "Manchetes agregadas via Google News RSS. Verifique a publicação original e fontes oficiais antes de usar informações sanitárias."
 }
