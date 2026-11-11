@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-11T06:31:24.326659+00:00",
+  "updated_at": "2026-11-11T19:39:03.547157+00:00",
   "window_days": 30,
   "items": [
     {
@@ -82,8 +82,26 @@
       "source": "Animal and Plant Health Inspection Service (.gov)",
       "category": "Animais de produção",
       "language": "English"
+    },
+    {
+      "title": "Doença de Newcastle: sintomas, contágio e medidas de prevenção - Canal Rural",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOc0ZONmZHYTdWOG80bE1JdTk2ZzdZOThvZzJuWHB3bXVSZmN6SV9iT1J1SDBjT2l6aTRWS0trdFFvbHBsLUhvdEZFRjY0TW1hTjZ6V1E2VDFtelgwWW1NUDAyQ0pWUmp3SXVNZFE4ZExGVEFyNl9Idm03dmJ4eGY1Z2dETDlHMlBpRExKSGVSVlNROGZPUEx3bGN6UzUtdzA?oc=5",
+      "pubDate": "2026-10-20T07:00:00+00:00",
+      "description": "Doença de Newcastle: sintomas, contágio e medidas de prevenção Canal Rural",
+      "source": "Canal Rural",
+      "category": "Animais de produção",
+      "language": "Português"
+    },
+    {
+      "title": "Animal Disease Traceability - Animal and Plant Health Inspection Service (.gov)",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBKVkF3QnlOeDd3QzZMT3NjUExYX0hJMHVGelJaeG9iU0RzWVJudDFkSEQ4UjcxcGZBVlJsNExHSTZHM3RGck1EMFkxeDFwYmNqSHdZcGFIeFpteEJTTjR5RnFrczd2UW9NbGNBT01nekxTMWM?oc=5",
+      "pubDate": "2026-10-21T07:00:00+00:00",
+      "description": "Animal Disease Traceability Animal and Plant Health Inspection Service (.gov)",
+      "source": "Animal and Plant Health Inspection Service (.gov)",
+      "category": "Animais de produção",
+      "language": "English"
     }
   ],
-  "count": 9,
+  "count": 11,
   "note": "Manchetes agregadas via Google News RSS. Verifique a publicação original e fontes oficiais antes de usar informações sanitárias."
 }
