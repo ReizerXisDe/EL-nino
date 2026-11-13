@@ -1,7 +1,16 @@
 {
-  "updated_at": "2026-11-13T06:50:31.572651+00:00",
+  "updated_at": "2026-11-13T19:46:41.465500+00:00",
   "window_days": 30,
   "items": [
+    {
+      "title": "Newcastle: SC conclui controle sanitário nos cinco focos da doença e retira última barreira no Oeste - WH3",
+      "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQa3ZoOXhBeUxvZ2FzTkxiUTlKZjBGREdQWU00RTk5VlZreUhjeHhkVlRtRkxkcjVtVE1iNkt2QTNhVXlZUnY3SnJpYmFocl9FNmNCYlhnNlBnX3lfaUlaX3hRMDhCYThsWF92ZlNOUkpPVEZBSFM3aXh3cFJlTVNuVEJNZXJwQ01xamtWbTZIdzI4UmNVeEN4QjRmaVIwZTh3N25DZUJpVFR4Wm5paURxZjZSVHJQUXA3QXA4bVZwWEJndkdQLWtpOUVZTWRKUjVYbWEyNg?oc=5",
+      "pubDate": "2026-11-13T12:36:00+00:00",
+      "description": "Newcastle: SC conclui controle sanitário nos cinco focos da doença e retira última barreira no Oeste WH3",
+      "source": "WH3",
+      "category": "Animais de produção",
+      "language": "Português"
+    },
     {
       "title": "Poços de Caldas vacina bovinos contra brucelose, raiva e manqueira - onda poços",
       "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQblV4Wkk1bnktQWZ4ajBQSTd6Y3R3dnpqLW1Scl9BQ3ZBaEQzcmxKU3NHYVpxZGFWU2xnWUdmZ2l2RHlDaTB2SDB6ZFNrT1lhSzMzbzRjazV1bmNaSFVSeG56cFhObXEyQkNIWUY3YkN4SWtfMTJESW9mb1dsUFVzbm9raE9vZkdwRGRPa0NEbVc0SlRyOEE?oc=5",
@@ -66,15 +75,6 @@
       "language": "Português"
     },
     {
-      "title": "Doença de Newcastle: sintomas, contágio e medidas de prevenção - Canal Rural",
-      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOc0ZONmZHYTdWOG80bE1JdTk2ZzdZOThvZzJuWHB3bXVSZmN6SV9iT1J1SDBjT2l6aTRWS0trdFFvbHBsLUhvdEZFRjY0TW1hTjZ6V1E2VDFtelgwWW1NUDAyQ0pWUmp3SXVNZFE4ZExGVEFyNl9Idm03dmJ4eGY1Z2dETDlHMlBpRExKSGVSVlNROGZPUEx3bGN6UzUtdzA?oc=5",
-      "pubDate": "2026-10-20T07:00:00+00:00",
-      "description": "Doença de Newcastle: sintomas, contágio e medidas de prevenção Canal Rural",
-      "source": "Canal Rural",
-      "category": "Animais de produção",
-      "language": "Português"
-    },
-    {
       "title": "Screwworm.gov | Animal and Plant Health Inspection Service - USDA (.gov)",
       "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNUzc2WGdFNVZjSHFEWUM2M2ZGYmhIZ0lpd2FiMzlYSVU3eUNQUEl0bHBpNjI3Z1JwOEo3djV1UHJiV3ptREJVRE5jbVNxZTZ3QjZpcFZReWZJTGVBSUhIYlh3aXRjeFo1Ml9DREUyQUEzZ2dheU5COTB5dFNidHNoSkdiQjNtWm1rQnVTeWFpa1RBZ0FnRHJlZw?oc=5",
       "pubDate": "2026-11-10T08:00:00+00:00",
@@ -82,6 +82,15 @@
       "source": "USDA (.gov)",
       "category": "Animais de produção",
       "language": "English"
+    },
+    {
+      "title": "Doença de Newcastle: sintomas, contágio e medidas de prevenção - Canal Rural",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOc0ZONmZHYTdWOG80bE1JdTk2ZzdZOThvZzJuWHB3bXVSZmN6SV9iT1J1SDBjT2l6aTRWS0trdFFvbHBsLUhvdEZFRjY0TW1hTjZ6V1E2VDFtelgwWW1NUDAyQ0pWUmp3SXVNZFE4ZExGVEFyNl9Idm03dmJ4eGY1Z2dETDlHMlBpRExKSGVSVlNROGZPUEx3bGN6UzUtdzA?oc=5",
+      "pubDate": "2026-10-20T07:00:00+00:00",
+      "description": "Doença de Newcastle: sintomas, contágio e medidas de prevenção Canal Rural",
+      "source": "Canal Rural",
+      "category": "Animais de produção",
+      "language": "Português"
     },
     {
       "title": "Doença de Newcastle: saiba identificar os sintomas e como proteger as aves da contaminação - Canal Rural",
@@ -102,6 +111,6 @@
       "language": "English"
     }
   ],
-  "count": 11,
+  "count": 12,
   "note": "Manchetes agregadas via Google News RSS. Verifique a publicação original e fontes oficiais antes de usar informações sanitárias."
 }
