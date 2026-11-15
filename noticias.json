@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-15T06:39:38.505776+00:00",
-  "window_days": 30,
+  "updated_at": "2026-11-15T18:54:19.279656+00:00",
+  "window_days": 90,
   "items": [
     {
       "title": "Mapa participa de encontro do Cone Sul no Paraguai e apresenta resposta brasileira à doença de Newcastle - Agrolink",
@@ -8,24 +8,6 @@
       "pubDate": "2026-11-05T17:06:00+00:00",
       "description": "Mapa participa de encontro do Cone Sul no Paraguai e apresenta resposta brasileira à doença de Newcastle Agrolink",
       "source": "Agrolink",
-      "category": "Animais de produção",
-      "language": "Português"
-    },
-    {
-      "title": "Carta Insumos - Newcastle no Brasil: medidas para a prevenção - Scot Consultoria",
-      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNekljYlFTMy0xMHlNUXdYbWNxM01OUXNLdFlEVnFXMS1Eb2syckp2Y0dmS3BweEtSOXY2SndUTFJtaXo5LUxHVS02emJERWFkS1Y5b01CWWdGNDRROTloYzkwalhvMnUtREdRWE5ZbzBsdkFhYTI0M3NfaHVfT1ZTZGViLW5VcU1NU0Jaam5hV0V3eDlTRHU4bjhyOWMwMzBSUEdMRVI4QkRvYjhhNW0zQU1LaS1VV3YyOXE4?oc=5",
-      "pubDate": "2026-11-05T09:01:50+00:00",
-      "description": "Carta Insumos - Newcastle no Brasil: medidas para a prevenção Scot Consultoria",
-      "source": "Scot Consultoria",
-      "category": "Animais de produção",
-      "language": "Português"
-    },
-    {
-      "title": "Tratamento de ferimentos crônicos em bovinos requer diagnóstico de especialista - Giro do Boi - Canal Rural",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPZG1tUGlyY2xSamlqMnJScWt6WXNrbHR2ZUFKaXlKbkJna1RVZzB5SGNOY1dxekxVZF9YOUZrX2NzTUlONm9wdEtaU3QwM21NYWV4ejJhVXhJZEdyQU5QdW9jU3VYTk82MzJaOXByZGhLa2toTEstdUdrbHY0djdVdDJjZFRxdURHSXpOQmlOT0c1Sl9aUG0tU21QZXA5aFpDdlQ4LTBqVEZEWGhVNktOZ2tFam9ieWc?oc=5",
-      "pubDate": "2026-10-26T07:00:00+00:00",
-      "description": "Tratamento de ferimentos crônicos em bovinos requer diagnóstico de especialista Giro do Boi - Canal Rural",
-      "source": "Giro do Boi - Canal Rural",
       "category": "Animais de produção",
       "language": "Português"
     },
@@ -71,6 +53,24 @@
       "pubDate": "2026-10-20T07:00:00+00:00",
       "description": "Doença de Newcastle: saiba identificar os sintomas e como proteger as aves da contaminação Canal Rural",
       "source": "Canal Rural",
+      "category": "Animais de produção",
+      "language": "Português"
+    },
+    {
+      "title": "Brasil deve confinar quase 10 milhões de bovinos em 2026 e sanidade ganha peso no pico de ocupação - Agrolink",
+      "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQTVVQSDBCby1mQmZBeFRfcVN4WTN4ZHZ0Ni1sYnlMZG1mUVFoa25TV3Z4dEJjVG1acVRaNDA2eHozdXBWY2tqb0FDc2FXWGIxeUVCamVZc2paMVJIS2M5Uzlod1ZoYzNzNWt5bEx2cnd3NlNpdGFhclkzd0w1TXZwa0FpenUtZEIyT2J6Vy16UFFEWnFiWjNvcDhKUTlxYWRXYUZ2UTdWREtZYUNmNGVfV3FWcHpBVkJ6blNRc2xKcmtiWkptdlFhZF9HNlpUenpiN25rU00td0xfRDVYNzR1Sg?oc=5",
+      "pubDate": "2026-09-10T07:00:00+00:00",
+      "description": "Brasil deve confinar quase 10 milhões de bovinos em 2026 e sanidade ganha peso no pico de ocupação Agrolink",
+      "source": "Agrolink",
+      "category": "Animais de produção",
+      "language": "Português"
+    },
+    {
+      "title": "Prevenir, acompanhar e orientar: o papel do médico-veterinário na saúde animal - 3tres3.com",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9LTXd0M2czSUZyanJjVllNQlJJZWpGc0xuOUh4cThibzFBR1RQX0VCNGxOczMyX0l0VTVubDR2TWYxY285Zk9fX0U4NWJNNHo2SGFNd2poTERyN3A4VjIyaDVEVUcwWnc4WnJOMXF6cFMwYjZIcGVLZk8yVjNTa0E?oc=5",
+      "pubDate": "2026-09-03T07:00:00+00:00",
+      "description": "Prevenir, acompanhar e orientar: o papel do médico-veterinário na saúde animal 3tres3.com",
+      "source": "3tres3.com",
       "category": "Animais de produção",
       "language": "Português"
     },
