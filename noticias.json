@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-18T07:34:52.102855+00:00",
+  "updated_at": "2026-11-18T20:36:54.438017+00:00",
   "window_days": 90,
   "items": [
     {
@@ -26,15 +26,6 @@
       "pubDate": "2026-10-22T07:00:00+00:00",
       "description": "Santa Catarina conclui retirada de aves após foco da doença de Newcastle A Crítica de Campo Grande",
       "source": "A Crítica de Campo Grande",
-      "category": "Animais de produção",
-      "language": "Português"
-    },
-    {
-      "title": "Doença de Newcastle é detectada em granja de perus e não oferece risco aos humanos - Tribuna do Sertão",
-      "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPTVF5clFpcE5XX0djc2lIQ09SMktPaWx6UmliR2ZYZXN2M0QxWF9uNHViWVZjWEFGcVByYVNoZ0o1WmQtLVVpWXplTXVkalkwUUxvM3NrLTl4WUlJQ0tiVU9aWUdOT1RmQlpOb2xEbVhEN1NGaE82Tkd5Z2ZKYjZ5MkRDdDJVLVowOVp2TW9NOFNheDU3OGxuZlhId244eU5fTEN6Z0J6LW5GUDY3OWd4TUdtbWpvOHdvSWRNdm9UWGN1dzQtalJTTDYtMUNKUldjWTE2QThJWjBUM2hoVkE?oc=5",
-      "pubDate": "2026-10-20T07:00:00+00:00",
-      "description": "Doença de Newcastle é detectada em granja de perus e não oferece risco aos humanos Tribuna do Sertão",
-      "source": "Tribuna do Sertão",
       "category": "Animais de produção",
       "language": "Português"
     },
@@ -75,6 +66,6 @@
       "language": "English"
     }
   ],
-  "count": 8,
+  "count": 7,
   "note": "Manchetes agregadas via Google News RSS. Verifique a publicação original e fontes oficiais antes de usar informações sanitárias."
 }
